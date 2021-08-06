@@ -1,0 +1,103 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Upgrade Binary" %}</h1>
+                  <p>{% trans 'here you can upgrade to binary for your account' %}</p>
+                </section><section>
+                  <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
+                    <div class="mdc-card">
+                      <form class="template-demo" method="POST" action="/binary/join/" enctype="multipart/form-data">{% csrf_token %}
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                              {% if nuser == 'blank' %}
+                              <input class="mdc-text-field__input" id="id_username" type="text" required name="direct_user" class="form-control form-control-lg" required id="id_amount" autocomplete="off">
+                              {% else %}
+                              <input class="mdc-text-field__input" id="id_username" type="text" required name="direct_user" class="form-control form-control-lg" value="{{ nuser }}" readonly id="id_amount" autocomplete="off">
+                              {% endif %}
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  {% if nuser == 'blank' %}
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Enter Upline ID
+                                  </label>
+                              {% else %}
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Your Upline
+                                  </label>
+                              {% endif %}
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                          <p id="user_name">{{ nuser.name }}</p>
+                        </div>
+                        <input type="hidden" name="user_id" value="{{ request.user }}">
+                        <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                            <input type="hidden" value='' required name="position">
+                            <i class="mdc-select__dropdown-icon"></i>
+                            <div class="mdc-select__selected-text"></div>
+                            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                              <ul class="mdc-list">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                </li>
+                                <li class="mdc-list-item" data-value="left">Left</li>
+                                <li class="mdc-list-item" data-value="right">Right</li>
+                              </ul>
+                            </div>
+                            <span class="mdc-floating-label">Select Position</span>
+                            <div class="mdc-line-ripple"></div>
+                          </div>
+                          <input type="hidden" value='{{ amount }}' required name="amount">
+                          <button type="submit" class="mdc-button mdc-button--raised w-100">
+                            Upgrade Now
+                          </button>
+                          <a href="/binary/join/" class="mdc-button mdc-button--secondary w-100">
+                            Back
+                          </a>
+                          </form>
+                          {{ message }}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<script>
+    $("#id_username").change(function () {
+      var username = $(this).val();
+
+      $.ajax({
+        url: '/users/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (true) {
+            document.getElementById("user_name").innerHTML = data.is_taken;
+          }
+        }
+      });
+
+    });
+  </script>
+{% endblock content %}

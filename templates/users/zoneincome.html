@@ -1,0 +1,162 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Zone Income' %}{% endblock %}
+
+
+{% block content %}
+
+<!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div>
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--success">
+                  <div class="card-inner">
+                    <h5 class="card-title">1st Zone</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$62,0076.00</h5>
+                    <p class="tx-12 text-muted">48% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">dvr</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--danger">
+                  <div class="card-inner">
+                    <h5 class="card-title">2nd Zone</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$1,958,104.00</h5>
+                    <p class="tx-12 text-muted"> $1,283.00 is redeemable</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">attach_money</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--primary">
+                  <div class="card-inner">
+                    <h5 class="card-title">3rd Zone</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">564</h5>
+                    <p class="tx-12 text-muted">87% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">trending_up</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--info">
+                  <div class="card-inner">
+                    <h5 class="card-title">4th Zone</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$1,200.00</h5>
+                    <p class="tx-12 text-muted">87% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">credit_card</i>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+          	<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--success">
+                  <div class="card-inner">
+                    <h5 class="card-title">5th Zone</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$62,0076.00</h5>
+                    <p class="tx-12 text-muted">48% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">dvr</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--danger">
+                  <div class="card-inner">
+                    <h5 class="card-title">Direct Income</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$1,958,104.00</h5>
+                    <p class="tx-12 text-muted"> $1,283.00 is redeemable</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">attach_money</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--primary">
+                  <div class="card-inner">
+                    <h5 class="card-title">10% Direct Income</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">564</h5>
+                    <p class="tx-12 text-muted">87% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">trending_up</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card info-card info-card--info">
+                  <div class="card-inner">
+                    <h5 class="card-title">Zone Royalty Income</h5>
+                    <h5 class="font-weight-light pb-2 mb-1 border-bottom">$1,200.00</h5>
+                    <p class="tx-12 text-muted">87% target reached</p>
+                    <div class="card-icon-wrapper">
+                      <i class="material-icons">credit_card</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+        </main>
+        <div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main class="content-wrapper">
+				<div class="mdc-layout-grid">
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section class="error-info">
+									<div class="mdc-layout-grid__inner mt-2">
+										<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
+											<div class="table-responsive">
+												<table class="table dashboard-table">
+													<thead>
+														<tr>
+															<th>#</th>
+<th>Name</th>
+<th>Referral Code</th>
+<th>Date</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div></div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>1% CTO Achievers</h1>
+                  <p>{% if left != 'blank' %}you need {{left1}} more directs to get 1% royalty and {{ left3 }} to get 3% royalty{% endif %}</p>
+                </section>
+                <section style="padding: 5%">
+                  <div class="mdc-layout-grid__inner mt-2" align="center">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>1% Royalty Holders</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>User ID</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for x in ach1 %}
+                              <tr>
+                              <td>{{ x.name|truncatewords:2 }}</td>
+                              <td>{{ x.username }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>1% Royalty Pass to zone 1, 2 and 3 users</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>User ID</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for x in z1 %}
+                              <tr>
+                              <td>{{ x.name|truncatewords:1 }}</td>
+                              <td>{{ x.username }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock content %}

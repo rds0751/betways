@@ -1,0 +1,188 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block content %}
+<style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+  body {
+    background-color: #37385F;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .file-drop-area1 {
+    border: 1px dashed #7c7db3;
+    border-radius: 3px;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 26px 20px 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  .file-drop-area2 {
+    border: 1px dashed #7c7db3;
+    border-radius: 3px;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 26px 20px 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .fake-btn {
+    color: white;
+    background: #3F4069;
+    width: 176px;
+    border: 1px solid #9E9EC4;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 130px);
+    vertical-align: middle;
+  }
+
+  .file-input1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .file-input1:focus {
+    outline: none;
+  }
+
+  .file-input2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .file-input2:focus {
+    outline: none;
+  }
+</style>
+
+<section style="padding: 30px 30px 20px 30px;" class="error-header">
+  <h1>{% trans "Update KYC" %}</h1>
+  <p>{% trans 'here you can update your kyc!' %}</p>
+</section>
+<section>
+  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+      <div class="mdc-layout-grid__inner mt-2">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
+          <div class="table-responsive">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.errors }}
+              <div class="file-drop-area1" align="center" >
+                {% if imageaf == '' %}
+                <img src="{% static 'id-front.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
+                <h5 class="js-set-number1">Choose Govt Approved ID Front</h5>
+                {% else %}
+                <img src="{{imageaf}}" style="width: 100%; height: 100%; border-radius: 5%;">
+                {% endif %}
+                <input required name="imageAF" accept="image/*;capture=camera" class="file-input1" type="file">
+              </div>
+              <div class="file-drop-area2" align="center">
+                {% if imageaf == '' %}
+                <img src="{% static 'id-back.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
+                <h5 class="js-set-number1">Choose Govt Approved ID Front</h5>
+                {% else %}
+                <img src="{{imageab}}" style="width: 100%; height: 100%; border-radius: 5%;">
+                {% endif %}
+                <input required name="imageAB" accept="image/*;capture=camera" class="file-input2" type="file">
+              </div>
+              <input type="hidden" name="user" value="{{ request.user.username }}">
+              <br><br><br>
+              {% if model.approved == True %}
+              <span style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--success">&#128512; Hurray! KYC Completed</span>
+              {% elif model.approved == False %}
+              <p>{{ model.description }}</p>
+              <button type="submit" style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--secondary">Update Again!</button>
+              {% elif model.approved == None %}
+              <p>It will take 2-3 working days to process your kyc</p>
+              <button style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--secondary">
+                Update KYC
+              </button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</main>
+<script type="text/javascript">
+  // highlight drag area 
+  var fileinput1 = document.querySelector('.file-input1');
+  var filedroparea1 = document.querySelector('.file-drop-area1');
+  var jssetnumber1 = document.querySelector('.js-set-number1');
+  fileinput1.addEventListener('dragenter', isactive1);
+  fileinput1.addEventListener('focus', isactive1);
+  fileinput1.addEventListener('click', isactive1);
+
+// back to normal state
+fileinput1.addEventListener('dragleave', isactive1);
+fileinput1.addEventListener('blur', isactive1);
+fileinput1.addEventListener('drop', isactive1);
+
+// add Class
+function isactive1() {
+  filedroparea1.classList.add('is-active');
+}
+
+// change inner text
+fileinput1.addEventListener('change', function() {
+    // if single file then show file name
+    jssetnumber1.innerText = fileinput1.value.split('\\').pop();
+});
+  // highlight drag area 
+  var fileinput2 = document.querySelector('.file-input2');
+  var filedroparea2 = document.querySelector('.file-drop-area2');
+  var jssetnumber2 = document.querySelector('.js-set-number2');
+  fileinput2.addEventListener('dragenter', isactive2);
+  fileinput2.addEventListener('focus', isactive2);
+  fileinput2.addEventListener('click', isactive2);
+
+// back to normal state
+fileinput2.addEventListener('dragleave', isactive2);
+fileinput2.addEventListener('blur', isactive2);
+fileinput2.addEventListener('drop', isactive2);
+
+// add Class
+function isactive2() {
+  filedroparea2.classList.add('is-active');
+}
+
+// change inner text
+fileinput2.addEventListener('change', function() {
+    // if single file then show file name
+    jssetnumber2.innerText = fileinput2.value.split('\\').pop();
+});
+</script>
+{% endblock %}

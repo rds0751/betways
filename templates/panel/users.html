@@ -1,0 +1,293 @@
+{% extends 'panel/base.html' %}
+{% load static sum_tags i18n %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{% trans 'All Users' %}</h4>
+                    </div>
+                    <form class="card-header" method="POST">
+                        {% csrf_token %}
+                        <input type="" name="q" placeholder="Search Users">
+                        <input style="width: 109px;" type="submit">
+                    </form>
+                    <div class="card-block">
+                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Mobile</th>
+                                    <th>Upline ID</th>
+                                    <th>Upline Name</th>
+                                    <th>Top up</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in u %}
+                                <tr>
+                                    <td class="text-center">{{ forloop.counter }}</td>
+                                    <td>{{ x.username }}</td>
+                                    <td>{{ x.name }}</td>
+                                    <td>{% if x.is_active == True %}Active{% else %}Blocked{% endif %}</td>
+                                    <td>{{ x.mobile }}</td>
+                                    <td>{{ x.referral.username }}</td>
+                                    <td>{{ x.referral.name }}</td>
+                                    <td class="hidden-xs">{% if x.top != 0 and x.top.level.amount != 0 %}{{x.top.level.amount}}{% else %}Inactive{% endif %}</td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <form style="float: left;" action="/panel/users/{{ x.id }}/">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View User"><i style="color: green" class="ion-information-circled"></i></button>
+                                            </form>
+                                            <form style="float: left;" action="/panel/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="block">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i></button>
+                                            </form>
+                                            <form style="float: right;" action="/panel/login/" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="username" value="{{ x.username }}">
+                                            <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Login User"><i style="color: violet" class="ion-cube"></i></button>
+                                        </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- .card-block -->
+                </div>
+                <!-- .card -->
+                <!-- End Dynamic Table Full -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+
+<!-- Page JS Code -->
+<script type="text/javascript">
+    /*
+Document: base_tables_datatables.js
+Author: Rustheme
+Description: Custom JS code used in Tables Datatables Page
+ */
+
+var BaseTableDatatables = function() {
+    // Init full DataTable: https://www.datatables.net/
+    var initDataTableFull = function() {
+        jQuery( '.js-dataTable-full' ).dataTable({
+            columnDefs: [ { orderable: false, targets: [ 4 ] } ],
+            pageLength: 50,
+            lengthMenu: [[50, 100, 150, 200], [50, 100, 150, 200]]
+        });
+    };
+
+    // Init simple DataTable: https://www.datatables.net/
+    var initDataTableSimple = function() {
+        jQuery( '.js-dataTable-simple' ).dataTable({
+            columnDefs: [ { orderable: false, targets: [ 4 ] } ],
+            pageLength: 50,
+            lengthMenu: [[50, 100, 150, 200], [50, 100, 150, 200]],
+            searching: false,
+            oLanguage: {
+                sLengthMenu: ''
+            },
+            dom:
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-6'i><'col-sm-6'p>>"
+        });
+    };
+
+    // DataTables Bootstrap integration
+    var bsDataTables = function() {
+        var $DataTable = jQuery.fn.dataTable;
+
+        // Set the defaults for DataTables init
+        jQuery.extend( true, $DataTable.defaults, {
+            dom:
+                "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-6'i><'col-sm-6'p>>",
+            renderer: 'bootstrap',
+            oLanguage: {
+                sLengthMenu: "_MENU_",
+                sInfo: "Showing <strong>_START_</strong>-<strong>_END_</strong> of <strong>_TOTAL_</strong>",
+                oPaginate: {
+                    sPrevious: '<i class="ion-ios-arrow-left"></i>',
+                    sNext: '<i class="ion-ios-arrow-right"></i>'
+                }
+            }
+        });
+
+        // Default class modification
+        jQuery.extend($DataTable.ext.classes, {
+            sWrapper: "dataTables_wrapper form-inline dt-bootstrap",
+            sFilterInput: "form-control",
+            sLengthSelect: "form-control"
+        });
+
+        // Bootstrap paging button renderer
+        $DataTable.ext.renderer.pageButton.bootstrap = function (settings, host, idx, buttons, page, pages) {
+            var api     = new $DataTable.Api(settings);
+            var classes = settings.oClasses;
+            var lang    = settings.oLanguage.oPaginate;
+            var btnDisplay, btnClass;
+
+            var attach = function (container, buttons) {
+                var i, ien, node, button;
+                var clickHandler = function (e) {
+                    e.preventDefault();
+                    if ( !jQuery(e.currentTarget).hasClass( 'disabled')) {
+                        api.page(e.data.action).draw(false);
+                    }
+                };
+
+                for (i = 0, ien = buttons.length; i < ien; i++) {
+                    button = buttons[i];
+
+                    if ( jQuery.isArray(button)) {
+                        attach(container, button);
+                    }
+                    else {
+                        btnDisplay = '';
+                        btnClass = '';
+
+                        switch (button) {
+                            case 'ellipsis':
+                                btnDisplay = '&hellip;';
+                                btnClass = 'disabled';
+                                break;
+
+                            case 'first':
+                                btnDisplay = lang.sFirst;
+                                btnClass = button + (page > 0 ? '' : ' disabled' );
+                                break;
+
+                            case 'previous':
+                                btnDisplay = lang.sPrevious;
+                                btnClass = button + (page > 0 ? '' : ' disabled' );
+                                break;
+
+                            case 'next':
+                                btnDisplay = lang.sNext;
+                                btnClass = button + (page < pages - 1 ? '' : ' disabled' );
+                                break;
+
+                            case 'last':
+                                btnDisplay = lang.sLast;
+                                btnClass = button + (page < pages - 1 ? '' : ' disabled' );
+                                break;
+
+                            default:
+                                btnDisplay = button + 1;
+                                btnClass = page === button ?
+                                        'active' : '';
+                                break;
+                        }
+
+                        if ( btnDisplay) {
+                            node = jQuery( '<li>', {
+                                'class': classes.sPageButton + ' ' + btnClass,
+                                'aria-controls': settings.sTableId,
+                                'tabindex': settings.iTabIndex,
+                                'id': idx === 0 && typeof button === 'string' ?
+                                        settings.sTableId + '_' + button :
+                                        null
+                            })
+                            .append(jQuery( '<a>', {
+                                    'href': '#'
+                                })
+                                .html(btnDisplay)
+                            )
+                            .appendTo(container);
+
+                            settings.oApi._fnBindAction(
+                                node, {action: button}, clickHandler
+                            );
+                        }
+                    }
+                }
+            };
+
+            attach(
+                jQuery( host ).empty().html( '<ul class="pagination"/>' ).children( 'ul' ),
+                buttons
+            );
+        };
+
+        // TableTools Bootstrap compatibility - Required TableTools 2.1+
+        if ( $DataTable.TableTools ) {
+            // Set the classes that TableTools uses to something suitable for Bootstrap
+            jQuery.extend(true, $DataTable.TableTools.classes, {
+                "container": "DTTT btn-group",
+                "buttons": {
+                    "normal": "btn btn-default",
+                    "disabled": "disabled"
+                },
+                "collection": {
+                    "container": "DTTT_dropdown dropdown-menu",
+                    "buttons": {
+                        "normal": "",
+                        "disabled": "disabled"
+                    }
+                },
+                "print": {
+                    "info": "DTTT_print_info"
+                },
+                "select": {
+                    "row": "active"
+                }
+            });
+
+            // Have the collection use a bootstrap compatible drop down
+            jQuery.extend( true, $DataTable.TableTools.DEFAULTS.oTags, {
+                "collection": {
+                    "container": "ul",
+                    "button": "li",
+                    "liner": "a"
+                }
+            });
+        }
+    };
+
+    return {
+        init: function() {
+            // Init Datatables
+            bsDataTables();
+            initDataTableSimple();
+            initDataTableFull();
+        }
+    };
+}();
+
+// Initialize when page loads
+jQuery( function() {
+    BaseTableDatatables.init();
+});
+
+</script>
+{% endblock %}

@@ -1,0 +1,11 @@
+<div id="create-ticket-div">
+	{% if request.user.is_staff %}
+    <a style="margin: 10px" href="/tickets/project/" id="project-view-button" class="btn ticket-button">Project View</a>
+    <a style="margin: 10px" href="/tickets/" id="view-all-button" class="btn ticket-button" {% if filter == 'All' %}disabled="disabled"{% endif %}>All Tickets</a>
+    {% endif %}
+    <a style="margin: 10px" class="btn btn-danger btn-lg" href="javascript:history.back()">Go Back</a>
+    <br>
+    <a style="margin: 10px;" href="/tickets/new/" id="create-ticket-button" class="btn btn-success btn-sm">Create New Ticket</a>
+    <!-- <a style="margin: 10px" href="https://tawk.to/chat/5f57c9b4f0e7167d000e8ad8/1eregigo5" target="blank" class="btn btn-success ticket-button">Live Support</a> -->
+    <a style="margin: 10px;" href="https://wa.me/919817590833" target="blank" id="create-ticket-button" class="btn btn-success btn-sm">Whatsapp Support</a>
+</div>

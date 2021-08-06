@@ -1,0 +1,170 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Profile' %}{% endblock %}
+
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "User Profile" %}</h1>
+									<p>{% trans 'here you can see your profiles information' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+										<div class="mdc-card">
+											<div class="mdc-layout-grid__inner mt-2">
+												<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
+													<div class="table-responsive">
+														<table class="table dashboard-table">
+															<tbody>
+																<tr>
+																	<td>Name</td>
+																	<td>{{ user.name }}</td>
+																</tr>
+																<tr>
+																	<td>Email</td>
+																	<td>{{ user.email }}</td>
+																</tr>
+																<tr><td>Sponsor ID: </td><td>{{ user.referal }}</td></tr>
+																<tr><td> DOJ: </td><td>{{ user.date_joined }}</td></tr>
+																<tr><td> Mobile: </td><td>{{ user.mobile }}</td></tr>
+																<tr><td> Nominee </td><td>{{ user.nominee }}</td></tr>
+																<tr><td> Nominee Relation </td><td>{{ user.nominee_relation }}</td></tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet"> 
+													<div class="table-responsive">
+														<table class="table dashboard-table">
+															<tbody>
+																<tr><td> Address </td><td>{{ user.address }}</td></tr>
+																<tr><td> City </td><td>{{ user.city }}</td></tr>
+																<tr><td> State </td><td>{{ user.state }}</td></tr>
+																<tr>
+																	<td> Profile Picture </td>
+																	<td><a href="/{{ user.profile_pic }}">Download</a></td></tr>
+																	<tr>
+																		<td> Aadhar Card Front </td>
+																		<td><a href="">Download</a></td>
+																	</tr>
+																	<tr>
+																		<td> Aadhar Card Back </td>
+																		<td><a href="">Download</a></td>
+																	</tr>
+																	<tr>
+																		<td> PAN Card </td>
+																		<td><a href="">Download</a></td>
+																	</tr>	
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div> 
+										</div>
+										<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet">
+					                        <div class="mdc-card">
+					                          <div class="border-bottom text-center pb-4">
+					                            <img src="../../../assets/images/faces/face1.jpg" alt="profile" class="img-xl img-rouded mb-3">
+					                            <p>
+					                              Bureau Oberhaeuser is a design bureau focused on
+					                              Information- and Interface Design.
+					                            </p>
+					                            <div class="d-flex justify-content-between">
+					                              <button class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
+					                                Hire Me
+					                              </button>
+					                              <button class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
+					                                Follow
+					                              </button>
+					                            </div>
+					                          </div>
+					                          <div class="border-bottom py-4">
+					                            <p>Skills</p>
+					                            <div>
+					                              <label class="mdc-badge">Chalk</label>
+					                              <label class="mdc-badge">Hand lettering</label>
+					                              <label class="mdc-badge">Information Design</label>
+					                              <label class="mdc-badge">Graphic Design</label>
+					                            </div>
+					                          </div>
+					                          <div class="border-bottom py-4">
+					                            <div class="template-demo">
+					                              <div role="progressbar" class="mdc-linear-progress">
+					                                <div class="mdc-linear-progress__buffering-dots"></div>
+					                                <div class="mdc-linear-progress__buffer"></div>
+					                                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+					                                  <span class="mdc-linear-progress__bar-inner"></span>
+					                                </div>
+					                                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+					                                  <span class="mdc-linear-progress__bar-inner"></span>
+					                                </div>
+					                              </div>
+					                            </div>
+					                            <div class="template-demo">
+					                              <div role="progressbar" class="mdc-linear-progress">
+					                                <div class="mdc-linear-progress__buffering-dots"></div>
+					                                <div class="mdc-linear-progress__buffer"></div>
+					                                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+					                                  <span class="mdc-linear-progress__bar-inner"></span>
+					                                </div>
+					                                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+					                                  <span class="mdc-linear-progress__bar-inner"></span>
+					                                </div>
+					                              </div>
+					                            </div>
+					                          </div>
+					                          <div class="py-4">
+					                            <p class="d-flex justify-content-between">
+					                              <span> Status </span>
+					                              <span class="text-muted"> Active </span>
+					                            </p>
+					                            <p class="d-flex justify-content-between">
+					                              <span> Phone </span>
+					                              <span class="text-muted">
+					                                006 3435 22
+					                              </span>
+					                            </p>
+					                            <p class="d-flex justify-content-between">
+					                              <span> Mail </span>
+					                              <span class="text-muted">
+					                                Jacod@testmail.com
+					                              </span>
+					                            </p>
+					                            <p class="d-flex justify-content-between">
+					                              <span> Facebook </span>
+					                              <span class="text-muted">
+					                                <a href="#">David Grey</a>
+					                              </span>
+					                            </p>
+					                            <p class="d-flex justify-content-between">
+					                              <span> Twitter </span>
+					                              <span class="text-muted">
+					                                <a href="#">@davidgrey</a>
+					                              </span>
+					                            </p>
+					                          </div>
+					                          <button class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded btn-block">
+					                            Preview
+					                          </button>
+					                        </div>
+					                      </div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+	{% endblock content %}

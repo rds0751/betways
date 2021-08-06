@@ -1,0 +1,403 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load sum_tags %}
+ 
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "My Network" %}</h1>
+                  <p>{% trans 'here you can see your Network' %}</p>
+                </section>
+                <section style="padding: 5%">
+                  <div class="mdc-layout-grid__inner mt-2" align="center">
+                    {% if lll == "0" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333">
+                              <th style="color: white">&nbsp;&nbsp;Levels</th>
+                              <th style="color: white">Status</th>
+                              <th style="color: white">Active Users</th>
+                              <th style="color: white">Inactive Users</th>
+                              <th style="color: white">Total Business</th>
+                              <th style="color: white">My Earnings</th>
+                              <th style="color: white">Details</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr style="background-color: {% if directs >= 1 %}#00ff0040{% else %}#ff000040{% endif %}">
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 1</strong></td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{lc.1}}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/1/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 2 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 2</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 2 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.2 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/2/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 3 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 3</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 3 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.3 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/3/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 4 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 4</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 4 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.4 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/4/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 5 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 5</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 5 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.5 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/5/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 6 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 6</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 6 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.6 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.6 countingi.6 as x6 %}{{ x6|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.6 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.6 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/6/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 7 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 7</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 7 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.7 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.7 countingi.7 as x7 %}{{ x7|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.7 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.7 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/7/">View</a></td>
+                              </tr>
+                              <tr style="background-color: {% if directs >= 8 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 8</strong></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 8 %}Open{% else %}Closed{% endif %}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.8 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.8 countingi.8 as x8 %}{{ x8|floatformat:"0" }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.8 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{ lc.8 }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/8/">View</a></td>
+                              </tr>
+                              <tr style="background-color: #333333">
+                              <td style="color: white"><strong>&nbsp;&nbsp;Total</strong></td>
+                              <td style="color: white"><strong>{{directs}} Levels Open</strong></td>
+                              <td style="color: white"><strong style="font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7|add:countingi.8 }}</strong></td>
+                              <td style="color: white"><strong style="font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7|add:x8 }}</strong></td>
+                              <td style="color: white"><strong style="font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8 }}</strong></td>
+                              <td style="color: white"><strong style="font-size: 16px;">$ {{ s.business }}</strong></td>
+                              <td style="color: white">&nbsp;&nbsp;</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if lll == "1" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 1</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Mobile</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for usern, shopn in user_list %}
+                              <tr style="background-color: {% if shopn.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ usern.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ shopn.level.amount }}</td>
+                              <td>$ {% mul shopn.level.amount 0.20 as shopnres %}{{ shopnres }}</td>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "2" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 2</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level2n, level2nu in all.0 %}
+                              <tr style="background-color: {% if level2n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level2nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level2nu.referral }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level2n.level.amount }}</td>
+                              <td>$ {% mul level2n.level.amount 0.10 as level2nres %}{{ level2nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "3" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 3</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level3n, level3nu in all.1 %}
+                              <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level3nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level3n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level3n.level.amount }}</td>
+                              <td>$ {% mul level3n.level.amount 0.08 as level3nres %}{{ level3nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "4" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 4</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level4n, level4nu in all.2 %}
+                            <tr style="background-color: {% if level4n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">
+                                {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level4n.level.amount }}</td>
+                              <td>$ {% mul level4n.level.amount 0.06 as level4nres %}{{ level4nres }}</td>
+                            </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "5" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 5</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level5n, level5nu in all.3 %}
+                              <tr style="background-color: {% if level5n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level5nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level5n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level5n.level.amount }}</td>
+                              <td>$ {% mul level5n.level.amount 0.04 as level5nres %}{{ level5nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "6" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 6</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level6n, level6nu in all.4 %}
+                              <tr style="background-color: {% if level6n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level6nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level6n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level6n.level.amount }}</td>
+                              <td>$ {% mul level6n.level.amount 0.02 as level6nres %}{{ level6nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "7" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 7</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level7n, level7nu in all.5 %}
+                              <tr style="background-color: {% if level7n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level7nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level7n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level7n.level.amount }}</td>
+                              <td>$ {% mul level7n.level.amount 0.02 as level7nres %}{{ level7nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% endif %}
+                    {% if lll == "8" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 8</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level8n, level8nu in all.6 %}
+                              <tr style="background-color: {% if level8n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level8nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level8n.direct }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level8n.level.amount }}</td>
+                              <td>$ {% mul level8n.level.amount 0.08 as level8nres %}{{ level8nres }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+.two p { display: inline-block; max-width: 50%; }
+.two p:nth-child(1) { float:left; }
+.two p:nth-child(2) { float:right; }
+</style>
+{% endblock content %}

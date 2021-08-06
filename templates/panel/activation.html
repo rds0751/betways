@@ -1,0 +1,129 @@
+{% extends 'panel/base.html' %}
+{% load static sum_tags %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>#ACT000{{ w.id }}</h4>
+                        <ul class="card-actions">
+                            <li>
+                                <!-- Print Page functionality is initialized in App() -> uiHelperPrint() -->
+                                <button type="button" onclick="App.initHelper( 'print-page' );"><i class="ion-printer m-r-xs"></i> Print Request</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-block">
+                        <!-- Invoice Info -->
+                        <div class="h1 text-uppercase text-center m-t m-b-md hidden-print">Activation Request ACT000{{ w.id }}</div>
+                        <hr class="hidden-print">
+                        <div class="row">
+                            <!-- Company Info -->
+                            <div class="col-xs-6 col-sm-4 col-lg-3">
+                                <p class="h3">IPAYMATICS Inc.</p>
+                                <address>
+                                    support@dibortfx.com<br>
+                                    <i class="ion-ios-telephone-outline"></i> +44 2081-57-0098
+                                </address>
+                            </div>
+                            <!-- End Company Info -->
+
+                            <!-- Client Info -->
+                            <div class="col-xs-6 col-sm-4 col-sm-offset-4 col-lg-3 col-lg-offset-6 text-right">
+                                <p class="h3">{{ u.name|title }}({{u.username}})</p>
+                                <address>
+                                    {{ u.address }}<br>
+                                    {{ u.city }}<br>
+                                    {{ u.state }}<br>
+                                    <i class="ion-ios-telephone-outline"></i> +91 {{ u.mobile }}
+                                </address>
+                            </div>
+                            <!-- End Client Info -->
+                        </div>
+                        <!-- End Invoice Info -->
+                        <!-- Table -->
+                        <div class="table-responsive m-y-lg">
+                            <table class="table table-bordered table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">Amount</td>
+                                        <td class="text-right">$ {{ w.amount }}.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">TDS</td>
+                                        <td class="text-right">$ 0.00</td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td colspan="4" class="font-500 text-uppercase text-right">Net Paid Amount</td>
+                                        <td class="font-500 text-right">$ {{ w.amount }}.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End Table -->
+                        <div>
+                            <p>
+                                Activation Request Details<br>
+                                Paid By: {{ w.paid_by }}<br>
+                                Bank Name: {{ w.bank_name }}<br>
+                                Account Number: {{ w.account_number }}<br>
+                                UTR Number: {{ w.utr_number }}<br>
+                                Receipt Number: {{ w.receipt_number }}<br>
+                                Status: {{ w.status }}<br>
+                                Mode: In Cash<br>
+                                Comment: {{ w.comments }}<br>
+                            </p>
+                            <p>
+                                KYC Approved <i style="color: green" class="ion-checkmark-circled"></i><br>
+                            </p>
+                        </div>
+                        {% if w.status == 'Pending' %}
+                        <form method="POST" action="/panel/activations/{{w.id}}/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <select style="height: 38px; border: 0" name="action">
+                                <option value="accept">Approve</option>
+                                <option value="reject">Reject</option>
+                            </select>
+                            <input type="text" style="height: 37px;" name="comment" placeholder="Comments">
+                            <input type="hidden" name="id" value="{{w.id}}">
+                            <button class="btn btn-app">Submit</button>
+                        </form>
+                        {% endif %}
+                        <!-- Footer -->
+                        <hr class="hidden-print">
+                        <p class="text-muted text-center"><small>Thank you very much for doing business with us. We will be happy to work with you again!</small></p>
+                        <!-- End Footer -->
+                    </div>
+                </div>
+                <!-- .card -->
+                <!-- End Dynamic Table Full -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+{% if message != '' %}
+<script type="text/javascript">
+    alert('{{message}}')
+</script>
+{% endif %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script src="{% static 'appUI/js/pages/base_tables_datatables.js' %}"></script>
+{% endblock %}

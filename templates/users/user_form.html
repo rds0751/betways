@@ -1,0 +1,185 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block content %}
+<main class="content-wrapper">
+	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet">
+		<div class="mdc-card" align="center">
+			<h1>{{ user.username }}</h1>
+			{% if user.name %}<p class="lead">{{ user.name|title }}</p>{% endif %}
+			<div class="text-center">
+				{% if user.profile_pic %}
+			<img style="border-radius: 50%;" class="img-xl img-rouded mb-3" src="{{ user.profile_pic.url }}" width="200px" alt="Picture Profile" id="pic">
+			{% else %}
+			{% endif %}
+				<p>
+					{{ user.address }}, {{ user.city }}, {{ user.state }}
+				</p>
+				<div class="d-flex justify-content-between">
+					<a href="#edit" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
+						{% trans "Edit Profile" %}
+					</a>
+					<a href="/users/" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
+						{% trans "My Dashboard" %} 
+					</a>
+				</div>
+			</div>
+			<div class="border-bottom py-4">
+	            <div class="template-demo">
+	              <div role="progressbar" class="mdc-linear-progress">
+	                <div class="mdc-linear-progress__buffering-dots"></div>
+	                <div class="mdc-linear-progress__buffer"></div>
+	                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+	                  <span class="mdc-linear-progress__bar-inner"></span>
+	                </div>
+	                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+	                  <span class="mdc-linear-progress__bar-inner"></span>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="template-demo">
+	              <div role="progressbar" class="mdc-linear-progress">
+	                <div class="mdc-linear-progress__buffering-dots"></div>
+	                <div class="mdc-linear-progress__buffer"></div>
+	                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+	                  <span class="mdc-linear-progress__bar-inner"></span>
+	                </div>
+	                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+	                  <span class="mdc-linear-progress__bar-inner"></span>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+			<div class="py-4">
+				<p class="d-flex justify-content-between">
+					<span> {% trans "Mobile" %}  </span>
+					<span style="color: green">
+						{{ user.mobile }}
+					</span>
+				</p>
+				<p class="d-flex justify-content-between">
+					<span> {% trans "Nominee" %}  </span>
+					<span style="color: green">
+						{{ user.nominee }}
+					</span>
+				</p>
+				<p class="d-flex justify-content-between">
+					<span> {% trans "Nominee Relation" %}  </span>
+					<span style="color: green">
+						{{ user.nominee_relation }}
+					</span>
+				</p>
+				<p class="d-flex justify-content-between">
+					<span>Date of Registration</span>
+					<span style="color: green">
+						{{ user.date_joined|date }}
+					</span>
+				</p>
+				<p class="d-flex justify-content-between">
+					<span>Date of Activation</span>
+					<span style="color: green">
+						{{ s.activated_at|date }}
+					</span>
+				</p>
+			</div>
+			{% if form.errors %}
+			{% for field in form %}
+			{% for error in field.errors %}
+			<div class="alert alert-danger">
+				<strong>{{ error|escape }} => {{ field.label }}</strong>
+			</div>
+			{% endfor %}
+			{% endfor %}
+			{% for error in form.non_field_errors %}
+			<div class="alert alert-danger">
+				<strong>{{ error|escape }}</strong>
+			</div>
+			{% endfor %}
+			{% endif %}
+			<form enctype="multipart/form-data" class="form-horizontal" method="post" action="/users/~update/">
+				{% csrf_token %}
+				<div id="edit" class="mdc-layout-grid">
+					<div class="mdc-layout-grid__inner mb-3">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" readonly name="name" value="{{ request.user.name }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Email" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px; ">
+								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Mobile" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="nominee" value="{{request.user.nominee}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="nominee_relation" value="{{request.user.nominee_relation}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee Relation" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="address" value="{{ request.user.address }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Address" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="city" value="{{ request.user.city }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "City" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+								<input type="text" name="state" value="{{ request.user.state }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<div class="mdc-line-ripple"></div>
+								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "State" %} </span></label>
+							</div>
+						</div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+							<label class="mdc-button mdc-button--unelevated filled-button--secondary w-100" style="
+										    display: inline-block;
+										    padding: 6px 12px;
+										    cursor: pointer;">{% trans "Upload Profile Picture" %}
+
+									<input style="display: none;" id="profile_pic" type="file" name="profile_pic">
+								</label>
+						</div>
+					</div>
+				<button class="mdc-button mdc-button--unelevated filled-button--primary">
+					{% trans "Update Profile" %}
+				</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+<script type="text/javascript">
+	document.getElementById('profile_pic').onchange = function () {
+  alert('Selected file: ' + this.value);
+};
+</script>
+{% endblock %}

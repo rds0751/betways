@@ -1,0 +1,44 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block inner %}
+  <div class="body-wrapper">
+    <div class="main-wrapper">
+      <div class="page-wrapper full-page-wrapper">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                  <section class="error-header">
+                    <h1>{% trans "Sign Out" %}</h1>
+
+<p>{% trans 'Are you sure you want to sign out?' %}</p>
+                  </section>
+                  <section class="error-info">
+                    <form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit" class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded">
+                      Sign out
+                    </button>
+                    <a href="/users/" class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded">
+                      No continue to site
+                    </a>
+</form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

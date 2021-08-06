@@ -1,0 +1,437 @@
+{% load static i18n %}<!-- partial:partials/_sidebar.html -->
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open" style="background: #333333">
+  <div class="mdc-drawer__content">
+    <div class="align-items-left" style="margin: 10px 25px; height: 10%; margin-top: 30px;">
+      <h2 align="center" style="color: white; margin-bottom: 0px;">$&nbsp;{{ request.user.wallet|add:request.user.c }}
+      </h2>
+      <p style="font-size: 10px; color: white;" align="center">Mr/s. {{ request.user.name|truncatewords:1 }}({{user.username}})
+      </p>
+    </div>
+    <div class="mdc-list-group">
+      <nav class="mdc-list mdc-drawer-menu">
+        <div {% if request.get_full_path == '/users/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" {% if request.get_full_path == '/users/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/users/">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">dashboard
+            </i>{% trans 'My Dashboard' %}
+          </a>
+        </div>
+
+        <div {% if '/sedrftgyhhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu6">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">cached
+            </i>
+            <strong>{% trans 'Top up' %}
+            </strong>
+            <i class="mdc-drawer-arrow material-icons">add
+            </i>
+          </a>
+          <div class="mdc-expansion-panel" id="ui-sub-menu6">
+            <nav class="mdc-list mdc-drawer-submenu">
+              <div {% if request.get_full_path == '/level/activation/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/level/activation/' %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 12px;' {% else %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 11px;' {% endif %}  href="/level/activation/">
+                  {% trans 'Purchase Package' %}
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div {% if '/shdrcftvgbop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu1">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">people
+            </i>
+            <strong>{% trans 'My Profile' %}
+            </strong>
+            <i class="mdc-drawer-arrow material-icons">add
+            </i> 
+          </a>
+          <div class="mdc-expansion-panel" id="ui-sub-menu1">
+            <nav class="mdc-list mdc-drawer-submenu">
+              <div {% if request.get_full_path == '/users/~update/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/users/~update/' %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 12px;' {% else %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 11px;' {% endif %}  href="/users/~update/">
+                  {% trans 'Personal Details' %}
+                </a>
+              </div>
+          <div {% if request.get_full_path == '/wallet/account/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/account/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='coslor: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/wallet/account/">
+            {% trans 'Bank Details' %}
+          </a>
+        </div>
+              <div {% if request.get_full_path == '/kyc/pancard/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/kyc/pancard/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/kyc/pancard/">
+            {% trans 'Update KYC' %}
+          </a>
+        </div>
+            </nav>
+          </div>
+        </div>
+      <div {% if '/shoxdcfvgp/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu5">
+          <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">device_hub
+              </i>
+          <strong>{% trans 'My Network' %}
+          </strong>
+          <i class="mdc-drawer-arrow material-icons">add
+          </i>
+        </a>
+        <div class="mdc-expansion-panel" id="ui-sub-menu5">
+          <nav class="mdc-list mdc-drawer-submenu">
+              <div {% if request.get_full_path == '/users/shop/roi/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/users/shop/roi/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/level/team/{{request.user.username}}/0/">
+              {% trans 'My Network' %}
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div {% if '/shoedrftvgbhp/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu2">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">monetization_on
+            </i>
+            <strong>{% trans 'Money Transfer' %}
+            </strong>
+            <i class="mdc-drawer-arrow material-icons">add
+            </i>
+          </a>
+          <div class="mdc-expansion-panel" id="ui-sub-menu2">
+            <nav class="mdc-list mdc-drawer-submenu">
+              <!-- <div {% if request.get_full_path == '/wallet/imps-transfer/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/imps-transfer/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/wallet/imps-transfer/">
+                  Via IMPS
+                </a>
+              </div> -->
+              <div {% if request.get_full_path == '/wallet/mt5-transfer/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/mt5-transfer/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/wallet/mt5-transfer/">
+                  {% trans 'MT5 Transfer' %}
+                </a>
+              </div>
+          </nav>
+        </div>
+      </div>
+    <div {% if '/shsedrcftvgbhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu7">
+          <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">history</i>
+          <strong>{% trans 'My Incomes' %}
+          </strong>
+          <i class="mdc-drawer-arrow material-icons">add
+          </i>
+        </a>
+        <div class="mdc-expansion-panel" id="ui-sub-menu7">
+          <nav class="mdc-list mdc-drawer-submenu">
+          <!-- <div class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/binary/tree/{{ request.user }}/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="#">
+              My Income
+            </a>
+          </div>
+          <div class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/binary/tree/{{ request.user }}/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="#">
+              Referal Income
+            </a>
+          </div>
+          <div class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/binary/tree/{{ request.user }}/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="#">
+              Spent
+            </a>
+          </div> -->
+          <div class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/history/' %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 12px;' {% else %} style='color: white;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' {% endif %}  href="/wallet/history/">
+            {% trans 'All transactions' %}
+          </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div {% if '/ssedrftgvybhuhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu9">
+          <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">code</i>
+          <strong>{% trans 'Change Password' %}
+          </strong>
+          <i class="mdc-drawer-arrow material-icons">add
+          </i>
+        </a>
+        <div class="mdc-expansion-panel" id="ui-sub-menu9">
+          <nav class="mdc-list mdc-drawer-submenu">
+            <div {% if request.get_full_path == '/accounts/password/change/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/accounts/password/change/' %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 12px;' {% else %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 11px;' {% endif %}  href="/accounts/password/change/">
+                  {% trans 'Login Password' %}
+                </a>
+              </div>
+            <div {% if request.get_full_path == '/users/change-passcode/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/users/change-passcode/' %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 12px;' {% else %} style='color: white;
+                  font-size: bold;
+                  font-weight: bold;
+                  font-size: 11px;' {% endif %}  href="/users/change-passcode/">
+                  {% trans 'Transaction Password' %}
+                </a>
+              </div>
+        </nav>
+      </div>
+    </div>
+    <div {% if '/soon/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+      <a class="mdc-drawer-link" {% if '/soon/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/soon/">
+        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">live_help
+        </i>{% trans 'Customer Support' %}
+      </a>
+    </div>
+    <div {% if request.get_full_path == '/accounts/logout/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+      <a class="mdc-drawer-link" {% if request.get_full_path == '/accounts/logout/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/accounts/logout/">
+        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">queue_play_next
+        </i>{% trans 'Logout' %}
+      </a>
+    </div>
+    <div class="mdc-list-item mdc-drawer-item pt-2 pb-5">{% block nav_account_languages %}{% if LANGUAGES|length > 1 %}<form align="center" id="language_selector" action="{% url 'set_language' %}" method="post">{% csrf_token %}<input name="next" type="hidden" value="{{ language_neutral_url_path }}" />
+      <div class="form-group mb-1 w-100">
+        <div class="template-demo">
+          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+            <input type="hidden" name="language">
+            <i class="mdc-select__dropdown-icon"></i>
+            <div class="mdc-select__selected-text"></div>
+            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+              <ul class="mdc-list">
+                {% get_language_info_list for LANGUAGES as languages %}{% for language in languages %}
+                <li class="mdc-list-item" data-value="{{ language.code }}">
+                  {{ language.name_local }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <span class="mdc-floating-label">{% trans "Select Language" %}</span>
+            <div class="mdc-line-ripple"></div>
+          </div>
+        </div>
+    </div>
+    <button class="mdc-button mdc-button--raised w-100" style="width: 100%;" type="submit" data-loading-text="Submitting">{% trans "Change Languange" %}
+    </button>
+  </form>{% endif %}{% endblock %}
+</div>
+</nav>
+</div>
+</div>
+</aside>
+<!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:partials/_navbar.html -->
+      <header style="background: white; position: absolute; border-bottom: 0.001em solid #e9eaefe3;" class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
+            <span style="margin-right: 0" class="mdc-top-app-bar__title">
+              <a href="/">
+                <img src="{% static 'ivsuacvq_02.png' %}" style=" width: 150px; margin-top: 10px;">
+              </a>
+            </span>
+            <div style="margin-left: 40px;" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
+              <i class="material-icons mdc-text-field__icon">search</i>
+              <input class="mdc-text-field__input" id="text-field-hero-input">
+              <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                  <label for="text-field-hero-input" class="mdc-floating-label">
+          {{ request.session.user_id }}</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
+            <div class="menu-button-container menu-profile d-none d-md-block">
+              <button class="mdc-button mdc-menu-button">
+                <span class="d-flex align-items-center">
+                  <span class="figure">
+                    <img src="{% if request.user.profile_pic %}{{ request.user.profile_pic.url }}{% else %}{% static 'assets/images/faces/face1.jpg' %}{% endif %}" alt="user" class="user">
+                  </span>
+                  <span class="user-name">{{ request.user.name|truncatewords:'1' }}</span>
+                </span>
+              </button>
+              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-account-edit-outline text-primary"></i>
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                      <a href="/users/~update/"><h6 class="item-subject font-weight-normal">Edit profile</h6></a>
+                    </div>
+                  </li>
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-settings-outline text-primary"></i>                      
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                      <a href="/accounts/logout/"><h6 class="item-subject font-weight-normal">Logout</h6></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="divider d-none d-md-block"></div>
+            <div class="menu-button-container d-none d-md-block">
+              <button class="mdc-button mdc-menu-button">
+                <i class="mdi mdi-settings"></i>
+              </button>
+              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-alert-circle-outline text-primary"></i>
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                      <a href=""><h6 class="item-subject font-weight-normal">Settings</h6></a>
+                    </div>
+                  </li>
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-progress-download text-primary"></i>                      
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                      <a href="https://play.google.com/store/apps/details?id=com.jrindia.jrapp"><h6 class="item-subject font-weight-normal">{% trans 'Download App' %}</h6></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+    <!--             <div class="menu-button-container">
+                  <button class="mdc-button mdc-menu-button">
+                    <i class="mdi mdi-bell"></i>
+                  </button>
+                  <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                    <h6 class="title"> <i class="mdi mdi-bell-outline mr-2 tx-16"></i> Notifications</h6>
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail item-thumbnail-icon">
+                          <i class="mdi mdi-email-outline"></i>
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">You received a new message</h6>
+                          <small class="text-muted"> 6 min ago </small>
+                        </div>
+                      </li>
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail item-thumbnail-icon">
+                          <i class="mdi mdi-account-outline"></i>                      
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">New user registered</h6>
+                          <small class="text-muted"> 15 min ago </small>
+                        </div>
+                      </li>
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail item-thumbnail-icon">
+                          <i class="mdi mdi-alert-circle-outline"></i>
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">System Alert</h6>
+                          <small class="text-muted"> 2 days ago </small>
+                        </div>
+                      </li> 
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail item-thumbnail-icon">
+                          <i class="mdi mdi-update"></i>
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">You have a new update</h6>
+                          <small class="text-muted"> 3 days ago </small>
+                        </div>
+                      </li> 
+                    </ul>
+                  </div>
+                </div>
+                <div class="menu-button-container">
+                  <button class="mdc-button mdc-menu-button">
+                    <i class="mdi mdi-email"></i>
+                    <span class="count-indicator">
+                      <span class="count">3</span>
+                    </span>
+                  </button>
+                  <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                    <h6 class="title"><i class="mdi mdi-email-outline mr-2 tx-16"></i> Messages</h6>
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail">
+                          <img src="{% static 'assets/images/faces/face4.jpg' %}" alt="user">
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">Internal messenger coming soon!</h6>
+                          <small class="text-muted"> 1 Minutes ago </small>
+                        </div>
+                      </li>              
+                    </ul>
+                  </div>
+                </div> -->
+                <div class="menu-button-container d-none d-md-block">
+                  <button class="mdc-button mdc-menu-button">
+                    <i class="mdi mdi-arrow-down-bold-box"></i>
+                  </button>
+                  <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                      <li class="mdc-list-item" role="menuitem">
+                        <div class="item-thumbnail item-thumbnail-icon-only">
+                          <i class="mdi mdi-lock-outline text-primary"></i>
+                        </div>
+                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="item-subject font-weight-normal">{% trans 'Lock screen' %}</h6>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+  <!-- partial -->

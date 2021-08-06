@@ -1,0 +1,1184 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ipu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-27 15:39+0530\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+
+#: aboota/settings.py:207
+msgid "English"
+msgstr "إنجليزي"
+
+#: aboota/settings.py:208
+msgid "French"
+msgstr "فرنسي"
+
+#: aboota/settings.py:209
+msgid "Araibic"
+msgstr "أرابيك"
+
+#: aboota/settings.py:210
+msgid "Viet Nam"
+msgstr "فييت نام"
+
+#: aboota/settings.py:211
+msgid "Burmese"
+msgstr "البورمية"
+
+#: aboota/settings.py:212
+msgid "Hindi"
+msgstr "هندي"
+
+#: aboota/settings.py:213
+msgid "Irish"
+msgstr "إيرلندي"
+
+#: aboota/settings.py:214
+msgid "croatian"
+msgstr "الكرواتية"
+
+#: aboota/settings.py:215
+msgid "Italian"
+msgstr "إيطالي"
+
+#: aboota/settings.py:216
+msgid "Spanish"
+msgstr "الأسبانية"
+
+#: aboota/settings.py:217
+msgid "Swedish"
+msgstr "السويدية"
+
+#: aboota/settings.py:218
+msgid "Indonesian"
+msgstr "الأندونيسية"
+
+#: aboota/settings.py:219
+msgid "Thai"
+msgstr "التايلاندية"
+
+#: aboota/settings.py:220
+msgid "Japanese"
+msgstr "اليابانية"
+
+#: helpers.py:142
+#, python-brace-format
+msgid "We detected the url {url} but it appears to be invalid."
+msgstr "اكتشفنا عنوان url {url} ولكن يبدو أنه غير صالح."
+
+#: helpers.py:148
+#, python-brace-format
+msgid ""
+"We found an error trying to connect to the site {url}, please find more info "
+"here:{e}"
+msgstr ""
+"وجدنا خطأ أثناء محاولة الاتصال بالموقع {url} ، يرجى العثور على مزيد من "
+"المعلومات هنا: {e}"
+
+#: kyc/templates/pcard/pcard.html:87 templates/partial.html:85
+msgid "Update KYC"
+msgstr "تحديث KYC"
+
+#: kyc/templates/pcard/pcard.html:88
+msgid "here you can update your kyc!"
+msgstr "هنا يمكنك تحديث kyc الخاص بك!"
+
+#: search/apps.py:7 templates/users/binaryjoin.html:28
+msgid "Search"
+msgstr "بحث"
+
+#: templates/account/account_inactive.html:5
+#: templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr "الحساب غير نشط"
+
+#: templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "هذا الحساب غير نشط."
+
+#: templates/account/email.html:7 templates/users/account.html:125
+#: templates/users/account.html:173
+msgid "Account"
+msgstr "الحساب"
+
+#: templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr "عناوين البريد الإلكتروني"
+
+#: templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "عناوين البريد الإلكتروني التالية مرتبطة بحسابك:"
+
+#: templates/account/email.html:27
+msgid "Verified"
+msgstr "تم التحقق"
+
+#: templates/account/email.html:29
+msgid "Unverified"
+msgstr "لم يتم التحقق منه"
+
+#: templates/account/email.html:31
+msgid "Primary"
+msgstr "خبرات"
+
+#: templates/account/email.html:37
+msgid "Make Primary"
+msgstr "اتخذ الاولويه"
+
+#: templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr "إعادة التحقق"
+
+#: templates/account/email.html:39
+msgid "Remove"
+msgstr "إزالة"
+
+#: templates/account/email.html:46
+msgid "Warning:"
+msgstr "تحذير:"
+
+#: templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"ليس لديك حاليًا أي عنوان بريد إلكتروني تم إعداده. يجب عليك بالفعل إضافة عنوان "
+"بريد إلكتروني حتى تتمكن من تلقي الإشعارات وإعادة تعيين كلمة المرور الخاصة "
+"بك ، وما إلى ذلك."
+
+#: templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr "إضافة عنوان البريد الإلكتروني"
+
+#: templates/account/email.html:56
+msgid "Add E-mail"
+msgstr "أضف بريد إلكتروني"
+
+#: templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "هل تريد حقًا إزالة عنوان البريد الإلكتروني المحدد؟"
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr "يرجى تأكيد عنوان البريد الإلكتروني الخاص بك"
+
+#: templates/account/email/password_reset_key_message.txt:1
+#, fuzzy, python-format
+#| msgid ""
+#| "Hello from %(site_name)s!\n"
+#| "\n"
+#| "You're receiving this e-mail because you or someone else has requested a "
+#| "password for your user account.\n"
+#| "It can be safely ignored if you did not request a password reset. Click "
+#| "the link below to reset your password."
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+"مرحبًا من٪ (site_name) s!\n"
+"\n"
+"لقد تلقيت هذا البريد الإلكتروني لأنك أو طلب شخص آخر كلمة مرور لحساب المستخدم "
+"الخاص بك.\n"
+"يمكن تجاهله بأمان إذا لم تطلب إعادة تعيين كلمة المرور. انقر فوق الارتباط "
+"أدناه لإعادة تعيين كلمة المرور الخاصة بك."
+
+#: templates/account/email/password_reset_key_message.txt:8
+#, fuzzy, python-format
+#| msgid "In case you forgot, your username is %(username)s."
+msgid "In case you forgot, your username is %(username)s."
+msgstr "في حالة نسيان اسم المستخدم الخاص بك هو٪ (اسم المستخدم) s."
+
+#: templates/account/email/password_reset_key_message.txt:10
+#, fuzzy, python-format
+#| msgid ""
+#| "Thank you for using %(site_name)s!\n"
+#| "%(site_domain)s"
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"شكرًا لك على استخدام٪ (site_name) s!\n"
+"٪ (site_domain) s"
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr "إعادة تعيين كلمة المرور البريد الإلكتروني"
+
+#: templates/account/email_confirm.html:6
+#: templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr "تأكيد عنوان البريد"
+
+#: templates/account/email_confirm.html:16
+#, fuzzy, python-format
+#| msgid ""
+#| "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
+#| "mail address for user %(user_display)s."
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+"يرجى تأكيد أن <a href=\"mailto:٪(email)s\">٪ (email) s </a> هو عنوان بريد "
+"إلكتروني للمستخدم٪ (user_display) s."
+
+#: templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr "يتأكد"
+
+#: templates/account/email_confirm.html:27
+#, fuzzy, python-format
+#| msgid ""
+#| "This e-mail confirmation link expired or is invalid. Please <a href="
+#| "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"انتهت صلاحية ارتباط تأكيد البريد الإلكتروني هذا أو أنه غير صالح. يرجى <a "
+"href=\"٪(email_url)s\"> إصدار طلب تأكيد بريد إلكتروني جديد </a>."
+
+#: templates/account/lockscreen.html:6 templates/account/login.html:6
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/account/logout.html:5 templates/account/logout.html:17
+msgid "Sign Out"
+msgstr "خروج"
+
+#: templates/account/logout.html:19
+msgid "Are you sure you want to sign out?"
+msgstr "هل أنت متأكد أنك تريد الخروج؟"
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, fuzzy, python-format
+#| msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr "لا يمكنك إزالة عنوان بريدك الإلكتروني الأساسي (٪ (بريد إلكتروني))."
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, fuzzy, python-format
+#| msgid "Confirmation e-mail sent to %(email)s."
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr "تم إرسال بريد التأكيد الإلكتروني إلى٪ (بريد إلكتروني) s."
+
+#: templates/account/messages/email_confirmed.txt:2
+#, fuzzy, python-format
+#| msgid "You have confirmed %(email)s."
+msgid "You have confirmed %(email)s."
+msgstr "لقد أكّدت٪ (بريد إلكتروني) s."
+
+#: templates/account/messages/email_deleted.txt:2
+#, fuzzy, python-format
+#| msgid "Removed e-mail address %(email)s."
+msgid "Removed e-mail address %(email)s."
+msgstr "تمت إزالة عنوان البريد الإلكتروني٪ (بريد إلكتروني) s."
+
+#: templates/account/messages/logged_in.txt:4
+#, fuzzy, python-format
+#| msgid "Successfully signed in as %(name)s."
+msgid "Successfully signed in as %(name)s."
+msgstr "تم تسجيل الدخول بنجاح باعتبارك٪ (name) s."
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr "لقد قمت بتسجيل الخروج."
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr "الرقم السري تغير بنجاح."
+
+#: templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr "تم تعيين كلمة المرور بنجاح."
+
+#: templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr "تم تعيين عنوان البريد الإلكتروني الأساسي."
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr "يجب التحقق من عنوان البريد الإلكتروني الأساسي الخاص بك."
+
+#: templates/account/password_change.html:5
+#: templates/account/password_change.html:12
+#: templates/account/password_reset_from_key.html:5
+#: templates/account/password_reset_from_key.html:18
+#: templates/account/password_reset_from_key_done.html:5
+#: templates/account/password_reset_from_key_done.html:18
+#: templates/partial.html:194
+msgid "Change Password"
+msgstr "تغيير كلمة السر"
+
+#: templates/account/password_change.html:39
+msgid "Reset My Password"
+msgstr "إعادة تعيين كلمة المرور الخاصة بي"
+
+#: templates/account/password_reset.html:7
+msgid "Password Reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: templates/account/password_reset.html:21
+msgid "Forgot Password"
+msgstr "هل نسيت كلمة السر"
+
+#: templates/account/password_reset.html:26
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"هل نسيت كلمة المرور؟ أدخل عنوان بريدك الإلكتروني أدناه ، وسنرسل لك بريدًا "
+"إلكترونيًا يتيح لك إعادة تعيينه."
+
+#: templates/account/password_reset.html:43
+msgid "Send Email"
+msgstr "ارسل بريد الكتروني"
+
+#: templates/account/password_reset.html:49
+msgid "Forgot Email"
+msgstr "نسيت البريد الإلكتروني"
+
+#: templates/account/password_reset_done.html:19
+msgid "Password Reset Verification"
+msgstr "التحقق من إعادة تعيين كلمة المرور"
+
+#: templates/account/password_reset_done.html:23
+msgid ""
+"Please check your email for further details, and dont retry for next 10 "
+"minutes"
+msgstr ""
+"يرجى التحقق من بريدك الإلكتروني للحصول على مزيد من التفاصيل ، ولا تحاول مرة "
+"أخرى لمدة 10 دقائق"
+
+#: templates/account/password_reset_done.html:24
+#: templates/users/user_list.html:26
+msgid "Please contact us if you have any trouble resetting your password. or "
+msgstr ""
+"يرجى الاتصال بنا إذا واجهتك أي مشكلة في إعادة تعيين كلمة المرور الخاصة بك. "
+"أو "
+
+#: templates/account/password_reset_from_key.html:18
+msgid "Bad Token"
+msgstr "رمز سيئة"
+
+#: templates/account/password_reset_from_key.html:21
+#, fuzzy, python-format
+#| msgid ""
+#| "The password reset link was invalid, possibly because it has already been "
+#| "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
+#| "reset</a>."
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+"رابط إعادة تعيين كلمة المرور غير صالح ، ربما لأنه تم استخدامه بالفعل. الرجاء "
+"طلب <a href=\"٪(passwd_reset_url)s\"> إعادة تعيين كلمة المرور الجديدة </a>."
+
+#: templates/account/password_reset_from_key.html:43
+msgid "change password"
+msgstr "تغيير كلمة السر"
+
+#: templates/account/password_reset_from_key.html:49
+#: templates/account/password_reset_from_key_done.html:19
+msgid "Your password is now changed."
+msgstr "تم تغيير كلمة مرورك الآن."
+
+#: templates/account/password_set.html:6 templates/account/password_set.html:9
+#: templates/account/password_set.html:14
+msgid "Set Password"
+msgstr "ضبط كلمة السر"
+
+#: templates/account/refersignup.html:6 templates/account/signup.1.html:6
+#: templates/account/signup.html:6 templates/account/vendorsignup.html:6
+msgid "Signup"
+msgstr "اشتراك"
+
+#: templates/account/signup.1.html:9 templates/account/signup.1.html:19
+msgid "Sign Up"
+msgstr "اشتراك"
+
+#: templates/account/signup.1.html:11
+#, fuzzy, python-format
+#| msgid ""
+#| "Already have an account? Then please <a href=\"%(login_url)s\">sign in</"
+#| "a>."
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr "هل لديك حساب؟ ثم يرجى <a href=\"٪(login_url)s\"> تسجيل الدخول </a>."
+
+#: templates/account/signup.html:50
+msgid "Sponsor ID"
+msgstr "هوية الكفيل"
+
+#: templates/account/signup.html:58
+msgid "Sponsor Name"
+msgstr "اسم الكفيل"
+
+#: templates/account/signup.html:65
+msgid "Full Name"
+msgstr "الاسم بالكامل"
+
+#: templates/account/signup.html:72 templates/users/user_form.html:58
+#: templates/users/user_form.html:124
+msgid "Mobile"
+msgstr "التليفون المحمول"
+
+#: templates/account/signup.html:81
+msgid "Email ID"
+msgstr "عنوان الايميل"
+
+#: templates/account/signup.html:94
+msgid "Create Password"
+msgstr "أنشئ كلمة مرور"
+
+#: templates/account/signup.html:103
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: templates/account/signup.html:122
+msgid "Terms & Conditions"
+msgstr "البنود و الظروف"
+
+#: templates/account/signup.html:127
+msgid "Register"
+msgstr "يسجل"
+
+#: templates/account/signup.html:133
+msgid "Already have an account?"
+msgstr "هل لديك حساب؟"
+
+#: templates/account/signup.html:133
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: templates/account/signup.html:133
+msgid "here."
+msgstr "هنا."
+
+#: templates/account/signup_closed.html:5
+#: templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr "الاشتراك مغلق"
+
+#: templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "نحن آسفون ، ولكن التسجيل مغلق حاليا."
+
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "ملحوظة"
+
+#: templates/account/snippets/already_logged_in.html:5
+#, fuzzy, python-format
+#| msgid "you are already logged in as %(user_display)s."
+msgid "you are already logged in as %(user_display)s."
+msgstr "لقد قمت بتسجيل الدخول بالفعل باعتبارك٪ (user_display) s."
+
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:17
+#: templates/account/verified_email_required.html:5
+#: templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr "تحقق من عنوان بريدك الإلكتروني"
+
+#: templates/account/verification_sent.html:21
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"لقد أرسلنا إليك بريدًا إلكترونيًا للتحقق. اتبع الرابط المقدم لإنهاء عملية "
+"التسجيل. يرجى الاتصال بنا إذا لم تستلمها في غضون بضع دقائق."
+
+#: templates/account/verification_sent.html:22
+#: templates/account/verified_email_required.html:20
+#, fuzzy, python-format
+#| msgid ""
+#| "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change "
+#| "your e-mail address</a>."
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong> ملاحظة: </ strong> لا يزال بإمكانك <a href=\"٪(email_url)s\"> تغيير "
+"عنوان بريدك الإلكتروني </a>."
+
+#: templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+"هذا الجزء من الموقع يتطلب منا التحقق من ذلك\n"
+"أنت من تدعي أنك. لهذا الغرض ، نطلب منك\n"
+"التحقق من ملكية عنوان البريد الإلكتروني الخاص بك. "
+
+#: templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+"لقد أرسلنا لك بريدًا إلكترونيًا لـ\n"
+"تحقق. الرجاء الضغط على الرابط الموجود داخل هذا البريد الإلكتروني. لو سمحت\n"
+"اتصل بنا إذا لم تستلمها في غضون بضع دقائق."
+
+#: templates/binary/binaryjoin.html:16 templates/binary/upgrade.html:18
+#: templates/users/binaryjoin.html:17
+msgid "Upgrade Binary"
+msgstr "ترقية ثنائي"
+
+#: templates/binary/binaryjoin.html:17 templates/binary/upgrade.html:19
+#: templates/users/binaryjoin.html:18
+msgid "here you can upgrade to binary for your account"
+msgstr "هنا يمكنك الترقية إلى برنامج ثنائي لحسابك"
+
+#: templates/binary/network.html:16 templates/level/tree.html:16
+#: templates/partial.html:95 templates/partial.html:110
+#: templates/users/mynetwork.html:15
+msgid "My Network"
+msgstr "شبكتي"
+
+#: templates/binary/network.html:17 templates/users/mynetwork.html:16
+msgid "here you can see your network"
+msgstr "هنا يمكنك رؤية شبكتك"
+
+#: templates/binary/tree.html:35 templates/users/binarytree.html:17
+msgid "Binary Tree"
+msgstr "شجرة ثنائية"
+
+#: templates/binary/tree.html:36
+msgid "here you can see your binary tree and business"
+msgstr "هنا يمكنك رؤية شجرتك الثنائية وأعمالك"
+
+#: templates/binary/upgrade.html:4 templates/payments/cancel.html:4
+#: templates/payments/checkout.html:4 templates/payments/failure.html:4
+#: templates/payments/sucess.html:4 templates/tops.html:4
+#: templates/users/404.html:4 templates/users/500.html:4
+#: templates/users/fundrequest.html:3 templates/users/shop_wallet.html:4
+msgid "Payment Success"
+msgstr "الدفع الناجح"
+
+#: templates/level/level_join.html:101
+msgid "Join Plan"
+msgstr "الانضمام إلى الخطة"
+
+#: templates/level/level_join.html:102
+msgid "here you can join our investment plan"
+msgstr "هنا يمكنك الانضمام إلى خطتنا الاستثمارية"
+
+#: templates/level/tree.html:17
+msgid "here you can see your Network"
+msgstr "هنا يمكنك رؤية شبكتك"
+
+#: templates/notification/messages_deleted/full.txt:1
+#, fuzzy, python-format
+#| msgid "You have deleted the message '%(message)s'."
+msgid "You have deleted the message '%(message)s'."
+msgstr "لقد قمت بحذف الرسالة '٪ (رسالة) s'."
+
+#: templates/notification/messages_deleted/notice.html:1
+#, fuzzy, python-format
+#| msgid ""
+#| "You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgid ""
+"You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr "لقد قمت بحذف الرسالة <a href=\"٪(message_url)s\">٪ (message) s </a>."
+
+#: templates/notification/messages_received/full.txt:1
+#, fuzzy, python-format
+#| msgid ""
+#| "%(message_sender)s has sent you a message:\n"
+#| "\n"
+#| "%(message)s\n"
+#| "\n"
+#| "%(message_body)s\n"
+#| "\n"
+#| "http://%(current_site)s%(message_url)s"
+msgid ""
+"%(message_sender)s has sent you a message:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
+"قام٪ (message_sender) s بإرسال رسالة إليك:\n"
+"\n"
+"٪(رسائل\n"
+"\n"
+"٪ (message_body) s\n"
+"\n"
+"http: //٪ (current_site) s٪ (message_url) s"
+
+#: templates/notification/messages_received/notice.html:2
+#, fuzzy, python-format
+#| msgid ""
+#| "You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+#| "from %(message_sender)s."
+msgid ""
+"You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+"from %(message_sender)s."
+msgstr ""
+"لقد تلقيت الرسالة <a href=\"٪(message_url)s\">٪ (message) s </a> من٪ "
+"(message_sender) s."
+
+#: templates/notification/messages_received/short.txt:1
+#: templates/notification/messages_reply_received/short.txt:1
+#, fuzzy, python-format
+#| msgid "%(notice)s by %(message_sender)s"
+msgid "%(notice)s by %(message_sender)s"
+msgstr "٪ (إشعار) s بواسطة٪ (message_sender) s"
+
+#: templates/notification/messages_recovered/full.txt:1
+#, fuzzy, python-format
+#| msgid "You have recovered the message '%(message)s'."
+msgid "You have recovered the message '%(message)s'."
+msgstr "لقد استعدت الرسالة '٪ (message) s'."
+
+#: templates/notification/messages_recovered/notice.html:1
+#, fuzzy, python-format
+#| msgid ""
+#| "You have recovered the message <a href=\"%(message_url)s\">%(message)s</"
+#| "a>."
+msgid ""
+"You have recovered the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr "لقد استعدت الرسالة <a href=\"٪(message_url)s\">٪ (message) s </a>."
+
+#: templates/notification/messages_replied/full.txt:1
+#, fuzzy, python-format
+#| msgid ""
+#| "You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
+msgid ""
+"You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
+msgstr ""
+"لقد قمت بالرد على '٪ (message_parent_msg) s' من٪ (message_recipient) s."
+
+#: templates/notification/messages_replied/notice.html:2
+#, fuzzy, python-format
+#| msgid ""
+#| "You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</"
+#| "a> from %(message_recipient)s."
+msgid ""
+"You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</a> "
+"from %(message_recipient)s."
+msgstr ""
+"لقد قمت بالرد على <a href=\"٪(message_url)s\">٪ (message_parent_msg) s </a> "
+"من٪ (message_recipient) s."
+
+#: templates/notification/messages_reply_received/full.txt:1
+#, fuzzy, python-format
+#| msgid ""
+#| "%(message_sender)s replied to '%(message_parent_msg)s':\n"
+#| "\n"
+#| "%(message)s\n"
+#| "\n"
+#| "%(message_body)s\n"
+#| "\n"
+#| "http://%(current_site)s%(message_url)s"
+msgid ""
+"%(message_sender)s replied to '%(message_parent_msg)s':\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
+"رد٪ (message_sender) s على '٪ (message_parent_msg) s':\n"
+"\n"
+"٪(رسائل\n"
+"\n"
+"٪ (message_body) s\n"
+"\n"
+"http: //٪ (current_site) s٪ (message_url) s"
+
+#: templates/notification/messages_reply_received/notice.html:2
+#, fuzzy, python-format
+#| msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
+msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
+msgstr "أرسل٪ (message_sender) s ردًا على٪ (message_parent_msg) s."
+
+#: templates/notification/messages_sent/full.txt:1
+#, fuzzy, python-format
+#| msgid "You have sent the message '%(message)s' to %(message_recipient)s."
+msgid "You have sent the message '%(message)s' to %(message_recipient)s."
+msgstr "لقد قمت بإرسال الرسالة '٪ (message) s' إلى٪ (message_recipient) s."
+
+#: templates/notification/messages_sent/notice.html:2
+#, fuzzy, python-format
+#| msgid ""
+#| "You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+#| "%(message_recipient)s."
+msgid ""
+"You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+"%(message_recipient)s."
+msgstr ""
+"لقد أرسلت الرسالة <a href=\"٪(message_url)s\">٪ (message) s </a> إلى٪ "
+"(message_recipient) s."
+
+#: templates/panel/users.html:14
+#, fuzzy
+#| msgid "Users"
+msgid "All Users"
+msgstr "المستخدمون"
+
+#: templates/partial.html:15 templates/users/user_form.html:26
+msgid "My Dashboard"
+msgstr "لوحة القيادة الخاصة بي"
+
+#: templates/partial.html:23
+msgid "Top up"
+msgstr "فوق حتى"
+
+#: templates/partial.html:38
+#, fuzzy
+#| msgid "Purchase Prime"
+msgid "Purchase Package"
+msgstr "شراء Prime"
+
+#: templates/partial.html:48
+msgid "My Profile"
+msgstr "ملفي"
+
+#: templates/partial.html:63
+msgid "Personal Details"
+msgstr "تفاصيل شخصية"
+
+#: templates/partial.html:74 templates/users/account.html:89
+msgid "Bank Details"
+msgstr "التفاصيل المصرفية"
+
+#: templates/partial.html:120 templates/users/moneytransfer.html:4
+#: templates/users/moneytransfer.html:16
+msgid "Money Transfer"
+msgstr "تحويل المال"
+
+#: templates/partial.html:146 templates/users/mt5.html:64
+msgid "MT5 Transfer"
+msgstr "تحويل MT5"
+
+#: templates/partial.html:155
+msgid "My Incomes"
+msgstr "دخولي"
+
+#: templates/partial.html:185
+msgid "All transactions"
+msgstr "كل الحركات المالية"
+
+#: templates/partial.html:209
+msgid "Login Password"
+msgstr "كلمة سر الدخول"
+
+#: templates/partial.html:220 templates/users/passcode.html:25
+msgid "Transaction Password"
+msgstr "عملية كلمة المرور"
+
+#: templates/partial.html:229
+msgid "Customer Support"
+msgstr "دعم العملاء"
+
+#: templates/partial.html:235
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: templates/partial.html:254
+msgid "Select Language"
+msgstr "اختار اللغة"
+
+#: templates/partial.html:259
+msgid "Change Languange"
+msgstr "تغيير اللغة"
+
+#: templates/partial.html:343
+msgid "Download App"
+msgstr "تحميل التطبيق"
+
+#: templates/partial.html:428
+msgid "Lock screen"
+msgstr "اقفل الشاشة"
+
+#: templates/payments/cancel.html:17
+msgid "Transaction Cancelled"
+msgstr "تم إلغاء الصفقة"
+
+#: templates/payments/cancel.html:18
+msgid ""
+"Hurray, you got another opportunity to expand your life! please try again"
+msgstr "حسنًا ، لديك فرصة أخرى لتوسيع حياتك! حاول مرة اخرى"
+
+#: templates/payments/checkout.html:17 templates/users/addamount.html:16
+msgid "Add Money"
+msgstr "إضافة المال"
+
+#: templates/payments/checkout.html:18 templates/payments/sucess.html:18
+#: templates/tops.html:18 templates/users/shop_wallet.html:19
+msgid "Hurray, you got an opportunity to expand your life!"
+msgstr "حسنًا ، لديك فرصة لتوسيع حياتك!"
+
+#: templates/payments/failure.html:17
+msgid "Failed Transaction"
+msgstr "معاملة فاشلة"
+
+#: templates/payments/failure.html:18
+msgid "Please try again!"
+msgstr "حاول مرة اخرى!"
+
+#: templates/payments/sucess.html:17
+msgid "Money Added Succesfully"
+msgstr "تمت إضافة الأموال بنجاح"
+
+#: templates/tops.html:17
+msgid "Amount Added Succesfully"
+msgstr "تمت إضافة المبلغ بنجاح"
+
+#: templates/users/404.html:17
+msgid "Page Not Found"
+msgstr "الصفحة غير موجودة"
+
+#: templates/users/404.html:18
+msgid "Looks like you are lost!"
+msgstr "يبدو أنك فقدت!"
+
+#: templates/users/500.html:17
+msgid "Request Paused"
+msgstr "طلب توقف مؤقتا"
+
+#: templates/users/500.html:18
+msgid "Something Paused the Process, Try Again Later"
+msgstr "شيء ما أوقف العملية مؤقتًا ، حاول مرة أخرى لاحقًا"
+
+#: templates/users/account.html:90
+msgid "here you can add your Bank Details for NEFT!"
+msgstr "هنا يمكنك إضافة تفاصيل البنك الخاصة بك لـ NEFT!"
+
+#: templates/users/account.html:102
+msgid "Account Status"
+msgstr "حالة الحساب"
+
+#: templates/users/account.html:107
+msgid "Account Holder"
+msgstr "مالك الحساب"
+
+#: templates/users/account.html:113 templates/users/account.html:145
+msgid "Account No."
+msgstr "رقم الحساب"
+
+#: templates/users/account.html:138
+msgid "Name According to Bank"
+msgstr "الاسم حسب البنك"
+
+#: templates/users/account.html:152
+msgid "Confirm Account No."
+msgstr "أكد رقم الحساب."
+
+#: templates/users/account.html:166
+msgid "Name of Bank"
+msgstr "اسم البنك"
+
+#: templates/users/account.html:180
+msgid "Update Account"
+msgstr "تحديث الحساب"
+
+#: templates/users/activationrequest.html:4
+#: templates/users/activationrequest.html:17
+msgid "Activation Request"
+msgstr "طلب تفعيل"
+
+#: templates/users/activationrequest.html:18 templates/users/directteam.html:19
+#: templates/users/paymentoptions.html:18
+msgid "here you can request for activation"
+msgstr "هنا يمكنك طلب التفعيل"
+
+#: templates/users/addamount.html:4
+msgid "Add Amount"
+msgstr "أضف المبلغ"
+
+#: templates/users/addamount.html:17
+msgid "here you can add money to your service wallet"
+msgstr "هنا يمكنك إضافة أموال إلى محفظة الخدمة الخاصة بك"
+
+#: templates/users/base.html:78
+msgid "Copy Link"
+msgstr "نسخ الوصلة"
+
+#: templates/users/base.html:89
+msgid "Share Link"
+msgstr "رابط المشاركة"
+
+#: templates/users/binarytree.html:18 templates/users/moneytransfer.html:17
+msgid "here you can transfer money to your account"
+msgstr "هنا يمكنك تحويل الأموال إلى حسابك"
+
+#: templates/users/directteam.html:4 templates/users/directteam.html:18
+msgid "Direct Team"
+msgstr "فريق مباشر"
+
+#: templates/users/fundrequest.html:17
+msgid "Get Fund Request Number"
+msgstr "الحصول على رقم طلب الصندوق"
+
+#: templates/users/fundrequest.html:18
+msgid "You can use FRN to upgrade to prime using cash!"
+msgstr "يمكنك استخدام FRN للترقية إلى استخدام النقد الأولي!"
+
+#: templates/users/incomehistory.html:3
+msgid "Income History"
+msgstr "تاريخ الدخل"
+
+#: templates/users/incomehistory.html:16
+msgid "Transactions History"
+msgstr "تاريخ المعاملات"
+
+#: templates/users/incomehistory.html:17
+msgid "here you can see your txns history"
+msgstr "هنا يمكنك رؤية تاريخ txns الخاص بك"
+
+#: templates/users/moneytransfered.html:15
+msgid "Money Transfer Status"
+msgstr "حالة تحويل الأموال"
+
+#: templates/users/mt5.html:65
+msgid ""
+"After transfer request Generation, You will receive balance within 24-48 "
+"hours!"
+msgstr "بعد إنشاء طلب التحويل ، ستتلقى رصيدًا في غضون 24-48 ساعة!"
+
+#: templates/users/mt5.html:87
+msgid "Note: For payment queries write us at support@ipaymatics.com"
+msgstr "ملاحظة: لاستفسارات الدفع ، راسلنا على support@ipaymatics.com"
+
+#: templates/users/onboarding.html:3 templates/users/profile.html:4
+msgid "Profile"
+msgstr "حساب تعريفي"
+
+#: templates/users/onboarding.html:18
+msgid "Congratulations, Your account has been created successfully!"
+msgstr "تهانينا ، لقد تم إنشاء حسابك بنجاح!"
+
+#: templates/users/passcode.html:5
+msgid "Change Passcode"
+msgstr "تغيير رمز المرور"
+
+#: templates/users/passcode.html:12
+msgid "Change Transactional Password"
+msgstr "تغيير كلمة مرور المعاملات"
+
+#: templates/users/passcoded.html:5
+msgid "Changed Transaction Password"
+msgstr "كلمة مرور المعاملات المتغيرة"
+
+#: templates/users/passcoded.html:12
+msgid "Transaction Password Changed"
+msgstr "تم تغيير كلمة مرور المعاملة"
+
+#: templates/users/paymentoptions.html:4 templates/users/paymentoptions.html:17
+msgid "Payment Options"
+msgstr "خيارات الدفع"
+
+#: templates/users/profile.html:17
+msgid "User Profile"
+msgstr "ملف تعريفي للمستخدم"
+
+#: templates/users/profile.html:18
+msgid "here you can see your profiles information"
+msgstr "هنا يمكنك رؤية معلومات ملفات التعريف الخاصة بك"
+
+#: templates/users/recharge.html:16
+msgid "Recharge Now"
+msgstr "اشحن الآن"
+
+#: templates/users/recharge.html:17
+msgid "here you can recharge Mobile"
+msgstr "هنا يمكنك شحن الموبايل"
+
+#: templates/users/shop_wallet.html:18
+msgid "SCL Wallet"
+msgstr "محفظة SCL"
+
+#: templates/users/transferamount.html:16
+msgid "Send Money"
+msgstr "إرسال الأموال"
+
+#: templates/users/transferamount.html:17
+msgid "here you can transfer money to other users"
+msgstr "هنا يمكنك تحويل الأموال إلى مستخدمين آخرين"
+
+#: templates/users/user_dashboard.html:3
+msgid "Dashboard"
+msgstr "لوحة القيادة"
+
+#: templates/users/user_dashboard.html:17
+#, fuzzy
+#| msgid "Zone Income"
+msgid "Traditional Income"
+msgstr "دخل المنطقة"
+
+#: templates/users/user_dashboard.html:30
+msgid "Wallet Balance"
+msgstr "رصيد المحفظة"
+
+#: templates/users/user_dashboard.html:42
+msgid "My Package"
+msgstr "حزمة بلدي"
+
+#: templates/users/user_dashboard.html:52
+msgid "Total Business"
+msgstr "إجمالي الأعمال"
+
+#: templates/users/user_detail.html:43
+msgid "RSS Channel"
+msgstr "قناة RSS"
+
+#: templates/users/user_detail.html:46
+msgid "Twitter Profile"
+msgstr "ملف تعريف Twitter"
+
+#: templates/users/user_detail.html:49
+msgid "Github Profile"
+msgstr "الملف الشخصي جيثب"
+
+#: templates/users/user_detail.html:52
+msgid "LinkedIn Profile"
+msgstr "ملف تعريف LinkedIn"
+
+#: templates/users/user_detail.html:55
+msgid "Facebook Profile"
+msgstr "حساب فيسبوك"
+
+#: templates/users/user_detail.html:57 templates/users/user_form.html:173
+msgid "Update Profile"
+msgstr "تحديث الملف"
+
+#: templates/users/user_detail.html:63
+msgid "Feeds"
+msgstr "يغذي"
+
+#: templates/users/user_detail.html:67
+msgid "Articles"
+msgstr "مقالات"
+
+#: templates/users/user_detail.html:71
+msgid "Comments"
+msgstr "تعليقات"
+
+#: templates/users/user_detail.html:75
+msgid "Questions"
+msgstr "أسئلة"
+
+#: templates/users/user_detail.html:79
+msgid "Answers"
+msgstr "الإجابات"
+
+#: templates/users/user_detail.html:83
+msgid "Global Interactions"
+msgstr "التفاعلات العالمية"
+
+#: templates/users/user_form.html:23
+msgid "Edit Profile"
+msgstr "تعديل الملف الشخصي"
+
+#: templates/users/user_form.html:64 templates/users/user_form.html:131
+msgid "Nominee"
+msgstr "مرشح"
+
+#: templates/users/user_form.html:70 templates/users/user_form.html:138
+msgid "Nominee Relation"
+msgstr "علاقة المرشح"
+
+#: templates/users/user_form.html:110
+msgid "Name"
+msgstr "اسم"
+
+#: templates/users/user_form.html:117
+msgid "Email"
+msgstr "بريد إلكتروني"
+
+#: templates/users/user_form.html:145
+msgid "Address"
+msgstr "تبوك"
+
+#: templates/users/user_form.html:152
+msgid "City"
+msgstr "مدينة"
+
+#: templates/users/user_form.html:159
+msgid "State"
+msgstr "حالة"
+
+#: templates/users/user_form.html:166
+msgid "Upload Profile Picture"
+msgstr "تحميل صورة الملف الشخصي"
+
+#: templates/users/user_list.html:19
+msgid "Search Email"
+msgstr "ابحث عن البريد الألكتروني"
+
+#: templates/users/user_list.html:23
+msgid "No Users Found"
+msgstr "لم يتم العثور على مستخدمين"
+
+#: templates/users/withdrawalhistory.html:4
+#: templates/users/withdrawalhistory.html:17
+msgid "Withdrawal History"
+msgstr "تاريخ السحب"
+
+#: templates/users/withdrawalhistory.html:18
+msgid "here you can see your withdrawal history"
+msgstr "هنا يمكنك رؤية تاريخ السحب الخاص بك"
+
+#: templates/users/zoneincome.html:4
+msgid "Zone Income"
+msgstr "دخل المنطقة"
+
+#: templates/wallets/search_results.html:16
+msgid "Fund Transfer"
+msgstr "تحويل الأموال"
+
+#: templates/wallets/search_results.html:17
+msgid "here you can transfer funds to your other account"
+msgstr "هنا يمكنك تحويل الأموال إلى حسابك الآخر"
+
+#: templates/wallets/search_results.html:31
+msgid "There are no results related to your search"
+msgstr "لا توجد نتائج متعلقة ببحثك"
+
+#: templates/wallets/transfer.html:17
+msgid "Transfer Funds"
+msgstr "تحويل الأموال"
+
+#: templates/wallets/transfer.html:18
+msgid "here you can transfer funds to your other accounts"
+msgstr "هنا يمكنك تحويل الأموال إلى حساباتك الأخرى"
+
+#: users/admin.py:70 users/admin.py:78
+msgid "Personal info"
+msgstr "معلومات شخصية"
+
+#: users/admin.py:71
+msgid "Permissions"
+msgstr "أذونات"
+
+#: users/admin.py:72 users/admin.py:79
+msgid "Important dates"
+msgstr "تواريخ مهمة"
+
+#: users/admin.py:73
+msgid "Groups"
+msgstr "مجموعات"
+
+#: users/apps.py:7
+msgid "Users"
+msgstr "المستخدمون"
+
+#~ msgid "Latest News"
+#~ msgstr "أحدث الأخبار"

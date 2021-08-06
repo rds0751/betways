@@ -1,0 +1,80 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block content %}
+<style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+  body {
+    background-color: #37385F;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .file-drop-area {
+    border: 1px dashed #7c7db3;
+    border-radius: 3px;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 26px 20px 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+ 
+  .fake-btn {
+    color: white;
+    background: #3F4069;
+    width: 176px;
+    border: 1px solid #9E9EC4;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 130px);
+    vertical-align: middle;
+  }
+
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .file-input:focus {
+    outline: none;
+  }
+</style>
+<section>
+  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
+          <div class="table-responsive">
+              <div class="file-drop-area" align="center">
+                <div class="fake-btn"><h3>This Feature, Coming Soon!</h3><p>We request your patience</p></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</main>
+{% endblock %}

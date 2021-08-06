@@ -1,0 +1,152 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "My Network" %}</h1>
+                  <p>{% trans 'here you can see your network' %}</p>
+                </section>
+                <section style="padding: 5%">
+                  <div class="mdc-layout-grid__inner mt-2" align="center">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>User Type</th>
+                              <th>Active Users</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                              <td>Level 1</td>
+                              <td>{{ counting.1 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 2</td>
+                              <td>{{ counting.2 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 3</td>
+                              <td>{{ counting.3 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 4</td>
+                              <td>{{ counting.4 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 5</td>
+                              <td>{{ counting.5 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 6</td>
+                              <td>{{ counting.6 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 7</td>
+                              <td>{{ counting.7 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 8</td>
+                              <td>{{ counting.8 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 9</td>
+                              <td>{{ counting.9 }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 10</td>
+                              <td>{{ counting.10 }}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 1</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Mobile</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for usern in user_list %}
+                              <tr>
+                              <td>{{ usern.name }}({{ usern.username }})</td>
+                              <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                      {% for pg in page_range %}
+                      {% if user_list.number == pg %}
+                      <a href="?page={{pg}}">
+                      {{pg}}
+                      </a>
+                      {% else %}
+                      <a href="?page={{pg}}">{{pg}}</a>
+                      {% endif %}
+                      {% endfor %}
+                  </div>
+                  
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock content %}

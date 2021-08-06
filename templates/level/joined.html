@@ -1,0 +1,12 @@
+ <form id="PostForm" name="PostForm" action="https://truepaisa.in/api/pg/PaymentProcess.aspx" method="POST">
+        <input type="hidden" name="order_id" value="{{oid}}">
+        <input type="hidden" name="amount" value="{{amount}}">
+        <input type="hidden" name="callback_url" value="https://ipaymatics.com/level/success/">
+        <input type="hidden" name="key_id" value="7T5HBGDM6PWVZMA57">
+        <input type="hidden" name="name" value="{{request.user.username}}" >
+</form>
+<script>            
+    document.addEventListener("DOMContentLoaded", function(event) {
+            document.createElement('form').submit.call(document.getElementById('PostForm'));
+            });         
+</script>

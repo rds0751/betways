@@ -1,0 +1,73 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Add Amount' %}{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Add Money" %}</h1>
+									<p>{% trans 'here you can add money to your service wallet' %}</p>
+								</section>
+								<section class="error-info">
+									<div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-desktop stretch-card">
+										<div class="mdc-card">
+											<div class="template-demo">
+												<div class="mdc-layout-grid__inner">
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input class="mdc-text-field__input" id="text-field-hero-input" />
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Amount
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input class="mdc-text-field__input" id="text-field-hero-input">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Payment Type
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<input type='file' class="mdc-text-field__input" id="getFile" style="display:none">
+														<button for="text-field-hero-input" style="display:block;" onclick="document.getElementById('getFile').click()" class="mdc-button mdc-button--raised filled-button--warning w-100"><i class="material-icons mdc-button__icon">cloud_upload</i>Upload Reciept
+														</button>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2-desktop">
+														<button type="submit" class="mdc-button mdc-button--raised w-100">
+															Submit
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+{% endblock content %}

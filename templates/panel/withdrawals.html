@@ -1,0 +1,70 @@
+{% extends 'panel/base.html' %}
+{% load static sum_tags %}
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Withdrawals</h4>
+                    </div>
+                    <div class="card-block">
+                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th class="hidden-xs">Amount</th>
+                                    <th>Date</th>
+                                    <th class="text-center w-20">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in w %}
+                                    <tr>
+                                        <td class="text-center">{{ forloop.counter }}</td>
+                                        <td class="font-500">{{ x.user }}</td>
+                                        <td>{{ x.status }}</td>
+                                        <td class="hidden-xs">{{ x.amount }}</td>
+                                        <td>{{ x.created_at|date }}</td>
+                                        <td class="text-center">
+                                            <form action="/panel/withdrawals/{{ x.id }}/">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- .card-block -->
+                </div>
+                <!-- .card -->
+                <!-- End Dynamic Table Full -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script src="{% static 'appUI/js/pages/base_tables_datatables.js' %}"></script>
+{% endblock %}

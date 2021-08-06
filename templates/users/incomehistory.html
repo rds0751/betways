@@ -1,0 +1,77 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Income History' %}{% endblock %}
+
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Transactions History" %}</h1>
+									<p>{% trans 'here you can see your txns history' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__inner mt-2">
+										<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-12-tablet">
+											<div style="padding: 32px 0px;" class="mdc-card bg-white text-white">
+												<div style="overflow-x: visible;" class="table-responsive">
+													<table style="width: 100%">
+														<tbody>
+															{% for history in histories %}
+															{% if history.type == 'hidden' %}
+															{% else %}
+															<tr>
+																<td style="padding-left: 20px;">
+																	<p style="color: black; font-size: 10px;">
+																	{{ history.comment }}</p>
+																	<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
+																</td>
+																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ${{ history.amount|floatformat:2 }}</strong></td>
+															</tr>
+															{% endif %}
+															{% endfor %}
+														</tbody>
+													</table>
+													<div style="padding-left: 10px;" class="template-demo">
+														{% for pg in page_range %}
+														{% if histories.number == pg %}
+														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
+															{{pg}}
+														</a>
+														{% else %}
+														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
+														{% endif %}
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+											<div>
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+												<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-format="fluid"
+												data-ad-layout-key="-6t+ed+2i-1n-4w"
+												data-ad-client="ca-pub-2476399156226109"
+												data-ad-slot="6614818154"></ins>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
+											</div>
+										</div>	
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+{% endblock content %}

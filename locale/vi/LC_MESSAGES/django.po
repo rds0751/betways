@@ -1,0 +1,1054 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-20 11:16+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: aboota/settings.py:206
+msgid "English"
+msgstr ""
+
+#: aboota/settings.py:207
+msgid "French"
+msgstr ""
+
+#: aboota/settings.py:208
+msgid "Araibic"
+msgstr ""
+
+#: aboota/settings.py:209
+msgid "Viet Nam"
+msgstr ""
+
+#: aboota/settings.py:210
+msgid "Burmese"
+msgstr ""
+
+#: aboota/settings.py:211
+msgid "Hindi"
+msgstr ""
+
+#: aboota/settings.py:212
+msgid "Irish"
+msgstr ""
+
+#: aboota/settings.py:213
+msgid "croatian"
+msgstr ""
+
+#: aboota/settings.py:214
+msgid "Italian"
+msgstr ""
+
+#: aboota/settings.py:215
+msgid "Spanish"
+msgstr ""
+
+#: aboota/settings.py:216
+msgid "Swedish"
+msgstr ""
+
+#: aboota/settings.py:217
+msgid "Indonesian"
+msgstr ""
+
+#: aboota/settings.py:218
+msgid "Thai"
+msgstr ""
+
+#: aboota/settings.py:219
+msgid "Japanese"
+msgstr ""
+
+#: helpers.py:142
+#, python-brace-format
+msgid "We detected the url {url} but it appears to be invalid."
+msgstr ""
+
+#: helpers.py:148
+#, python-brace-format
+msgid ""
+"We found an error trying to connect to the site {url}, please find more info "
+"here:{e}"
+msgstr ""
+
+#: kyc/templates/pcard/pcard.html:87 templates/partial.html:85
+msgid "Update KYC"
+msgstr ""
+
+#: kyc/templates/pcard/pcard.html:88
+msgid "here you can update your kyc!"
+msgstr ""
+
+#: search/apps.py:7 templates/users/binaryjoin.html:28
+msgid "Search"
+msgstr ""
+
+#: templates/account/account_inactive.html:5
+#: templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: templates/account/email.html:7 templates/users/account.html:125
+#: templates/users/account.html:173
+msgid "Account"
+msgstr ""
+
+#: templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr ""
+
+#: templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: templates/account/email.html:27
+msgid "Verified"
+msgstr ""
+
+#: templates/account/email.html:29
+msgid "Unverified"
+msgstr ""
+
+#: templates/account/email.html:31
+msgid "Primary"
+msgstr ""
+
+#: templates/account/email.html:37
+msgid "Make Primary"
+msgstr ""
+
+#: templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr ""
+
+#: templates/account/email.html:39
+msgid "Remove"
+msgstr ""
+
+#: templates/account/email.html:46
+msgid "Warning:"
+msgstr ""
+
+#: templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr ""
+
+#: templates/account/email.html:56
+msgid "Add E-mail"
+msgstr ""
+
+#: templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:10
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: templates/account/email_confirm.html:6
+#: templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: templates/account/lockscreen.html:6 templates/account/login.html:6
+msgid "Login"
+msgstr ""
+
+#: templates/account/logout.html:5 templates/account/logout.html:17
+msgid "Sign Out"
+msgstr ""
+
+#: templates/account/logout.html:19
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: templates/account/password_change.html:5
+#: templates/account/password_change.html:12
+#: templates/account/password_reset_from_key.html:5
+#: templates/account/password_reset_from_key.html:18
+#: templates/account/password_reset_from_key_done.html:5
+#: templates/account/password_reset_from_key_done.html:18
+#: templates/partial.html:194
+msgid "Change Password"
+msgstr ""
+
+#: templates/account/password_change.html:39
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/account/password_reset.html:7
+msgid "Password Reset"
+msgstr ""
+
+#: templates/account/password_reset.html:21
+msgid "Forgot Password"
+msgstr ""
+
+#: templates/account/password_reset.html:26
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:43
+msgid "Send Email"
+msgstr ""
+
+#: templates/account/password_reset.html:49
+msgid "Forgot Email"
+msgstr ""
+
+#: templates/account/password_reset_done.html:19
+msgid "Password Reset Verification"
+msgstr ""
+
+#: templates/account/password_reset_done.html:23
+msgid ""
+"Please check your email for further details, and dont retry for next 10 "
+"minutes"
+msgstr ""
+
+#: templates/account/password_reset_done.html:24
+#: templates/users/user_list.html:26
+msgid "Please contact us if you have any trouble resetting your password. or "
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:18
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:21
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:43
+msgid "change password"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:49
+#: templates/account/password_reset_from_key_done.html:19
+msgid "Your password is now changed."
+msgstr ""
+
+#: templates/account/password_set.html:6 templates/account/password_set.html:9
+#: templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: templates/account/refersignup.html:6 templates/account/signup.1.html:6
+#: templates/account/signup.html:6 templates/account/vendorsignup.html:6
+msgid "Signup"
+msgstr ""
+
+#: templates/account/signup.1.html:9 templates/account/signup.1.html:19
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/signup.1.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: templates/account/signup.html:48
+msgid "Sponsor ID"
+msgstr ""
+
+#: templates/account/signup.html:56
+msgid "Sponsor Name"
+msgstr ""
+
+#: templates/account/signup.html:63
+msgid "Full Name"
+msgstr ""
+
+#: templates/account/signup.html:70 templates/users/user_form.html:58
+#: templates/users/user_form.html:118
+msgid "Mobile"
+msgstr ""
+
+#: templates/account/signup.html:79
+msgid "Email ID"
+msgstr ""
+
+#: templates/account/signup.html:92
+msgid "Create Password"
+msgstr ""
+
+#: templates/account/signup.html:101
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/account/signup.html:120
+msgid "Terms & Conditions"
+msgstr ""
+
+#: templates/account/signup.html:125
+msgid "Register"
+msgstr ""
+
+#: templates/account/signup.html:131
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/account/signup.html:131
+msgid "login"
+msgstr ""
+
+#: templates/account/signup.html:131
+msgid "here."
+msgstr ""
+
+#: templates/account/signup_closed.html:5
+#: templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:17
+#: templates/account/verified_email_required.html:5
+#: templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: templates/account/verification_sent.html:21
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/verification_sent.html:22
+#: templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: templates/binary/binaryjoin.html:16 templates/binary/upgrade.html:18
+#: templates/users/binaryjoin.html:17
+msgid "Upgrade Binary"
+msgstr ""
+
+#: templates/binary/binaryjoin.html:17 templates/binary/upgrade.html:19
+#: templates/users/binaryjoin.html:18
+msgid "here you can upgrade to binary for your account"
+msgstr ""
+
+#: templates/binary/network.html:16 templates/level/tree.html:16
+#: templates/partial.html:95 templates/partial.html:110
+#: templates/users/mynetwork.html:15
+msgid "My Network"
+msgstr ""
+
+#: templates/binary/network.html:17 templates/users/mynetwork.html:16
+msgid "here you can see your network"
+msgstr ""
+
+#: templates/binary/tree.html:35 templates/users/binarytree.html:17
+msgid "Binary Tree"
+msgstr ""
+
+#: templates/binary/tree.html:36
+msgid "here you can see your binary tree and business"
+msgstr ""
+
+#: templates/binary/upgrade.html:4 templates/payments/cancel.html:4
+#: templates/payments/checkout.html:4 templates/payments/failure.html:4
+#: templates/payments/sucess.html:4 templates/tops.html:4
+#: templates/users/404.html:4 templates/users/500.html:4
+#: templates/users/fundrequest.html:3 templates/users/shop_wallet.html:4
+msgid "Payment Success"
+msgstr ""
+
+#: templates/level/level_join.html:101
+msgid "Join Plan"
+msgstr ""
+
+#: templates/level/level_join.html:102
+msgid "here you can join our investment plan"
+msgstr ""
+
+#: templates/level/tree.html:17
+msgid "here you can see your Network"
+msgstr ""
+
+#: templates/notification/messages_deleted/full.txt:1
+#, python-format
+msgid "You have deleted the message '%(message)s'."
+msgstr ""
+
+#: templates/notification/messages_deleted/notice.html:1
+#, python-format
+msgid ""
+"You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr ""
+
+#: templates/notification/messages_received/full.txt:1
+#, python-format
+msgid ""
+"%(message_sender)s has sent you a message:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
+
+#: templates/notification/messages_received/notice.html:2
+#, python-format
+msgid ""
+"You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+"from %(message_sender)s."
+msgstr ""
+
+#: templates/notification/messages_received/short.txt:1
+#: templates/notification/messages_reply_received/short.txt:1
+#, python-format
+msgid "%(notice)s by %(message_sender)s"
+msgstr ""
+
+#: templates/notification/messages_recovered/full.txt:1
+#, python-format
+msgid "You have recovered the message '%(message)s'."
+msgstr ""
+
+#: templates/notification/messages_recovered/notice.html:1
+#, python-format
+msgid ""
+"You have recovered the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr ""
+
+#: templates/notification/messages_replied/full.txt:1
+#, python-format
+msgid ""
+"You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
+msgstr ""
+
+#: templates/notification/messages_replied/notice.html:2
+#, python-format
+msgid ""
+"You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</a> "
+"from %(message_recipient)s."
+msgstr ""
+
+#: templates/notification/messages_reply_received/full.txt:1
+#, python-format
+msgid ""
+"%(message_sender)s replied to '%(message_parent_msg)s':\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
+
+#: templates/notification/messages_reply_received/notice.html:2
+#, python-format
+msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
+msgstr ""
+
+#: templates/notification/messages_sent/full.txt:1
+#, python-format
+msgid "You have sent the message '%(message)s' to %(message_recipient)s."
+msgstr ""
+
+#: templates/notification/messages_sent/notice.html:2
+#, python-format
+msgid ""
+"You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+"%(message_recipient)s."
+msgstr ""
+
+#: templates/panel/users.html:14 users/apps.py:7
+msgid "Users"
+msgstr ""
+
+#: templates/partial.html:15 templates/users/user_form.html:26
+msgid "My Dashboard"
+msgstr ""
+
+#: templates/partial.html:23
+msgid "Top up"
+msgstr ""
+
+#: templates/partial.html:38
+msgid "Purchase Prime"
+msgstr ""
+
+#: templates/partial.html:48
+msgid "My Profile"
+msgstr ""
+
+#: templates/partial.html:63
+msgid "Personal Details"
+msgstr ""
+
+#: templates/partial.html:74 templates/users/account.html:89
+msgid "Bank Details"
+msgstr ""
+
+#: templates/partial.html:120 templates/users/moneytransfer.html:4
+#: templates/users/moneytransfer.html:16
+msgid "Money Transfer"
+msgstr ""
+
+#: templates/partial.html:146 templates/users/mt5.html:64
+msgid "MT5 Transfer"
+msgstr ""
+
+#: templates/partial.html:155
+msgid "My Incomes"
+msgstr ""
+
+#: templates/partial.html:185
+msgid "All transactions"
+msgstr ""
+
+#: templates/partial.html:209
+msgid "Login Password"
+msgstr ""
+
+#: templates/partial.html:220 templates/users/passcode.html:25
+msgid "Transaction Password"
+msgstr ""
+
+#: templates/partial.html:229
+msgid "Customer Support"
+msgstr ""
+
+#: templates/partial.html:235
+msgid "Logout"
+msgstr ""
+
+#: templates/partial.html:254
+msgid "Select Language"
+msgstr ""
+
+#: templates/partial.html:259
+msgid "Change Languange"
+msgstr ""
+
+#: templates/partial.html:344
+msgid "Download App"
+msgstr ""
+
+#: templates/partial.html:429
+msgid "Lock screen"
+msgstr ""
+
+#: templates/payments/cancel.html:17
+msgid "Transaction Cancelled"
+msgstr ""
+
+#: templates/payments/cancel.html:18
+msgid ""
+"Hurray, you got another opportunity to expand your life! please try again"
+msgstr ""
+
+#: templates/payments/checkout.html:17 templates/users/addamount.html:16
+msgid "Add Money"
+msgstr ""
+
+#: templates/payments/checkout.html:18 templates/payments/sucess.html:18
+#: templates/tops.html:18 templates/users/shop_wallet.html:19
+msgid "Hurray, you got an opportunity to expand your life!"
+msgstr ""
+
+#: templates/payments/failure.html:17
+msgid "Failed Transaction"
+msgstr ""
+
+#: templates/payments/failure.html:18
+msgid "Please try again!"
+msgstr ""
+
+#: templates/payments/sucess.html:17
+msgid "Money Added Succesfully"
+msgstr ""
+
+#: templates/tops.html:17
+msgid "Amount Added Succesfully"
+msgstr ""
+
+#: templates/users/404.html:17
+msgid "Page Not Found"
+msgstr ""
+
+#: templates/users/404.html:18
+msgid "Looks like you are lost!"
+msgstr ""
+
+#: templates/users/500.html:17
+msgid "Request Paused"
+msgstr ""
+
+#: templates/users/500.html:18
+msgid "Something Paused the Process, Try Again Later"
+msgstr ""
+
+#: templates/users/account.html:90
+msgid "here you can add your Bank Details for NEFT!"
+msgstr ""
+
+#: templates/users/account.html:102
+msgid "Account Status"
+msgstr ""
+
+#: templates/users/account.html:107
+msgid "Account Holder"
+msgstr ""
+
+#: templates/users/account.html:113 templates/users/account.html:145
+msgid "Account No."
+msgstr ""
+
+#: templates/users/account.html:138
+msgid "Name According to Bank"
+msgstr ""
+
+#: templates/users/account.html:152
+msgid "Confirm Account No."
+msgstr ""
+
+#: templates/users/account.html:166
+msgid "Name of Bank"
+msgstr ""
+
+#: templates/users/account.html:180
+msgid "Update Account"
+msgstr ""
+
+#: templates/users/activationrequest.html:4
+#: templates/users/activationrequest.html:17
+msgid "Activation Request"
+msgstr ""
+
+#: templates/users/activationrequest.html:18 templates/users/directteam.html:19
+#: templates/users/paymentoptions.html:18
+msgid "here you can request for activation"
+msgstr ""
+
+#: templates/users/addamount.html:4
+msgid "Add Amount"
+msgstr ""
+
+#: templates/users/addamount.html:17
+msgid "here you can add money to your service wallet"
+msgstr ""
+
+#: templates/users/base.html:78
+msgid "Copy Link"
+msgstr ""
+
+#: templates/users/base.html:89
+msgid "Share Link"
+msgstr ""
+
+#: templates/users/binarytree.html:18 templates/users/moneytransfer.html:17
+msgid "here you can transfer money to your account"
+msgstr ""
+
+#: templates/users/directteam.html:4 templates/users/directteam.html:18
+msgid "Direct Team"
+msgstr ""
+
+#: templates/users/fundrequest.html:17
+msgid "Get Fund Request Number"
+msgstr ""
+
+#: templates/users/fundrequest.html:18
+msgid "You can use FRN to upgrade to prime using cash!"
+msgstr ""
+
+#: templates/users/incomehistory.html:3
+msgid "Income History"
+msgstr ""
+
+#: templates/users/incomehistory.html:16
+msgid "Transactions History"
+msgstr ""
+
+#: templates/users/incomehistory.html:17
+msgid "here you can see your txns history"
+msgstr ""
+
+#: templates/users/moneytransfered.html:15
+msgid "Money Transfer Status"
+msgstr ""
+
+#: templates/users/mt5.html:65
+msgid ""
+"After transfer request Generation, You will receive balance within 24-48 "
+"hours!"
+msgstr ""
+
+#: templates/users/mt5.html:87
+msgid "Note: For payment queries write us at support@ipaymatics.com"
+msgstr ""
+
+#: templates/users/onboarding.html:3 templates/users/profile.html:4
+msgid "Profile"
+msgstr ""
+
+#: templates/users/onboarding.html:18
+msgid "Congratulations, Your account has been created successfully!"
+msgstr ""
+
+#: templates/users/passcode.html:5
+msgid "Change Passcode"
+msgstr ""
+
+#: templates/users/passcode.html:12
+msgid "Change Transactional Password"
+msgstr ""
+
+#: templates/users/passcoded.html:5
+msgid "Changed Transaction Password"
+msgstr ""
+
+#: templates/users/passcoded.html:12
+msgid "Transaction Password Changed"
+msgstr ""
+
+#: templates/users/paymentoptions.html:4 templates/users/paymentoptions.html:17
+msgid "Payment Options"
+msgstr ""
+
+#: templates/users/profile.html:17
+msgid "User Profile"
+msgstr ""
+
+#: templates/users/profile.html:18
+msgid "here you can see your profiles information"
+msgstr ""
+
+#: templates/users/recharge.html:16
+msgid "Recharge Now"
+msgstr ""
+
+#: templates/users/recharge.html:17
+msgid "here you can recharge Mobile"
+msgstr ""
+
+#: templates/users/shop_wallet.html:18
+msgid "SCL Wallet"
+msgstr ""
+
+#: templates/users/transferamount.html:16
+msgid "Send Money"
+msgstr ""
+
+#: templates/users/transferamount.html:17
+msgid "here you can transfer money to other users"
+msgstr ""
+
+#: templates/users/user_dashboard.html:3
+msgid "Dashboard"
+msgstr ""
+
+#: templates/users/user_dashboard.html:17
+msgid "Latest News"
+msgstr ""
+
+#: templates/users/user_dashboard.html:29
+msgid "Wallet Balance"
+msgstr ""
+
+#: templates/users/user_dashboard.html:40
+msgid "My Package"
+msgstr ""
+
+#: templates/users/user_dashboard.html:48
+msgid "Total Business"
+msgstr ""
+
+#: templates/users/user_detail.html:43
+msgid "RSS Channel"
+msgstr ""
+
+#: templates/users/user_detail.html:46
+msgid "Twitter Profile"
+msgstr ""
+
+#: templates/users/user_detail.html:49
+msgid "Github Profile"
+msgstr ""
+
+#: templates/users/user_detail.html:52
+msgid "LinkedIn Profile"
+msgstr ""
+
+#: templates/users/user_detail.html:55
+msgid "Facebook Profile"
+msgstr ""
+
+#: templates/users/user_detail.html:57 templates/users/user_form.html:167
+msgid "Update Profile"
+msgstr ""
+
+#: templates/users/user_detail.html:63
+msgid "Feeds"
+msgstr ""
+
+#: templates/users/user_detail.html:67
+msgid "Articles"
+msgstr ""
+
+#: templates/users/user_detail.html:71
+msgid "Comments"
+msgstr ""
+
+#: templates/users/user_detail.html:75
+msgid "Questions"
+msgstr ""
+
+#: templates/users/user_detail.html:79
+msgid "Answers"
+msgstr ""
+
+#: templates/users/user_detail.html:83
+msgid "Global Interactions"
+msgstr ""
+
+#: templates/users/user_form.html:23
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/users/user_form.html:64 templates/users/user_form.html:125
+msgid "Nominee"
+msgstr ""
+
+#: templates/users/user_form.html:70 templates/users/user_form.html:132
+msgid "Nominee Relation"
+msgstr ""
+
+#: templates/users/user_form.html:104
+msgid "Name"
+msgstr ""
+
+#: templates/users/user_form.html:111
+msgid "Email"
+msgstr ""
+
+#: templates/users/user_form.html:139
+msgid "Address"
+msgstr ""
+
+#: templates/users/user_form.html:146
+msgid "City"
+msgstr ""
+
+#: templates/users/user_form.html:153
+msgid "State"
+msgstr ""
+
+#: templates/users/user_form.html:160
+msgid "Upload Profile Picture"
+msgstr ""
+
+#: templates/users/user_list.html:19
+msgid "Search Email"
+msgstr ""
+
+#: templates/users/user_list.html:23
+msgid "No Users Found"
+msgstr ""
+
+#: templates/users/withdrawalhistory.html:4
+#: templates/users/withdrawalhistory.html:17
+msgid "Withdrawal History"
+msgstr ""
+
+#: templates/users/withdrawalhistory.html:18
+msgid "here you can see your withdrawal history"
+msgstr ""
+
+#: templates/users/zoneincome.html:4
+msgid "Zone Income"
+msgstr ""
+
+#: templates/wallets/search_results.html:16
+msgid "Fund Transfer"
+msgstr ""
+
+#: templates/wallets/search_results.html:17
+msgid "here you can transfer funds to your other account"
+msgstr ""
+
+#: templates/wallets/search_results.html:31
+msgid "There are no results related to your search"
+msgstr ""
+
+#: templates/wallets/transfer.html:17
+msgid "Transfer Funds"
+msgstr ""
+
+#: templates/wallets/transfer.html:18
+msgid "here you can transfer funds to your other accounts"
+msgstr ""
+
+#: users/admin.py:70 users/admin.py:78
+msgid "Personal info"
+msgstr ""
+
+#: users/admin.py:71
+msgid "Permissions"
+msgstr ""
+
+#: users/admin.py:72 users/admin.py:79
+msgid "Important dates"
+msgstr ""
+
+#: users/admin.py:73
+msgid "Groups"
+msgstr ""

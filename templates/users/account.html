@@ -1,0 +1,198 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  // highlight drag area 
+  var fileinput = document.querySelector('.file-input');
+  var filedroparea = document.querySelector('.file-drop-area');
+  var jssetnumber = document.querySelector('.js-set-number');
+  fileinput.addEventListener('dragenter', isactive);
+  fileinput.addEventListener('focus', isactive);
+  fileinput.addEventListener('click', isactive);
+
+// back to normal state
+fileinput.addEventListener('dragleave', isactive);
+fileinput.addEventListener('blur', isactive);
+fileinput.addEventListener('drop', isactive);
+
+// add Class
+function isactive() {
+  filedroparea.classList.add('is-active');
+}
+
+// change inner text
+fileinput.addEventListener('change', function() {
+    // if single file then show file name
+    jssetnumber.innerText = fileinput.value.split('\\').pop();
+});
+</script>
+<style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+  body {
+    background-color: #37385F;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .file-drop-area {
+    border: 1px dashed #7c7db3;
+    border-radius: 3px;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 26px 20px 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .fake-btn {
+    color: white;
+    background: #3F4069;
+    width: 176px;
+    border: 1px solid #9E9EC4;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 130px);
+    vertical-align: middle;
+  }
+
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .file-input:focus {
+    outline: none;
+  }
+</style>
+
+<section style="padding: 30px 30px 20px 30px;" class="error-header">
+  <h1>{% trans "Bank Details" %}</h1>
+  <p>{% trans 'here you can add your Bank Details for NEFT!' %}</p>
+</section>
+<section>
+  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+      <p style="font-weight: bold; color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model.status == True %}Hurray&#128512;! Payment option got verified.{% elif model.status == None %}Pending Verification(It will take 2-3 working days to verify your bank details){% endif %}</p>
+      <p style="color: red">{% if model != 'blank' %}{% if model.status == True %}{% elif model.status == None %}{% else %}{{ model.comment }}{% endif %}{% endif %}</p>
+      <div class="mdc-layout-grid__inner mt-2">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
+          <div class="table-responsive">
+            <div class="py-4">
+              <p class="d-flex justify-content-between">
+                <span> {% trans "Account Status" %} </span>
+                <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Pending Verification{% else %}Declined{% endif %}{% endif %}</span>
+              </p>
+              {{ message }}
+              <p class="d-flex justify-content-between">
+                <span> {% trans "Account Holder" %} </span>
+                <span style="color: green">
+                  {{ model.name }}
+                </span>
+              </p>
+              <p class="d-flex justify-content-between">
+                <span> {% trans "Account No." %} </span>
+                <span style="color: green">
+                  {{ model.account_number }}
+                </span>
+              </p>
+              <p class="d-flex justify-content-between">
+                <span> SWIFT/IBAN/IFSC Code </span>
+                <span style="color: green">
+                  {{ model.ifsc }}
+                </span>
+              </p>
+              <p class="d-flex justify-content-between">
+                <span> MT5 {% trans "Account" %} </span>
+                <span style="color: green">
+                  {{ model.mt5_account }}
+                </span>
+              </p>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.errors }}
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.name }}" name="name" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name According to Bank" %} </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="password" value="{{ model.account_number }}" name="account1" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Account No." %} </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.account_number }}" name="account2" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Confirm Account No." %} </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.ifsc }}" name="ifsc" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> SWIFT/IBAN/IFSC Code </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.bank }}" name="bank" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name of Bank" %} </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input type="text" name="upi_id" value="{{ model.mt5_account }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 {% trans "Account" %} </span></label>
+              </div>
+            </div>
+              <img width="100%" src="{% if model.verification %}{{ model.verification.url }}{% endif %}">
+              <input required type="hidden" name="user" value="{{ request.user.username }}">
+              <br><br><br>
+              <button {% if model != 'blank' %}{% if model.status == True %}disabled{% endif %}{% endif %} style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--success">
+                {% trans "Update Account" %}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</main>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block inner %}
+<div class="main-wrapper">
+  <div style="background-color: white" class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
+    <main class="auth-page">
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+            <div style="background-color: transparent; box-shadow: 0" class="mdc-card" align="center">
+              <img src="{% static 'images/logoblack.png' %}" style="width: 40%; margin-left: 30%" width="80%">
+              <br>
+              <hr width="70%" style="    background: #80808054;
+              height: 1px;
+              border: 0;">
+              <br>
+              {% if form.errors %}
+              {% for field in form %}
+              {% for error in field.errors %}
+              <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+              </div>
+              {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+              </div>
+              {% endfor %}
+              {% endif %}
+              <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="mdc-layout-grid">
+                  <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                      <div class="mdc-text-field w-100">
+                        <input style="font-size: .9rem;" autocomplete="sedrctvghb" type="text" class="mdc-text-field__input" id="text-field-hero-input" name="login" placeholder="" autofocus="autofocus" maxlength="150">
+                        <div class="mdc-line-ripple"></div>
+                        <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">person</span><span style="font-size: .9rem;"> User ID</span></label>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                      <div class="mdc-text-field w-100">
+                        <input style="font-size: .9rem;" autocomplete="sedrctvghb" type="password" class="mdc-text-field__input" id="text-field-hero-input" name="password" placeholder="" id="id_password">
+                        <div class="mdc-line-ripple"></div>
+                        <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
+                          lock_open
+                        </span><span style="font-size: .9rem;"> Password</span></label>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                      <div class="mdc-form-field">
+                        <div class="mdc-checkbox">
+                          <input type="checkbox" name="remember" type="checkbox"
+                          class="mdc-checkbox__native-control"
+                          id="checkbox-1">
+                          <div class="mdc-checkbox__background">
+                            <svg class="mdc-checkbox__checkmark"
+                            viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path"
+                            fill="none"
+                            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                          </svg>
+                          <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                      </div>
+                      <label for="checkbox-1">Remember me</label>
+                    </div>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex align-items-center justify-content-end">
+                    <a style="color: #0000ef" href="/accounts/password/reset/"><strong> Forgot Password</strong></a>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <button type="submit" class="mdc-button mdc-button--raised w-100">
+                      Login Securely
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <p>Don't have an account? <a style="color: #0000ef" href="/accounts/signup/"><strong> Register</strong></a>  here.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+{% endblock %}

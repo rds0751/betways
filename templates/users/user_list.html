@@ -1,0 +1,36 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+{% load account %}
+{% load crispy_forms_tags %}
+
+{% block inner %}
+
+<div class="main-wrapper">
+      <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
+        <main class="auth-page">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+                <div class="mdc-card" align="center">
+                  <img src="{% static 'images/logoblack.png' %}" style="width: 70%; margin-left: 15%" width="80%">
+                  <br><br>
+                  <h3>{% trans "Search Email" %}</h3>
+    {% if user %}
+    <p>{{ user.username }} has email addres {{ user.email }} in system.</p>
+    {% else %}
+    <p>{% trans "No Users Found" %}</p>
+    {% endif %}
+                  
+                  <p>{% blocktrans %}Please contact us if you have any trouble resetting your password. or {% endblocktrans %}<a href="/accounts/password/reset/">Reset Now!</a></p> 
+                </div>
+              </div>
+              <div class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+{% endblock %}
+

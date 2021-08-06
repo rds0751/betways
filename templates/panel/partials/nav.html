@@ -1,0 +1,195 @@
+{% load static %}
+    <!-- Drawer -->
+                <aside class="app-layout-drawer">
+
+                    <!-- Drawer scroll area -->
+                    <div class="app-layout-drawer-scroll">
+                        <!-- Drawer logo -->
+                        <div id="logo" class="drawer-header">
+                            <h2 style="text-align: center">$&nbsp;{{ request.user.wallet|floatformat:2 }}</h2>
+                        </div>
+                        <div style="height: auto" id="logo" class="drawer-header">
+                            <h2 style="font-size: 12px; text-align: center; margin: 0;">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})</h2>
+                        </div>
+
+                        <!-- Drawer navigation -->
+                        <nav class="drawer-main">
+                            <ul class="nav nav-drawer">
+                                {% if not request.user.is_superuser %}
+
+                                {% endif %}
+                                {% if request.user.is_superuser %}
+                                <li class="nav-item nav-drawer-header">Admin</li>
+
+                                <li class="nav-item">
+                                    <a href="/panel/"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/users/"><i class="ion-ios-people-outline"></i> All Users</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>Active IDs</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/kycs/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/kycs/"><i class="ion-ios-bookmarks-outline"></i>KYCs</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/bankdetails/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/bankdetails/"><i class="ion-ios-paw-outline"></i>Bank Details</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/withdrawals/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/withdrawals/"><i class="ion-ios-paperplane-outline"></i>MT5 Withdrawals</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/activations/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/activations/"><i class="ion-ios-checkmark-outline"></i> Activations Requests</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        <!-- End drawer navigation -->
+
+                        <div class="drawer-footer">
+                            <p class="copyright">&copy; IPAYMATICS</p>
+                            <a href="/">Visit Us</a>
+                        </div>
+                    </div>
+                    <!-- End drawer scroll area -->
+                </aside>
+                <!-- End drawer -->
+
+        <!-- Header -->
+        <header class="app-layout-header">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button class="pull-left hidden-lg hidden-md navbar-toggle" type="button" data-toggle="layout" data-action="sidebar_toggle">
+                            <span class="sr-only">Toggle drawer</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="navbar-page-title">
+                            <img src="{% static 'download.png' %}" style="
+                                width: 100px;
+                                margin-top: 10px;
+                            ">
+                        </span>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="header-navbar-collapse">
+                        <!-- Header search form -->
+                        <!-- <form class="navbar-form navbar-left app-search-form" role="search">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" id="search-input" placeholder="Search..." />
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button"><i class="ion-ios-search-strong"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                        <ul id="main-menu" class="nav navbar-nav navbar-left">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">English <span class="caret"></span></a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)">French</a></li>
+                                    <li><a href="javascript:void(0)">German</a></li>
+                                    <li><a href="javascript:void(0)">Italian</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                        <!-- .navbar-left -->
+
+                        <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
+                            <li>
+                                <!-- Opens the modal found at the bottom of the page -->
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#apps-modal"><i class="ion-grid"></i></a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" data-toggle="dropdown"><i class="ion-ios-bell"></i> <span class="badge">3</span></a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-header">Profile</li>
+                                    <li>
+                                        <a tabindex="-1" href="#"><span class="badge pull-right">3</span> News </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#"><span class="badge pull-right">1</span> Messages </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">More</li>
+                                    <li>
+                                        <a tabindex="-1" href="/panel/~profile/">Edit Profile</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown">
+                                    <span class="m-r-sm">{{ request.user.name }} <span class="caret"></span></span>
+                                    <img class="img-avatar img-avatar-48" src="{% if request.user.profile_pic %}{{ request.user.profile_pic.url }}{% else %}{% static 'appUI/img/avatars/avatar3.jpg' %}{% endif %}" alt="User profile pic" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-header">
+                                        Pages
+                                    </li>
+                                    <li>
+                                        <a href="/panel/~profile/">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="badge badge-success pull-right">3</span> Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="/accounts/logout/">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- .navbar-right -->
+                    </div>
+                </div>
+                <!-- .container-fluid -->
+            </nav>
+            <!-- .navbar-default -->
+        </header>
+        <!-- End header -->
+        <!-- Apps Modal -->
+        <!-- Opens from the button in the header -->
+        <div id="apps-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-sm modal-dialog modal-dialog-top">
+                <div class="modal-content">
+                    <!-- Apps card -->
+                    <div class="card m-b-0">
+                        <div class="card-header bg-app bg-inverse">
+                            <h4>JR India</h4>
+                            <ul class="card-actions">
+                                <li>
+                                    <button data-dismiss="modal" type="button"><i class="ion-close"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-block">
+                            <div class="row text-center">
+                                <div class="col-xs-6">
+                                    <a class="card card-block m-b-0 bg-app-secondary bg-inverse" href="/panel/">
+                                        <i class="ion-speedometer fa-4x"></i>
+                                        <p>Staff</p>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a class="card card-block m-b-0 bg-app-tertiary bg-inverse" href="/shop/">
+                                        <i class="ion-laptop fa-4x"></i>
+                                        <p>Shop</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .card-block -->
+                    </div>
+                    <!-- End Apps card -->
+                </div>
+            </div>
+        </div>
+        <!-- End Apps Modal -->
+
+        <div class="app-ui-mask-modal"></div>

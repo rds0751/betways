@@ -1,0 +1,47 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Money Transfer Status" %}</h1>
+									<p></p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-desktop stretch-card">
+										<div class="mdc-card">
+											<div class="d-flex justify-content-between">
+												<h3 style="color: black; font-size: 20px" >{{ message }}</h3><br>
+											</div>
+											<div class="d-flex justify-content-between">
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+												<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-format="fluid"
+												data-ad-layout-key="-6t+ed+2i-1n-4w"
+												data-ad-client="ca-pub-2476399156226109"
+												data-ad-slot="6614818154"></ins>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+{% endblock content %}

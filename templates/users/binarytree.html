@@ -1,0 +1,73 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Binary Tree" %}</h1>
+									<p>{% trans 'here you can transfer money to your account' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-desktop stretch-card">
+										<div class="mdc-card">
+											<div class="template-demo">
+												<div class="mdc-layout-grid__inner attach_items_center">
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+														<div id="chart_div"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+{% block modal %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:["orgchart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+
+        // For each orgchart box, provide the name, manager, and tooltip to show.
+        data.addRows([
+          ['{{ user.username|title }}',
+           '', 'The President'],
+          [{'v':'Jim', 'f':'Jim<div style="color:red; font-style:italic">Vice President</div>'},
+           '{{ user.username|title }}', 'VP'],
+          ['Alice', '{{ user.username|title }}', ''],
+          ['Bob', 'Jim', 'Bob Sponge'],
+          ['No User', 'Jim', '']
+        ]);
+
+        // Create the chart.
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        // Draw the chart, setting the allowHtml option to true for the tooltips.
+        chart.draw(data, {'allowHtml':true});
+      }
+   </script>
+{% endblock %}

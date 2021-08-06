@@ -1,0 +1,137 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block inner %}
+
+<div class="main-wrapper">
+  <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
+    <main class="auth-page">
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+            <div class="mdc-card" align="center">
+     <img src="{% static 'images/logoblack.png' %}" style="width: 40%; margin-left: 30%" width="80%">
+     <br>
+     <hr width="70%" style="background: #80808054;
+     height: 1px;
+     border: 0;">
+     <br>
+     {% if form.errors %}
+     {% for field in form %}
+     {% for error in field.errors %}
+     <div class="alert alert-danger">
+      <strong>{{ error|escape }} => {{ field.label }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form class="signup" id="signup_form" autocomplete="sedrctvghb" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form.errors }}
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+            <div class="mdc-text-field w-100">
+              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="name" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
+              <div class="mdc-line-ripple"></div>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">picture_in_picture</span><span style="font-size: .8rem;"> Full Name (As per PAN card)</span></label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+            <div class="mdc-text-field w-100">
+              <input style="font-size: .8rem;" default="+91" autocomplete="sedrctvghb" type="text" name="mobile" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
+              <div class="mdc-line-ripple"></div>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> Mobile</span></label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+            <div class="mdc-text-field w-100">
+              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="email" name="email" placeholder="" class="mdc-text-field__input" id="text-field-hero-input">
+              <div class="mdc-line-ripple"></div>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
+                email
+              </span><span style="font-size: .8rem;"> Email ID</span></label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+            <div class="mdc-text-field w-100">
+              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="nominee" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
+              <div class="mdc-line-ripple"></div>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> Nominee</span></label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+            <div class="mdc-text-field w-100">
+              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="nominee_relation" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
+              <div class="mdc-line-ripple"></div>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> Nominee Relation</span></label>
+            </div>
+          </div>
+          <input type="hidden" name="username" value="13wsdfgrfcvf">
+          <input type="hidden" name="{{ redirect_field_name }}" value="/signup/onboarding/" />
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                          	<input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">
+                              <span style="font-size: 1.4rem;" class="material-icons">
+lock_open
+</span>
+<span style="font-size: .8rem;"> Create Password</span></label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                          	<input style="font-size: .8rem;" autocomplete="sedrctvghb" name="password2" class="mdc-text-field__input" type="password" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
+lock_open
+</span><span style="font-size: .8rem;"> Confirm Password</span></label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                          <div class="mdc-form-field">
+                            <div class="mdc-checkbox">
+                              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="checkbox"
+                              class="mdc-checkbox__native-control"
+                              id="checkbox-1" required />
+                              <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark"
+                                viewBox="0 0 24 24">
+                                <path class="mdc-checkbox__checkmark-path"
+                                fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                              </svg>
+                              <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                          </div>
+                          <label for="checkbox-1">I accept <a href="/terms"><strong>Terms & Conditions</strong> </a>.</label>
+                        </div>
+                      </div>
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <button type="submit" class="mdc-button mdc-button--raised w-100">
+                          Register
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <label>Already have an account? <a href="/accounts/login/" style="color: #0000ef"><strong>login</strong></a>  here.</label>
+              </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  {% endblock %}

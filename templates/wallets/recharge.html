@@ -1,0 +1,47 @@
+{% if operator == 'VDDG' %}
+<form method="POST" action="/wallet/mobile-no/">
+	{% csrf_token %}
+	<input value="{{ mobile }}" name="mobile">
+	<input type="hidden" name="getplans">
+	<input type="submit">
+</form>
+{% endif %}
+<form method="POST" action="/wallet/recharge/">
+	{% csrf_token %}
+	<input type="hidden" value="{{ mobile }}" name="mobile">
+	<input type="hidden" value="{{ circle }}" name="circle">
+	<input type="hidden" value="{{ operator }}" name="operator">
+	<input value="" name="amount">
+	<input type="hidden" value="1" name="type">
+	<input type="submit" name="recharge">
+</form>
+{{ data }}
+{% for plan in getplans %}
+
+{% for eplan in plan.TUP %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.FTT %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.2G %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.3G %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.SMS %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.LSC %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.OTR %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+{% for eplan in plan.RMG %}
+Amount {{ eplan.amount }} Detail {{ eplan.detail }} Validity {{ eplan.validity }} Talktime {{ eplan.talktime }}<br>
+{% endfor %}
+
+{% endfor %}
+{{ recharge }}

@@ -1,0 +1,92 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Payment Success' %}{% endblock %}
+{% load sum_tags %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Get Fund Request Number" %}</h1>
+                  <p>{% trans 'You can use FRN to upgrade to prime using cash!' %}</p>
+                </section>
+                <section> 
+                  <div class="mdc-layout-grid__inner mt-2 p-3">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+                      <p>Please call on helipline number to get your fund request Approved.</p>
+                      <br/>
+                      <div>
+                        <form method="post" onsubmit="return confirm('Are you sure you want this action?');">
+                          {% csrf_token %}
+                          <br>
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2"> 
+                            <input class="w-100" type="integer" name="amount" placeholder="Amount in USD" min="500" max="100000" step="500">
+                          </div>
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2">
+                            <button type="submit" class="mdc-button mdc-button--raised w-100">
+                              Send Fund Request
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <div>
+                        <br><br>
+                        <h6 class="card-title card-padding pb-0">Past Requests</h6>
+                        <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-left">Amount</th>
+                          <th>Code</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for x in fr %}
+                        <tr>
+                          <td class="text-left">{{ x.amount }}</td>
+                          <td>{{ x.code }}</td>
+                          <td>{% if x.approved %}Approved{% else %}Waiting{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+<script>
+    $("#id_username").change(function () {
+      var username = $(this).val();
+
+      $.ajax({
+        url: '/users/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (true) {
+            document.getElementById("user_name").innerHTML = data.is_taken;
+          }
+        }
+      });
+
+    });
+  </script>
+  {% endblock content %}

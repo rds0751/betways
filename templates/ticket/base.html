@@ -1,0 +1,35 @@
+{% extends "users/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Handle Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% else %}
+                        <div {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12 content">
+            <h1 id="firstHeading" class="firstHeading">{% block pagename %}{% endblock %}</h1>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<!-- /container -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

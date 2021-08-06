@@ -1,0 +1,71 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Payment Success' %}{% endblock %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Add Money" %}</h1>
+                  <p>{% trans 'Hurray, you got an opportunity to expand your life!' %}</p>
+                </section>
+                <section class="p-5">
+                  <div class="mdc-layout-grid__inner mt-2">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+                      <div>
+                        <form class="mdc-layout-grid__inner" method="post" name="order_form">
+                          {% csrf_token %}
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                              <input class="mdc-text-field__input" id="text-field-hero-input" type="text" name="amount" class="form-control form-control-lg" id="id_amount" autocomplete="off">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Amount
+                                  </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <input class="mdc-text-field__input" id="text-field-hero-input" type="hidden" name="phone" value="{{ request.user.mobile }}" id="id_phone">
+                          {{ form.as_p }}
+                          <br>
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                          <button type="submit" class="mdc-button mdc-button--raised">
+                              Proceed
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

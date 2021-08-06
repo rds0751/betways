@@ -1,0 +1,297 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Money Transfer' %}{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Money Transfer" %}</h1>
+									<p>{% trans 'here you can transfer money to your account' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-desktop stretch-card">
+										<div class="mdc-card">
+											<div class="template-demo">
+												{% if dstatus != 'SUCCESS' and rstatus != 'SUCCESS' %}
+												<form method="POST" action="/wallet/imps-transfer/" class="mdc-layout-grid__inner">
+													{% csrf_token %}
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input type="hidden" name="mobile" value="{{ mobile }}" class="mdc-text-field__input" id="text-field-hero-input" />
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">{{ mobile }}
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="name" class="mdc-text-field__input" id="text-field-hero-input">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Name
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+														<button type="submit" class="mdc-button mdc-button--raised w-100">
+															Send OTP
+														</button>
+													</div>
+												</form>
+											</div>
+											<div class="template-demo">
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<ins class="adsbygoogle"
+													style="display:block"
+													data-ad-format="fluid"
+													data-ad-layout-key="-6t+ed+2i-1n-4w"
+													data-ad-client="ca-pub-2476399156226109"
+													data-ad-slot="6614818154"></ins>
+													<script>
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													</script>
+												{% endif %}
+												{% if rstatus == 'SUCCESS' %}
+												<form method="POST" action="/wallet/imps-transfer/" class="mdc-layout-grid__inner">
+													{% csrf_token %}
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input type="" name="rotp" class="mdc-text-field__input" id="text-field-hero-input" />
+															<input type="hidden" value="{{ request.user.mobile }}" name="mobile" placeholder="mobile">
+															<input type="hidden" name="registerotp">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">OTP
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+														<button type="submit" class="mdc-button mdc-button--raised w-100">
+															Submit
+														</button>
+													</div>
+												</form>
+											</div>
+											<div class="template-demo">
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+												<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-format="fluid"
+												data-ad-layout-key="-6t+ed+2i-1n-4w"
+												data-ad-client="ca-pub-2476399156226109"
+												data-ad-slot="6614818154"></ins>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
+												{% endif %}
+												{% if abstatus == 'SUCCESS' %}
+												<form method="POST" action="/wallet/imps-transfer/" class="mdc-layout-grid__inner">
+													{% csrf_token %}
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="botp" class="mdc-text-field__input" id="text-field-hero-input" />
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">OTP
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing">
+																	<input type="hidden" name="bid" value="{{ abdata.beneficiaryId }}">
+																	<input type="hidden" name="bmobile" value="{{ bmobile }}">
+																	<input type="hidden" name="bname" value="{{ bname }}">
+																	<input type="hidden" name="mobile" value="{{ request.user.mobile }}">
+																	<input type="hidden" name="bacc" value="{{ bacc }}">
+																	<input type="hidden" name="ifsc" value="{{ ifsc }}">
+																	<input type="hidden" name="bvstatus" value="{{ bvstatus }}">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+														<button type="submit" class="mdc-button mdc-button--raised w-100">
+															Submit
+														</button>
+													</div>
+												</form>
+											</div>
+											<div class="template-demo">
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+												<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-format="fluid"
+												data-ad-layout-key="-6t+ed+2i-1n-4w"
+												data-ad-client="ca-pub-2476399156226109"
+												data-ad-slot="6614818154"></ins>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
+												{{ bvdata }}
+												{% endif %}
+												{% if dstatus == 'SUCCESS' and abstatus != 'SUCCESS' %}
+												<form method="POST" action="/wallet/imps-transfer/" class="mdc-layout-grid__inner">
+
+													{% csrf_token %}
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="bname" type="text" class="mdc-text-field__input" id="text-field-hero-input" />
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Beneficiary Name
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<input type="hidden" name="mobile" value="{{ mobile }}">
+													<input type="hidden" name="addbene">
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="bmobile" class="mdc-text-field__input" id="text-field-hero-input">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Beneficiary Mobile
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="bacc" class="mdc-text-field__input" id="text-field-hero-input">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Beneficiary Account
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+														<div class="mdc-text-field mdc-text-field--outlined">
+															<input name="ifsc" class="mdc-text-field__input" id="text-field-hero-input">
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="text-field-hero-input" class="mdc-floating-label">Bank IFSC
+																	</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</div>
+													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+														<button type="submit" class="mdc-button mdc-button--raised w-100">
+															Add Beneficiary
+														</button>
+													</div>
+												</form>
+												{% if abdata != 'blank' %}
+													in case of otp error whatsapp screenshot of this -> {{ abdata.resText }} to +91 9817 59 0833!
+													{% endif %}
+											</div>
+											<div class="template-demo">	
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+												<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-format="fluid"
+												data-ad-layout-key="-6t+ed+2i-1n-4w"
+												data-ad-client="ca-pub-2476399156226109"
+												data-ad-slot="6614818154"></ins>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>											
+												{% endif %}
+											</div>
+										</div>
+									</div>
+									<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+										<form method="POST" action="/wallet/send/" class="mdc-card bg-white text-white" enctype="multipart/form-data">
+											{% csrf_token %}
+											<div class="d-flex justify-content-between">
+												<h3 style="color: black; font-size: 20px" >Select Beneficiary</h3><br>
+											</div>
+											<div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+												<input type="hidden" value='' required name="bid">
+												<input type="hidden" name="mobile" value="{{ request.user.mobile }}">
+												<i class="mdc-select__dropdown-icon"></i>
+												<div class="mdc-select__selected-text"></div>
+												<div class="mdc-select__menu mdc-menu-surface demo-width-class">
+													<ul class="mdc-list">
+														<li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+														</li>
+														{% for bene in benelist %}
+														<li class="mdc-list-item" data-value="{{ bene.bene_id }}">{{ bene.name }} - {{ bene.account_number|floatformat:0 }}</li>
+														{% endfor %}
+													</ul>
+												</div>
+												<span class="mdc-floating-label">Select Beneficiary</span>
+												<div class="mdc-line-ripple"></div>
+											</div>
+											<br>
+											<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+												<div class="mdc-text-field mdc-text-field--outlined">
+													<input name="amount" class="mdc-text-field__input" id="text-field-hero-input" />
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label for="text-field-hero-input" class="mdc-floating-label">Amount
+															</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+												<input type="submit" class="mdc-button mdc-button--raised w-60">
+											</div>
+										</form>
+										<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+										<ins class="adsbygoogle"
+										style="display:block"
+										data-ad-format="fluid"
+										data-ad-layout-key="-6t+ed+2i-1n-4w"
+										data-ad-client="ca-pub-2476399156226109"
+										data-ad-slot="6614818154"></ins>
+										<script>
+											(adsbygoogle = window.adsbygoogle || []).push({});
+										</script>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+{% endblock content %}

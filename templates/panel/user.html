@@ -1,0 +1,258 @@
+{% extends 'panel/base.html' %}
+{% load static sum_tags %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="form-group row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <ul class="nav nav-tabs nav-stacked">
+                                    <li class="active">
+                                        <a href="#profile-tab1" data-toggle="tab">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#profile-tab2" data-toggle="tab">KYC</a>
+                                    </li>
+                                    <li>
+                                        <a href="#profile-tab3" data-toggle="tab">Bank Details</a>
+                                    </li>
+                                    <li>
+                                        <a href="#profile-tab4" data-toggle="tab">Withdrawals</a>
+                                    </li>
+                                    <li>
+                                        <a href="/level/team/{{ u.username }}/0/" target="_blank">Network</a>
+                                    </li>
+                                </ul>
+                                <!-- .nav-tabs -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col-md-4 -->
+
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-block tab-content">
+                                    <!-- Profile tab 1 -->
+                                    <div class="tab-pane fade in active" id="profile-tab1">
+                                        <form class="fieldset" method="POST">
+                                        	<input type="hidden" name="id" value="{{ u.id }}">
+                                        	{% csrf_token %}
+                                            <h4 class="m-t-sm m-b">General info</h4>
+                                            <div class="form-group row">
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName1">Name</label>
+                                                    <input type="text" name="name" class="form-control" id="exampleInputName1" value="{{ u.name }}" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName2">Mobile</label>
+                                                    <input type="tel" name="mobile" value="{{ u.mobile }}" class="form-control" id="exampleInputName2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone1">Email</label>
+                                                    <input type="email" name="email" value="{{ u.email }}" class="form-control" id="exampleInputPhone1" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone2">Address</label>
+                                                    <input type="text" name="address" value="{{ u.address }}" class="form-control" id="exampleInputPhone2" />
+                                                </div><div class="col-xs-6">
+                                                    <label for="exampleInputName2">City</label>
+                                                    <input type="text" name="city" value="{{ u.city }}" class="form-control" id="exampleInputName2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone1">State</label>
+                                                    <input type="text" name="state" value="{{ u.state }}" class="form-control" id="exampleInputPhone1" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone2">Nominee</label>
+                                                    <input type="text" name="nominee" value="{{ u.nominee }}" class="form-control" id="exampleInputPhone2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone1">Nominee Relation</label>
+                                                    <input type="text" name="nominee_relation" value="{{ u.nominee_relation }}"  class="form-control" id="exampleInputPhone1" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone2">Referral</label>
+                                                    <input type="text" name="referral" value="{{ u.referral }}" class="form-control" id="exampleInputPhone2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone2">Wallet</label>
+                                                    <input type="text" value="{{ u.wallet }}" class="form-control" readonly id="exampleInputPhone2" name="wallet" />
+                                                </div>
+                                            </div>
+
+                                            <h4 class="m-t-md m-b">Change password</h4>
+                                            <div class="form-group row">
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPassword3">New password</label>
+                                                    <input type="password" class="form-control" id="exampleInputPassword3" name="password" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPassword3">User ID</label>
+                                                    <input type="text" value="{{ u.username }}" class="form-control" id="exampleInputPassword3" />
+                                                </div>
+                                            </div>
+                                            <div class="row narrow-gutter">
+                                                <div class="col-xs-6">
+                                                    <button type="button" class="btn btn-default btn-block" onclick="window.history.back()">Cancel</button>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <button type="submit" class="btn btn-app btn-block">Save<span class="hidden-xs"> changes</span></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- End profile tab 1 -->
+                                    <!-- Profile tab 2 -->
+                                    <div class="tab-pane fade in active" id="profile-tab2">
+                                        <form class="fieldset" method="POST" enctype="multipart/form-data">
+                                        	<input type="hidden" name="userid" value="{{ u.username }}">
+                                        	<input type="hidden" name="idk" value="{{ k.id }}">
+                                        	{% csrf_token %}
+                                            <h4 class="m-t-sm m-b">KYC</h4>
+                                            <div class="form-group row">
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName1">Document Front</label>
+                                                    <input type="file" name="front" class="form-control" id="exampleInputName1" value="{{ b.name }}" />
+                                                    <img src="{% if k.imageAF %}{{k.imageAF.url}}{% endif %}" style="width: 100%">
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName2">Document Back</label>
+                                                    <input type="file" name="back" value="{{ b.account_number }}" class="form-control" id="exampleInputName2" />
+                                                    <img src="{% if k.imageAB %}{{k.imageAB.url}}{% endif %}" style="width: 100%">
+                                                </div>
+                                                <div class="col-xs-6">
+                                                	<br>
+	                                                <p>
+	                                                    <label class="css-input switch switch-info">
+	                                                    	<input type="checkbox" {% if k.approved %}checked{% endif %} name=verified>
+	                                                    	<span></span> Verified
+	                                                    </label>
+	                                                </p>
+	                                            </div>
+                                            </div>
+                                            <div class="row narrow-gutter">
+                                                <div class="col-xs-6">
+                                                    <button type="button" class="btn btn-default btn-block" onclick="window.history.back()">Cancel</button>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <button type="submit" class="btn btn-app btn-block">Save<span class="hidden-xs"> changes</span></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- End profile tab 2 -->
+                                    <!-- Profile tab 3 -->
+                                    <div class="tab-pane fade in active" id="profile-tab3">
+                                        <form class="fieldset" method="POST">
+                                        	<input type="hidden" name="userid" value="{{ u.username }}">
+                                        	<input type="hidden" name="ida" value="{{ b.id }}">
+                                        	{% csrf_token %}
+                                            <h4 class="m-t-sm m-b">Bank Details</h4>
+                                            <div class="form-group row">
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName1">Name</label>
+                                                    <input type="text" name="namea" class="form-control" id="exampleInputName1" value="{{ b.name }}" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputName2">Account Number</label>
+                                                    <input type="password" name="account1" value="{{ b.account_number }}" class="form-control" id="exampleInputName2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone1">Confirm Account Number</label>
+                                                    <input type="text" name="account2" value="{{ b.account_number }}" class="form-control" id="exampleInputPhone1" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone2">SWIFT/IBAN/IFSC</label>
+                                                    <input type="text" name="ifsc" value="{{ b.ifsc }}" class="form-control" id="exampleInputPhone2" />
+                                                </div><div class="col-xs-6">
+                                                    <label for="exampleInputName2">Name of Bank</label>
+                                                    <input type="text" name="bank" value="{{ b.bank }}" class="form-control" id="exampleInputName2" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="exampleInputPhone1">MT5 Account</label>
+                                                    <input type="text" name="mt5_account" value="{{ b.mt5_account }}" class="form-control" id="exampleInputPhone1" />
+                                                </div>
+                                                <div class="col-xs-6">
+                                                	<br>
+	                                                <p>
+	                                                    <label class="css-input switch switch-info">
+	                                                    	<input type="checkbox" {% if b.status %}checked{% endif %} name=verified>
+	                                                    	<span></span> Verified
+	                                                    </label>
+	                                                </p>
+	                                            </div>
+                                            </div>
+                                            <div class="row narrow-gutter">
+                                                <div class="col-xs-6">
+                                                    <button type="button" class="btn btn-default btn-block" onclick="window.history.back()">Cancel</button>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <button type="submit" class="btn btn-app btn-block">Save<span class="hidden-xs"> changes</span></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- End profile tab 3 -->
+                                    <!-- Profile tab 4 -->
+                                    <div class="tab-pane fade in active" id="profile-tab4">
+                                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center"></th>
+                                                    <th>Status</th>
+                                                    <th class="hidden-xs">Amount</th>
+                                                    <th>Date</th>
+                                                    <th class="text-center w-20">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for x in w %}
+                                                    <tr>
+                                                        <td class="text-center">{{ forloop.counter }}</td>
+                                                        <td>{{ x.status }}</td>
+                                                        <td class="hidden-xs">{{ x.amount }}</td>
+                                                        <td>{{ x.created_at|date }}</td>
+                                                        <td class="text-center">
+                                                            <form action="/panel/withdrawals/{{ x.id }}/">
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
+                                                                </div>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- End profile tab 4 -->
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script src="{% static 'appUI/js/pages/base_tables_datatables.js' %}"></script>
+{% endblock %}

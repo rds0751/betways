@@ -1,0 +1,96 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Payment Success' %}{% endblock %}
+
+
+{% block content %}
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Request Paused" %}</h1>
+									<p>{% trans 'Something Paused the Process, Try Again Later' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__inner mt-2">
+										<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+											<div class="table-responsive">
+												<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+													<a href="/users/" class="mdc-button mdc-button--raised w-100">
+														Back to home
+													</a>
+												</div>
+												<div>
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<ins class="adsbygoogle"
+													style="display:block"
+													data-ad-format="fluid"
+													data-ad-layout-key="-6t+ed+2i-1n-4w"
+													data-ad-client="ca-pub-2476399156226109"
+													data-ad-slot="6614818154"></ins>
+													<script>
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													</script>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function (global) {
+
+			if(typeof (global) === "undefined")
+			{
+				throw new Error("window is undefined");
+			}
+
+			var _hash = "!";
+			var noBackPlease = function () {
+				global.location.href += "#";
+
+		// making sure we have the fruit available for juice....
+		// 50 milliseconds for just once do not cost much (^__^)
+		global.setTimeout(function () {
+			global.location.href += "!";
+		}, 1000);
+	};
+	
+	// Earlier we had setInerval here....
+	global.onhashchange = function () {
+		if (global.location.hash !== _hash) {
+			global.location.hash = _hash;
+		}
+	};
+
+	global.onload = function () {
+
+		noBackPlease();
+
+		// disables backspace on page except on input fields and textarea..
+		document.body.onkeydown = function (e) {
+			var elm = e.target.nodeName.toLowerCase();
+			if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+				e.preventDefault();
+			}
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };
+
+    };
+
+})(window);
+</script>
+{% endblock content %}

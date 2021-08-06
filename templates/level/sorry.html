@@ -1,0 +1,39 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{{ title }}</h1>
+                  <p>{{ message }}</p>
+                </section>
+                <section>
+                  <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
+                    <div class="mdc-card">
+                        <div class="template-demo">
+                          <img src="https://image.flaticon.com/icons/png/512/3158/3158980.png" width="50%">
+                          <a href="/users/" class="mdc-button mdc-button--secondary w-50">
+                              Back
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock content %}

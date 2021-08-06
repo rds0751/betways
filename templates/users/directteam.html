@@ -1,0 +1,59 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Direct Team' %}{% endblock %}
+
+
+{% block content %}
+
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Direct Team" %}</h1>
+									<p>{% trans 'here you can request for activation' %}</p>
+								</section>
+								<section>
+									<div class="mdc-layout-grid__inner mt-2">
+										<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
+											<div class="table-responsive">
+												<table class="table dashboard-table">
+													<thead>
+														<tr>
+															<th>#	</th>
+															<th>REGISTER DATE	</th>
+															<th>USER ID	</th>
+															<th>NAME	</th>
+															<th>POSITION	</th>
+															<th>PACKAGE</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td></td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+{% endblock content %}

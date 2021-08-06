@@ -1,0 +1,107 @@
+{% extends "ticket/base.html" %}
+{% block title %}List Tickets - {{ filter }} ({{ tickets.paginator.count }}){% endblock %}
+{% block pagename %}List Tickets - {{ filter }} ({{ tickets.paginator.count }}){% endblock %}
+
+{% block head %}
+    <style type="text/css">
+        .filter-message {
+            font-size: 12pt;
+            float: left;
+        }
+        .show-closed {
+            float: right;
+        }
+        .pagination {
+            float: left;
+            font-size: 9pt;
+        }
+        #create-ticket-div {
+            float: right;
+        }
+        .content table {
+            background-color: white;
+            font-size: 12pt;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#topnav-tickets").addClass("active");
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% if filter_message %}
+        <div class="filter-message">{{ filter_message }}</div>
+    {% endif %}
+
+    {% if tickets.object_list.count > 0 %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if tickets.has_previous %}
+                    <a href="{{ prev_link }}">&lt; Previous</a> |
+                {% endif %}
+
+                {% if tickets.has_next %}
+                    | <a href="{{ next_link }}">Next &gt;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% include 'ticket/nav.html' %}
+
+    {% if tickets.object_list.count > 0 %}
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr class="list-head">
+                    <td><a href="{{ base_url }}&show_closed={{ show_closed }}&sort=project{% if sort != 'project' or order == 'dsc' %}&order=asc{% else %}&order=dsc{% endif %}">
+                        Type
+                        {% if sort == 'project' and order == 'dsc' %}<span style="font-size: 8pt;">&#x25B2;</span>{% endif %}
+                        {% if sort == 'project' and order == 'asc' %}<span style="font-size: 8pt;">&#x25BC;</span>{% endif %}
+                    </a></td>
+                    <td><a href="{{ base_url }}&show_closed={{ show_closed }}&sort=priority{% if sort != 'priority' or order == 'dsc' %}&order=asc{% else %}&order=dsc{% endif %}">
+                        Priority
+                        {% if sort == 'priority' and order == 'dsc' %}<span style="font-size: 8pt;">&#x25B2;</span>{% endif %}
+                        {% if sort == 'priority' and order == 'asc' %}<span style="font-size: 8pt;">&#x25BC;</span>{% endif %}
+                    </a></td>
+                    <td><a href="{{ base_url }}&show_closed={{ show_closed }}&sort=status{% if sort != 'status' or order == 'dsc' %}&order=asc{% else %}&order=dsc{% endif %}">
+                        Status
+                        {% if sort == 'status' and order == 'dsc' %}<span style="font-size: 8pt;">&#x25B2;</span>{% endif %}
+                        {% if sort == 'status' and order == 'asc' %}<span style="font-size: 8pt;">&#x25BC;</span>{% endif %}
+                    </a></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets.object_list %}
+                    <tr class="{% cycle 'odd' 'even' %}">
+                        <td><a href="/tickets/view/{{ ticket.id }}/" style="color: green">{{ ticket.name }} for {{ ticket.project.name }} Department</a></td>
+                        <td>{{ ticket.priority.name }}</td>
+                        <td>{{ ticket.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if tickets.has_previous %}
+                    <a href="{{ prev_link }}">&lt; Previous</a> |
+                {% endif %}
+
+                {% if tickets.has_next %}
+                    | <a href="{{ next_link }}">Next &gt;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        <br/><br/>
+    {% endif %}
+
+    {% if show_closed == 'true' %}
+        <div class="show-closed">[ <a href="{{ base_url }}&show_closed=false&sort={{ sort }}&order={{ order }}">Hide Closed Tickets</a> ]</div>
+    {% else %}
+        <div class="show-closed">[ <a href="{{ base_url }}&show_closed=true&sort={{ sort }}&order={{ order }}">Show Closed Tickets</a> ]</div>
+    {% endif %}
+    <br/>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Fund Transfer" %}</h1>
+                  <p>{% trans 'here you can transfer funds to your other account' %}</p>
+                </section><section>
+                  <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
+                    <div class="mdc-card">
+                      <form class="template-demo" method="POST" action="/wallet/transfer/" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <input type="hidden" required value='' name="bene_id">
+                          <i class="mdc-select__dropdown-icon"></i>
+                          <div class="mdc-select__selected-text"></div>
+                          <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                            <ul class="mdc-list">
+                              {% for user in users_list %}
+                              <li class="mdc-list-item" data-value="{{ user.username }}">{{ user.username }} Mr/s. {{ user.name }}</li>
+                              {% empty %}
+                              <li class="mdc-list-item" data-value="">{% trans 'There are no results related to your search' %}.</li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                          <span class="mdc-floating-label">Confirm User</span>
+                          <div class="mdc-line-ripple"></div>
+                        </div>
+                        <div class="mdc-layout-grid__inner">
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                              <input name="amount" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="mdc-text-field__input" id="text-field-hero-input">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Amount
+                                  </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <input type="hidden" name="user_id" value="{{ request.user }}">
+                        <button type="submit" class="mdc-button mdc-button--raised w-100">
+                          Send Money
+                        </button>
+                        <a href="/wallet/transfer/" class="mdc-button mdc-button--secondary w-100">
+                          Back
+                        </a>
+                      </form>
+                    <div class="template-demo">
+                      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                      <ins class="adsbygoogle"
+                      style="display:block"
+                      data-ad-format="fluid"
+                      data-ad-layout-key="-6t+ed+2i-1n-4w"
+                      data-ad-client="ca-pub-2476399156226109"
+                      data-ad-slot="6614818154"></ins>
+                      <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      </script>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+</div>
+{% endblock content %}
+

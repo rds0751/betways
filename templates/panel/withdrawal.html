@@ -1,0 +1,116 @@
+{% extends 'panel/base.html' %}
+{% load static sum_tags %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>#WTH{{ w.id }}</h4>
+                        <ul class="card-actions">
+                            <li>
+                                <!-- Print Page functionality is initialized in App() -> uiHelperPrint() -->
+                                <button type="button" onclick="App.initHelper( 'print-page' );"><i class="ion-printer m-r-xs"></i> Print Request</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-block">
+                        <!-- Invoice Info -->
+                        <div class="h1 text-uppercase text-center m-t m-b-md hidden-print">Withdrawal Request {{ w.id }}</div>
+                        <hr class="hidden-print">
+                        <div class="row">
+                            <!-- Company Info -->
+                            <div class="col-xs-6 col-sm-4 col-lg-3">
+                                <p class="h3">IPAYMATICS Inc.</p>
+                            </div>
+                            <!-- End Company Info -->
+
+                            <!-- Client Info -->
+                            <div class="col-xs-6 col-sm-4 col-sm-offset-4 col-lg-3 col-lg-offset-6 text-right">
+                                <p class="h3">{{ u.name|title }}</p>
+                                <address>
+                                    {{ u.address }}<br>
+                                    {{ u.city }}<br>
+                                    {{ u.state }}<br>
+                                    <i class="ion-ios-telephone-outline"></i> +91 {{ u.mobile }}
+                                </address>
+                            </div>
+                            <!-- End Client Info -->
+                        </div>
+                        <!-- End Invoice Info -->
+                        <!-- Table -->
+                        <div class="table-responsive m-y-lg">
+                            <table class="table table-bordered table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">Amount</td>
+                                        <td class="text-right">{{ w.amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">TDS</td>
+                                        <td class="text-right">{{ w.tax }}</td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td colspan="4" class="font-500 text-uppercase text-right">Net Payable Amount</td>
+                                        <td class="font-500 text-right">{{ w.total_amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End Table -->
+                        <div>
+                            <p>
+                                Bank Details<br>
+                                Account No.: {{ b.account_number }}<br>
+                                IFSC: {{ b.ifsc }}<br>
+                                UPI: {{ b.upi_id }}<br>
+                                <a href="">Edit Bank Details</a>
+                            </p>
+                            <p>
+                                KYC Approved <i style="color: green" class="ion-checkmark-circled"></i><br>
+                                <a href="">Edit KYC</a>
+                            </p>
+                        </div>
+                        <form>
+                            <select style="height: 38px; border: 0">
+                                <option>IMPS</option>
+                                <option>NEFT</option>
+                                <option>RTGS</option>
+                            </select>
+                            <input type="hidden" name="acc">
+                            <input type="hidden" name="ifsc">
+                            <input type="hidden" name="amount">
+                            <button class="btn btn-app">Send Money</button>
+                        </form>
+                        <!-- Footer -->
+                        <hr class="hidden-print">
+                        <p class="text-muted text-center"><small>Thank you very much for doing business with us. We will happy to work with you again!</small></p>
+                        <!-- End Footer -->
+                    </div>
+                </div>
+                <!-- .card -->
+                <!-- End Dynamic Table Full -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script src="{% static 'appUI/js/pages/base_tables_datatables.js' %}"></script>
+{% endblock %}

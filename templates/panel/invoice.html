@@ -1,0 +1,326 @@
+{% extends 'panel/base.html' %}
+{% load static currency_filters sum_tags %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <div class="container-fluid p-y-md">
+                <!-- Invoice -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>#INV{{ o.number }}</h4>
+                        <ul class="card-actions">
+                            <li>
+                                <!-- Print Page functionality is initialized in App() -> uiHelperPrint() -->
+                                <button type="button" onclick="App.initHelper( 'print-page' );"><i class="ion-printer m-r-xs"></i> Print Invoice</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-block">
+                        <!-- Invoice Info -->
+                        <div class="h1 text-uppercase text-center m-t m-b-md hidden-print">Invoice</div>
+                        <hr class="hidden-print">
+                        <div class="row">
+                            <!-- Company Info -->
+                            <div class="col-xs-6 col-sm-4 col-lg-3">
+                                <img width="70px" src="{% static 'assets/images/favico.png' %}">
+                                <p class="h3">Jumanji Real India Pvt. Ltd.</p>
+                                <address>
+                Tulip centre point<br>
+                Gandhi Chowk<br>
+                Sonipat, Haryana 131001 - IN<br>
+                <i class="ion-ios-telephone-outline"></i> +91 13079 61462
+            </address>
+                            </div>
+                            <!-- End Company Info -->
+
+                            <!-- Client Info -->
+                            <div class="col-xs-6 col-sm-4 col-sm-offset-4 col-lg-3 col-lg-offset-6 text-right">
+                                <p class="h3">{{ o.user.name }}</p>
+                                <address>
+                {{o.shipping_address}}<br>
+                <i class="ion-ios-telephone-outline"></i> {{ o.user.mobile }}
+            </address>
+                            </div>
+                            <!-- End Client Info -->
+                        </div>
+                        <!-- End Invoice Info -->
+
+                        <!-- Table -->
+                        <div class="table-responsive m-y-lg">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;"></th>
+                                        <th>Product</th>
+                                        <th class="text-center" style="width: 100px;">Quantity</th>
+                                        <th class="text-right w-10">Unit</th>
+                                        <th class="text-right w-10">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in l %}
+                                    <tr>
+                                        <td class="text-center">{{ forloop.counter }}</td>
+                                        <td>
+                                            <p class="font-500 m-b-0">{{ x.product|truncatechars:40 }}</p>
+                                            <p class="small text-muted">{{ x.product }}</p>
+                                        </td>
+                                        <td class="text-center">{{ x.quantity }}</td>
+                                        <td class="text-right">{{ x.unit_cost_price|currency }}</td>
+                                        <td class="text-right">{{ x.line_price_excl_tax|currency }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">Shipping</td>
+                                        <td class="text-right">{{ o.shipping_incl_tax|currency }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">Subtotal</td>
+                                        <td class="text-right">{{ o.total_incl_tax|currency }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="font-500 text-right">IGST Amount</td>
+                                        <td class="text-right">
+                                            {% mul o.total_incl_tax .18 as res %}
+                                            {{ res|currency }}
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td colspan="4" class="font-500 text-uppercase text-right">Total</td>
+                                        <td class="font-500 text-right">{{ o.total_incl_tax|add:o.shipping_incl_tax|currency }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End Table -->
+
+                        <!-- Footer -->
+                        <hr class="hidden-print">
+                        <p class="text-muted text-center"><small>Thank you very much for doing business with us. We will happy to work with you again!</small></p>
+                        <!-- End Footer -->
+                    </div>
+                </div>
+                <!-- End Invoice -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script type="text/javascript">
+    /*
+Document: base_tables_datatables.js
+Author: Rustheme
+Description: Custom JS code used in Tables Datatables Page
+ */
+
+var BaseTableDatatables = function() {
+    // Init full DataTable: https://www.datatables.net/
+    var initDataTableFull = function() {
+        jQuery( '.js-dataTable-full' ).dataTable({
+            columnDefs: [ { orderable: false, targets: [ 6 ] } ],
+            pageLength: 50,
+            lengthMenu: [[50, 100, 150, 200], [50, 100, 150, 200]]
+        });
+    };
+
+    // Init simple DataTable: https://www.datatables.net/
+    var initDataTableSimple = function() {
+        jQuery( '.js-dataTable-simple' ).dataTable({
+            columnDefs: [ { orderable: false, targets: [ 6 ] } ],
+            pageLength: 50,
+            lengthMenu: [[50, 100, 150, 200], [50, 100, 150, 200]],
+            searching: false,
+            oLanguage: {
+                sLengthMenu: ''
+            },
+            dom:
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-6'i><'col-sm-6'p>>"
+        });
+    };
+
+    // DataTables Bootstrap integration
+    var bsDataTables = function() {
+        var $DataTable = jQuery.fn.dataTable;
+
+        // Set the defaults for DataTables init
+        jQuery.extend( true, $DataTable.defaults, {
+            dom:
+                "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-6'i><'col-sm-6'p>>",
+            renderer: 'bootstrap',
+            oLanguage: {
+                sLengthMenu: "_MENU_",
+                sInfo: "Showing <strong>_START_</strong>-<strong>_END_</strong> of <strong>_TOTAL_</strong>",
+                oPaginate: {
+                    sPrevious: '<i class="ion-ios-arrow-left"></i>',
+                    sNext: '<i class="ion-ios-arrow-right"></i>'
+                }
+            }
+        });
+
+        // Default class modification
+        jQuery.extend($DataTable.ext.classes, {
+            sWrapper: "dataTables_wrapper form-inline dt-bootstrap",
+            sFilterInput: "form-control",
+            sLengthSelect: "form-control"
+        });
+
+        // Bootstrap paging button renderer
+        $DataTable.ext.renderer.pageButton.bootstrap = function (settings, host, idx, buttons, page, pages) {
+            var api     = new $DataTable.Api(settings);
+            var classes = settings.oClasses;
+            var lang    = settings.oLanguage.oPaginate;
+            var btnDisplay, btnClass;
+
+            var attach = function (container, buttons) {
+                var i, ien, node, button;
+                var clickHandler = function (e) {
+                    e.preventDefault();
+                    if ( !jQuery(e.currentTarget).hasClass( 'disabled')) {
+                        api.page(e.data.action).draw(false);
+                    }
+                };
+
+                for (i = 0, ien = buttons.length; i < ien; i++) {
+                    button = buttons[i];
+
+                    if ( jQuery.isArray(button)) {
+                        attach(container, button);
+                    }
+                    else {
+                        btnDisplay = '';
+                        btnClass = '';
+
+                        switch (button) {
+                            case 'ellipsis':
+                                btnDisplay = '&hellip;';
+                                btnClass = 'disabled';
+                                break;
+
+                            case 'first':
+                                btnDisplay = lang.sFirst;
+                                btnClass = button + (page > 0 ? '' : ' disabled' );
+                                break;
+
+                            case 'previous':
+                                btnDisplay = lang.sPrevious;
+                                btnClass = button + (page > 0 ? '' : ' disabled' );
+                                break;
+
+                            case 'next':
+                                btnDisplay = lang.sNext;
+                                btnClass = button + (page < pages - 1 ? '' : ' disabled' );
+                                break;
+
+                            case 'last':
+                                btnDisplay = lang.sLast;
+                                btnClass = button + (page < pages - 1 ? '' : ' disabled' );
+                                break;
+
+                            default:
+                                btnDisplay = button + 1;
+                                btnClass = page === button ?
+                                        'active' : '';
+                                break;
+                        }
+
+                        if ( btnDisplay) {
+                            node = jQuery( '<li>', {
+                                'class': classes.sPageButton + ' ' + btnClass,
+                                'aria-controls': settings.sTableId,
+                                'tabindex': settings.iTabIndex,
+                                'id': idx === 0 && typeof button === 'string' ?
+                                        settings.sTableId + '_' + button :
+                                        null
+                            })
+                            .append(jQuery( '<a>', {
+                                    'href': '#'
+                                })
+                                .html(btnDisplay)
+                            )
+                            .appendTo(container);
+
+                            settings.oApi._fnBindAction(
+                                node, {action: button}, clickHandler
+                            );
+                        }
+                    }
+                }
+            };
+
+            attach(
+                jQuery( host ).empty().html( '<ul class="pagination"/>' ).children( 'ul' ),
+                buttons
+            );
+        };
+
+        // TableTools Bootstrap compatibility - Required TableTools 2.1+
+        if ( $DataTable.TableTools ) {
+            // Set the classes that TableTools uses to something suitable for Bootstrap
+            jQuery.extend(true, $DataTable.TableTools.classes, {
+                "container": "DTTT btn-group",
+                "buttons": {
+                    "normal": "btn btn-default",
+                    "disabled": "disabled"
+                },
+                "collection": {
+                    "container": "DTTT_dropdown dropdown-menu",
+                    "buttons": {
+                        "normal": "",
+                        "disabled": "disabled"
+                    }
+                },
+                "print": {
+                    "info": "DTTT_print_info"
+                },
+                "select": {
+                    "row": "active"
+                }
+            });
+
+            // Have the collection use a bootstrap compatible drop down
+            jQuery.extend( true, $DataTable.TableTools.DEFAULTS.oTags, {
+                "collection": {
+                    "container": "ul",
+                    "button": "li",
+                    "liner": "a"
+                }
+            });
+        }
+    };
+
+    return {
+        init: function() {
+            // Init Datatables
+            bsDataTables();
+            initDataTableSimple();
+            initDataTableFull();
+        }
+    };
+}();
+
+// Initialize when page loads
+jQuery( function() {
+    BaseTableDatatables.init();
+});
+
+</script>
+{% endblock %}

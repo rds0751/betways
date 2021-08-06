@@ -1,0 +1,676 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<style>
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    border-radius: 6px;
+    padding: 5px 5px;
+    background-color: blue;
+    color: white;
+    font-size: 2vw;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100000;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+</style>
+<div class="body-wrapper">
+	<main class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main style="padding: 0px;">
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div class="mdc-card p-0">
+								<section style="padding: 30px 30px 20px 30px;" class="error-header">
+									<h1>{% trans "Binary Tree" %}</h1>
+									<p>{% trans 'here you can see your binary tree and business' %}</p>
+                  <input type='input' id='txt_reg' placeholder="Search an ID">
+                  <a style="color: white" target="_blank" href="" onclick="this.href='/binary/tree/'+document.getElementById('txt_reg').value+'/'" ><span class="material-icons">
+                    search
+                  </span></a>
+                </section>
+                <div style="margin: 0px 0px;" class="mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-desktop justify-content-center stretch-card">
+                  <div class="mdc-card align-items-center attach_items_center" align="center" style="padding-top: 30px;
+                  padding-right: 20px;
+                  padding-bottom: 20px;
+                  padding-left: 20px;">
+                  <h5>Binary Tree of {{ user_.name|title }} ({{ user_.username }})</h5>
+                  <div class="template-demo">
+                    <div class="mdc-layout-grid__inner">
+                      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-phone mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-6-tablet attach_items_center align-items-center">
+                        <div class="tooltip">
+                          {% if user != "_blank" and user.active %}
+                          <img width="9%"src="{% static 'hara.png' %}">
+                          {% else %}
+                          <img src="{% static 'lal.png' %}" width="50%" >
+                          {% endif %}
+                          <h1 style="font-size:1.7vw; margin-bottom: 0.5rem; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if user != "_blank" %}{{ user_.username }}{% else %}BLANK{% endif %}</h1>
+                          {% if user != "_blank" %}
+                          <span class="tooltiptext"><table>
+                            <h6 style="font-size: 2.5vw;">{{ user_.name|title }} ({{ user_.username }})</h6>
+                            <tbody>
+                              <tr>
+                                <td><strong> Sponsor</strong></td>
+                                <td><strong> {{ user_s }} </strong></td>
+                              </tr>
+                              <tr>
+                                <td><strong> Sponsor ID</strong></td>
+                                <td><strong> {{ user_.referal }} </strong></td>
+                              </tr>
+                              <tr>
+                                <td><strong> Upgraded</strong></td>
+                                <td><strong> {{ user_.total_users_left }} Left {{ user_.total_users_right }} Right</strong></td>
+                              </tr>
+                              <tr><td><strong> Business</strong></td><td><strong> {{ user_.left_side_business }} Left, {{ user_.right_side_business }} Right </strong></td></tr>
+
+                            </tbody>
+                          </table></span>
+                          {% endif %}
+                        </div>
+                        <img width="56%;" src="{% static "arrow.gif" %}">
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__inner">
+                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-phone mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+                      <div class="tooltip">
+                        {% if left != "_blank" and left.active %}
+                        <a href="/binary/tree/{{ left }}/">
+                          <img width="15%;" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ left }}/">
+                          <img width="15%;" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if left != "_blank" %}{{ left_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if left_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ left_.name|title }} ({{ left_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ left_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ left_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ left_.total_users_left }} Left {{ left_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ left_.left_side_business }} Left, {{ left_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                      <img width="60%;" src="{% static "arrow.gif" %}">
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-phone mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+                      <div class="tooltip">
+                        {% if right != "_blank" and right.active %}
+                        <a href="/binary/tree/{{ right }}/">
+                          <img width="15%;" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ right }}/">
+                          <img width="15%;" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if right_ != "_blank" %}{{ right_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if right_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ right_.name|title }} ({{ right_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ right_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ right_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ right_.total_users_left }} Left {{ right_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ right_.left_side_business }} Left, {{ right_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                      <img width="60%;" src="{% static "arrow.gif" %}">
+                    </div>
+                  </div>
+                  <div class="mdc-layout-grid__inner">
+                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if left_l != "_blank" and leftl.active %}
+                      <a href="/binary/tree/{{ leftl }}/">
+                        <img width="30%;" src="{% static 'hara.png' %}">
+                      </a>
+                      {% else %}
+                      <a href="/binary/tree/{{ leftl }}/">
+                        <img width="30%;" src="{% static 'lal.png' %}">
+                      </a>
+                      {% endif %}
+                      <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if left_l != "_blank" %}{{ left_l.username }}{% else %}BLANK{% endif %}</h1>
+                      {% if left_l != "_blank" %}
+                      <span class="tooltiptext"><table>
+                        <h6 style="font-size: 2.5vw;">{{ left_l.name|title }} ({{ left_l.username }})</h6>
+                        <tbody>
+                          <tr>
+                            <td><strong> Sponsor</strong></td>
+                            <td><strong> {{ left_ls }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Sponsor ID</strong></td>
+                            <td><strong> {{ left_l.referal }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Upgraded</strong></td>
+                            <td><strong> {{ left_l.total_users_left }} Left {{ left_l.total_users_right }} Right</strong></td>
+                          </tr>
+                          <tr><td><strong> Business</strong></td><td><strong> {{ left_l.left_side_business }} Left, {{ left_l.right_side_business }} Right </strong></td></tr>
+
+                        </tbody>
+                      </table></span>
+                      {% endif %}
+                    </div>
+                    <img width="63%;" src="{% static "arrow.gif" %}">
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if left_r != "_blank" and leftr.active %}
+                      <a href="/binary/tree/{{ leftr }}/">
+                        <img width="30%;" src="{% static 'hara.png' %}">
+                      </a>
+                      {% else %}
+                      <a href="/binary/tree/{{ leftr }}/">
+                        <img width="30%;" src="{% static 'lal.png' %}">
+                      </a>
+                      {% endif %}
+                      <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if left_r != "_blank" %}{{ left_r.username }}{% else %}BLANK{% endif %}</h1>
+                      {% if left_r != "_blank" %}
+                      <span class="tooltiptext"><table>
+                        <h6 style="font-size: 2.5vw;">{{ left_r.name|title }} ({{ left_r.username }})</h6>
+                        <tbody>
+                          <tr>
+                            <td><strong> Sponsor</strong></td>
+                            <td><strong> {{ left_rs }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Sponsor ID</strong></td>
+                            <td><strong> {{ left_r.referal }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Upgraded</strong></td>
+                            <td><strong> {{ left_r.total_users_left }} Left {{ left_r.total_users_right }} Right</strong></td>
+                          </tr>
+                          <tr><td><strong> Business</strong></td><td><strong> {{ left_r.left_side_business }} Left, {{ left_r.right_side_business }} Right </strong></td></tr>
+
+                        </tbody>
+                      </table></span>
+                      {% endif %}
+                    </div>
+                    <img width="63%;" src="{% static "arrow.gif" %}">
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if rightl != "_blank" and rightl.active %}
+                      <a href="/binary/tree/{{ rightl }}/">
+                        <img width="30%;" src="{% static 'hara.png' %}">
+                      </a>
+                      {% else %}
+                      <a href="/binary/tree/{{ rightl }}/">
+                        <img width="30%;" src="{% static 'lal.png' %}">
+                      </a>
+                      {% endif %}
+                      <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if rightl != "_blank" %}{{ right_l.username }}{% else %}BLANK{% endif %}</h1>
+                      {% if rightl != "_blank" %}
+                      <span class="tooltiptext"><table>
+                        <h6 style="font-size: 2.5vw;">{{ right_l.name|title }} ({{ right_l.username }})</h6>
+                        <tbody>
+                          <tr>
+                            <td><strong> Sponsor</strong></td>
+                            <td><strong> {{ right_ls }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Sponsor ID</strong></td>
+                            <td><strong> {{ right_l.referal }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Upgraded</strong></td>
+                            <td><strong> {{ right_l.total_users_left }} Left {{ right_l.total_users_right }} Right</strong></td>
+                          </tr>
+                          <tr><td><strong> Business</strong></td><td><strong> {{ right_l.left_side_business }} Left, {{ right_l.right_side_business }} Right </strong></td></tr>
+
+                        </tbody>
+                      </table></span>
+                      {% endif %}
+                    </div>
+                    <img width="63%;" src="{% static "arrow.gif" %}">
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if rightr != "_blank" and rightr.active %}
+                      <a href="/binary/tree/{{ rightr }}/">
+                        <img width="30%;" src="{% static 'hara.png' %}">
+                      </a>
+                      {% else %}
+                      <a href="/binary/tree/{{ rightr }}/">
+                        <img width="30%;" src="{% static 'lal.png' %}">
+                      </a>
+                      {% endif %}
+                      <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if rightr != "_blank" %}{{ right_r.username }}{% else %}BLANK{% endif %}</h1>
+                      {% if rightr != "_blank" %}
+                      <span class="tooltiptext"><table>
+                        <h6 style="font-size: 2.5vw;">{{ right_r.name|title }} ({{ right_r.username }})</h6>
+                        <tbody>
+                          <tr>
+                            <td><strong> Sponsor</strong></td>
+                            <td><strong> {{ right_rs }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Sponsor ID</strong></td>
+                            <td><strong> {{ right_r.referal }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Upgraded</strong></td>
+                            <td><strong> {{ right_r.total_users_left }} Left {{ right_r.total_users_right }} Right</strong></td>
+                          </tr>
+                          <tr><td><strong> Business</strong></td><td><strong> {{ right_r.left_side_business }} Left, {{ right_r.right_side_business }} Right </strong></td></tr>
+
+                        </tbody>
+                      </table></span>{% endif %}
+                    </div>
+                    <img width="63%;" src="{% static "arrow.gif" %}">
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-phone mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+                    <div class="mdc-layout-grid__inner">
+                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.0.datal.l_ != "_blank" and list.0.datal.l.active %}
+                        <a href="/binary/tree/{{ list.0.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.0.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.0.datal.l_ != "_blank" %}{{ list.0.datal.l_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.0.datal.l_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.0.datal.l_.name|title }} ({{ list.0.datal.l_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.0.datal.l_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.0.datal.l_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.0.datal.l_.total_users_left }} Left {{ list.0.datal.l_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.0.datal.l_.left_side_business }} Left, {{ list.0.datal.l_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.1.datar.r_ != "_blank" and list.1.datar.r.active %}
+                        <a href="/binary/tree/{{ list.1.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.1.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.1.datar.r_ != "_blank" %}{{ list.1.datar.r_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.1.datar.r_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.1.datar.r_.name|title }} ({{ list.1.datar.r_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.1.datar.r_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.1.datar.r_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.1.datar.r_.total_users_left }} Left {{ list.1.datar.r_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.1.datar.r_.left_side_business }} Left, {{ list.1.datar.r_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.2.datal.l_ != "_blank" and list.2.datal.l.active %}
+                        <a href="/binary/tree/{{ list.2.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.2.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.2.datal.l_ != "_blank" %}{{ list.2.datal.l_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.2.datal.l_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.2.datal.l_.name|title }} ({{ list.2.datal.l_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.2.datal.l_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.2.datal.l_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.2.datal.l_.total_users_left }} Left {{ list.2.datal.l_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.2.datal.l_.left_side_business }} Left, {{ list.2.datal.l_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.3.datar.r_ != "_blank" and list.3.datar.r.active %}
+                        <a href="/binary/tree/{{ list.3.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.3.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.3.datar.r_ != "_blank" %}{{ list.3.datar.r_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.3.datar.r_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.3.datar.r_.name|title }} ({{ list.3.datar.r_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.3.datar.r_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.3.datar.r_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.3.datar.r_.total_users_left }} Left {{ list.3.datar.r_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.3.datar.r_.left_side_business }} Left, {{ list.3.datar.r_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-phone mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+                  <div class="mdc-layout-grid__inner">
+                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if list.4.datal.l_ != "_blank" and list.4.datal.l.active %}
+                      <a href="/binary/tree/{{ list.4.datal.l }}/">
+                        <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                      </a>
+                      {% else %}
+                      <a href="/binary/tree/{{ list.4.datal.l }}/">
+                        <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                      </a>
+                      {% endif %}
+                      <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.4.datal.l_ != "_blank" %}{{ list.4.datal.l_.username }}{% else %}BLANK{% endif %}</h1>
+                      {% if list.4.datal.l_ != "_blank" %}
+                      <span class="tooltiptext"><table>
+                        <h6 style="font-size: 2.5vw;">{{ list.4.datal.l_.name|title }} ({{ list.4.datal.l_.username }})</h6>
+                        <tbody>
+                          <tr>
+                            <td><strong> Sponsor</strong></td>
+                            <td><strong> {{ list.4.datal.l_s }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Sponsor ID</strong></td>
+                            <td><strong> {{ list.4.datal.l_.referal }} </strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong> Upgraded</strong></td>
+                            <td><strong> {{ list.4.datal.l_.total_users_left }} Left {{ list.4.datal.l_.total_users_right }} Right</strong></td>
+                          </tr>
+                          <tr><td><strong> Business</strong></td><td><strong> {{ list.4.datal.l_.left_side_business }} Left, {{ list.4.datal.l_.right_side_business }} Right </strong></td></tr>
+
+                        </tbody>
+                      </table></span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                    <div class="tooltip">
+                      {% if list.5.datar.r_ != "_blank" and list.5.datar.r.active %}
+                      <a href="/binary/tree/{{ list.5.datar.r }}">
+                        <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                      </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.5.datar.r }}">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.5.datar.r_ != "_blank" %}{{ list.5.datar.r_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.5.datar.r_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.5.datar.r_.name|title }} ({{ list.5.datar.r_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.5.datar.r_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.5.datar.r_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.5.datar.r_.total_users_left }} Left {{ list.5.datar.r_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.5.datar.r_.left_side_business }} Left, {{ list.5.datar.r_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.6.datal.l_ != "_blank" and list.6.datal.l.active %}
+                        <a href="/binary/tree/{{ list.6.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.6.datal.l }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.6.datal.l_ != "_blank" %}{{ list.6.datal.l_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.6.datal.l_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.6.datal.l_.name|title }} ({{ list.6.datal.l_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.6.datal.l_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.6.datal.l_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.6.datal.l_.total_users_left }} Left {{ list.6.datal.l_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.6.datal.l_.left_side_business }} Left, {{ list.6.datal.l_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet">
+                      <div class="tooltip">
+                        {% if list.7.datar.r_ != "_blank" and list.7.datar.r.active %}
+                        <a href="/binary/tree/{{ list.7.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'hara.png' %}">
+                        </a>
+                        {% else %}
+                        <a href="/binary/tree/{{ list.7.datar.r }}/">
+                          <img width="100%" height="100%" src="{% static 'lal.png' %}">
+                        </a>
+                        {% endif %}
+                        <h1 style="font-size:1.7vw; margin-bottom: 1vw; font-weight: 1000; color: blue; line-height: 0rem;" class="mdc-typography--subtitle2">{% if list.7.datar.r_ != "_blank" %}{{ list.7.datar.r_.username }}{% else %}BLANK{% endif %}</h1>
+                        {% if list.7.datar.r_ != "_blank" %}
+                        <span class="tooltiptext"><table>
+                          <h6 style="font-size: 2.5vw;">{{ list.7.datar.r_.name|title }} ({{ list.7.datar.r_.username }})</h6>
+                          <tbody>
+                            <tr>
+                              <td><strong> Sponsor</strong></td>
+                              <td><strong> {{ list.7.datar.r_s }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Sponsor ID</strong></td>
+                              <td><strong> {{ list.7.datar.r_.referal }} </strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong> Upgraded</strong></td>
+                              <td><strong> {{ list.7.datar.r_.total_users_left }} Left {{ list.7.datar.r_.total_users_right }} Right</strong></td>
+                            </tr>
+                            <tr><td><strong> Business</strong></td><td><strong> {{ list.7.datar.r_.left_side_business }} Left, {{ list.7.datar.r_.right_side_business }} Right </strong></td></tr>
+
+                          </tbody>
+                        </table></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+    <div class="mdc-card" align="center">
+      <div class="table-responsive">
+        <table class="table dashboard-table">
+          <h5>My Directs</h5>
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for usern in users %}
+            <tr>
+              <td>{{ usern.user }}</td>
+              <td>{{ usern.position }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% for pg in page_range %}
+        {% if users.number == pg %}
+        <a href="?page={{pg}}">
+          {{pg}}
+        </a>
+        {% else %}
+        <a href="?page={{pg}}">{{pg}}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+</div>
+</main>
+</div>
+</main>
+</div>
+{% endblock content %}
+
+{% block modal %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}

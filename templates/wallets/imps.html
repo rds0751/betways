@@ -1,0 +1,51 @@
+{% if dstatus != 'SUCCESS' and rstatus != 'SUCCESS' %}
+<form method="POST" action="/wallet/imps-transfer/">
+	{% csrf_token %}
+	<input type="" name="name" placeholder="name">
+	<input type="submit" name="">
+</form>
+{{ dstatus }}{{ rstatus }}{{ rostatus }}{{ rdata }}
+{% endif %}
+{% if rstatus == 'SUCCESS' %}
+<form method="POST" action="/wallet/imps-transfer/">
+	{% csrf_token %}
+	<input type="hidden" value="{{ request.user.mobile }}" name="mobile" placeholder="mobile">
+	<input type="" name="rotp" placeholder="otp">
+	<input type="hidden" name="registerotp">
+	<input type="submit" name="">
+</form>
+{{ rstatus }}
+{{ rostatus }}
+{% endif %}
+
+
+{% if abstatus == 'SUCCESS' %}
+<form method="POST" action="/wallet/imps-transfer/">
+	{% csrf_token %}
+	<input type="" name="botp">
+	<input type="hidden" name="bid" value="{{ abdata.beneficiaryId }}">
+	<input type="hidden" name="bmobile" value="{{ bmobile }}">
+	<input type="hidden" name="bname" value="{{ bname }}">
+	<input type="hidden" name="mobile" value="{{ mobile }}">
+	<input type="hidden" name="bacc" value="{{ bacc }}">
+	<input type="hidden" name="ifsc" value="{{ ifsc }}">
+	<input type="submit" name="">
+</form>
+{% endif %}
+
+{% if dstatus == 'SUCCESS' and abstatus != 'SUCCESS' %}
+<form method="POST" action="/wallet/imps-transfer/">
+	{% csrf_token %}
+	<input type="text" name="bname" placeholder="beneficiary name">
+	<input type="text" name="bmobile" placeholder="beneficiary mobile">
+	<input type="text" name="bacc" placeholder="beneficiary acc">
+	<input type="text" name="ifsc" placeholder="ifsc">
+	<input type="hidden" name="addbene">
+	<input type="submit" name="">
+</form>
+{{ user.username }}
+{{ abstatus }}{{ abdata }}
+{% for bene in benelist %}
+{{ bene.user_id }}
+{% endfor %}
+{% endif %}

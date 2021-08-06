@@ -9,8 +9,8 @@
     </div>
     <div class="mdc-list-group">
       <nav class="mdc-list mdc-drawer-menu">
-        <div {% if request.get_full_path == '/users/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
-          <a class="mdc-drawer-link" {% if request.get_full_path == '/users/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/users/">
+        <div {% if request.get_full_path == '/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" {% if request.get_full_path == '/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">dashboard
             </i>{% trans 'My Dashboard' %}
           </a>
@@ -52,14 +52,14 @@
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu1">
             <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/users/~update/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-                  <a class="mdc-drawer-link" {% if request.get_full_path == '/users/~update/' %} style='color: white;
+              <div {% if request.get_full_path == '/~update/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/~update/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
                   font-size: 12px;' {% else %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
-                  font-size: 11px;' {% endif %}  href="/users/~update/">
+                  font-size: 11px;' {% endif %}  href="/~update/">
                   {% trans 'Personal Details' %}
                 </a>
               </div>
@@ -99,8 +99,8 @@
         </a>
         <div class="mdc-expansion-panel" id="ui-sub-menu5">
           <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/users/shop/roi/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-            <a class="mdc-drawer-link" {% if request.get_full_path == '/users/shop/roi/' %} style='color: white;
+              <div {% if request.get_full_path == '/shop/roi/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <a class="mdc-drawer-link" {% if request.get_full_path == '/shop/roi/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
             font-size: 12px;' {% else %} style='color: white;
@@ -209,14 +209,14 @@
                   {% trans 'Login Password' %}
                 </a>
               </div>
-            <div {% if request.get_full_path == '/users/change-passcode/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-                  <a class="mdc-drawer-link" {% if request.get_full_path == '/users/change-passcode/' %} style='color: white;
+            <div {% if request.get_full_path == '/change-passcode/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/change-passcode/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
                   font-size: 12px;' {% else %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
-                  font-size: 11px;' {% endif %}  href="/users/change-passcode/">
+                  font-size: 11px;' {% endif %}  href="/change-passcode/">
                   {% trans 'Transaction Password' %}
                 </a>
               </div>
@@ -306,7 +306,7 @@
                       <i class="mdi mdi-account-edit-outline text-primary"></i>
                     </div>
                     <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <a href="/users/~update/"><h6 class="item-subject font-weight-normal">Edit profile</h6></a>
+                      <a href="/~update/"><h6 class="item-subject font-weight-normal">Edit profile</h6></a>
                     </div>
                   </li>
                   <li class="mdc-list-item" role="menuitem">

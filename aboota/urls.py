@@ -14,6 +14,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from debug_toolbar import urls as durls
 from django.conf.urls import re_path
 from users import views
+from allauth.account.views import LoginView, SignupView
 
 handler404 = 'home.views.error_404'
 handler500 = 'home.views.error_500'
@@ -25,10 +26,12 @@ urlpatterns = [
     url(r'^tickets/', include('ticket.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('accounts/', include("allauth.urls")),
+    url(r'^customurl/login/', LoginView.as_view(template_name='account/login2.html'), name="custom_login" ),
     url(r'^kyc/', include('kyc.urls')),
     path('__debug__/', include(durls), name='debug_toolbar'),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
+    path('order/', include(('orders.urls', 'orders'), namespace='orders')),
     url(r'api/', include('api.urls')),
     url(r"register=(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
     path('contact/', TemplateView.as_view(template_name='contact.html')),
@@ -41,7 +44,8 @@ urlpatterns = [
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
     path("api-auth/", include("rest_framework.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh')
+    path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
+    path('games/', include('games.urls', namespace="games")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

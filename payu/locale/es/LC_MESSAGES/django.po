@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-16 21:19-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: nonseamless/admin.py:9
+msgid "Cart Order Information"
+msgstr "Información de Orden del Carro"
+
+#: nonseamless/admin.py:19
+msgid "Shipping Information"
+msgstr "Información de envío"
+
+#: nonseamless/admin.py:27
+msgid "Client Information"
+msgstr "Información del cliente"
+
+#: nonseamless/admin.py:42
+msgid "Seller Information"
+msgstr "Información del vendedor"
+
+#: nonseamless/admin.py:57
+msgid "Transaction"
+msgstr "Transacción"
+
+#: nonseamless/models.py:21
+msgid "Product info"
+msgstr "Información de Producto"
+
+#: nonseamless/models.py:22
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:35
+#: templates/payu/nonseamless/dashboard/transaction_list.html:33
+msgid "Amount"
+msgstr "Cantidad"
+
+#: nonseamless/models.py:23
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:36
+msgid "Currency"
+msgstr "Moneda"
+
+#: nonseamless/models.py:24
+msgid "Basket"
+msgstr "Cesta"
+
+#: nonseamless/models.py:26
+msgid "First Name"
+msgstr "Nombres"
+
+#: nonseamless/models.py:27
+msgid "Last Name"
+msgstr "Apellidos"
+
+#: nonseamless/models.py:28
+#: templates/payu/nonseamless/dashboard/transaction_list.html:34
+msgid "E-mail"
+msgstr "Correo Electrónico"
+
+#: nonseamless/models.py:29
+msgid "Phone"
+msgstr "Teléfono"
+
+#: nonseamless/models.py:30
+msgid "Address 1"
+msgstr "Dirección 1"
+
+#: nonseamless/models.py:31
+msgid "Address 2"
+msgstr "Dirección 2"
+
+#: nonseamless/models.py:32
+msgid "City"
+msgstr "Ciudad"
+
+#: nonseamless/models.py:33
+msgid "State"
+msgstr "Estado"
+
+#: nonseamless/models.py:34
+msgid "Country"
+msgstr "País"
+
+#: nonseamless/models.py:35
+msgid "Zip Code"
+msgstr "Código Postal"
+
+#: nonseamless/models.py:42
+msgid "Drop Category"
+msgstr "Baja de Categoría"
+
+#: nonseamless/models.py:43
+msgid "Custom Note"
+msgstr "Nota personal"
+
+#: nonseamless/models.py:44
+msgid "Note Category"
+msgstr "Apunte de Categoría"
+
+#: nonseamless/models.py:45
+msgid "Offer Key"
+msgstr "Llave de Oferta"
+
+#: nonseamless/models.py:46
+msgid "Raw Response"
+msgstr "Respuesta en bruto"
+
+#: nonseamless/models.py:47
+msgid "Raw Request"
+msgstr "Petición en bruto"
+
+#: nonseamless/models.py:48
+msgid "Error Code"
+msgstr "Código de Error"
+
+#: nonseamless/models.py:49
+msgid "Error Message"
+msgstr "Mensaje de Error"
+
+#: nonseamless/models.py:50
+msgid "Response"
+msgstr "Respuesta"
+
+#: nonseamless/models.py:51
+#: templates/payu/nonseamless/dashboard/transaction_list.html:35
+msgid "Order ID"
+msgstr "ID de Orden"
+
+#: nonseamless/models.py:52
+msgid "Date Created"
+msgstr "Fecha de creación"
+
+#: nonseamless/models.py:53
+msgid "Date Updated"
+msgstr "Fecha de Actualización"
+
+#: nonseamless/views.py:83
+msgid "Your basket is empty"
+msgstr "Tu cesta está vacía"
+
+#: nonseamless/views.py:87
+msgid "A shipping address must be specified"
+msgstr "Debe especificarse una dirección de envío"
+
+#: nonseamless/views.py:91
+msgid "A shipping method must be specified"
+msgstr "Debe especificarse un método de envío"
+
+#: nonseamless/views.py:215
+msgid "PayU transaction cancelled"
+msgstr "Transacción PayU cancelada"
+
+#: nonseamless/views.py:259
+msgid "A problem occurred communicating with PayU - please try again later"
+msgstr ""
+"Ha ocurrido un problema de comunicación con PayU - por favor inténtelo luego"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:6
+msgid "PayU transaction"
+msgstr "Transacción PayU"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:12
+#: templates/payu/nonseamless/dashboard/transaction_list.html:12
+msgid "Dashboard"
+msgstr "Tablero"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:18
+#: templates/payu/nonseamless/dashboard/transaction_list.html:6
+#: templates/payu/nonseamless/dashboard/transaction_list.html:17
+#: templates/payu/nonseamless/dashboard/transaction_list.html:22
+msgid "PayU transactions"
+msgstr "Transacción PayU"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:25
+#, python-format
+msgid ""
+"\n"
+"        Transaction %(id)s\n"
+"    "
+msgstr ""
+"\n"
+"        Transacción %(id)s\n"
+"    "
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:33
+#: templates/payu/nonseamless/dashboard/transaction_list.html:31
+msgid "Transaction ID"
+msgstr "ID Transacción"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:34
+#: templates/payu/nonseamless/dashboard/transaction_list.html:32
+msgid "Status"
+msgstr "Estado"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:37
+msgid "Response params"
+msgstr "Parámetros de respuesta"
+
+#: templates/payu/nonseamless/dashboard/transaction_detail.html:38
+#: templates/payu/nonseamless/dashboard/transaction_list.html:37
+msgid "Date"
+msgstr "Fecha"
+
+#: templates/payu/nonseamless/dashboard/transaction_list.html:36
+msgid "Basket ID"
+msgstr "ID de Cesta"
+
+#: templates/payu/nonseamless/dashboard/transaction_list.html:60
+msgid "No transactions have been made yet."
+msgstr "No hay transacciones hechas aún."
+
+#: templates/payu/nonseamless/preview.html:14
+msgid "Payment"
+msgstr "Pago"
+
+#: templates/payu/nonseamless/preview.html:17
+msgid "PayU"
+msgstr "PayU"

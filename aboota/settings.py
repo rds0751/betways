@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     'maintenancemode',
     'kyc',
     'django_crontab',
+    'games'
 ]
 
 
@@ -323,6 +324,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
+PAYU_INFO = {'merchant_key': "RfLhqZQ5",
+             'merchant_salt': "R57ivFJigr",
+             'payment_url': 'https://secure.payu.in/_payment',
+             # 'payment_url': 'https://sandboxsecure.payu.in/_payment',
+             }
+
 from datetime import timedelta
 
 SIMPLE_JWT = {
@@ -338,7 +345,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 FILE_UPLOAD_PERMISSIONS = 0o640
 
 CRONJOBS = [
-    ('22 0 * * *', 'scan', '>> /tmp/scheduled_job.log')
+    ('5 * * * *', 'scan', '>> /tmp/scheduled_job.log')
 ]
 
 COMPRESS_DEBUG_TOGGLE = False

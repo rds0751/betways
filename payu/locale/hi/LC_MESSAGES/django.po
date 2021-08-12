@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-03 13:35+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: payu/nonseamless/admin.py:9
+msgid "Cart Order Information"
+msgstr ""
+
+#: payu/nonseamless/admin.py:19
+msgid "Shipping Information"
+msgstr ""
+
+#: payu/nonseamless/admin.py:27
+msgid "Client Information"
+msgstr ""
+
+#: payu/nonseamless/admin.py:42
+msgid "Seller Information"
+msgstr ""
+
+#: payu/nonseamless/admin.py:57
+msgid "Transaction"
+msgstr ""
+
+#: payu/nonseamless/models.py:21
+msgid "Product info"
+msgstr ""
+
+#: payu/nonseamless/models.py:22
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:35
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:33
+msgid "Amount"
+msgstr ""
+
+#: payu/nonseamless/models.py:23
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:36
+msgid "Currency"
+msgstr ""
+
+#: payu/nonseamless/models.py:24
+msgid "Basket"
+msgstr ""
+
+#: payu/nonseamless/models.py:26
+msgid "First Name"
+msgstr ""
+
+#: payu/nonseamless/models.py:27
+msgid "Last Name"
+msgstr ""
+
+#: payu/nonseamless/models.py:28
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:34
+msgid "E-mail"
+msgstr ""
+
+#: payu/nonseamless/models.py:29
+msgid "Phone"
+msgstr ""
+
+#: payu/nonseamless/models.py:30
+msgid "Address 1"
+msgstr ""
+
+#: payu/nonseamless/models.py:31
+msgid "Address 2"
+msgstr ""
+
+#: payu/nonseamless/models.py:32
+msgid "City"
+msgstr ""
+
+#: payu/nonseamless/models.py:33
+msgid "State"
+msgstr ""
+
+#: payu/nonseamless/models.py:34
+msgid "Country"
+msgstr ""
+
+#: payu/nonseamless/models.py:35
+msgid "Zip Code"
+msgstr ""
+
+#: payu/nonseamless/models.py:42
+msgid "Drop Category"
+msgstr ""
+
+#: payu/nonseamless/models.py:43
+msgid "Custom Note"
+msgstr ""
+
+#: payu/nonseamless/models.py:44
+msgid "Note Category"
+msgstr ""
+
+#: payu/nonseamless/models.py:45
+msgid "Offer Key"
+msgstr ""
+
+#: payu/nonseamless/models.py:46
+msgid "Raw Response"
+msgstr ""
+
+#: payu/nonseamless/models.py:47
+msgid "Raw Request"
+msgstr ""
+
+#: payu/nonseamless/models.py:48
+msgid "Error Code"
+msgstr ""
+
+#: payu/nonseamless/models.py:49
+msgid "Error Message"
+msgstr ""
+
+#: payu/nonseamless/models.py:50
+msgid "Response"
+msgstr ""
+
+#: payu/nonseamless/models.py:51
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:35
+msgid "Order ID"
+msgstr ""
+
+#: payu/nonseamless/models.py:52
+msgid "Date Created"
+msgstr ""
+
+#: payu/nonseamless/models.py:53
+msgid "Date Updated"
+msgstr ""
+
+#: payu/nonseamless/views.py:84
+msgid "Your basket is empty"
+msgstr ""
+
+#: payu/nonseamless/views.py:88
+msgid "A shipping address must be specified"
+msgstr ""
+
+#: payu/nonseamless/views.py:92
+msgid "A shipping method must be specified"
+msgstr ""
+
+#: payu/nonseamless/views.py:217
+msgid "PayU transaction cancelled"
+msgstr ""
+
+#: payu/nonseamless/views.py:261
+msgid "A problem occurred communicating with PayU - please try again later"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:6
+msgid "PayU transaction"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:12
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:12
+msgid "Dashboard"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:18
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:6
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:17
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:22
+msgid "PayU transactions"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:25
+#, python-format
+msgid ""
+"\n"
+"        Transaction %(id)s\n"
+"    "
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:33
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:31
+msgid "Transaction ID"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:34
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:32
+msgid "Status"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:37
+msgid "Response params"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_detail.html:38
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:37
+msgid "Date"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:36
+msgid "Basket ID"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/dashboard/transaction_list.html:60
+msgid "No transactions have been made yet."
+msgstr ""
+
+#: payu/templates/payu/nonseamless/preview.html:14
+msgid "Payment"
+msgstr ""
+
+#: payu/templates/payu/nonseamless/preview.html:17
+msgid "PayU"
+msgstr ""

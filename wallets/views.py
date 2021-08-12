@@ -640,7 +640,7 @@ def imps(request):
 
 
     def details(mobile):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/cusdetails.php?username=MRN1747997&apikey=1348504980&number={}&format=json".format(mobile)
+        url = "https://www.mobilerechargenow.com/api/v2/dmt/cusdetails.php?username=G320635255&apikey=2589337896&number={}&format=json".format(mobile)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -650,7 +650,7 @@ def imps(request):
     
 
     def register(mobile, name):
-        url = "https://mobilerechargenow.com/api/v2/dmt/cusregistration.php?username=MRN1747997&apikey=1348504980&number={}&name={}&format=json".format(mobile, name)
+        url = "https://mobilerechargenow.com/api/v2/dmt/cusregistration.php?username=G320635255&apikey=2589337896&number={}&name={}&format=json".format(mobile, name)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -659,7 +659,7 @@ def imps(request):
         return status, data    
 
     def registerotp(mobile, otp):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/customerverify.php?username=MRN1747997&apikey=1348504980&number={}&otp={}&format=json".format(mobile, otp)
+        url = "https://www.mobilerechargenow.com/api/v2/dmt/customerverify.php?username=G320635255&apikey=2589337896&number={}&otp={}&format=json".format(mobile, otp)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -668,7 +668,7 @@ def imps(request):
         return status, data    
 
     def addbene(mobile, bname, bmobile, bacc, ifsc):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/addbeneficiary.php?username=MRN1747997&apikey=1348504980&number={}&beneficiaryname={}&beneficiaryno={}&beneficiaryacc={}&ifsccode={}".format(mobile, bname, bmobile, bacc, ifsc)
+        url = "https://www.mobilerechargenow.com/api/v2/dmt/addbeneficiary.php?username=G320635255&apikey=2589337896&number={}&beneficiaryname={}&beneficiaryno={}&beneficiaryacc={}&ifsccode={}".format(mobile, bname, bmobile, bacc, ifsc)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -677,7 +677,7 @@ def imps(request):
         return status, data    
 
     def beneotp(bmobile, otp, bid):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/beneficiaryverifiy.php?username=MRN1747997&apikey=1348504980&number={}&otp={}&beneficiaryid={}".format(mobile, otp, bid)
+        url = "https://www.mobilerechargenow.com/api/v2/dmt/beneficiaryverifiy.php?username=G320635255&apikey=2589337896&number={}&otp={}&beneficiaryid={}".format(mobile, otp, bid)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -686,7 +686,7 @@ def imps(request):
         return status, data
 
     def bankvalidate(mobile, bacc, ifsc, txnid):
-        url = "http://mobilerechargenow.com/api/v2/dmt/bankvalidate.php?username=MRN1747997&apikey=1348504980&mobile={}&accountno={}&ifsccode={}&txnid={}&format=json".format(mobile, bacc, ifsc, txnid)
+        url = "http://mobilerechargenow.com/api/v2/dmt/bankvalidate.php?username=G320635255&apikey=2589337896&mobile={}&accountno={}&ifsccode={}&txnid={}&format=json".format(mobile, bacc, ifsc, txnid)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -695,7 +695,7 @@ def imps(request):
         return status, data
 
     def benelist(mobile):
-        url = "http://mobilerechargenow.com/api/v2/dmt/beneficiarylist.php?username=MRN1747997&apikey=1348504980&number={}".format(mobile)
+        url = "http://mobilerechargenow.com/api/v2/dmt/beneficiarylist.php?username=G320635255&apikey=2589337896&number={}".format(mobile)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -704,9 +704,9 @@ def imps(request):
         return status, data    
 
     # def resendbeneotp(mobile, bid):
-    #     url = "https://mobilerechargenow.com/api/v2/dmt/beneficiaryotp.php?username=MRN1747997&apikey=1273418745&number={}&beneficiaryid={}".format(mobile, bid)
-    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiary.php?username=MRN1747997&apikey=1348504980&number=$cUser->mobile&beneficiaryid=" . $bene->bene_id . "&format=json"
-    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiaryverifiy.php?username=MRN1747997&apikey=1348504980&number=$cUser->mobile&otp=$request->otp&beneficiaryid=" . $bene->bene_id . "&format=json"
+    #     url = "https://mobilerechargenow.com/api/v2/dmt/beneficiaryotp.php?username=G320635255&apikey=2589337896&number={}&beneficiaryid={}".format(mobile, bid)
+    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiary.php?username=G320635255&apikey=2589337896&number=$cUser->mobile&beneficiaryid=" . $bene->bene_id . "&format=json"
+    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiaryverifiy.php?username=G320635255&apikey=2589337896&number=$cUser->mobile&otp=$request->otp&beneficiaryid=" . $bene->bene_id . "&format=json"
     
     # def report():
     #     url = 'from database'
@@ -737,7 +737,7 @@ def imps(request):
         mobile = bname = bmobile = bacc = ifsc = 'none'
         benelist = Beneficiary.objects.filter(user_id=str(request.user))
         abstatus = abdata = bostatus = bodata = 'blank'
-        if request.method == 'POST' and 'addbene' in request.POST:
+        if request.method == 'POST':
             mobile = request.user.mobile
             bname = request.POST.get('bname')
             bmobile = request.POST.get('bmobile')
@@ -746,28 +746,20 @@ def imps(request):
             txnid = generateid()
             abstatus, abdata = addbene(mobile, bname, bmobile, bacc, ifsc)
         
-        if request.method == 'POST' and 'botp' in request.POST:
-            otp = request.POST.get('botp')
-            bid = request.POST.get('bid')
-            bmobile = request.POST.get('bmobile')
-            bacc = request.POST.get('bacc')
-            ifsc = request.POST.get('ifsc')
-            txnid = generateid()
-            bostatus, bodata = beneotp(bmobile, otp, bid)
-            # bvstatus, bvdata = bankvalidate(bmobile, bacc, ifsc, txnid)
-            if bostatus == 'SUCCESS':
-                # if bvstatus == 'VERIFIED':
-                b = Beneficiary()
-                b.name = request.POST.get('bname')
-                b.mobile_number = request.POST.get('bmobile')
-                b.account_number = request.POST.get('bacc')
-                b.ifsc = request.POST.get('ifsc')
-                b.status = 'Active'
-                b.bene_id = request.POST.get('bid')
-                b.user_id = request.user.username
-                b.save()
-                # else:
-                    # message = "Bank Not Valid"
+        if True:
+            # if bvstatus == 'VERIFIED':
+            b = Beneficiary()
+            b.name = request.POST.get('bname')
+            b.mobile_number = request.POST.get('bmobile')
+            b.account_number = request.POST.get('bacc')
+            b.ifsc = request.POST.get('ifsc')
+            b.status = 'Active'
+            b.bene_id = '123'
+            b.user_id = request.user.username
+            b.save()
+
+            # else:
+                # message = "Bank Not Valid"
         return benelist, abstatus, abdata, bostatus, bodata, mobile, bname, bmobile, bacc, ifsc, bvstatus
 
 
@@ -777,13 +769,9 @@ def imps(request):
 
 
     
-    if dstatus != 'SUCCESS':
-        rstatus, rdata, rostatus, rodata = registermain()
-        dstatus, ddata = details(mobile)
-    elif dstatus == 'SUCCESS':
-        rostatus = "not needed"
-        rstatus = "not needed"
+    if request.method == 'POST' and 'addbene' in request.POST:
         benelist, abstatus, abdata, bostatus, bodata, mobile, bname, bmobile, bacc, ifsc, bvdata = addbenemain()
+    benelist = Beneficiary.objects.filter(user_id=str(request.user))
 
 
     return render(request, 'users/moneytransfer.html',
@@ -793,8 +781,6 @@ def imps(request):
         'abstatus': abstatus,
         'abdata': abdata,
         'dstatus': dstatus,
-        'rostatus': rostatus,
-        'rstatus': rstatus,
         'benelist': benelist,
         'mobile': mobile,
         'bname': bname,
@@ -809,7 +795,7 @@ def send(request):
     message = "Please open right page"
     def userbal(user):
         userid = User.objects.get(username=user)
-        bal = userid.income + userid.binary_income + userid.new_funds
+        bal = userid.wallet
         return bal
 
     def generateid():
@@ -823,8 +809,8 @@ def send(request):
         else:
             return 'JR{}'.format(txnid)
 
-    def sendmoney(mobile, amount, bid, txnid):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/transfer.php?username=MRN1747997&apikey=1348504980&number={}&amount={}&beneficiaryid={}&txnid={}&format=json".format(mobile, amount, bid, txnid)
+    def sendmoney(mobile, amount, bac, txnid):
+        url = "https://mobilerechargenow.com/api/v2/dmt/quicktransfer.php?username=G320635255&apikey=2589337896&beneficiaryname={}&beneficiaryacc={}&ifsccode={}&amount={}&txnid={}".format(bac.name, bac.account_number, bac.ifsc, amount, txnid)
         r = requests.get(url)
         data = r.json()
         status = data[
@@ -834,78 +820,26 @@ def send(request):
 
     if request.method == 'POST':
         bid = request.POST.get('bid')
-        bac = Beneficiary.objects.get(bene_id=bid)
+        bac = Beneficiary.objects.get(id=bid)
         amount = float(request.POST.get('amount'))
         mobile = request.user.mobile
-        # bac.mobile_number
         txnid = generateid()
 
     userbal = userbal(str(request.user))
     user_id = request.user
-
-    # if request.user.redeem_access == True:
-    #     if amount < 5001 and amount >= 200:
-    #         if user_id.imps_daily+amount > 5001:
-    #             if userbal >= amount:
-    #                 if user_id.income <= amount:
-    #                     amount = amount - user_id.income
-    #                     user_id.income = 0
-    #                     print("if1")
-    #                     if user_id.binary_income <= amount:
-    #                         amount = amount - user_id.binary_income
-    #                         user_id.binary_income = 0
-    #                         print("if2")
-    #                     else:
-    #                         user_id.binary_income = user_id.binary_income - amount
-    #                         amount = 0
-    #                         print("if6")
-    #                 else:
-    #                     user_id.income = user_id.income - amount
-    #                     amount = 0
-    #                 print("if7")
-    #                 amount = float(request.POST.get('amount'))
-    #                 if amount>500:
-    #                     bank = '2%'
-    #                     sendmoney, sdata = sendmoney(mobile, amount*0.98, bid, txnid)
-    #                 else:
-    #                     bank = '3%'
-    #                     sendmoney, sdata = sendmoney(mobile, amount*0.97, bid, txnid)
-
-    #                 if sendmoney != 'FAILED':
-    #                     userwallet = WalletHistory()
-    #                     userwallet.balance_after = userbal - amount
-    #                     userwallet.user_id = str(user_id)
-    #                     userwallet.amount = float(amount)
-    #                     userwallet.type = "debit"
-    #                     userwallet.filter = "IMPS"
-    #                     userwallet.txnid = txnid
-    #                     userwallet.comment = "Sent to bank with txnid {}".format(txnid)
-    #                     user_id.imps_daily += amount
-
-    #                     userwallet.save()
-    #                     user_id.save()
-    #                     message = "Money sent successfully sent with amount {} and bank charges {}".format(amount, bank)
-    #                 else:
-    #                     message = "third party server down, support email sent to third party"
-    #             else:
-    #                 message = "not enough available balance in wallet"
-    #         else:
-    #             message = "daily limit exceeded, 5000 is the limit"
-    #     else:
-    #         message = "You can transfer more than 200 and less than 5000 only"
-    if request.user.new_funds >= amount and request.user.redeem_access == False:
+    if userbal > amount:
         directs = Shopping.objects.filter(direct=request.user).count()
-        if directs >= 2 or request.user.new_funds >= amount:
+        if directs >= 2 or request.user.wallet >= amount:
             if amount <= 2001 and amount >= 200:
                 if user_id.imps_daily+amount < 2001:
-                    user_id.new_funds = user_id.new_funds - amount
+                    user_id.wallet = user_id.wallet - amount
                     amount = float(request.POST.get('amount'))
                     if amount>500:
                         bank = '2%'
-                        sendmoney, sdata = sendmoney(mobile, amount*0.98, bid, txnid)
+                        sendmoney, sdata = sendmoney(mobile, amount*0.98, bac, txnid)
                     else:
                         bank = '3%'
-                        sendmoney, sdata = sendmoney(mobile, amount*0.97, bid, txnid)
+                        sendmoney, sdata = sendmoney(mobile, amount*0.97, bac, txnid)
 
                     if sendmoney != 'FAILED':
                         userwallet = WalletHistory()

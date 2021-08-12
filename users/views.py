@@ -33,6 +33,7 @@ User = get_user_model()
 
 from wallets.models import AddFund
 from wallets.models import WalletHistory
+from games.models import Game
 
 from uuid import uuid4
 from random import randint
@@ -237,80 +238,9 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         except Exception as e:
             s = e
         directs = UserTotal.objects.filter(direct=user).count()
-        level1 = UserTotal.objects.filter(direct=user.username).order_by('id')
-        level1n = []
-        for x in level1:
-            level1n.append(x)
-        level2n = []
-        for y in level1n:
-            level2 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level2:
-                level2n.append(z)
-        level3n = []
-        for y in level2n:
-            level3 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level3:
-                level3n.append(z)
-        level4n = []
-        for y in level3n:
-            level4 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level4:
-                level4n.append(z)
-        level5n = []
-        for y in level4n:
-            level5 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level5:
-                level5n.append(z)
-        level6n = []
-        for y in level5n:
-            level6 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level6:
-                level6n.append(z)
-        level7n = []
-        for y in level6n:
-            level7 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level7:
-                level7n.append(z)
-        level8n = []
-        for y in level7n:
-            level8 = UserTotal.objects.filter(direct=y).order_by('id')
-            for z in level8:
-                level8n.append(z)
 
-        all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n]
-
-        business = {}
-        level = 0
-        for a in all_levels:
-            level += 1
-            b = 0
-            for x in a:
-                b += x.level.amount
-            business['{}'.format(level)] = b
-
-        recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
-        large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
-
-        try:
-            plan_ends = levelp.activated_at
-            if plan_ends != 'gone' and plan_ends != 'not active':
-                date_diff = plan_ends - timezone.now()
-            else:
-                date_diff = 'blank'
-            if date_diff != 'blank':
-                total_days = levelp.level.expiration_period * 30
-                rate = levelp.level.return_amount/total_days
-                return_total = -(rate*date_diff.days)
-            if return_total <= 0:
-                return_total = 0
-        except Exception as e:
-            return_total = 0
         
-        context["amount"] = levelp
-        context['ret'] = return_total
-        context['recent'] = recent
-        context['large'] = large
-        context['business'] = business
+        context["games"] = Game.objects.all()
         return context
 
 

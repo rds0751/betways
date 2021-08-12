@@ -1,6 +1,5 @@
 {% extends "users/base.html" %}
 {% load static i18n %}
-{% load thumbnail %}
 {% block title %}{% trans 'Payment Success' %}{% endblock %}
 
 
@@ -36,7 +35,7 @@
                               </div>
                             </div>
                           </div>
-                          <input class="mdc-text-field__input" id="text-field-hero-input" type="hidden" name="phone" value="{{ request.user.mobile }}" id="id_phone">
+                          <input class="mdc-text-field__input" id="text-field-hero-input" type="hidden" name="phone" value="7271634566" id="id_phone">
                           {{ form.as_p }}
                           <br>
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">

@@ -5,16 +5,19 @@ from django.utils.html import mark_safe
  
 # Create your models here.
 class Beneficiary(models.Model):
-    user_id = models.CharField(max_length=255, blank=True, null=True)
-    bene_id = models.CharField(max_length=255, blank=True, null=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    vpa = models.CharField(max_length=255, blank=True, null=True)
-    account_number = models.CharField(max_length=255, blank=True, null=True)
-    ifsc = models.CharField(max_length=255, blank=True, null=True)
-    mobile_number = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=255)
+    user_id = models.CharField(max_length=255, default='123')
+    bene_id = models.CharField(max_length=255, default='123')
+    name = models.CharField(max_length=255, default='123')
+    vpa = models.CharField(max_length=255, default='123')
+    account_number = models.CharField(max_length=255, default='123')
+    ifsc = models.CharField(max_length=255, default='123')
+    mobile_number = models.CharField(max_length=255, default='123')
+    status = models.CharField(max_length=255, default='123')
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
+
+    class Meta:
+        unique_together = ('user_id', 'account_number', 'ifsc')
 
 class WalletHistory(models.Model):
     user_id = models.CharField(max_length=20)

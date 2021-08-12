@@ -1,0 +1,57 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Game Details' %}{% endblock %}
+
+
+{% block content %}
+<div style="z-index: 99999999; position: fixed; top: 0; color: white; margin-left: 25%; background-color: black;" id="status"></div>
+<a href="/games/" style="z-index: 99999999; position: fixed; top: 0; right: 0; color: white;" class="mdc-button mdc-button--raised icon-button mdc-ripple-upgraded">
+                        <i class="material-icons mdc-button__icon">close</i>
+                      </a>
+<div class="body-wrapper">
+	<div class="main-wrapper">
+		<div class="page-wrapper full-page-wrapper">
+			<main>
+				<div>
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+							<div style="box-shadow: 0;" class="mdc-card p-0 m-0">
+								<div class="mdc-layout-grid__inner mt-2">
+									<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+										
+										<form name="quiz" id="myquiz" method="POST" action="/games/played/">
+											{% csrf_token %}
+											<input type="hidden" name="user" value="{{ request.user }}">
+											<input type="hidden" name="gameid" value="{{ game.id }}">
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    function countDown(secs,elem)
+    {
+        var element = document.getElementById(elem);
+        element.innerHTML = "<h5> Time Left: <b>"+secs+"</b> Seconds </h5>";
+        if(secs === 0){
+        clearTimeout(timer);
+        element.innerHTML = "<h5>wow! played nice.</h5>";
+        console.log(document.getElementById('myquiz'))
+        document.getElementById('myquiz').submit();
+        }
+        if(secs < 0){
+        element.innerHTML = "<h5>wow! played nice.</h5>";
+        }
+        secs--;
+        var timer = setTimeout ('countDown('+secs+',"'+elem+'")',1000);
+    }
+    function validate() { return true; }
+</script>
+<script type="text/javascript">countDown(800, "status");</script>
+{% endblock content %}

@@ -62,12 +62,12 @@
             <div class="mdc-text-field w-100">
               <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="name" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
               <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">picture_in_picture</span><span style="font-size: .8rem;"> {% trans "Full Name" %}</span></label>
+              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">picture_in_picture</span><span style="font-size: .8rem;"> {% trans "Name" %}</span></label>
             </div>
           </div>
           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
             <div class="mdc-text-field w-100">
-              <input style="font-size: .8rem;" default="+91" autocomplete="sedrctvghb" type="text" name="mobile" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
+              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="mobile" minlength="10" maxlength="10" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
               <div class="mdc-line-ripple"></div>
               <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> {% trans "Mobile" %}</span></label>
             </div>
@@ -143,7 +143,7 @@ lock_open
                 var username = $(this).val();
 
                 $.ajax({
-                  url: '/users/ajax/validate_username/',
+                  url: '/ajax/validate_username/',
                   data: {
                     'username': username
                   },

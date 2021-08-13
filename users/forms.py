@@ -27,11 +27,11 @@ class SimpleSignupForm(SignupForm):
 	def clean_username(self):
 		def generateuser():
 			r = random.randint(100001,999999)
-			u = User.objects.filter(username='IPAY{}'.format(r)).count()
+			u = User.objects.filter(username='{}'.format(r)).count()
 			if u > 0:
 				generateuser()
 			else:
-				return 'IPAY{}'.format(r)
+				return '{}'.format(r)
 		u = generateuser()
 		username = u
 		return username
@@ -44,14 +44,7 @@ class SimpleSignupForm(SignupForm):
 		except Exception as e:
 			userr = 'blank'
 		if userr == 'blank':
-			referral = 'IPAY999999'
-		plan = UserTotal()
-		plan.user = user
-		plan.level = LevelIncomeSettings.objects.get(id=9)
-		plan.active = False
-		plan.left_months = 0
-		plan.direct = referral
-		plan.save()
+			referral = '999999'
 		# subject = 'Welcome to IPAYMATICS Inc.'
 		# html_message = render_to_string('account/email/welcome.html', {'context': self.cleaned_data['name']})
 		# plain_message = strip_tags(html_message)

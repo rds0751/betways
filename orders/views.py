@@ -30,14 +30,14 @@ def checkout(request):
             amount = request.POST.get('amount')
             initial = order_form.cleaned_data
             initial.update({'key': settings.PAYU_INFO['merchant_key'],
-                            'surl': 'https://www.jrindia.co.in'+reverse('orders:success'),
-                            'furl': 'https://www.jrindia.co.in'+reverse('orders:success'),
+                            'surl': 'http://13.127.121.200'+reverse('orders:success'),
+                            'furl': 'http://13.127.121.200'+reverse('orders:failure'),
                             'service_provider': 'payu_paisa',
                             'firstname': user.username,
                             'email': user.email,
-                            'phone': '7276034555',
+                            'phone': user.mobile,
                             'amount': amount,
-                            'curl': 'https://www.jrindia.co.in'+reverse('orders:cancel')})
+                            'curl': 'http://13.127.121.200'+reverse('orders:cancel')})
             # Once you have all the information that you need to submit to payu
             # create a payu_form, validate it and render response using
             # template provided by PayU.
@@ -155,7 +155,7 @@ def success(request):
         b.user = data.get("firstname")
         b.save()
         r = User.objects.get(username=data.get("firstname"))
-        r.new_funds += float(data.get("amount"))
+        r.wallet += float(data.get("amount"))
         r.save()
         w = WalletHistories()
         w.user_id = data.get("firstname")
@@ -167,13 +167,16 @@ def success(request):
     context = {"txnid":txnid,"status":status,"amount":amount, 'data':data, 'added':added}
     return render(request, 'payments/sucess.html', context)
 
-
+@csrf_protect
+@csrf_exempt
 def failure(request):
     if request.method == 'POST':
         return render(request, 'payments/failure.html')
     else:
         raise Http404
 
+@csrf_protect
+@csrf_exempt
 def cancel(request):
     if request.method == 'POST':
         return render(request, 'payments/cancel.html')

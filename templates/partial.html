@@ -1,10 +1,9 @@
 {% load static i18n %}<!-- partial:partials/_sidebar.html -->
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open" style="background: #0070ba">
   <div class="mdc-drawer__content">
-    <div class="align-items-left" style="margin: 10px 25px; height: 10%; margin-top: 30px;">
-      <h2 align="center" style="color: white; margin-bottom: 0px;">$&nbsp;{{ request.user.wallet|add:request.user.c }}
-      </h2>
-      <p style="font-size: 10px; color: white;" align="center">Mr/s. {{ request.user.name|truncatewords:1 }}({{user.username}})
+    <div class="align-items-start" style="margin: 10px 25px; height: 20%; margin-top: 30px;">
+      <img style="width: 50px; border-radius: 50%; margin-left: 40%" src="https://i.pinimg.com/originals/34/f2/50/34f250635ed02218356595ea6d730518.jpg" alt="user" class="user">
+      <p align="center" style="color: white; margin-bottom: 0px;">{{ request.user.name|truncatewords:1 }}({{user.username}})
       </p>
     </div>
     <div class="mdc-list-group">
@@ -20,7 +19,7 @@
           <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: 10px;' {% else %} style='color: white;font-size: 10px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu6">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">cached
             </i>
-            <strong>{% trans 'Top up' %}
+            <strong>{% trans 'Add Money' %}
             </strong>
             <i class="mdc-drawer-arrow material-icons">add
             </i>
@@ -38,17 +37,6 @@
                     Add Money
                   </a>
               </div>
-              <div {% if request.get_full_path == '/level/activation/' %} style='background: #8ac53e' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-                  <a class="mdc-drawer-link" {% if request.get_full_path == '/level/activation/' %} style='color: white;
-                  font-size: bold;
-                  font-weight: bold;
-                  font-size: 10px;' {% else %} style='color: white;
-                  font-size: bold;
-                  font-weight: bold;
-                  font-size: 10px;' {% endif %}  href="/level/activation/">
-                  {% trans 'Purchase Package' %}
-                </a>
-              </div>
             </nav>
           </div>
         </div>
@@ -56,46 +44,24 @@
           <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: 10px;' {% else %} style='color: white;font-size: 10px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu1">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">people
             </i>
-            <strong>{% trans 'My Profile' %}
+            <strong>{% trans 'My Details' %}
             </strong>
             <i class="mdc-drawer-arrow material-icons">add
             </i> 
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu1">
             <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/~update/' %} style='background: #8ac53e' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-                  <a class="mdc-drawer-link" {% if request.get_full_path == '/~update/' %} style='color: white;
-                  font-size: bold;
-                  font-weight: bold;
-                  font-size: 10px;' {% else %} style='color: white;
-                  font-size: bold;
-                  font-weight: bold;
-                  font-size: 10px;' {% endif %}  href="/~update/">
-                  {% trans 'Personal Details' %}
-                </a>
-              </div>
-          <div {% if request.get_full_path == '/wallet/account/' %} style='background: #8ac53e' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/account/' %} style='color: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 10px;' {% else %} style='coslor: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 10px;' {% endif %}  href="/wallet/account/">
-            {% trans 'Bank Details' %}
-          </a>
-        </div>
-              <div {% if request.get_full_path == '/kyc/pancard/' %} style='background: #8ac53e' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-            <a class="mdc-drawer-link" {% if request.get_full_path == '/kyc/pancard/' %} style='color: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 10px;' {% else %} style='color: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 10px;' {% endif %}  href="/kyc/pancard/">
-            {% trans 'Update KYC' %}
-          </a>
-        </div>
+              <div {% if request.get_full_path == '/wallet/account/' %} style='background: #8ac53e' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/account/' %} style='color: white;
+                font-size: bold;
+                font-weight: bold;
+                font-size: 10px;' {% else %} style='coslor: white;
+                font-size: bold;
+                font-weight: bold;
+                font-size: 10px;' {% endif %}  href="/wallet/account/">
+                {% trans 'Bank Details' %}
+              </a>
+            </div>
             </nav>
           </div>
         </div>
@@ -103,7 +69,7 @@
         <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: 10px;' {% else %} style='color: white;font-size: 10px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu5">
           <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">device_hub
               </i>
-          <strong>{% trans 'My Network' %}
+          <strong>{% trans 'My Referrals' %}
           </strong>
           <i class="mdc-drawer-arrow material-icons">add
           </i>
@@ -118,7 +84,7 @@
             font-size: bold;
             font-weight: bold;
             font-size: 10px;' {% endif %}  href="/level/team/{{request.user.username}}/0/">
-              {% trans 'My Network' %}
+              {% trans 'My Referrals' %}
             </a>
           </div>
         </nav>
@@ -163,7 +129,7 @@
     <div {% if '/shsedrcftvgbhop/' in request.get_full_path %} style='width: 100%;background: #8ac53e;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
         <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: 10px;' {% else %} style='color: white;font-size: 10px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu7">
           <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">history</i>
-          <strong>{% trans 'My Incomes' %}
+          <strong>{% trans 'Betting History' %}
           </strong>
           <i class="mdc-drawer-arrow material-icons">add
           </i>
@@ -262,8 +228,7 @@
               <div class="mdc-notched-outline">
                 <div class="mdc-notched-outline__leading"></div>
                 <div class="mdc-notched-outline__notch">
-                  <label for="text-field-hero-input" class="mdc-floating-label">
-          {{ request.session.user_id }}</label>
+                  <label for="text-field-hero-input" class="mdc-floating-label">{{ request.session.user_id }}</label>
                 </div>
                 <div class="mdc-notched-outline__trailing"></div>
               </div>

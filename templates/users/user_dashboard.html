@@ -14,7 +14,7 @@
             {% for game in games %}
             <a href='/games/{{game.id}}' style="height: 140px; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
               <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/1200px-Circle-icons-computer.svg.png">
+                <img style="max-width: -webkit-fill-available;" src="{{game.imageURL.url}}">
                 <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>{{ game.name }}</p>
               </div>
           </a>

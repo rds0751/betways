@@ -63,8 +63,24 @@ function myyFunction() {
         {% endif %}
 {% block wrapper %}
 {% if user.is_authenticated %}
-  <div align="center pt-5">
-</div>
+  <div align="center" style="background: white;" class="pt-4">
+  <div style="background: white" class="page-wrapper mdc-toolbar-fixed-adjust ">
+    <main>
+      <div>
+        &nbsp;
+        </div>
+      </main>
+    </div>
+  </div>
+  <div align="center" style="background: white;" class="pt-2">
+  <div style="background: white" class="page-wrapper mdc-toolbar-fixed-adjust ">
+    <main>
+      <div>
+        &nbsp;
+        </div>
+      </main>
+    </div>
+  </div>
 {% endif %}
         {% block content %}
         {% endblock content %}

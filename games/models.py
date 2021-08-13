@@ -23,7 +23,7 @@ class GameResult(models.Model):
 		return activated_at + timezone.timedelta(minutes=5)
 
 	def __str__(self):
-		return str(str(self.game)+' result '+str(self.result))
+		return str(str(self.game)+' result '+str(self.result)) + str(self.published)
 
 
 class PlayedGame(models.Model):
@@ -40,4 +40,4 @@ class PlayedGame(models.Model):
 	# exact = exact
 	
 	def __str__(self):
-		return str(self.user)
+		return str(self.user) + str(self.rewards)

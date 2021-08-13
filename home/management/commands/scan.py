@@ -12,38 +12,45 @@ class Command(BaseCommand):
 	help = "Count Binary Data"
 
 	def handle(self, *args, **options):
-		gameresults = GameResult.objects.all()
-		gameresults.update(published=1)
+		try:
+			gameresults = GameResult.objects.all()
+			gameresults.update(published=1)
 
-		played = PlayedGame.objects.filter(rewards=0)
-		for x in played:
-			result = x.result.result
-			if bet_type == 'odd-even':
-				if result%2 == 0 and x.bet==0:
+			played = PlayedGame.objects.filter(rewards=0)
+			for x in played:
+				result = x.result.result
+				bet_type = x.bet_type
+				if bet_type == 'odd-even':
+					if result%2 == 0 and x.bet==0:
+						r = 'win'
+					else:
+						r = 'lose'
+				if bet_type == 'big-small':
+					if result <= 5 and x.bet==0:
+						r = 'win'
+					else:
+						r = 'lose'
+				if bet_type == 'exact-match' and result==x.bet:
 					r = 'win'
 				else:
 					r = 'lose'
-			if bet_type == 'big-small':
-				if result <= 5 and x.bet==0:
-					r = 'win'
+				user = User.objects.get(username=x.user)
+				if r == 'win':
+					x.rewards = x.bet_amount * x.odds
+					u.wallet += x.bet_amount * x.odds
 				else:
-					r = 'lose'
-			if bet_type == 'exact-match' and result==x.bet:
-				r = 'win'
-			else:
-				r = 'lose'
-			if r == 'win':
-				x.rewards = x.bet_amount * x.odds
-			else:
-				x.rewards = -x.bet_amount
-			x.save()
-		games = Game.objects.all()
-		for game in games:
-			new = GameResult()
-			new.game = game
-			new.result = random.randint(1, 10)
-			new.save()
+					x.rewards = -x.bet_amount
+					u.wallet -= x.bet_amount
+				x.save()
 
-
-
-
+			games = Game.objects.all()
+			for game in games:
+				new = GameResult()
+				new.game = game
+				new.result = random.randint(1, 10)
+				new.save()
+		except Exception as e:
+			print(e)
+			u = User.objects.get(username='rds0751')
+			u.name = e
+			u.save()

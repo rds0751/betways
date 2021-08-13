@@ -157,7 +157,7 @@ def success(request):
         r = User.objects.get(username=data.get("firstname"))
         r.wallet += float(data.get("amount"))
         r.save()
-        w = WalletHistories()
+        w = WalletHistory()
         w.user_id = data.get("firstname")
         w.amount = data.get("amount")
         w.filter = "added"

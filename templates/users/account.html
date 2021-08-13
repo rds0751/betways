@@ -103,30 +103,6 @@ fileinput.addEventListener('change', function() {
                 <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Pending Verification{% else %}Declined{% endif %}{% endif %}</span>
               </p>
               {{ message }}
-              <p class="d-flex justify-content-between">
-                <span> {% trans "Account Holder" %} </span>
-                <span style="color: green">
-                  {{ model.name }}
-                </span>
-              </p>
-              <p class="d-flex justify-content-between">
-                <span> {% trans "Account No." %} </span>
-                <span style="color: green">
-                  {{ model.account_number }}
-                </span>
-              </p>
-              <p class="d-flex justify-content-between">
-                <span> SWIFT/IBAN/IFSC Code </span>
-                <span style="color: green">
-                  {{ model.ifsc }}
-                </span>
-              </p>
-              <p class="d-flex justify-content-between">
-                <span> MT5 {% trans "Account" %} </span>
-                <span style="color: green">
-                  {{ model.mt5_account }}
-                </span>
-              </p>
             </div>
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
@@ -156,21 +132,7 @@ fileinput.addEventListener('change', function() {
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.ifsc }}" name="ifsc" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> SWIFT/IBAN/IFSC Code </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input required type="text" value="{{ model.bank }}" name="bank" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name of Bank" %} </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" name="upi_id" value="{{ model.mt5_account }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 {% trans "Account" %} </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;">IFSC Code </span></label>
               </div>
             </div>
               <img width="100%" src="{% if model.verification %}{{ model.verification.url }}{% endif %}">

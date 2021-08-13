@@ -62,7 +62,7 @@ function myyFunction() {
     {% include 'partial.html' %}              
         {% endif %}
 {% block wrapper %}
-{% if user.is_authenticated %}<!-- 
+{% if user.is_authenticated %}
   <div align="center">
   <div class="page-wrapper mdc-toolbar-fixed-adjust">
     <main>
@@ -81,7 +81,7 @@ behavior="scroll">
       </div>
     </main>
   </div>
-</div> -->
+</div>
 {% endif %}
         {% block content %}
         {% endblock content %}

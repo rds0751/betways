@@ -63,24 +63,7 @@ function myyFunction() {
         {% endif %}
 {% block wrapper %}
 {% if user.is_authenticated %}
-  <div align="center">
-  <div class="page-wrapper mdc-toolbar-fixed-adjust">
-    <main>
-      <div>
-        <div style="padding-top: 8px; padding-bottom: 8px; background: white" class="info-card info-card--success">
-        <div class="mdc-layout-grid__inner">
-            <div class="stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-              <marquee scrollamount="8"
-direction="left"
-behavior="scroll">
-<h4 style="color: #0ba0b0; vertical-align: middle; margin-bottom: 0">{% trans news.news %}</h4>
-</marquee>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+  <div align="center pt-5">
 </div>
 {% endif %}
         {% block content %}

@@ -3,6 +3,8 @@
   <div class="mdc-drawer__content">
     <div class="align-items-start" style="margin: 10px 25px; height: 20%; margin-top: 30px;">
       <img style="width: 50px; border-radius: 50%; margin-left: 40%" src="https://i.pinimg.com/originals/34/f2/50/34f250635ed02218356595ea6d730518.jpg" alt="user" class="user">
+      <h2 align="center" style="color: white; margin-bottom: 0px;">INR&nbsp;{{ request.user.wallet|add:request.user.c }}
+      </h2>
       <p align="center" style="color: white; margin-bottom: 0px;">{{ request.user.name|truncatewords:1 }}({{user.username}})
       </p>
     </div>

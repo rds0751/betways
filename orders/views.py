@@ -12,7 +12,7 @@ User = get_user_model()
 
 from payu.forms import PayUForm
 from orders.forms import OrderForm
-# from wallets.models import AddMoney
+from wallets.models import AddFund
 from wallets.models import WalletHistory
 
 from uuid import uuid4
@@ -91,13 +91,13 @@ def success(request):
         print("We have received a payment of Rs. ", amount ,". Your order will soon be shipped.")
     a = 'None'
     try:
-        AddMoney.objects.get(user=data.get('firstname'), txnid=txnid)
-    except AddMoney.DoesNotExist:
+        AddFund.objects.get(user=data.get('firstname'), txnid=txnid)
+    except AddFund.DoesNotExist:
         a = 'blank'
-    except AddMoney.MultipleObjectsReturned:
+    except AddFund.MultipleObjectsReturned:
         a = 'exists'
     if a == 'blank': 
-        b = AddMoney()
+        b = AddFund()
         b.postBackParamId = data.get("postBackParamId")
         b.mihpayid = data.get("mihpayid")
         b.paymentId = data.get("paymentId")

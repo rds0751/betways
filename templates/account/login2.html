@@ -38,7 +38,7 @@
               {% endif %}
               <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="/hello" />
+                <input type="hidden" name="{{ redirect_field_name }}" value="/games/parameters" />
                 <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">

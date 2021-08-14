@@ -27,14 +27,12 @@ class SearchListView(LoginRequiredMixin, ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         query = self.request.GET.get("query")
-        form = BinaryJoinForm()
         context["hide_search"] = True
         context["users_list"] = (
             get_user_model()
-            .objects.filter(Q(username=query))
+            .objects.filter(Q(username__icontains=query))
             .distinct()
         )
-        context["form"] = form
         
         return context
 
@@ -42,20 +40,10 @@ class SearchListView(LoginRequiredMixin, ListView):
 def transfer(request):
     message = ""
     amount = 0
-    def generateid():
-        txnid = get_random_string(8)
-        try:
-            txn = Recharges.objects.get(transaction_id = txnid)
-        except Recharges.DoesNotExist:
-            txn = 0
-        if txn:
-            generateid()
-        else:
-            return 'JR{}'.format(txnid)
 
     def userbal(user):
         userid = User.objects.get(username=user)
-        bal = userid.income + userid.binary_income + userid.added_amount + userid.received_amount + userid.new_funds
+        bal = userid.wallet
         return bal
 
     ben = 'blank'
@@ -63,7 +51,7 @@ def transfer(request):
         amount = float(request.POST.get('amount'))
         bene_id = request.POST.get('bene_id')
         user = request.POST.get('user_id')
-        txnid = generateid()
+        txnid = 'interidtxn'
         try:
             ben = User.objects.get(username=bene_id)
         except User.DoesNotExist:
@@ -75,39 +63,8 @@ def transfer(request):
     if ben != 'blank':
         if userbal >= amount:
             user_id = request.user
-            if user_id.new_funds <= amount:
-                amount = amount - user_id.new_funds
-                user_id.new_funds = 0
-                if user_id.income <= amount:
-                    amount = amount - user_id.income
-                    user_id.income = 0
-                    print("if1")
-                    if user_id.binary_income <= amount:
-                        amount = amount - user_id.binary_income
-                        user_id.binary_income = 0
-                        print("if2")
-                        if user_id.added_amount <= amount:
-                            amount = amount - user_id.added_amount
-                            user_id.added_amount = 0
-                            print("if3")
-                            if amount != 0:
-                                user_id.received_amount = user_id.received_amount - amount
-                                amount = 0
-                                print("if4")
-                        else:
-                            user_id.added_amount = user_id.added_amount - amount
-                            amount = 0
-                            print("if5")
-                    else:
-                        user_id.binary_income = user_id.binary_income - amount
-                        amount = 0
-                        print("if6")
-                else:
-                    user_id.income = user_id.income - amount
-                    amount = 0
-            else:
-                user_id.new_funds = user_id.new_funds - amount
-                amount = 0
+            user_id.wallet -= amount
+            amount = 0
                 
             user_id.save()
             if request.method == 'POST':

@@ -41,3 +41,12 @@ class PlayedGame(models.Model):
 	
 	def __str__(self):
 		return str(self.user) + str(self.rewards)
+
+
+class Parameter(models.Model):
+	user = models.CharField(max_length=50, null=True, blank=True)
+	status = models.IntegerField(default=0)
+	selected_plan = models.IntegerField(default=0)
+	
+	def __str__(self):
+		return str(self.user) + str(self.status)

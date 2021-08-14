@@ -38,9 +38,21 @@ class Command(BaseCommand):
 				if r == 'win':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds
+					w = WalletHistory()
+					w.user_id = u
+					w.amount = x.bet_amount * x.odds
+					w.comment = 'Won a bet'
+					w.type = 'credit'
+					w.save()
 				else:
 					x.rewards = -x.bet_amount
 					u.wallet -= x.bet_amount
+					w = WalletHistory()
+					w.user_id = u
+					w.amount = x.bet_amount
+					w.comment = 'Lost a bet'
+					w.type = 'debit'
+					w.save()
 				x.save()
 
 			games = Game.objects.all()

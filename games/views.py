@@ -6,6 +6,9 @@ def game(request, gameid):
     results = GameResult.objects.filter(game=game).order_by('-start_time')
     return render(request, 'games/game.html', {'game': game, 'results': results})
 
+def parameter(request):
+    return render(request, 'games/parameter.html', {})
+
 def place(request):
 	if request.method == 'POST':
 		amount = request.POST.get('amount')

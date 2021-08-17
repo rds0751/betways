@@ -43,22 +43,6 @@
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="--mdc-ripple-fg-size:184px; --mdc-ripple-fg-scale:1.74065; --mdc-ripple-fg-translate-start:25px, -62.875px; --mdc-ripple-fg-translate-end:61.5px, -69.5px;">
-              <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" name="referal_code" placeholder="" class="mdc-text-field__input" id="id_username" autocomplete="off">
-              <div class="mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating" style="transform-origin: 117px center;"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label mdc-floating-label--float-above"><span style="font-size: 1.4rem;
-              color: #7d7c7c;" class="material-icons">person</span><span style="font-size: .8rem;">{% trans "Sponsor ID" %}</span></label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="--mdc-ripple-fg-size:184px; --mdc-ripple-fg-scale:1.74065; --mdc-ripple-fg-translate-start:49px, -59.875px; --mdc-ripple-fg-translate-end:61.5px, -69.5px;">
-              <input style="font-size: .8rem;" type="text" minlength="1" maxlength="150" class="mdc-text-field__input" id="user_name" readonly="">
-              <div class="mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating" style="transform-origin: 141px center;"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label mdc-floating-label--float-above"><span style="font-size: 1.4rem;
-              color: #7d7c7c;" class="material-icons">picture_in_picture</span><span style="font-size: .8rem;"> {% trans "Sponsor Name" %}</span></label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
             <div class="mdc-text-field w-100">
               <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="name" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
               <div class="mdc-line-ripple"></div>
@@ -72,15 +56,7 @@
               <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> {% trans "Mobile" %}</span></label>
             </div>
           </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100">
-              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="email" name="email" placeholder="" class="mdc-text-field__input" id="text-field-hero-input">
-              <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
-                email
-              </span><span style="font-size: .8rem;"> {% trans "Email ID" %}</span></label>
-            </div>
-          </div>
+          <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="hidden" value="rds0751@gmail.com" name="email" placeholder="" class="mdc-text-field__input" id="text-field-hero-input">
           <input type="hidden" name="username" value="13wsdfgrfcvf">
           <input type="hidden" name="{{ redirect_field_name }}" value="/signup/onboarding/" />
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
@@ -101,6 +77,14 @@ lock_open
                             <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
 lock_open
 </span><span style="font-size: .8rem;"> {% trans "Confirm Password" %}</span></label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="--mdc-ripple-fg-size:184px; --mdc-ripple-fg-scale:1.74065; --mdc-ripple-fg-translate-start:25px, -62.875px; --mdc-ripple-fg-translate-end:61.5px, -69.5px;">
+                            <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" name="referal_code" placeholder="" class="mdc-text-field__input" id="id_username" autocomplete="off">
+                            <div class="mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating" style="transform-origin: 117px center;"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label mdc-floating-label--float-above"><span style="font-size: 1.4rem;
+                            color: #7d7c7c;" class="material-icons">person</span><span style="font-size: .8rem;">{% trans "Sponsor ID" %}</span></label>
                           </div>
                         </div>
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
@@ -138,23 +122,4 @@ lock_open
         </main>
       </div>
     </div>
-          <script>
-              $("#id_username").change(function () {
-                var username = $(this).val();
-
-                $.ajax({
-                  url: '/ajax/validate_username/',
-                  data: {
-                    'username': username
-                  },
-                  dataType: 'json',
-                  success: function (data) {
-                    if (true) {
-                      document.getElementById("user_name").value = data.is_taken;
-                    }
-                  }
-                });
-
-              });
-            </script>
-          {% endblock %}
+{% endblock %}

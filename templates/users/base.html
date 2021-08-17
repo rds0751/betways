@@ -10,6 +10,7 @@
   <meta property="og:description" content="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements">
   <meta property="og:image" content="{% static 'logo.ico' %}">
   <meta content="{% static 'logo.ico' %}" itemprop="image">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection" />
   <!-- plugins:css -->      
   {% block css %}
   <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
@@ -86,6 +87,19 @@ function myyFunction() {
         {% endblock content %}
 {% endblock wrapper %}
   </div>
+  <br><br>
+  <footer style="position: fixed;top: 90%;padding-top: 10px; width: -webkit-fill-available; background: #fff; border-top: grey 1px solid;" class="page-footer">
+  <div class="row" id="frow" style="margin-bottom:0px;">
+    <div class="col s12" style="padding-left:0px!important;padding-right:0px!important;">
+      <ul class="tabs tabs-fixed-width transparent white-text">
+        <li class="tab col s3 white-text"><a href="/" class="active white-text"><i style="color: aqua;" class="material-icons">home</i></a></li>
+        <li class="tab col s3 white-text"><a href="/records/" class="active white-text"><i style="color: aqua;" class="material-icons">dashboard</i></a></li>
+        <li class="tab col s3"><a href="/bets/" class="white-text"><i style="color: aqua;" class="material-icons">list</i></a></li>
+        <li class="tab col s3"><a href="/~update/" class="white-text"><i style="color: aqua;" class="material-icons">account_circle</i></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
     <script type="text/javascript">
     var div = document.getElementById("full");
 
@@ -143,16 +157,6 @@ $('.body-wrapper').fireworks({ sound: true, opacity: 0.9, width: '100%', height:
         </script>
 <script data-ad-client="ca-pub-2476399156226109" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f57c9b4f0e7167d000e8ad8/1eregigo5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
 <!--End of Tawk.to Script-->
       {% endblock javascript %}
 

@@ -44,7 +44,7 @@ class MyUser1ChangeForm(UserChangeForm):
     shopping_wallet = forms.FloatField(required=False)
     recharge_limit = forms.FloatField(required=False)
     added_amount = forms.FloatField(required=False)
-    total_income = forms.FloatField(required=False)
+    c = forms.FloatField(required=False)
 
     class Meta:
         model = User
@@ -60,8 +60,8 @@ class UserAdmin(UserAdmin):
     search_fields = ('name', 'mobile', 'username', 'email', )
     form = MyUser1ChangeForm
     add_form = MyUser1CreationForm
-    list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', )
-    list_editable = ('is_active', )
+    list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', 'wallet', 'c')
+    list_editable = ('is_active', 'c')
 
     def change_view(self, request, object_id):
         if request.user.is_superuser:

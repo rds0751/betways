@@ -28,8 +28,6 @@
                                     <th>Name</th>
                                     <th>Status</th>
                                     <th>Mobile</th>
-                                    <th>Upline ID</th>
-                                    <th>Upline Name</th>
                                     <th>Top up</th>
                                     <th>Actions</th>
                                 </tr>
@@ -42,8 +40,6 @@
                                     <td>{{ x.name }}</td>
                                     <td>{% if x.is_active == True %}Active{% else %}Blocked{% endif %}</td>
                                     <td>{{ x.mobile }}</td>
-                                    <td>{{ x.referral.username }}</td>
-                                    <td>{{ x.referral.name }}</td>
                                     <td class="hidden-xs">{% if x.top != 0 and x.top.level.amount != 0 %}{{x.top.level.amount}}{% else %}Inactive{% endif %}</td>
                                     <td class="text-center">
                                         <div class="btn-group">

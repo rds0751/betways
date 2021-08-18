@@ -47,7 +47,7 @@
           <div class="card-image"> <img src="https://lh3.googleusercontent.com/HG5A_Hqdm5pjPzGNQCNepLp5AbsCLZZbWBjX0Q7psjEJRjDqEWnE7SNWlwbYYfL3uA"> <span class="card-title"></span> </div>
           <div class="card-content">
             <p>IKTOR Presents bet and win! set the parameters and start winning daily.</p>
-            <p>ID Status: Active</p>
+            <p>ID Status: {% if request.user.c > 0 %}Active{% else %}Inactive{% endif %}</p>
             <p>Balance: INR {{ request.user.wallet }}.00/-</p>
           </div>
           <div class="card-action"> <a href="#"></a> </div>

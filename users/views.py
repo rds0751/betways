@@ -17,6 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
+from games.models import PlayedGame
 from django.contrib.auth import (
     REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
     logout as auth_logout, update_session_auth_hash,
@@ -130,6 +131,15 @@ def signuponboarding(request):
     except Exception as e:
         ruser = 'blank'
     return render(request, 'users/onboarding.html', {'user': user, 'ruser': ruser})
+
+@login_required
+def records(request):
+    user = request.user
+    try:
+        ruser = User.objects.get(username=user.referral)
+    except Exception as e:
+        ruser = 'blank'
+    return render(request, 'users/dashboard.html', {'user': user, 'ruser': ruser})
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -606,3 +616,9 @@ def validate_username(request):
         'is_taken': u
     }
     return JsonResponse(data)
+
+
+def bets(request):
+    bets = PlayedGame.objects.filter(user=request.user.username)
+    print(bets)
+    return render(request, 'users/bets.html', {'bets': bets})

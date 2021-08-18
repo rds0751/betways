@@ -34,7 +34,7 @@ class Command(BaseCommand):
 					r = 'win'
 				else:
 					r = 'lose'
-				user = User.objects.get(username=x.user)
+				u = User.objects.get(username=x.user)
 				if r == 'win':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds

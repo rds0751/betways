@@ -23,7 +23,7 @@
   position: absolute;
   top: 5%;
   left: 5%;
-  width: 70%;
+  width: 90%;
   padding: 16px;
   border: 16px solid orange;
   background-color: white;
@@ -36,6 +36,9 @@
 
 .content--active {
   display: block;
+}
+select {
+	display: block;
 }
 </style>
 <div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
@@ -113,7 +116,7 @@
 	        <input type="hidden" name="gid" value="{{game.id}}">
 	        <h5>Choose Even or Odd</h5>
 	        <input type="number" name="amount" placeholder="Amount">
-	        <input type="number" max="10" name="bet">
+	        <input type="number" max="10" name="bet" placeholder="Bet">
 	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
 	            Place Bet
 	          </button>

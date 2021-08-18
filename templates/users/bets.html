@@ -1,6 +1,6 @@
 {% extends "users/base.html" %}
 {% load static i18n %}
-{% block title %}{% trans 'Income History' %}{% endblock %}
+{% block title %}{% trans 'Bets' %}{% endblock %}
 
 
 {% block content %}
@@ -13,7 +13,7 @@
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
 							<div class="mdc-card p-0">
 								<section style="padding: 30px 30px 20px 30px;" class="error-header">
-									<h1>{% trans "Income History" %}</h1>
+									<h1>{% trans "Bets" %}</h1>
 								</section>
 								<section>
 									<div class="mdc-layout-grid__inner mt-2">
@@ -22,18 +22,16 @@
 												<div style="overflow-x: visible;" class="table-responsive">
 													<table style="width: 100%">
 														<tbody>
-															{% for history in histories %}
-															{% if history.type == 'hidden' %}
-															{% else %}
+															{% for history in bets %}
 															<tr>
 																<td style="padding-left: 20px;">
 																	<p style="color: black; font-size: 10px;">
-																	{{ history.comment }}</p>
-																	<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
+																		{{ history.result.game.name }}
+																	 - {{ history.bet_type }}</p>
+																	<p style="color: grey; font-size: 8px;">{{ history.result.end_time }}</p>
 																</td>
-																<td style="{% if history.rewards > 0 %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.rewards > 0 %}+{% else %}-{% endif %}  ${{ history.rewards|floatformat:2 }}</strong></td>
+																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>$ {{ history.rewards|floatformat:2 }}</strong></td>
 															</tr>
-															{% endif %}
 															{% endfor %}
 														</tbody>
 													</table>

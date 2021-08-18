@@ -18,41 +18,7 @@
 				<p>
 					{{ user.address }}, {{ user.city }}, {{ user.state }}
 				</p>
-				<div class="d-flex justify-content-between">
-					<a href="#edit" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
-						{% trans "Edit Profile" %}
-					</a>
-					<a href="/users/" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
-						{% trans "My Dashboard" %} 
-					</a>
-				</div>
 			</div>
-			<div class="border-bottom py-4">
-	            <div class="template-demo">
-	              <div role="progressbar" class="mdc-linear-progress">
-	                <div class="mdc-linear-progress__buffering-dots"></div>
-	                <div class="mdc-linear-progress__buffer"></div>
-	                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
-	                  <span class="mdc-linear-progress__bar-inner"></span>
-	                </div>
-	                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-	                  <span class="mdc-linear-progress__bar-inner"></span>
-	                </div>
-	              </div>
-	            </div>
-	            <div class="template-demo">
-	              <div role="progressbar" class="mdc-linear-progress">
-	                <div class="mdc-linear-progress__buffering-dots"></div>
-	                <div class="mdc-linear-progress__buffer"></div>
-	                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
-	                  <span class="mdc-linear-progress__bar-inner"></span>
-	                </div>
-	                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-	                  <span class="mdc-linear-progress__bar-inner"></span>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
 			<div class="py-4">
 				<p class="d-flex justify-content-between">
 					<span> {% trans "Mobile" %}  </span>
@@ -78,12 +44,6 @@
 						{{ user.date_joined|date }}
 					</span>
 				</p>
-				<p class="d-flex justify-content-between">
-					<span>Date of Activation</span>
-					<span style="color: green">
-						{{ s.activated_at|date }}
-					</span>
-				</p>
 			</div>
 			{% if form.errors %}
 			{% for field in form %}
@@ -99,7 +59,7 @@
 			</div>
 			{% endfor %}
 			{% endif %}
-			<form enctype="multipart/form-data" class="form-horizontal" method="post" action="/users/~update/">
+			<form enctype="multipart/form-data" class="form-horizontal" method="post" action="/~update/">
 				{% csrf_token %}
 				<div id="edit" class="mdc-layout-grid">
 					<div class="mdc-layout-grid__inner mb-3">
@@ -119,7 +79,7 @@
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px; ">
-								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" readonly id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Mobile" %} </span></label>
 							</div>
@@ -160,7 +120,7 @@
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-							<label class="mdc-button mdc-button--unelevated filled-button--secondary w-100" style="
+							<label class="mdc-button mdc-button--unelevated filled-button--primary w-100" style="
 										    display: inline-block;
 										    padding: 6px 12px;
 										    cursor: pointer;">{% trans "Upload Profile Picture" %}

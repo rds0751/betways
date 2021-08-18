@@ -1,0 +1,67 @@
+    {% extends "users/base.html" %}
+    {% load static i18n %}
+    {% block title %}{% trans 'Dashboard' %}{% endblock %}
+    {% load sum_tags %}
+
+
+    {% block content %}
+    <!-- partial -->
+  <div class="main-wrapper mdc-drawer-app-content">
+    <div class="page-wrapper mdc-toolbar-fixed-adjust">
+      <main style="background: white; padding-top: 0" class="content-wrapper">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <a href='/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://img-premium.flaticon.com/png/512/2163/premium/2163350.png?token=exp=1629184575~hmac=c017cb15325b96d8737f49192f4057f0">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Home</p>
+              </div>
+          </a>
+            <a href='/order/checkout/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://img-premium.flaticon.com/png/512/2936/premium/2936758.png?token=exp=1629260430~hmac=6cffef332f6fcb9cacdaa411e9e561c4">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Add Money</p>
+              </div>
+          </a>
+            <a href='/wallet/account/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/2830/2830289.png">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Bank Info</p>
+              </div>
+          </a>
+            <a href='/level/team/{{request.user.username}}/0/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/1570/1570225.png">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Subordinates</p>
+              </div>
+          </a>
+            <a href='/wallet/imps-transfer/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://img-premium.flaticon.com/png/512/625/premium/625614.png?token=exp=1629260688~hmac=19477116431e42b18395faab45595cc3">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>IMPS Transfer</p>
+              </div>
+          </a>
+            <a href='/wallet/transfer/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/3029/3029373.png">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>User Transfer</p>
+              </div>
+          </a>
+            <a href='/wallet/history/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/1825/1825357.png">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Income History</p>
+              </div>
+          </a>
+            <a href='/accounts/logout/' style="height: 90%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-card info-card info-card--danger">
+                <img style="max-width: -webkit-fill-available;" src="https://img-premium.flaticon.com/png/512/1082/premium/1082434.png?token=exp=1629260914~hmac=d68635fb154080cc10aad4957941ee11">
+                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Logout</p>
+              </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+    {% endblock content %}

@@ -5,6 +5,8 @@ from . import views
 app_name = "users"
 urlpatterns = [
     url(r'^success/', views.success, name='success'),
+    url(r'^bets/', views.bets, name='bets'),
+    url(r'^records/', views.records, name='records'),
     url(r'^failure/$', views.failure, name='failure'),
     url(r'^coming_soon/', views.coming_soon, name='coming_soon'),
     url(r'^cancel/$', views.cancel, name='cancel'),

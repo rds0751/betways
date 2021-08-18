@@ -12,7 +12,7 @@
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
             {% for game in games %}
-            <a href='/games/{{game.id}}' style="height: 166px; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
+            <a href='/games/{{game.id}}' style="height: 96%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
               <div class="mdc-card info-card info-card--danger">
                 <img style="max-width: -webkit-fill-available;" src="{{game.imageURL.url}}">
                 <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>{{ game.name }}</p>

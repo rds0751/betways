@@ -215,7 +215,7 @@
 <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:partials/_navbar.html -->
-      <header style="background: white; position: absolute; border-bottom: 0.001em solid #e9eaefe3;" class="mdc-top-app-bar">
+      <header style="background: white; position: fixed; border-bottom: 0.001em solid #e9eaefe3;" class="mdc-top-app-bar">
         <div class="mdc-top-app-bar__row">
           <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <button style="visibility: hidden;" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
@@ -237,6 +237,8 @@
             </div>
           </div>
           <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
+            <h2 align="center" style="margin-bottom: 0px; font-weight: 700;">₹&nbsp;{{ request.user.wallet|add:request.user.c }}.00
+      </h2>
             <div class="menu-button-container menu-profile d-none d-md-block">
               <button class="mdc-button mdc-menu-button">
                 <span class="d-flex align-items-center">

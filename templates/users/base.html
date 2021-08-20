@@ -95,6 +95,7 @@ function myyFunction() {
 {% endblock wrapper %}
   </div>
 
+{% if not '/games/parameters/' in request.get_full_path %}
 {% if user.is_authenticated %}
   <br><br>
   <footer style="position: fixed;top: 90%;padding-top: 10px; width: -webkit-fill-available; background: #fff; border-top: grey 1px solid;" class="page-footer">
@@ -109,6 +110,7 @@ function myyFunction() {
     </div>
   </div>
 </footer>
+{% endif %}
 {% endif %}
     <script type="text/javascript">
     var div = document.getElementById("full");

@@ -8,8 +8,8 @@
 <main class="content-wrapper">
 	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet">
 		<div class="mdc-card" align="center">
-			<h1>{{ user.username }}</h1>
-			{% if user.name %}<p class="lead">{{ user.name|title }}</p>{% endif %}
+			<h3>{{ user.name|title }}({{ user.username }})</h3>
+			<h4 class="lead">INR {{ request.user.wallet }}.00</h4>
 			<div class="text-center">
 				{% if user.profile_pic %}
 			<img style="border-radius: 50%;" class="img-xl img-rouded mb-3" src="{{ user.profile_pic.url }}" width="200px" alt="Picture Profile" id="pic">
@@ -84,20 +84,8 @@
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Mobile" %} </span></label>
 							</div>
 						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="nominee" value="{{request.user.nominee}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="nominee_relation" value="{{request.user.nominee_relation}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee Relation" %} </span></label>
-							</div>
-						</div>
+						<input type="hidden" name="nominee" value="{{request.user.nominee}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
+						<input type="hidden" name="nominee_relation" value="{{request.user.nominee_relation}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
 								<input type="text" name="address" value="{{ request.user.address }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
@@ -118,15 +106,6 @@
 								<div class="mdc-line-ripple"></div>
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "State" %} </span></label>
 							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-							<label class="mdc-button mdc-button--unelevated filled-button--primary w-100" style="
-										    display: inline-block;
-										    padding: 6px 12px;
-										    cursor: pointer;">{% trans "Upload Profile Picture" %}
-
-									<input style="display: none;" id="profile_pic" type="file" name="profile_pic">
-								</label>
 						</div>
 					</div>
 				<button class="mdc-button mdc-button--unelevated filled-button--primary">

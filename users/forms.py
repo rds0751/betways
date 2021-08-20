@@ -7,6 +7,7 @@ from level.models import UserTotal, LevelIncomeSettings
 from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.core.exceptions import ValidationError
 
 class SimpleSignupForm(SignupForm):
 	mobile = forms.CharField(max_length=250, label='mobile')
@@ -25,16 +26,11 @@ class SimpleSignupForm(SignupForm):
 		return name[0].upper() + name[1:].lower()
 
 	def clean_username(self):
-		def generateuser():
-			r = random.randint(100001,999999)
-			u = User.objects.filter(username='{}'.format(r)).count()
-			if u > 0:
-				generateuser()
-			else:
-				return '{}'.format(r)
-		u = generateuser()
-		username = u
-		return username
+		user_exists = User.objects.get(username=self.cleaned_data['username'])
+		if user_exists:
+			raise ValidationError("User exists")
+		else:
+			return self.cleaned_data['username']
 
 	def save(self, request):
 		user = super(SimpleSignupForm, self).save(request)
@@ -45,17 +41,6 @@ class SimpleSignupForm(SignupForm):
 			userr = 'blank'
 		if userr == 'blank':
 			referral = '999999'
-		# subject = 'Welcome to IPAYMATICS Inc.'
-		# html_message = render_to_string('account/email/welcome.html', {'context': self.cleaned_data['name']})
-		# plain_message = strip_tags(html_message)
-		# from_email = 'support@ipaymatics.com'
-		# to = user.email
-
-		# mail.send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
-		# url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
-		# payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
-		# response = requests.request("GET", url, data=payload)
-		# print(response.text)
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
 		user.referral = referral

@@ -26,11 +26,13 @@ class SimpleSignupForm(SignupForm):
 		return name[0].upper() + name[1:].lower()
 
 	def clean_username(self):
-		user_exists = User.objects.get(username=self.cleaned_data['username'])
+		try:
+			user_exists = User.objects.get(username=self.cleaned_data['username'])
+		except Exception as e:
+			return self.cleaned_data['username']
 		if user_exists:
 			raise ValidationError("User exists")
-		else:
-			return self.cleaned_data['username']
+			
 
 	def save(self, request):
 		user = super(SimpleSignupForm, self).save(request)

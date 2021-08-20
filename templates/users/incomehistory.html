@@ -31,7 +31,7 @@
 																	{{ history.comment }}</p>
 																	<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
 																</td>
-																<td style="{% if history.rewards > 0 %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.rewards > 0 %}+{% else %}-{% endif %}  ${{ history.rewards|floatformat:2 }}</strong></td>
+																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ₹{{ history.amount|floatformat:2 }}</strong></td>
 															</tr>
 															{% endif %}
 															{% endfor %}

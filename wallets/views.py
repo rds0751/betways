@@ -78,21 +78,13 @@ def transfer(request):
                     userwallet.comment = "sent to {}".format(str(bene_id))
 
                     bene = User.objects.get(username=bene_id)
-                    bene.received_amount += amount
+                    bene.wallet += amount
                     bene.save()
                     benewallet = WalletHistory()
                     benewallet.user_id = str(bene_id)
                     benewallet.amount = float(amount)
                     benewallet.type = "credit"
                     benewallet.comment = "received from {}".format(str(user_id))
-                    
-                    model = MoneyTransfers()
-                    model.user_id = str(user_id)
-                    model.bene_id = str(bene_id)
-                    model.amount = amount
-                    model.txn_id = txnid
-                    model.status = status
-                    model.save()
                     userwallet.save()
                     benewallet.save()
                     message = "Fund Transferred"
@@ -785,10 +777,9 @@ def send(request):
     userbal = userbal(str(request.user))
     user_id = request.user
     if userbal > amount:
-        directs = Shopping.objects.filter(direct=request.user).count()
-        if directs >= 2 or request.user.wallet >= amount:
-            if amount <= 2001 and amount >= 200:
-                if user_id.imps_daily+amount < 2001:
+        if request.user.wallet >= amount:
+            if amount <= 10001 and amount >= 100:
+                if True:
                     user_id.wallet = user_id.wallet - amount
                     amount = float(request.POST.get('amount'))
                     if amount>500:
@@ -807,7 +798,6 @@ def send(request):
                         userwallet.filter = "IMPS"
                         userwallet.txnid = txnid
                         userwallet.comment = "Sent to bank with txnid {}".format(txnid)
-                        user_id.imps_daily += amount
 
                         userwallet.save()
                         user_id.save()
@@ -815,9 +805,9 @@ def send(request):
                     else:
                         message = "Bank server down Error {}".format(sdata.get('resText'))
                 else:
-                    message = "daily limit exceeded, 2000 is the limits"
+                    message = "daily limit exceeded, 10000 is the limits"
             else:
-                message = "You can withdraw more than 200 and less than 1000 only!"
+                message = "You can withdraw more than 100 and less than 10000 only!"
         else:
             message = "Please add 2 Shopping Directs to Withdraw Money"
     else:

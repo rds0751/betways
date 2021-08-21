@@ -58,6 +58,6 @@ class Dragon(models.Model):
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 	bet_type = models.CharField(max_length=100, choices=(('odd-even', 'odd-even'), ('exact-match', 'exact-match'), ('big-small', 'big-small')))
 	ser = models.IntegerField(default=18)
-	count = models.IntegerField(default=0)
+	counter = models.IntegerField(default=0)
 	empty_period = models.IntegerField(default=30)
 	odds = models.FloatField(default=0, blank=True)

@@ -68,12 +68,12 @@ class Command(BaseCommand):
 				new.save()
 			dragons = Dragon.objects.all()
 			for dragon in dragons:
-				if dragon.count > 0:
+				if dragon.counter > 0:
 					ausers = User.objects.filter(is_active=True, c=1)
 					for puser in ausers:
 						gr = GameResult.objects.get(game=dragon.game, published=0).result
 						bet_type  = dragon.bet_type
-						if dragon.count > 0:
+						if dragon.counter > 0:
 							if bet_type == 'even-odd' and gr == 0:
 								bet = 1
 							else:
@@ -126,10 +126,10 @@ class Command(BaseCommand):
 							model.save()
 					if dragon.empty_period > 0:
 						dragon.empty_period -= 1
-						dragon.count -= 1
+						dragon.counter -= 1
 						dragon.save()
 					else:
-						dragon.count -= 1
+						dragon.counter -= 1
 						dragon.starting_amount = float(dragon.starting_amount)*1.03
 						dragon.save()
 		except Exception as e:

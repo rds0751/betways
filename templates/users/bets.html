@@ -19,22 +19,51 @@
 									<div class="mdc-layout-grid__inner mt-2">
 										<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-12-tablet">
 											<div style="padding: 32px 0px;" class="mdc-card bg-white text-white">
-												<div style="overflow-x: visible;" class="table-responsive">
-													<table style="width: 100%">
-														<tbody>
-															{% for history in bets %}
-															<tr>
-																<td style="padding-left: 20px;">
-																	<p style="color: black; font-size: 10px;">
-																		{{ history.result.game.name }}
-																	 - {{ history.bet_type }}</p>
-																	<p style="color: grey; font-size: 8px;">{{ history.result.end_time }}</p>
-																</td>
-																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>INR {{ history.rewards|floatformat:2 }}</strong></td>
-															</tr>
-															{% endfor %}
-														</tbody>
-													</table>
+												<div class="table-responsive">
+					                            {% for x in bets %}
+													<div class="px-5 py-2">
+														<p style="background: blue; color: white; font-weight: 700;" class="d-flex justify-content-between">
+															<span> Note: B7471234567654323456{{x.id}}</span>
+														</p>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;">{{ x.result.game.name }}</span>
+															<span style="color: green">
+																{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue
+															</span>
+														</p>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;"> Betting </span>
+															<span style="color: green">
+																Champion&runner-up - equal - 19
+															</span>
+														</p>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;"> Odds </span>
+															<span style="color: green">
+																{{ x.odds }}
+															</span>
+														</p>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;"> Time </span>
+															<span style="color: green">
+																{{ x.result.end_time }}
+															</span>
+														</p>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;"> Bet </span>
+															<span style="color: green">
+																INR {{ x.bet_amount }}, {{ x.bet }}, {{ x.bet_type }}
+															</span>
+														</p>
+														<hr>
+														<p class="d-flex justify-content-between">
+															<span style="color: black;"> Result </span>
+															<span style="color: green">
+																{{ x.result.result }}, INR {{ x.rewards }}
+															</span>
+														</p>
+													</div>
+					                              {% endfor %}
 													<div style="padding-left: 10px;" class="template-demo">
 														{% for pg in page_range %}
 														{% if histories.number == pg %}

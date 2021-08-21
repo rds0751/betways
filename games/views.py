@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Game, GameResult, PlayedGame
+import random
 
 def game(request, gameid):
     game = Game.objects.get(id=gameid)
@@ -37,6 +38,7 @@ def place(request):
 			model.bet = bet
 			model.odds = 2
 			model.bet_amount = amount
+			model.ser = random.randint(11,99)
 			model.save()
 			message = 'Bet Placed'
 		else:

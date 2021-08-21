@@ -34,6 +34,7 @@ class PlayedGame(models.Model):
 	odds = models.IntegerField(default=0, blank=True)
 	bet_amount = models.FloatField(default=0, blank=True)
 	rewards = models.FloatField(default=0, blank=True)
+	ser = models.IntegerField(default=0, blank=True)
 
 	# big 1 small 0
 	# odd 1 even 0

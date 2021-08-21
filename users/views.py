@@ -619,6 +619,6 @@ def validate_username(request):
 
 
 def bets(request):
-    bets = PlayedGame.objects.filter(user=request.user.username)
+    bets = PlayedGame.objects.filter(user=request.user.username).order_by('-id')
     print(bets)
     return render(request, 'users/bets.html', {'bets': bets})

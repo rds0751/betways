@@ -22,9 +22,9 @@ class Command(BaseCommand):
 				bet_type = x.bet_type
 				if bet_type == 'odd-even':
 					if result%2 == 0 and x.bet==0:
-						r = 'win'
-					else:
 						r = 'lose'
+					else:
+						r = 'win'
 				if bet_type == 'big-small':
 					if result <= 5 and x.bet==0:
 						r = 'win'

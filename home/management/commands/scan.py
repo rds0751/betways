@@ -23,8 +23,10 @@ class Command(BaseCommand):
 				if bet_type == 'odd-even':
 					if result%2 == 0 and x.bet==0:
 						r = 'win'
+						print('if1')
 					else:
 						r = 'lose'
+						print('else1')
 				if bet_type == 'big-small':
 					if result <= 5 and x.bet==0:
 						r = 'win'
@@ -36,7 +38,7 @@ class Command(BaseCommand):
 					else:
 						r = 'lose'
 				u = User.objects.get(username=x.user)
-				print(bet_type, result, r, x.bet)
+				print(r, bet_type, x.bet, result)
 				if r == 'win':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds
@@ -48,7 +50,6 @@ class Command(BaseCommand):
 					w.type = 'credit'
 					w.save()
 					x.save()
-					print(x.odds)
 				else:
 					x.rewards = -x.bet_amount
 					u.wallet -= x.bet_amount
@@ -68,21 +69,21 @@ class Command(BaseCommand):
 				new.save()
 			dragons = Dragon.objects.all()
 			for dragon in dragons:
-				if dragon.counter > 0:
+				if dragon.counter >= 0:
 					ausers = User.objects.filter(is_active=True, c=1)
 					for puser in ausers:
 						gr = GameResult.objects.get(game=dragon.game, published=0).result
 						bet_type  = dragon.bet_type
 						if dragon.counter > 0:
-							if bet_type == 'even-odd' and gr == 0:
+							if bet_type == 'odd-even' and gr%2 == 0:
 								bet = 1
-							else:
+							elif bet_type == 'odd-even' and gr%2 == 1:
 								bet = 0
 
-							if bet_type == 'big-small' and gr == 0:
-								bet = 1
-							else:
+							if bet_type == 'big-small' and gr == 1:
 								bet = 0
+							elif bet_type == 'big-small' and gr == 0:
+								bet = 1
 
 							if bet_type == 'exact-match':
 								x = random.randint(1,10)
@@ -90,18 +91,20 @@ class Command(BaseCommand):
 									x = random.randint(1,10)
 								bet = x
 						else:
-							if bet_type == 'even-odd' and gr == 0:
+							if bet_type == 'odd-even' and gr%2 == 0:
 								bet = 0
-							else:
+							elif bet_type == 'odd-even' and gr%2 == 1:
 								bet = 1
 
-							if bet_type == 'big-small' and gr == 0:
+							if bet_type == 'big-small' and gr == 1:
 								bet = 0
-							else:
+							elif bet_type == 'big-small' and gr == 0:
 								bet = 1
 
 							if bet_type == 'exact-match':
 								bet = gr
+						print(bet, gr%2, '<-----------------')
+
 								
 						if dragon.empty_period > 0:
 							# same amount bet

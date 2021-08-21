@@ -8,7 +8,8 @@ def game(request, gameid):
     return render(request, 'games/game.html', {'game': game, 'results': results})
 
 def parameter(request):
-    return render(request, 'games/parameter.html', {})
+	played_games = PlayedGame.objects.filter(user=request.user)
+	return render(request, 'games/parameter.html', {})
 
 def place(request):
 	if request.method == 'POST':

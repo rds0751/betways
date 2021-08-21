@@ -44,11 +44,14 @@
     <div class="row" style="margin-top:20px;">
       <div id="test1" class="col s12">
         <div class="card">
+          <div class="card-content">
+            <p style="color: blue; font-weight: 700; float: left;">Balance: INR {{ request.user.wallet }}</p>
+            <p style="color: blue; font-weight: 700; float: right;">Today Profit: INR {{ request.user.today }}</p>
+          </div>
+            <p style="text-align: center;">ID Status: {% if request.user.c > 0 %}Active{% else %}Inactive{% endif %}</p>
           <div class="card-image"> <img src="https://lh3.googleusercontent.com/HG5A_Hqdm5pjPzGNQCNepLp5AbsCLZZbWBjX0Q7psjEJRjDqEWnE7SNWlwbYYfL3uA"> <span class="card-title"></span> </div>
           <div class="card-content">
             <p>IKTOR Presents bet and win! set the parameters and start winning daily.</p>
-            <p>ID Status: {% if request.user.c > 0 %}Active{% else %}Inactive{% endif %}</p>
-            <p>Balance: INR {{ request.user.wallet }}.00/-</p>
           </div>
           <div class="card-action"> <a href="#"></a> </div>
         </div>
@@ -67,12 +70,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for x in played_games %}
                   <tr>
-                    <td>1</td>
-                    <td>3.3</td>
-                    <td>5</td>
-                    <td>Win</td>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ x.bet_amount }}</td>
+                    <td>{{ x.id|add:28 }}</td>
+                    <td>INR {{ x.rewards }}</td>
                   </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -81,40 +86,67 @@
       </div>
       <div id="test4" class="col s12">
         <div class="card">
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" readonly name="name" value="{{ request.user.name }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Email </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px; ">
-                <input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Mobile </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" name="nominee" value="{{request.user.nominee}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Nominee </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" name="nominee_relation" value="{{request.user.nominee_relation}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Nominee </span></label>
-              </div>
+          <div class="table-responsive" style="overflow-y: auto;">
+              <table class="table dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th>Starting Amount</th>
+                    <th>Empty Periods</th>
+                    <th>TL1</th>
+                    <th>Reduction %</th>
+                    <th>TL2</th>
+                    <th>Reduction %</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><input type="text" name="" value="3.3"></td>
+                    <td>30</td>
+                    <td>3000</td>
+                    <td>20%</td>
+                    <td>5000</td>
+                    <td>40%</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><input type="text" name="" value="2.2"></td>
+                    <td>30</td>
+                    <td>3000</td>
+                    <td>20%</td>
+                    <td>5000</td>
+                    <td>40%</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><input type="text" name="" value="1.1"></td>
+                    <td>30</td>
+                    <td>3000</td>
+                    <td>20%</td>
+                    <td>5000</td>
+                    <td>40%</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><input type="text" name="" value=".66"></td>
+                    <td>30</td>
+                    <td>3000</td>
+                    <td>20%</td>
+                    <td>5000</td>
+                    <td>40%</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><input type="text" name="" value=".44"></td>
+                    <td>30</td>
+                    <td>3000</td>
+                    <td>20%</td>
+                    <td>5000</td>
+                    <td>40%</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
         </div>
       </div>

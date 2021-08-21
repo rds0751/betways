@@ -51,3 +51,13 @@ class Parameter(models.Model):
 	
 	def __str__(self):
 		return str(self.user) + str(self.status)
+
+
+class Dragon(models.Model):
+	starting_amount = models.DecimalField(max_digits=3 ,decimal_places=2, default=3.3)
+	game = models.ForeignKey(Game, on_delete=models.CASCADE)
+	bet_type = models.CharField(max_length=100, choices=(('odd-even', 'odd-even'), ('exact-match', 'exact-match'), ('big-small', 'big-small')))
+	ser = models.IntegerField(default=18)
+	count = models.IntegerField(default=0)
+	empty_period = models.IntegerField(default=30)
+	odds = models.FloatField(default=0, blank=True)

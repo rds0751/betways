@@ -22,19 +22,21 @@ class Command(BaseCommand):
 				bet_type = x.bet_type
 				if bet_type == 'odd-even':
 					if result%2 == 0 and x.bet==0:
-						r = 'lose'
-					else:
 						r = 'win'
+					else:
+						r = 'lose'
 				if bet_type == 'big-small':
 					if result <= 5 and x.bet==0:
 						r = 'win'
 					else:
 						r = 'lose'
-				if bet_type == 'exact-match' and result==x.bet:
-					r = 'win'
-				else:
-					r = 'lose'
+				if bet_type == 'exact-match':
+					if result==x.bet:
+						r = 'win'
+					else:
+						r = 'lose'
 				u = User.objects.get(username=x.user)
+				print(bet_type, result, r, x.bet)
 				if r == 'win':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds

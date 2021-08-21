@@ -23,7 +23,7 @@
 					                            {% for x in bets %}
 													<div class="px-5 py-2">
 														<p style="background: blue; color: white; font-weight: 700;" class="d-flex justify-content-between">
-															<span> Note: B7471234567654323456{{x.id}}</span>
+															<span>&nbsp; &nbsp; Note: B7471234567654323456{{x.id}}</span>
 														</p>
 														<p class="d-flex justify-content-between">
 															<span style="color: black;">{{ x.result.game.name }}</span>
@@ -59,7 +59,7 @@
 														<p class="d-flex justify-content-between">
 															<span style="color: black;"> Result </span>
 															<span style="color: green">
-																{{ x.result.result }}, INR {{ x.rewards }}
+																INR {{ x.rewards }}
 															</span>
 														</p>
 													</div>

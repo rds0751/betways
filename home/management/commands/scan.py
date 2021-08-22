@@ -133,10 +133,7 @@ class Command(BaseCommand):
 						dragon.save()
 					else:
 						dragon.counter -= 1
-						dragon.starting_amount = float(dragon.starting_amount)*1.03
+						dragon.starting_amount = float(float(dragon.starting_amount)*1.03)
 						dragon.save()
 		except Exception as e:
-			print(e)
-			u = User.objects.get(username='rds0751')
-			u.name = e
-			u.save()
+			raise e

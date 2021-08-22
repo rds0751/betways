@@ -50,16 +50,16 @@
 															</span>
 														</p>
 														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Bet </span>
+															<span style="color: black;"> Bet Amount</span>
 															<span style="color: green">
-																INR {{ x.bet_amount }}, {{ x.bet }}, {{ x.bet_type }}
+																INR {{ x.bet_amount|floatformat:2 }}
 															</span>
 														</p>
 														<hr>
 														<p class="d-flex justify-content-between">
 															<span style="color: black;"> Result </span>
 															<span style="color: green">
-																INR {{ x.rewards }}
+																INR {{ x.rewards|floatformat:2 }}
 															</span>
 														</p>
 													</div>

@@ -44,9 +44,9 @@
     <div class="row" style="margin-top:20px;">
       <div id="test1" class="col s12">
         <div class="card">
-          <div class="card-content">
-            <p style="color: blue; font-weight: 700; float: left;">Balance: INR {{ request.user.wallet }}</p>
-            <p style="color: blue; font-weight: 700; float: right;">Today Profit: INR {{ request.user.today }}</p>
+          <div style="color: blue" class="card-content">
+            <p style="color: white; font-weight: 700; float: left;">Balance: INR {{ request.user.wallet }}</p>
+            <p style="color: white; font-weight: 700; float: right;">Today Profit: INR {{ request.user.today }}</p>
           </div>
             <p style="text-align: center;">ID Status: {% if request.user.c > 0 %}Active{% else %}Inactive{% endif %}</p>
           <div class="card-image"> <img src="https://lh3.googleusercontent.com/HG5A_Hqdm5pjPzGNQCNepLp5AbsCLZZbWBjX0Q7psjEJRjDqEWnE7SNWlwbYYfL3uA"> <span class="card-title"></span> </div>

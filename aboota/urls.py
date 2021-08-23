@@ -28,7 +28,7 @@ urlpatterns = [
     path('panel/', include('panel.urls', namespace="panel")),
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
     path('accounts/', include("allauth.urls")),
-    url(r'^customurl/login/', LoginView.as_view(template_name='account/login2.html'), name="custom_login" ),
+    url(r'^customurl/login/', views.customlogin, name="custom_login" ),
     url(r'^kyc/', include('kyc.urls')),
     path('__debug__/', include(durls), name='debug_toolbar'),
     path('admin/doc/', include('django.contrib.admindocs.urls')),

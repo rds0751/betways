@@ -1,11 +1,12 @@
 {% extends "account/base.html" %}
 
 {% load i18n static %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} 
 
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
-{% block inner %}
+{% block body %}
+ <div style="background: white" class="body-wrapper" id="body-wrapper">
 <div class="main-wrapper">
   <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
     <main class="auth-page">
@@ -22,21 +23,13 @@
               height: 1px;
               border: 0;">
               <br>
-              {% if form.errors %}
-              {% for field in form %}
-              {% for error in field.errors %}
               <div class="alert alert-danger">
-                <strong>{{ error }}{{ field.name }}</strong>
+                <strong>{{ message }}</strong>
               </div>
-              {% endfor %}
-              {% endfor %}
-              {% for error in form.non_field_errors %}
               <div class="alert alert-danger">
                 <strong>{{ error|escape }}</strong>
               </div>
-              {% endfor %}
-              {% endif %}
-              <form class="login" method="POST" action="{% url 'account_login' %}">
+              <form class="login" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="/games/parameters" />
                 <div class="mdc-layout-grid">
@@ -72,4 +65,68 @@
     </main>
   </div>
 </div>
+</div>
+
+    <script type="text/javascript">
+    var div = document.getElementById("full");
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function changeColor(){
+  div.style.backgroundColor= getRandomColor();
+}
+changeColor();
+
+setInterval(changeColor,5000);
+  </script>
+
+  <!-- <script>
+$('.body-wrapper').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
+</script> -->
+  {% block javascript %}
+  <!-- plugins:js -->
+  <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="{% static 'assets/vendors/chartjs/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{% static 'assets/js/material.js' %}"></script>
+  <script src="{% static 'assets/js/misc.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'assets/js/dashboard.js' %}"></script>
+  <!-- End custom js for this page-->
+
+        <!-- Required by Bootstrap v4 -->
+
+        <script type="text/javascript">
+          var currentUser = "{{ request.user.username }}"
+          $(function() {
+            source: "{% url 'searchy:suggestions' %}",
+            minLength=2
+          });
+        </script>
+        <script>
+          window.history.replaceState( null, null, window.location.href );
+          var Backlen=history.length;
+          history.go(-Backlen); 
+          // window.location.href={{ request.get_full_path }}
+        </script>
+<script data-ad-client="ca-pub-2476399156226109" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--Start of Tawk.to Script-->
+<!--End of Tawk.to Script-->
+      {% endblock javascript %}
+
+      {% block modal %}
+      {% endblock modal %}
 {% endblock %}

@@ -27,7 +27,7 @@
                         <a class="card" href="javascript:void(0)">
                             <div class="card-block clearfix">
                                 <div class="pull-right">
-                                    <p class="h6 text-muted m-t-0 m-b-xs">Today's Revenue</p>
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Roopali's Balance</p>
                                     <p class="h3 text-blue m-t-sm m-b-0">{{ tre }}</p>
                                 </div>
                                 <div class="pull-left m-r">
@@ -41,7 +41,7 @@
                         <a class="card bg-green bg-inverse" href="javascript:void(0)">
                             <div class="card-block clearfix">
                                 <div class="pull-right">
-                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash In</p>
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Company's Profit</p>
                                     <p class="h3 m-t-sm m-b-0">{{ ci }}</p>
                                 </div>
                                 <div class="pull-left m-r">
@@ -50,38 +50,6 @@
                             </div>
                         </a>
                     </div>
-                    <!-- .col-sm-6 -->
-
-                    <div class="col-sm-6 col-lg-3">
-                        <a class="card bg-orange bg-inverse" href="javascript:void(0)">
-                            <div class="card-block clearfix">
-                                <div class="pull-right">
-                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash Out</p>
-                                    <p class="h3 m-t-sm m-b-0">{{ co }}</p>
-                                </div>
-                                <div class="pull-left m-r">
-                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-arrow-graph-down-right fa-1-5x"></i></span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- .col-sm-6 -->
-
-                    <div class="col-sm-6 col-lg-3">
-                        {% sub ci co as pr %}
-                        <a class="card {% if pr >= 0 %}bg-purple{% else %}bg-red{% endif %} bg-inverse" href="javascript:void(0)">
-                            <div class="card-block clearfix">
-                                <div class="pull-right">
-                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Profit</p>
-                                    <p class="h3 m-t-sm m-b-0">{{ pr }}</p>
-                                </div>
-                                <div class="pull-left m-r">
-                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- .col-sm-6 -->
                 </div>
                 <!-- .row -->
                 <!-- End stats -->

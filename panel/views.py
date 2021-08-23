@@ -38,29 +38,37 @@ def home(request):
     mend_date = datetime.datetime.now()
     dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date))
     wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date))
+    twhsi = WalletHistory.objects.filter(comment__icontains='Prime Upgradation')
+    twhso = WalletHistory.objects.filter(comment__icontains='MT5 Transfer')
+    tci = 0
+    tco = 0
+    for x in twhsi:
+        tci += x.amount
+    for x in twhso:
+        tco += x.amount 
     ci = 0
     co = 0
     tre = 0
     for wh in wwhs:
-        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+        if 'Prime Upgradation' in wh.comment:
             ci += wh.amount
-        elif 'NEFT' in wh.comment or 'imps' in wh.comment or 'spent on recharge' in wh.comment:
+        elif 'MT5 Transfer' in wh.comment:
             co += wh.amount
     for wh in dwhs:
-        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+        if 'Prime Upgradation' in wh.comment:
             tre += wh.amount
-    return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre  })
+    return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre, 'tci': tci, 'tco': tco})
 
 @staff_member_required
 def users(request):
     q = 'blank'
-    u = User.objects.all().order_by('?')[:200]
+    u = User.objects.all().order_by('?')
     if request.method == 'POST':
         q = request.POST.get('q')
-        u = User.objects.all().order_by('?')[:200]
+        u = User.objects.all().order_by('?')
         if 'q' in request.POST and len(request.POST.get('q'))>=3:
             u = User.objects.filter(username__icontains=request.POST.get('q')) or User.objects.filter(name__icontains=request.POST.get('q')) or User.objects.filter(email__icontains=request.POST.get('q')) or User.objects.filter(mobile__icontains=request.POST.get('q'))
-            u = u[:200]
+            u = u
     for x in u:
         try:
             x.referral = User.objects.get(username=x.referral)
@@ -198,7 +206,7 @@ def bankdetails(request):
 
 @staff_member_required
 def activations(request):
-    w = Activation.objects.all().order_by('-created_at')[:200]
+    w = Activation.objects.all().order_by('-created_at')
     for x in w:
         try:
             x.user = User.objects.get(username=x.user)
@@ -216,7 +224,7 @@ def activations(request):
 
 @staff_member_required
 def ids(request):
-    w = UserTotal.objects.filter(active=True).order_by('-created_at')[:200]
+    w = UserTotal.objects.filter(active=True).order_by('-created_at')
     if request.method == 'POST':
         fromm = request.POST.get('from')
         date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
@@ -224,6 +232,10 @@ def ids(request):
         date = datetime.datetime.strptime(too, '%Y-%m-%d')
         w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
     for x in w:
+        try:
+            x.comments = Activation.objects.get(user=x.user).comments
+        except Exception as e:
+            x.comments = 'not present'
         try:
             x.user = User.objects.get(username=x.user)
         except Exception as e:
@@ -407,7 +419,7 @@ def activation(request, id):
     except Exception as e:
         k = 'blank'
         b = 'blank'
-    if request.method == "POST":
+    if request.method == "POST" and 'action' in request.POST:
         action = request.POST.get('action')
         comment = request.POST.get('comment')
         act_id = request.POST.get('id')
@@ -424,6 +436,13 @@ def activation(request, id):
             act.comments = comment
             act.status = "Rejected"
             act.save()
+        return redirect('/panel/activations/')
+    if request.method == "POST" and 'cmnt' in request.POST:
+        comment = request.POST.get('comment')
+        act_id = request.POST.get('id')
+        act = Activation.objects.get(id=act_id)
+        act.comments = comment
+        act.save()
         return redirect('/panel/activations/')
     return render(request, 'panel/activation.html', {'w': w, 'u': u, 'k': k, 'b': b, 'message': message})
 

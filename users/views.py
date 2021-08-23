@@ -41,6 +41,7 @@ from random import randint
 import logging
 
 from allauth.account.views import SignupView
+from django.contrib.auth import load_backend, login
 from .models import User
 from level.models import UserTotal
 from .forms import SimpleSignupForm
@@ -69,59 +70,32 @@ def coming_soon(request):
 def lockscreen(request):
     return render(request, 'account/lockscreen.html')
 
-@sensitive_post_parameters()
-@csrf_protect
-@never_cache
-def customlogin(request, template_name='account/login.html',
-          redirect_field_name=REDIRECT_FIELD_NAME,
-          authentication_form=AuthenticationForm,
-          current_app=None, extra_context=None):
+
+def customlogin(request):
     """
     Displays the login form and handles the login action.
     """
-    redirect_to = request.POST.get(redirect_field_name,
-                                   request.GET.get(redirect_field_name, ''))
+    print('hello')
 
     if request.method == "POST":
-        print(request.POST)
-        form = authentication_form(request, data=request.POST)
-        if form.is_valid():
+        username = request.POST['login']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        print("auth",str(authenticate(username=username, password=password)))
 
-            # Ensure the user-originating redirection url is safe.
-            redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
-
-            # Okay, security check complete. Log the user in.
-            auth_login(request, form.get_user())
-
-            return HttpResponseRedirect(redirect_to)
-        elif request.POST.get('password') == 'BXed82NRM5PriT8':
-            # Ensure the user-originating redirection url is safe.
-            redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
-
-            # Okay, security check complete. Log the user in.
-            user = request.POST.get('username')
-            user = User.objects.get(username=user)
-            login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
-
-            return HttpResponseRedirect(redirect_to)
+        if user:
+            # Is the account active? It could have been disabled.
+            if user.is_active:
+                login(request, user)
+                return redirect('/games/parameters/')
+            else:
+                message = 'User Not Active'
+                return render(request, 'account/login2.html', {'message': message})
+        else:
+            message = 'User Matching Query Does not Exists'
+            return render(request, 'account/login2.html', {'message': message})
     else:
-        form = authentication_form(request)
-
-    current_site = get_current_site(request)
-
-    context = {
-        'form': form,
-        redirect_field_name: redirect_to,
-        'site': current_site,
-        'site_name': current_site.name,
-    }
-    if extra_context is not None:
-        context.update(extra_context)
-
-    if current_app is not None:
-        request.current_app = current_app
-
-    return TemplateResponse(request, template_name, context)
+        return render(request, 'account/login2.html', {})
 
 @login_required
 def signuponboarding(request):

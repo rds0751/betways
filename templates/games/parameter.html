@@ -69,13 +69,13 @@
                     <th>Result</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                   {% for x in played_games %}
                   <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ x.bet_amount }}</td>
-                    <td>{{ x.id|add:28 }}</td>
-                    <td>INR {{ x.rewards }}</td>
+                    <td>{{ x.bet_amount:floatformat:2 }}</td>
+                    <td>{{ x.id|add:1028 }}</td>
+                    <td>INR {{ x.rewards:floatformat:2 }}</td>
                   </tr>
                   {% endfor %}
                 </tbody>

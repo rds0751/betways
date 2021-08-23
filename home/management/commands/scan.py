@@ -124,7 +124,7 @@ class Command(BaseCommand):
 							model.bet_type = dragon.bet_type
 							model.bet = bet
 							model.odds = dragon.odds
-							model.bet_amount = float(dragon.starting_amount)*1.03
+							model.bet_amount = float(dragon.starting_amount)*dragon.increment
 							model.ser = dragon.ser
 							model.save()
 					if dragon.empty_period > 0:
@@ -133,7 +133,7 @@ class Command(BaseCommand):
 						dragon.save()
 					else:
 						dragon.counter -= 1
-						dragon.starting_amount = float(float(dragon.starting_amount)*1.03)
+						dragon.starting_amount = float(float(dragon.starting_amount)*dragon.increment)
 						dragon.save()
 		except Exception as e:
 			raise e

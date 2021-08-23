@@ -65,3 +65,4 @@ class Dragon(models.Model):
 	counter = models.IntegerField(default=0)
 	empty_period = models.IntegerField(default=30)
 	odds = models.FloatField(default=0, blank=True)
+	increment = models.FloatField(default=1.03)

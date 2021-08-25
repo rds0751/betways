@@ -51,11 +51,13 @@
                                                 <input type="hidden" name="block">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i></button>
                                             </form>
-                                            <form style="float: right;" action="/panel/login/" method="POST">
+                                        {% if x.referred == 0 %}
+                                            <form style="float: right;" action="/panel/activate/" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="username" value="{{ x.username }}">
-                                            <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Login User"><i style="color: violet" class="ion-cube"></i></button>
+                                            <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Activate User"><i style="color: violet" class="ion-cube"></i></button>
                                         </form>
+                                        {% endif %}
                                         </div>
                                     </td>
                                 </tr>

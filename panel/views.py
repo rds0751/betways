@@ -655,10 +655,50 @@ def neft(request):
 
     return render(request, 'panel/neft.html', {'message': message, 'withdrawals': withdrawals})
 
-def guestlogin(request):
-    """Log in a user without requiring credentials with user object"""
+def activate(request):
     if request.method == 'POST':
         user = request.POST.get('username')
         user = User.objects.get(username=user)
-    login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
-    return redirect('/users/')
+        referrer = user.referral
+        directs = User.objects.filter(referral=referrer).count() + 1
+        if directs >= 0 and directs <= 13:
+            upward = 2000
+            upinst = 2000
+        elif directs >= 14 and directs <= 26:
+            upward = 3000
+            upinst = 2500
+        elif directs >= 27 and directs <= 39:
+            upward = 4000
+            upinst = 3000
+        elif directs >= 40 and directs <= 52:
+            upward = 5500
+            upinst = 3500
+        elif directs >= 53 and directs <= 65:
+            upward = 7000
+            upinst = 4000
+        elif directs >= 66 and directs <= 78:
+            upward = 8500
+            upinst = 4500
+        elif directs >= 79 and directs <= 91:
+            upward = 8500
+            upinst = 5000
+        elif directs >= 92:
+            upward = 8500
+            upinst = 5500
+        print(referrer, directs, upward, upinst)
+        try:
+            referrer = User.objects.get(username=referrer)
+        except Exception as e:
+            referrer = User.objects.get(username='roopali8')
+        referrer.wallet += upinst
+        referrer.save()
+        userwallet = WalletHistory()
+        userwallet.user_id = referrer
+        userwallet.amount = upinst
+        userwallet.type = "credit"
+        userwallet.comment = "{} paid referral amount, {} pending".format(upinst, upward - upinst)
+        userwallet.save()
+        user.c = 1
+        user.referred = 1
+        user.save()
+    return redirect('/panel/users/')

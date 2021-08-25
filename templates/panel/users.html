@@ -28,7 +28,7 @@
                                     <th>Name</th>
                                     <th>Status</th>
                                     <th>Mobile</th>
-                                    <th>Top up</th>
+                                    <th>Wallet Balance</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -40,7 +40,7 @@
                                     <td>{{ x.name }}</td>
                                     <td>{% if x.is_active == True %}Active{% else %}Blocked{% endif %}</td>
                                     <td>{{ x.mobile }}</td>
-                                    <td class="hidden-xs">{% if x.top != 0 and x.top.level.amount != 0 %}{{x.top.level.amount}}{% else %}Inactive{% endif %}</td>
+                                    <td class="hidden-xs">{% if x.c == 1 %}{{ x.wallet }}{% else %}Inactive{% endif %}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <form style="float: left;" action="/panel/users/{{ x.id }}/">

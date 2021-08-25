@@ -42,6 +42,7 @@ class Command(BaseCommand):
 				if r == 'win':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds
+					u.daily += x.bet_amount * x.odds
 					u.save()
 					w = WalletHistory()
 					w.user_id = u
@@ -53,6 +54,7 @@ class Command(BaseCommand):
 				else:
 					x.rewards = -x.bet_amount
 					u.wallet -= x.bet_amount
+					u.daily -= x.bet_amount
 					u.save()
 					w = WalletHistory()
 					w.user_id = u

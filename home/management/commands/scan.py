@@ -24,9 +24,11 @@ class Command(BaseCommand):
 					if result%2 == 0 and x.bet==0:
 						r = 'win'
 						print('if1')
+					elif result%2 == 1 and x.bet==1:
+						r = 'win'
+						print('elif1')
 					else:
 						r = 'lose'
-						print('else1')
 				if bet_type == 'big-small':
 					if result <= 5 and x.bet==0:
 						r = 'win'

@@ -22,6 +22,7 @@
                                     <th>Name</th>
                                     <th>Front Card</th>
                                     <th>Back Card</th>
+                                    <th>Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -33,6 +34,7 @@
                                     <td>{{ x.name }}</td>
                                     <td><a href="{% if x.imageAF %}{{ x.imageAF.url }}{% endif %}" target="_blank"><img width="250px" style="max-height: 250px" src="{% if x.imageAF %}{{ x.imageAF.url }}{% endif %}"></a></td>
                                     <td><a href="{% if x.imageAB %}{{ x.imageAB.url }}{% endif %}" target="_blank"><img width="250px" style="max-height: 250px" src="{% if x.imageAB %}{{ x.imageAB.url }}{% endif %}"></a></td>
+                                    <td>{{ x.uploaded_at }}</td>
                                     <td class="text-center">
                                         <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" method="POST">
                                             {% csrf_token %}

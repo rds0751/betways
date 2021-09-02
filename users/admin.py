@@ -25,7 +25,7 @@ class UserResource(resources.ModelResource):
 
 class MyUser1CreationForm(UserCreationForm):
     recharge_limit = forms.FloatField(required = False)
-    income = forms.FloatField(required = False)
+    wallet = forms.FloatField(required = False)
 
     class Meta:
         model = User
@@ -38,7 +38,7 @@ class MyUser1CreationForm(UserCreationForm):
 class MyUser1ChangeForm(UserChangeForm):
     recharge_limit = forms.FloatField(required = False)
     binary_income = forms.FloatField(required = False)
-    income = forms.FloatField(required = False)
+    wallet = forms.FloatField(required = False)
     new_funds = forms.FloatField(required=False)
     referal = forms.CharField(required = False)
     shopping_wallet = forms.FloatField(required=False)
@@ -61,7 +61,7 @@ class UserAdmin(UserAdmin):
     form = MyUser1ChangeForm
     add_form = MyUser1CreationForm
     list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', 'wallet', 'c', 'referred')
-    list_editable = ('is_active', 'c')
+    list_editable = ('is_active', 'c', 'wallet')
 
     def change_view(self, request, object_id):
         if request.user.is_superuser:

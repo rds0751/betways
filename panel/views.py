@@ -661,29 +661,20 @@ def activate(request):
         user = User.objects.get(username=user)
         referrer = user.referral
         directs = User.objects.filter(referral=referrer).count() + 1
-        if directs >= 0 and directs <= 13:
-            upward = 2000
+        if directs >= 0 and directs <= 10:
+            upward = 1000
             upinst = upward/2
-        elif directs >= 14 and directs <= 26:
-            upward = 3000
+        elif directs >= 11 and directs <= 20:
+            upward = 1500
             upinst = upward/2
-        elif directs >= 27 and directs <= 39:
-            upward = 4000
+        elif directs >= 21 and directs <= 30:
+            upward = 2500
             upinst = upward/2
-        elif directs >= 40 and directs <= 52:
-            upward = 5500
+        elif directs >= 31 and directs <= 40:
+            upward = 4500
             upinst = upward/2
-        elif directs >= 53 and directs <= 65:
-            upward = 7000
-            upinst = upward/2
-        elif directs >= 66 and directs <= 78:
-            upward = 8500
-            upinst = upward/2
-        elif directs >= 79 and directs <= 91:
-            upward = 8500
-            upinst = upward/2
-        elif directs >= 92:
-            upward = 8500
+        elif directs >= 41 and directs <= 100:
+            upward = 9000
             upinst = upward/2
         print(referrer, directs, upward, upinst)
         try:

@@ -43,7 +43,7 @@ class MyUser1ChangeForm(UserChangeForm):
     referal = forms.CharField(required = False)
     shopping_wallet = forms.FloatField(required=False)
     recharge_limit = forms.FloatField(required=False)
-    added_amount = forms.FloatField(required=False)
+    today = forms.FloatField(required=False)
     c = forms.FloatField(required=False)
 
     class Meta:
@@ -67,7 +67,7 @@ class UserAdmin(UserAdmin):
         if request.user.is_superuser:
             self.fieldsets = (
                     (None, {'fields': ('username', 'password', )}),
-                    (_('Personal info'), {'fields': ( 'name', 'email', 'mobile', )}),
+                    (_('Personal info'), {'fields': ( 'name', 'email', 'mobile', 'today')}),
                     (_('Permissions'), {'fields': ('is_active', 'is_staff', 'user_permissions', )}),
                     (_('Important dates'), {'fields': ('last_login', )}),
                     (_('Groups'), {'fields': ('groups',)}),

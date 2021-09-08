@@ -32,6 +32,14 @@ class SimpleSignupForm(SignupForm):
 			return self.cleaned_data['username']
 		if user_exists:
 			raise ValidationError("User exists")
+
+	def clean_mobile(self):
+		try:
+			user_exists = User.objects.get(username=self.cleaned_data['mobile'])
+		except Exception as e:
+			return self.cleaned_data['mobile']
+		if user_exists:
+			raise ValidationError("Mobile Number exists")
 			
 
 	def save(self, request):
@@ -43,7 +51,7 @@ class SimpleSignupForm(SignupForm):
 			userr = 'blank'
 		if userr == 'blank':
 			referral = '999999'
-		user.mobile = self.cleaned_data['mobile']
+		user.mobile = clean_mobile()
 		user.name = self.cleaned_data['name']
 		user.referral = referral
 		user.save()

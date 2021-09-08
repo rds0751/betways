@@ -31,7 +31,7 @@ class SimpleSignupForm(SignupForm):
 		except Exception as e:
 			return self.cleaned_data['username']
 		try:
-			user_exists2 = User.objects.get(username=self.cleaned_data['mobile'])
+			user_exists2 = User.objects.get(mobile=self.cleaned_data['mobile'])
 		except Exception as e:
 			return self.cleaned_data['mobile']
 		if user_exists2:

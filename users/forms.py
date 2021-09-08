@@ -12,7 +12,7 @@ from django.core.exceptions import ValidationError
 class SimpleSignupForm(SignupForm):
 	mobile = forms.CharField(max_length=250, label='mobile')
 	name = forms.CharField(max_length=250, label='name')
-	referal_code = forms.CharField(max_length=14, label="refer")
+	referal_code = forms.CharField(max_length=14, label="referal_code")
 
 	def get_success_url(self):
 		return '/signup/onboarding/'
@@ -36,7 +36,7 @@ class SimpleSignupForm(SignupForm):
 
 	def save(self, request):
 		user = super(SimpleSignupForm, self).save(request)
-		referral = self.cleaned_data['referal_code'].upper()
+		referral = self.cleaned_data['referal_code']
 		try:
 			userr = User.objects.get(username=referral)
 		except Exception as e:

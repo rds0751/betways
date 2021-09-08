@@ -49,7 +49,7 @@ class SimpleSignupForm(SignupForm):
 			userr = 'blank'
 		if userr == 'blank':
 			referral = '999999'
-		user.mobile = clean_mobile(self)
+		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
 		user.referral = referral
 		user.save()

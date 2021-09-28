@@ -39,9 +39,12 @@ class Command(BaseCommand):
 						r = 'win'
 					else:
 						r = 'lose'
-				u = User.objects.get(username=x.user)
+				try:
+					u = User.objects.get(username=x.user)
+				except Exception as e:
+					u = 'blank'
 				print(r, bet_type, x.bet, result)
-				if r == 'win':
+				if r == 'win' and u != 'blank':
 					x.rewards = x.bet_amount * x.odds
 					u.wallet += x.bet_amount * x.odds
 					u.today += x.bet_amount * x.odds
@@ -53,7 +56,7 @@ class Command(BaseCommand):
 					w.type = 'credit'
 					w.save()
 					x.save()
-				else:
+				elif r != 'win' and u != 'blank':
 					x.rewards = -x.bet_amount
 					u.wallet -= x.bet_amount
 					u.today -= x.bet_amount

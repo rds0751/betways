@@ -298,10 +298,13 @@ def activate(user, amount):
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
-            userwallet.type = "debit"
+            userwallet.type = "credit"
             userwallet.comment = "Prime Upgradation"
 
-            userid = user   
+            userid = user
+            userxo = user
+            userxo.wallet += packamount
+            userxo.save()
 
             def finduplines(user):  
                 try:    

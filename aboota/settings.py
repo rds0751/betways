@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.admindocs',
     'django.contrib.flatpages',
-    'django_celery_beat',
     'wallets',
     'users',
     'import_export',

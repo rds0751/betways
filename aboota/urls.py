@@ -30,7 +30,6 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
     path('order/', include(('orders.urls', 'orders'), namespace='orders')),
-    url(r'api/', include('api.urls')),
     url(r"register=(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
     path('', TemplateView.as_view(template_name='apnabase.html')),
     path('onboard/', TemplateView.as_view(template_name='onboard.html')),
@@ -42,7 +41,6 @@ urlpatterns = [
     path('users/', include('users.urls', namespace="users")),
     path('level/', include('level.urls', namespace="level")),
     path('search/', include("search.urls", namespace="searchy")),
-    path("api-auth/", include("rest_framework.urls")),
     path('games/', include('games.urls', namespace="games")),
 ]
 if settings.DEBUG:

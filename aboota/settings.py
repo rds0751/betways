@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.admindocs',
-    'rest_framework',
     'django.contrib.flatpages',
     'django_celery_beat',
     'wallets',
@@ -271,25 +270,6 @@ EMAIL_HOST_USER = 'support@ipaymatics.com'
 DEFAULT_FROM_EMAIL = 'support@ipaymatics.com'
 EMAIL_HOST_PASSWORD = 'e6qeuzVS4zJz'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        # By default we set everything to admin,
-        # then open endpoints on a case-by-case basis
-        'rest_framework.permissions.IsAdminUser',
-    ),
-    'TEST_REQUEST_RENDERER_CLASSES': (
-        'rest_framework.renderers.MultiPartRenderer',
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.TemplateHTMLRenderer'
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 20,
-}
 
 PAYU_INFO = {'merchant_key': "RfLhqZQ5",
              'merchant_salt': "R57ivFJigr",

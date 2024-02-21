@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'ticket',
 
     'level',
-    'markdown_deux',  # Required for Knowledgebase item formatting
     'bootstrapform', # Required for nicer formatting of forms with the default templates
     'allauth',
     "allauth.account",

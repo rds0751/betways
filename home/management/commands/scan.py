@@ -7,6 +7,7 @@ import datetime
 from games.models import Game, PlayedGame, GameResult, Dragon
 import random
 
+
 class Command(BaseCommand):
 	help = "Count Binary Data"
 

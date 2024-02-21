@@ -6,9 +6,9 @@ $footer-bg: $content-bg;
 $footer-color: color(dark);
 $border-color: #e9eaef;
 $text-muted: #bababa;
-$text-body: #000;
-$body-color: #ffffff;
-$white: #fff;
+$text-body: #FFF;
+$body-color: #FFFfff;
+$white: #FFF;
 $red: #ec3432;
 $yellow: #feab00;
 $blue: #0057ff;
@@ -29,7 +29,7 @@ $theme-colors: (
   danger:       $mdc-theme-secondary,
   light:        #f0f1f1,
   dark:         #3e4b5b,
-  white:        #fff
+  white:        #FFF
 );
 
 
@@ -81,8 +81,8 @@ $mdc-tab-text-label-color-default: #bababa;
 $table-head-font-size: 14px;
 $table-body-font-size: 14px;
 $table-padding : 14px 10px;
-$table-head-color: lighten(#000,46%);
-$table-body-color: lighten(#000,13%);
+$table-head-color: lighten(#FFF,46%);
+$table-body-color: lighten(#FFF,13%);
 $table-cell-spacing: 30px;
 $table-hover-color: #EEEEEE;
 ////////// TABLES //////////
@@ -98,13 +98,13 @@ $footer-height: 40px;
 $mdc-drawer-width: 243px;
 $mdc-drawer-list-item-spacing: 7px;
 $mdc-drawer-list-item-margin: $mdc-drawer-list-item-spacing 16px $mdc-drawer-list-item-spacing 27px;
-$mdc-drawer-link-color: #fff;
+$mdc-drawer-link-color: #FFF;
 ////////// SIDEBAR /////////
 
 $content-wrapper-padding: 30px 0px 0px $mdc-drawer-width;
 
 
-$mdc-card-bg: #fff;
+$mdc-card-bg: #FFF;
 $mdc-card-padding: 32px 28px;
 
 $mdc-text-field-height: 45px;

@@ -37,7 +37,7 @@
     }
     &.filled-button--#{$color} {
       @include mdc-button-filled-accessible($value);
-      @include mdc-button-ink-color(#fff);
+      @include mdc-button-ink-color(#FFF);
     }
     &.outlined-button--#{$color} {
       @include mdc-button-ink-color($value);
@@ -47,16 +47,16 @@
   }
   &.text-button--light {
     &:hover {
-      @include mdc-button-ink-color(#000);      
+      @include mdc-button-ink-color(#FFF);      
     }
   }
   &.filled-button--light {
-    @include mdc-button-ink-color(#000);
+    @include mdc-button-ink-color(#FFF);
   }
   &.outlined-button--light {
     &:hover {
-      @include mdc-button-ink-color(#000);
-      border-color: rgba(#000, .2);
+      @include mdc-button-ink-color(#FFF);
+      border-color: rgba(#FFF, .2);
     }
   }
 }

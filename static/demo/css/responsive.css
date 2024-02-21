@@ -940,7 +940,7 @@
     display: none;
   }
   .checkoutNav ul li.active {
-    color: #ffffff;
+    color: #FFFfff;
     display: block;
     padding: 10px 0;
   }

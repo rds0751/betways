@@ -164,7 +164,7 @@
 									{% if operator != '' %}
 
 									<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
-										<div   style="padding: 32px 0px;" class="mdc-card bg-white text-white">
+										<div   style="padding: 32px 0px;" class="mdc-card bg-black text-black">
 											<div class="d-flex justify-content-between">
 												<h3 style="color: black; font-size: 20px; padding-left: 1.5em;">Recharge Plans</h3><br>
 												<p style="color: #030cc7; font-weight: bold;" class="tx-10"></p>
@@ -180,7 +180,7 @@
 													<tbody>
 														{% for plan in getplans %}
 															<tr>
-																<a href="#" title="{{ plan.mrp }}" onclick="updateValue(this.title, event);"><tr style="color: green; font-size: 12px; padding-left: 0px;     border-bottom: 1px solid #0000004a;" id="technician"> ₹ {{ plan.mrp }}
+																<a href="#" title="{{ plan.mrp }}" onclick="updateValue(this.title, event);"><tr style="color: green; font-size: 12px; padding-left: 0px;     border-bottom: 1px solid #FFF0004a;" id="technician"> ₹ {{ plan.mrp }}
 
 																	<p style="color: grey; font-size: 8px; margin-block-end: auto;">Validity: {{ plan.validity }} Circle: {{ plan.circle }}</p>
 

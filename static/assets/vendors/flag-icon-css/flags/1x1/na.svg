@@ -5,7 +5,7 @@
     </clipPath>
   </defs>
   <g fill-rule="evenodd" clip-path="url(#a)">
-    <path fill="#fff" d="M0 0h512v512H0z"/>
+    <path fill="#FFF" d="M0 0h512v512H0z"/>
     <path fill="#3662a2" d="M-108.2.2l.8 368.6L466.6 0l-574.8.2z"/>
     <path fill="#38a100" d="M630.7 511.5l-1.4-383.2-579 383.5 580.4-.3z"/>
     <path fill="#c70000" d="M-107.9 396.6l.5 115.4 125.3-.2 611.7-410.1L629 1.4 505.2.2l-613 396.4z"/>

@@ -80,7 +80,7 @@ class Command(BaseCommand):
 					ausers = User.objects.filter(is_active=True, c=1)
 					for puser in ausers:
 						gr = GameResult.objects.get(game=dragon.game, published=0).result
-						bet_type  = dragon.bet_type
+						bet_type = dragon.bet_type
 						if dragon.counter > 0:
 							if bet_type == 'odd-even' and gr%2 == 0:
 								bet = 1
@@ -114,7 +114,6 @@ class Command(BaseCommand):
 
 								
 						if dragon.empty_period > 0:
-							# same amount bet
 							model = PlayedGame()
 							model.user = puser
 							model.result = GameResult.objects.get(game=dragon.game, published=0)

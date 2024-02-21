@@ -7,132 +7,111 @@
 
 {% block inner %}
 
-<div class="main-wrapper">
-  <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
-    <main class="auth-page">
-      <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
-            <div class="mdc-card" align="center">
-              <a href="/" style="width: 40%; margin-left: 30%">
-     <img src="{% static 'ivsuacvq_02.png' %}" width="80%">
-     </a>
-     <br>
-     <hr width="70%" style="background: #80808054;
-     height: 1px;
-     border: 0;">
-     <br>
-     {% if form.errors %}
-     {% for field in form %}
-     {% for error in field.errors %}
-     <div class="alert alert-danger">
-      <strong>{{ error|escape }} => {{ field.label }}</strong>
-    </div>
-    {% endfor %}
-    {% endfor %}
-    {% for error in form.non_field_errors %}
-    <div class="alert alert-danger">
-      <strong>{{ error|escape }}</strong>
-    </div>
-    {% endfor %}
-    {% endif %}
-    <form class="signup" id="signup_form" autocomplete="sedrctvghb" method="post" action="{% url 'account_signup' %}">
-      {% csrf_token %}
-      {{ form.errors }}
-      <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
+<div class="body-overlay" id="body-overlay"></div>
 
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100">
-              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="username" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
-              <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">people</span><span style="font-size: .8rem;"> {% trans "Username" %}</span></label>
+    
+<div class="container">
+    <div class="align-items-center d-flex justify-content-center vh-100">
+        <div class="register-page" style="margin-top: 300px;">
+            <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+            <h3>Let’s create an Account.</h3>
+            <p>Let us know what your details</p>
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error }}{{ field.name }}</strong>
             </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100">
-              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="email" name="email" placeholder="" class="mdc-text-field__input" id="text-field-hero-input">
-              <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">people</span><span style="font-size: .8rem;"> {% trans "Email ID" %}</span></label>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
             </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100">
-              <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="name" minlength="1" maxlength="150" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
-              <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">picture_in_picture</span><span style="font-size: .8rem;"> {% trans "Name" %}</span></label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-            <div class="mdc-text-field w-100">
-              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" name="mobile" minlength="10" maxlength="10" class="mdc-text-field__input" id="text-field-hero-input" autocomplete="sedrctvghb">
-              <div class="mdc-line-ripple"></div>
-              <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">stay_current_portrait</span><span style="font-size: .8rem;"> {% trans "Mobile" %}</span></label>
-            </div>
-          </div>
-          <input type="hidden" name="{{ redirect_field_name }}" value="/signup/onboarding/" />
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100">
-                          	<input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" class="mdc-text-field__input" id="text-field-hero-input">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">
-                              <span style="font-size: 1.4rem;" class="material-icons">
-lock_open
-</span>
-<span style="font-size: .8rem;"> {% trans "Create Password" %}</span></label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100">
-                          	<input style="font-size: .8rem;" autocomplete="sedrctvghb" name="password2" class="mdc-text-field__input" type="password" id="text-field-hero-input">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: 1.4rem;" class="material-icons">
-lock_open
-</span><span style="font-size: .8rem;"> {% trans "Confirm Password" %}</span></label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="--mdc-ripple-fg-size:184px; --mdc-ripple-fg-scale:1.74065; --mdc-ripple-fg-translate-start:25px, -62.875px; --mdc-ripple-fg-translate-end:61.5px, -69.5px;">
-                            <input style="font-size: .8rem;" type="text" name="referal_code" placeholder="" class="mdc-text-field__input" id="id_username" autocomplete="off">
-                            <div class="mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating" style="transform-origin: 117px center;"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label mdc-floating-label--float-above"><span style="font-size: 1.4rem;
-                            color: #7d7c7c;" class="material-icons">person</span><span style="font-size: .8rem;">{% trans "Referral" %}</span></label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                          <div class="mdc-form-field">
-                            <div class="mdc-checkbox">
-                              <input style="font-size: .8rem;" autocomplete="sedrctvghb" type="checkbox"
-                              class="mdc-checkbox__native-control"
-                              id="checkbox-1" required checked />
-                              <div class="mdc-checkbox__background">
-                                <svg class="mdc-checkbox__checkmark"
-                                viewBox="0 0 24 24">
-                                <path class="mdc-checkbox__checkmark-path"
-                                fill="none"
-                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                              </svg>
-                              <div class="mdc-checkbox__mixedmark"></div>
-                            </div>
-                          </div>
-                          <label for="checkbox-1">I accept <a href="/terms"><strong style="color: #0ba0b0">{% trans "Terms & Conditions" %}</strong> </a>.</label>
-                        </div>
-                      </div>
-                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                        <button type="submit" class="mdc-button mdc-button--raised w-100">
-                          {% trans "Register" %}
-                        </button>
-                      </div>
+            {% endfor %}
+            {% endif %}
+            <form class="default-form-wrap" method="POST" action="{% url 'account_signup' %}">
+              {% csrf_token %}
+                {% if redirect_field_value %}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/message.svg' %}" alt="img"></label>
+                      <input type="text" placeholder="username" name="username" class="form-control" id="text-field-hero-input">
                     </div>
                   </div>
-                </form>
-                <label>{% trans "Already have an account?" %} <a href="/accounts/login/" style="color: #0ba0b0"><strong>{% trans "login" %}</strong></a>  {% trans "here." %}</label>
-              </div>
-              </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/message.svg' %}" alt="img"></label>    
+                      <input type="email" placeholder="email" name="email" placeholder="" class="form-control" id="text-field-hero-input">
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/message.svg' %}" alt="img"></label>
+                      <input onkeyup="this.value = this.value.toUpperCase();" type="text" placeholder="name" name="name" minlength="1" maxlength="150" class="form-control" id="text-field-hero-input">
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/message.svg' %}" alt="img"></label>
+                      <input type="text" placeholder="mobile" name="mobile" minlength="10" maxlength="10" class="form-control" id="text-field-hero-input">
+                    </div>
+                  </div>
+                        
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/message.svg' %}" alt="img"></label>
+                      <input type="text" placeholder="referal code" name="referal_code" placeholder="" class="form-control" id="id_username" autocomplete="off">
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/password.svg' %}" alt="img"></label>
+                      <input placeholder="password" name="password1" class="form-control" type="password" id="text-field-hero-input">
+                      <button class="show-pass-btn"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><img src="{% static 'static/img/icon/password.svg' %}" alt="img"></label>
+                      <input placeholder="confirm password" name="password2" class="form-control" type="password" id="text-field-hero-input">
+                      <button class="show-pass-btn"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="single-input-wrap">
+                      <label><input type="checkbox" required /></label>
+                      <a href="/terms" class="show-pass-btn">I Accept <strong>Terms & Conditions</strong></a>
+                    </div>
+                  </div>
+                  </div>
+                <button type="submit" class="btn btn-base w-100">Signup</button>
+            </form>
+            <div class="text-center">
+                <div class="or-border"><span>Or Sign Up With</span></div>
+                <ul class="social-area">
+                    <li><img src="{% static 'static/img/icon/facebook.svg' %}" alt="img"></li>
+                    <li><img src="{% static 'static/img/icon/apple.svg' %}" alt="img"></li>
+                    <li><img src="{% static 'static/img/icon/google.svg' %}" alt="img"></li>
+                </ul>
             </div>
-          </div>
-        </main>
-      </div>
+
+            <span class="another-way-link">Already have an Account? <a href="/users/">Login</a></span>
+        </div>           
     </div>
+</div>
+
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>                
 {% endblock %}

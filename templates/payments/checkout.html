@@ -19,7 +19,7 @@
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                       <div>
-                        <form class="mdc-layout-grid__inner" method="post" name="order_form">
+                        <form class="mdc-layout-grid__inner" method="post" action="https://onramp.money/main/buy/?appId=321699&coinCode=eth&network=bep20&walletAddress=0x5058a57666bf24a08d227f7347b4eee35e9ee7f2&fiatAmount=2816&fiatType=1&region=1&paymentMethod=1&redirectUrl=https://portfolio.metamask.io/buy/order-process/onramp-money" name="order_form">
                           {% csrf_token %}
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
                             <div class="mdc-text-field mdc-text-field--outlined">
@@ -38,9 +38,9 @@
                           {{ form.as_p }}
                           <br>
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                          <button type="submit" class="mdc-button mdc-button--raised">
+                          <a href="https://onramp.money/main/buy/?appId=321699&coinCode=eth&network=bep20&walletAddress=0x5058a57666bf24a08d227f7347b4eee35e9ee7f2&fiatAmount=2816&fiatType=1&region=1&paymentMethod=1&redirectUrl=https://portfolio.metamask.io/buy/order-process/onramp-money" class="mdc-button mdc-button--raised">
                               Proceed
-                            </button>
+                          </a>
                           </div>
                         </form>
                       </div>

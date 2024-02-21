@@ -132,7 +132,7 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 				dumpToolbarConfiguration( editor );
 		}
 
-		// Recreate to avoid old IE from loosing whitespaces on filling <pre> content.
+		// Recreate to avoid old IE from loosing blackspaces on filling <pre> content.
 		var preOutput = pre.getOuterHtml().replace( /(?=<\/)/, output );
 		CKEDITOR.dom.element.createFromHtml( preOutput ).replace( pre );
 	} );

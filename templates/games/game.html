@@ -1,9 +1,8 @@
-{% extends "users/base.html" %}
-{% load static i18n %}
-{% block title %}{% trans 'Game Details' %}{% endblock %}
-
+{% extends 'apnabase.html' %}
+{% load static %}
 
 {% block content %}
+
 <style type="text/css">
 	.black_overlay {
   display: none;
@@ -18,7 +17,7 @@
   opacity: .80;
   filter: alpha(opacity=80);
 }
-.white_content {
+.black_content {
   display: none;
   position: absolute;
   top: 100px;
@@ -26,7 +25,7 @@
   width: 90%;
   padding: 16px;
   border: 16px solid orange;
-  background-color: white;
+  background-color: black;
   z-index: 1002;
   overflow: auto;
 }
@@ -41,7 +40,89 @@ select {
 	display: block;
 }
 </style>
-<div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+<div class="body-overlay" id="body-overlay"></div>
+
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">Game</h3>
+        <div class="balance">$ {{ request.user.wallet }}<span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
+    </div>
+    <div class="container">
+        <div class="my-profile-wrap">
+            <div class="media">
+                <img class="thumb" src="{{game.imageURL.url}}" style="width: 100px;" alt="img">
+                <div class="media-body">
+                    <h6 class="profile-name">{{ game.name }}</h6>
+					<p>Next round will end at {{ results.0.end_time }}</p>
+                </div>
+                <img class="star star1" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                <img class="star star2" src="{% static 'static/img/icon/star.png' %}" alt="img">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+			<div style="overflow-x: visible;" class="table-responsive">
+			<a class="btn-c btn-gradient-01 mr-1 mb-2" style="margin-left: 200px;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Place Bet</a>
+				<table style="width: 100%; margin-top: 10px;">
+					<tbody>
+						<tr>
+						{% for product in results %}
+							{% if forloop.counter0|divisibleby:6 %}
+								</tr><tr>
+									<td>
+										<div>
+											<p>{{ product.start_time|date:'d, M H:i' }}</p>
+										</div>
+										</td></td>
+							{% endif %}
+								<td>
+									<div style="text-align: center; {% if product.published == 1 %}background-color: {% if product.result == 1 %}yellow{% elif product.result == 2 %}orange{% elif product.result == 3 %}green{% elif product.result == 4 %}blue{% elif product.result == 5 %}lime{% elif product.result == 6 %}navy{% elif product.result == 7 %}aqua{% elif product.result == 8 %}darkgreen{% elif product.result == 9 %}darkslateblue{% elif product.result == 10 %}indigo{% else %}red{% endif %}{% else %}background-color: red;{% endif %}">
+										<p>{% if product.published == 1 %}{{ product.result }}{% else %}?{% endif %}</p>
+									</td>
+										
+									</div>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+    </div>
+    <div class="main-footer-bottom d-block text-center">
+        <ul>
+			<li>
+				<a class="active" href="/users/">
+					<img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+					Home
+				</a>
+			</li>
+			<li>
+				<a href="/users/records/">
+					<img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+					Dashboard
+				</a>
+			</li>
+			<li>
+				<a class="menu-bar" href="/users/bets/">
+					<img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+					My Bets
+				</a>
+			</li>
+			<li>
+				<a href="/users/~update/">
+					<img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+					Edit Profile
+				</a>
+			</li>
+		</ul>
+    </div>
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+
+<div id="light" class="black_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
 	<div class="mdc-tab-bar" role="tablist">
 		  <div class="mdc-tab-scroller">
 		    <div class="mdc-tab-scroller__scroll-area">
@@ -88,7 +169,7 @@ select {
 	        	<option value="0">Even</option>
 	        	<option value="1">Odd</option>
 	        </select>
-	          <button disabled style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
+	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
 	            Place Bet
 	          </button>
           </form>
@@ -104,7 +185,7 @@ select {
 	        	<option value="0">Small</option>
 	        	<option value="1">Big</option>
 	        </select>
-	          <button disabled style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
+	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
 	            Place Bet
 	          </button>
           </form>
@@ -117,61 +198,13 @@ select {
 	        <h5>Choose Even or Odd</h5>
 	        <input type="number" name="amount" placeholder="Amount">
 	        <input type="number" max="10" name="bet" placeholder="Number">
-	          <button disabled style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
+	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
 	            Place Bet
 	          </button>
           </form>
 		</div>
 	</div>
 <div id="fade" class="black_overlay"></div>
-<div class="body-wrapper">
-	<div class="main-wrapper">
-		<div class="page-wrapper full-page-wrapper">
-			<main>
-				<div>
-					<div class="mdc-layout-grid__inner">
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-							<div style="box-shadow: 0;" class="mdc-card p-0 m-0">
-								<div class="mdc-layout-grid__inner mt-2">
-									<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
-										<div style="padding: 0px 0px;" class="mdc-card bg-white text-white">
-										<h3 style="color: black;padding: 20px;text-align: center;">{{ game.name }}</h3>
-										<h5 style="color: black; text-align: center;">Next round will end at {{ results.0.end_time }}</h5>
-											<div style="overflow-x: visible;" class="table-responsive">
-										<a class="mdc-button mdc-button--raised" style="margin-left: 70%;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Place Bet</a>
-												<table style="width: 100%">
-													<tbody>
-														<tr>
-														{% for product in results %}
-														    {% if forloop.counter0|divisibleby:6 %}
-														        </tr><tr>
-														        	<td>
-														        		<div style="text-align: center;">
-															        		<p style="color: black; font-size: 10px;">{{ product.start_time|date:'d, M H:i' }}</p>
-															        	</div>
-															        	</td></td>
-														    {% endif %}
-														        <td>
-														        	<div style="text-align: center; {% if product.published == 1 %}background-color: {% if product.result == 1 %}yellow{% elif product.result == 2 %}orange{% elif product.result == 3 %}green{% elif product.result == 4 %}blue{% elif product.result == 5 %}lime{% elif product.result == 6 %}navy{% elif product.result == 7 %}aqua{% elif product.result == 8 %}darkgreen{% elif product.result == 9 %}darkslateblue{% elif product.result == 10 %}indigo{% else %}red{% endif %}{% else %}background-color: red;{% endif %}">
-															        	<p style="font-size: 10px;">{% if product.published == 1 %}{{ product.result }}{% else %}?{% endif %}</p>
-															        </td>
-														        		
-														        	</div>
-														{% endfor %}
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</main>
-		</div>
-	</div>
-</div>
 <script type="text/javascript">
 	var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
 var contentEls = document.querySelectorAll('.content');
@@ -183,4 +216,4 @@ tabBar.listen('MDCTabBar:activated', function(event) {
   contentEls[event.detail.index].classList.add('content--active');
 });
 </script>
-{% endblock content %}
+{% endblock %}

@@ -76,15 +76,15 @@
 }
 /* Component containers
 ----------------------------------*/
-.ui-widget-content { border: 1px solid #ddd; background: #fff; color: #333; border-radius: 6px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);}
+.ui-widget-content { border: 1px solid #ddd; background: #FFF; color: #333; border-radius: 6px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);}
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background: #fff; color: #333; border-radius: 3px; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background: #FFF; color: #333; border-radius: 3px; }
 .ui-datepicker-today .ui-state-default { background: #fcf8e3; }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: #eee; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #08c; color: #fff; }
-.ui-datepicker-header .ui-state-hover { background: #fff; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #08c; color: #FFF; }
+.ui-datepicker-header .ui-state-hover { background: #FFF; }
 
 /* Interaction Cues
 ----------------------------------*/

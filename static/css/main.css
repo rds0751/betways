@@ -54,7 +54,7 @@ Primary use:
   width: 100%;
   height: 100%;
   padding: 0 90px 0 35px;
-  background-color: #fff;
+  background-color: #FFF;
 
   box-shadow: 0 10px 15px 0px rgba(0,0,0,0.1);
   -moz-box-shadow: 0 10px 15px 0px rgba(0,0,0,0.1);
@@ -83,7 +83,7 @@ Primary use:
   content: attr(data-validate);
   position: absolute;
   max-width: 70%;
-  background-color: #fff;
+  background-color: #FFF;
   border: 1px solid #c80000;
   border-radius: 0px;
   padding: 4px 25px 4px 10px;
@@ -174,7 +174,7 @@ Primary use:
 
 /*==================================================================
 [ Color ]*/
-.cl0 {color: #fff;}
+.cl0 {color: #FFF;}
 .cl1 {color: #333;}
 
 
@@ -254,7 +254,7 @@ Primary use:
 
 /*//////////////////////////////////////////////////////////////////
 [ Background ]*/
-.bg0 {background-color: #fff;}
+.bg0 {background-color: #FFF;}
 
 .bg-img1 {
   background-position: center;
@@ -317,18 +317,18 @@ Primary use:
 /*---------------------------------------------*/
 .how-btn1 {
   padding: 0 15px;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 25px;
 }
 
 .how-btn1:hover {
   background-color: #555555;
-  color: #fff;
+  color: #FFF;
 }
 
 /*---------------------------------------------*/
 .how-social {
-  color: #fff;
+  color: #FFF;
   font-size: 22px;
   background-color: #ccc;
   border-radius: 50%;
@@ -336,7 +336,7 @@ Primary use:
 
 .how-social:hover {
   background-color: #333;
-  color: #fff;
+  color: #FFF;
 }
 
 
@@ -353,8 +353,8 @@ Primary use:
 
 /*------------------------------------------------------------------
 [ Hover ]*/
-.hov-cl0:hover {color: #fff;}
-.hov-bg0:hover {background-color: #fff;}
+.hov-cl0:hover {color: #FFF;}
+.hov-bg0:hover {background-color: #FFF;}
 
 /*---------------------------------------------*/
 .hov1:hover i {

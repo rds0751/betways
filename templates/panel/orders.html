@@ -54,11 +54,11 @@
                                         <form action="/panel/orders/" method="POST" target="_blank">
                                             {% csrf_token %}
                                             <select name='status' style="width: 200px; color: black; font-weight: bolder; background-color: {% if x.order.status == 'Being Processed' %}orange{% elif x.order.status == 'Processed' %}lightgreen{% elif x.order.status == 'Cancelled' %}pink{% else %}yellow{% endif %}">
-                                                <option style="color: white; background-color: white">{{ x.order.status }}</option>
-                                                <option style="color: orange; background-color: white">Being Processed</option>
-                                                <option style="color: green; background-color: white">Processed</option>
-                                                <option style="color: red; background-color: white">Cancelled</option>
-                                                <option style="color: yellow; background-color: white">Pending</option>
+                                                <option style="color: black; background-color: black">{{ x.order.status }}</option>
+                                                <option style="color: orange; background-color: black">Being Processed</option>
+                                                <option style="color: green; background-color: black">Processed</option>
+                                                <option style="color: red; background-color: black">Cancelled</option>
+                                                <option style="color: yellow; background-color: black">Pending</option>
                                             </select>
                                             <textarea name='comment' style="width: 200px;" placeholder="Comment on changing order status">{% if x.order.comment %}{{ x.order.comment }}{% endif %}</textarea>
                                             <input type="hidden" name="order" value="{{ x.order.number }}">

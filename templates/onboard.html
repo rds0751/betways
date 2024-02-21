@@ -1,0 +1,68 @@
+{% extends 'apnabase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="body-overlay" id="body-overlay"></div>
+
+
+<div class="onboard-page">
+    <div class="align-items-center text-center justify-content-center vh-100">
+        <a class="btn-skip" href="/started/">Skip</a>
+        <div class="onboard-slider owl-carousel">
+            <div class="item">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="thumb">
+                            <img src="{% static 'static/img/onboard/1.png' %}" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 align-self-center">
+                        <div>
+                            <h4>Welcome to Crown Casino</h4>
+                            <p>Welcome to our Crown Casino app! Our app provides a seamless and user-friendly experience 
+                                for sports betting app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="thumb">
+                            <img src="{% static 'static/img/onboard/2.png' %}" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 align-self-center">
+                        <div>
+                            <h4>Explore Best Games</h4>
+                            <p>Welcome to our Crown Casino app! Our app provides a seamless and user-friendly experience 
+                                for sports betting app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="thumb">
+                            <img src="{% static 'static/img/onboard/3.png' %}" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 align-self-center">
+                        <div>
+                            <h4>Online Sports Betting </h4>
+                            <p>Welcome to our Crown Casino app! Our app provides a seamless and user-friendly experience 
+                                for sports betting app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}

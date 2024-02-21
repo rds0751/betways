@@ -1,0 +1,123 @@
+{% extends 'apnabase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="body-overlay" id="body-overlay"></div>
+
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">Profile</h3>
+        <div class="balance">${{request.user.wallet}} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
+    </div>
+    <div class="container">
+        <div class="my-profile-wrap">
+            <div class="media">
+                <img class="thumb" src="{% static 'static/img/comment/my-profile.png' %}" alt="img">
+                <div class="media-body">
+                    <h6 class="profile-name">{{ request.user.name }}</h6>
+                    <p class="profile-mail">{{ request.user.email }}</p>
+                </div>
+                <img class="star star1" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                <img class="star star2" src="{% static 'static/img/icon/star.png' %}" alt="img">
+            </div>
+        </div>
+    </div>
+    <div class="profile-details" style="background-image: url({% static 'static/img/other/profile-bg.png' %});">
+        <ul>
+            <li>
+                <h6>06</h6>
+                <span>Total Game </span>
+            </li>
+            <li>
+                <h6>20</h6>
+                <span>Total Wins  </span>
+            </li>
+            <li>
+                <h6>15</h6>
+                <span>Total Loses </span>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="profile-list-inner">
+            <li>
+                <a class="single-profile-wrap" href="/users/"><i class="fa fa-user"></i> My Profile <i class="ri-arrow-right-s-line"></i></a>
+            </li>
+            <li>
+                <div class="single-profile-wrap">
+                    <i class="fas fa-bell"></i>
+                    Push Notification
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="single-profile-wrap">
+                    <i class="fas fa-cloud-moon"></i>
+                    Dark/Light Mode
+                    <div class="dark-area">
+                        <label class="change-mode switch">
+                            <input type="checkbox" data-active="true">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="single-profile-wrap" href="#invite"><i class="fas fa-users"></i> Referrals <i class="ri-arrow-right-s-line"></i></a>
+            </li>
+            <li>
+                <a class="single-profile-wrap" href="#statistics"><i class="fas fa-chart-line"></i> Statistics <i class="ri-arrow-right-s-line"></i></a>
+            </li>
+            <li>
+                <a class="single-profile-wrap" href="#"><i class="fas fa-lock"></i> Change Password <i class="ri-arrow-right-s-line"></i></a>
+            </li>
+            <li>
+                <a class="single-profile-wrap" href="/terms/"><i class="fas fa-exclamation-triangle"></i>Terms & Conditions <i class="ri-arrow-right-s-line"></i></a>
+            </li>
+            <li>
+                <a class="single-profile-wrap" href="/accounts/logout/"><i class="fas fa-sign-out-alt"></i>Log Out <i class="ri-arrow-right-s-line"></i></a>
+            </li>                
+        </ul>
+    </div>
+    <div class="main-footer-bottom d-block text-center">
+        <ul>
+            <li>
+                <a class="active" href="/users/">
+                    <img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/users/records/">
+                    <img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="menu-bar" href="/users/bets/">
+                    <img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+                    My Bets
+                </a>
+            </li>
+            <li>
+                <a href="/users/~update/">
+                    <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+                    Edit Profile
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}
+
+
+

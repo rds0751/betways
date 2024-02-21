@@ -5,23 +5,153 @@
 
 
     {% block content %}
-    <!-- partial -->
-  <div class="main-wrapper mdc-drawer-app-content">
-    <div class="page-wrapper mdc-toolbar-fixed-adjust">
-      <main style="background: white; padding-top: 0" class="content-wrapper">
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-            {% for game in games %}
-            <a href='/games/{{game.id}}' style="height: 96%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="{{game.imageURL.url}}">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>{{ game.name }}</p>
-              </div>
-          </a>
-          {% endfor %}
+    
+    <div class="body-overlay" id="body-overlay"></div>
+    
+    <div class="container">
+        <div class="main-home-area">
+            <div class="profile-area">
+                <div class="media">
+                    <a href="/profile" class="thumb">
+                        <img src="{% static 'static/img/profile.png' %}" alt="img">
+                    </a>
+                    <div class="media-body">
+                        <span class="profile-name">Hello, {{ request.user.name }}</span>
+                        <div class="balance">₹ {{ request.user.wallet }} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div>
+                    </div>
+                </div>
+                <div class="btn-wrap">
+                    <a class="icon-btn" href="#search"><i class="ri-search-line"></i></a>
+                    <a class="icon-btn" href="#notification"><i class="ri-notification-3-line"></i> <span class="badge">2</span></a>
+                </div>
+            </div>  
+            <div class="banner-slider owl-carousel pd-top-110 mb-4">
+                <div class="item">
+                    <img src="{% static 'static/img/banner/1.png' %}" alt="img">
+                </div>
+                <div class="item">
+                    <img src="{% static 'static/img/banner/2.png' %}" alt="img">
+                </div>
+                <div class="item">
+                    <img src="{% static 'static/img/banner/3.png' %}" alt="img">
+                </div>
+            </div>
+            <h6 class="mb-3">In Play</h6>
+            <div class="home-category-slider owl-carousel">
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/football.png' %}" alt="img">
+                        <span>
+                            Football
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/basketball.png' %}" alt="img">
+                        <span>Basketball</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/baseball.png' %}" alt="img">
+                        <span>Baseball</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/soccerball.png' %}" alt="img">
+                        <span>Soccerball</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/cricket.png' %}" alt="img">
+                        <span>Cricket</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/video-game.png' %}" alt="img">
+                        <span>Video Game</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="home-category-item-wrap" href="#sports">
+                        <img src="{% static 'static/img/category/table-tannis.png' %}" alt="img">
+                        <span>Table Tennis</span>
+                    </a>
+                </div>
+            </div> 
+            <div class="sports-wrap mt-4">
+                <div class="sports-slider slider-nav">
+                    <div class="sports-slider-item">
+                        <i class="fa fa-circle me-2"></i> Live Now
+                    </div>
+                    <div class="sports-slider-item">
+                        Upcoming
+                    </div>
+                    <div class="sports-slider-item">
+                        1st period
+                    </div>
+                    <div class="sports-slider-item">
+                        2nd period
+                    </div>
+                </div>
+                <div class="sports-slider-wrap slider-for">
+                    <div class="slider-content">
+                      {% for game in games %}
+                      <div class="single-product-wrap">
+                        <h6 class="title">{{ game.name }}</h6>
+                        <div class="details">
+                            <div class="thumb">
+                                
+                                <h6 class="team-name"></h6>
+                            </div>
+                            <div class="betting-wrap">
+                                <div class="time">
+                                  <img src="{{game.imageURL.url}}" alt="img">
+                                </div>
+                                <a class="btn btn-base" href="/games/{{game.id}}">Bet Now</a>
+                            </div>
+                            <div class="thumb">
+                                <h6 class="team-name"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>                    
+            </div>
+            
+            <div class="main-footer-bottom d-block text-center">
+                <ul>
+                    <li>
+                        <a class="active" href="/users/">
+                            <img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/users/records/">
+                            <img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a class="menu-bar" href="/users/bets/">
+                            <img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+                            My Bets
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/users/~update/">
+                            <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+                            Edit Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </main>
-  </div>
-</div>
+    </div>
     {% endblock content %}

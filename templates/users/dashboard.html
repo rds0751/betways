@@ -1,74 +1,132 @@
-    {% extends "users/base.html" %}
-    {% load static i18n %}
-    {% block title %}{% trans 'Dashboard' %}{% endblock %}
-    {% load sum_tags %}
-
-
-{% block content %}
-  <!-- partial -->
-  <div class="main-wrapper mdc-drawer-app-content">
-    <div class="page-wrapper mdc-toolbar-fixed-adjust">
-      <main style="background: white; padding-top: 0" class="content-wrapper">
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-            <a href='/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://thumbs.dreamstime.com/b/home-icon-isolated-orange-round-button-abstract-illustration-home-icon-orange-round-button-104801487.jpg">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Home</p>
-              </div>
-          </a>
-            <a href='/order/checkout/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/438/438526.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Deposit</p>
-              </div>
-          </a>
-            <a href='/level/team/{{request.user.username}}/0/' style="height: 90%; margin: 0; padding:80" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/1570/1570225.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Agent Referrals</p>
-              </div>
-          </a>
-            <a href='/wallet/imps-transfer/' style="height: 80%; margin: 0; padding: 080class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://i.pinimg.com/originals/30/99/33/3099337c4b4b217c095f3372fc0065d8.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Withdraw</p>
-              </div>
-          </a>
-            <a href='/wallet/transfer/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/3029/3029373.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Transfer</p>
-              </div>
-          </a>
-            <a href='/wallet/history/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/1825/1825357.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Transaction History</p>
-              </div>
-          </a>
-            <a href='/wallet/history/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968247_640.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Change password</p>
-              </div>
-          </a>
-            <a href='/accounts/logout/' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://image.flaticon.com/icons/png/512/1053/1053210.png">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Logout</p>
-              </div>
-          </a>
-            <a href='https://t.me/Roopali26' style="height: 80%; margin: 0; padding: 0" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-1-phone">
-              <div class="mdc-card info-card info-card--danger">
-                <img style="max-width: -webkit-fill-available;" src="https://icon-library.com/images/customer-support-icon-png/customer-support-icon-png-19.jpg">
-                <p style="text-align: center; font-size: 8px; line-height: 0.9rem;"><br>Contact</p>
-              </div>
-          </a>
+{% extends 'apnabase.html' %}
+{% load static i18n %}
+{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% load sum_tags %}
+    
+    {% block content %}
+    <div class="body-overlay" id="body-overlay"></div>
+    
+        
+    <div class="single-page-area">
+        <div class="title-area justify-content-between">
+            <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+            <h3 class="ps-4">Profile</h3>
+            <div class="balance">${{request.user.wallet}} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
         </div>
-      </div>
-      <p style="text-align: center;">My Referral Code : {{ request.user.username }}</p>
-    </main>
-  </div>
-</div>
-{% endblock content %}
+        <div class="container">
+            <div class="my-profile-wrap">
+                <div class="media">
+                    <img class="thumb" src="{% static 'static/img/comment/my-profile.png' %}" alt="img">
+                    <div class="media-body">
+                        <h6 class="profile-name">{{ request.user.name }}</h6>
+                        <p class="profile-mail">{{ request.user.email }}</p>
+                    </div>
+                    <img class="star star1" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                    <img class="star star2" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                </div>
+            </div>
+        </div>
+        <div class="profile-details" style="background-image: url({% static 'static/img/other/profile-bg.png' %});">
+            <ul>
+                <li>
+                    <h6>06</h6>
+                    <span>Total Game </span>
+                </li>
+                <li>
+                    <h6>20</h6>
+                    <span>Total Wins  </span>
+                </li>
+                <li>
+                    <h6>15</h6>
+                    <span>Total Loses </span>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+          <div class="sports-slider-wrap slider-for">
+            <div class="slider-content">
+              <div class="single-product-wrap">
+                <h6 class="title">{{ game.name }}</h6>
+                <div class="details">
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png">
+                    <h6 class="team-name"><br>Home</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/1763/1763476.png">
+                    <h6 class="team-name"><br>Deposit</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/13065/13065513.png">
+                    <h6 class="team-name"><br>Referrals</p>
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/7401/7401215.png">
+                    <h6 class="team-name"><br>Transfer</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://i.pinimg.com/originals/30/99/33/3099337c4b4b217c095f3372fc0065d8.png">
+                    <h6 class="team-name"><br>Withdraw</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/7050/7050590.png">
+                    <h6 class="team-name"><br>History</p>
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/11135/11135307.png">
+                    <h6 class="team-name"><br>Security</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://cdn-icons-png.flaticon.com/512/10313/10313098.png">
+                    <h6 class="team-name"><br>Logout</p>
+                  </div>
+                  <div class="thumb">
+                    <img style="padding: 10px" src="https://icon-library.com/images/customer-support-icon-png/customer-support-icon-png-19.jpg">
+                    <h6 class="team-name"><br>Contact</p>
+                  </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+            
+            
+        </div>
+        <div class="main-footer-bottom d-block text-center">
+            <ul>
+                <li>
+                    <a class="active" href="/users/">
+                        <img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/records/">
+                        <img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-bar" href="/users/bets/">
+                        <img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+                        My Bets
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/~update/">
+                        <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+                        Edit Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>     
+    <!-- back-to-top end -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+    </div>
+    {% endblock %}

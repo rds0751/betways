@@ -19,7 +19,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 #HTMLReporter .symbolSummary li.skipped:before { color: #bababa; content: "\02022"; }
 #HTMLReporter .symbolSummary li.pending { line-height: 11px; }
 #HTMLReporter .symbolSummary li.pending:before { color: #aaaaaa; content: "-"; }
-#HTMLReporter .exceptions { color: #fff; float: right; margin-top: 5px; margin-right: 5px; }
+#HTMLReporter .exceptions { color: #FFF; float: right; margin-top: 5px; margin-right: 5px; }
 #HTMLReporter .bar { line-height: 28px; font-size: 14px; display: block; color: #eee; }
 #HTMLReporter .runningAlert { background-color: #666666; }
 #HTMLReporter .skippedAlert { background-color: #aaaaaa; }
@@ -31,7 +31,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 #HTMLReporter .failingAlert:first-child { background-color: #b03911; }
 #HTMLReporter .results { margin-top: 14px; }
 #HTMLReporter #details { display: none; }
-#HTMLReporter .resultsMenu, #HTMLReporter .resultsMenu a { background-color: #fff; color: #333333; }
+#HTMLReporter .resultsMenu, #HTMLReporter .resultsMenu a { background-color: #FFF; color: #333333; }
 #HTMLReporter.showDetails .summaryMenuItem { font-weight: normal; text-decoration: inherit; }
 #HTMLReporter.showDetails .summaryMenuItem:hover { text-decoration: underline; }
 #HTMLReporter.showDetails .detailsMenuItem { font-weight: bold; text-decoration: underline; }

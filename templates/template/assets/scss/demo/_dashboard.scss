@@ -26,7 +26,7 @@
           right: 20px;
          }
         i {
-          color: #fff;
+          color: #FFF;
           font-size: 30px;
         }
       }
@@ -104,7 +104,7 @@
     .product-name-box {
       position: absolute;
       width: 83%;
-      color: #ffffff;
+      color: #FFFfff;
       transform: translateY(-50%);
       @each $color, $value in $theme-colors {
         .product-name-box-#{$color} {
@@ -240,12 +240,12 @@
   }
   .mdc-tab-indicator {
     .mdc-tab-indicator__content--underline {
-      border-color: #ffffff;
+      border-color: #FFFfff;
     }
   } 
   .to-do-list-content {
     padding: 10px 30px;
-    background: #ffffff;
+    background: #FFFfff;
     .to-do-list-item {
       border: 1px solid #eeeeee;
       border-radius: 4px;

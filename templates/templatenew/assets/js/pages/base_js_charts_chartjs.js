@@ -36,14 +36,14 @@ var BaseJsCharts = function() {
 				fillColor: App.hexToRgba( App.colors.blue, 20 ),
 				strokeColor: App.hexToRgba( App.colors.blue, 40 ),
 				pointColor: App.hexToRgba( App.colors.blue, 40 ),
-				pointStrokeColor: '#fff',
+				pointStrokeColor: '#FFF',
 				data: [30, 32, 40, 45, 43, 38, 55]
 			}, {
 				label: 'This Week',
 				fillColor: App.hexToRgba( App.colors.blue, 70 ),
 				strokeColor: App.colors.blue,
 				pointColor: App.colors.blue,
-				pointStrokeColor: '#fff',
+				pointStrokeColor: '#FFF',
 				data: [15, 16, 20, 25, 23, 25, 32]
 			}]
 		};

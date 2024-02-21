@@ -1,37 +1,62 @@
-{% extends "users/base.html" %}
-{% load static i18n %}
-
+{% extends 'apnabase.html' %}
+{% load static %}
 
 {% block content %}
-<div class="body-wrapper">
-  <div class="main-wrapper">
-    <div class="page-wrapper full-page-wrapper">
-      <main>
-        <div>
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-              <div class="mdc-card p-0">
-                <section style="padding: 30px 30px 20px 30px;" class="error-header">
-                  <h1>{{message}}</h1>
-                </section>
-                <section>
-                  <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
-                    <div class="mdc-card">
-                        <div class="template-demo">
-                          <a href="/" class="mdc-button mdc-button--secondary w-50">
-                              Back
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+<div class="body-overlay" id="body-overlay"></div>
+
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">Bet Placing</h3>
+        <div class="balance"> <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
     </div>
-  </div>
+    <div class="container">
+        <div class="my-profile-wrap">
+            <div class="media">
+                <img class="thumb" src="{% static 'static/img/comment/my-profile.png' %}" alt="img">
+                <div class="media-body">
+                    <h6 class="profile-name">{{message}}</h6>
+                </div>
+                <img class="star star1" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                <img class="star star2" src="{% static 'static/img/icon/star.png' %}" alt="img">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+    </div>
+    <div class="main-footer-bottom d-block text-center">
+      <ul>
+        <li>
+            <a class="active" href="/users/">
+                <img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="/users/records/">
+                <img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a class="menu-bar" href="/users/bets/">
+                <img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+                My Bets
+            </a>
+        </li>
+        <li>
+            <a href="/users/~update/">
+                <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+                Edit Profile
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
 </div>
-{% endblock content %}
+{% endblock %}

@@ -4,7 +4,7 @@
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
     background: #7dc855;
-    color: #fff
+    color: #FFF
 }
 
 #navbar-accounts .top-bar, #navbar-accounts.contain-to-grid, #navbar-accounts .top-bar-section ul li, #navbar-accounts .top-bar-section li:not(.has-form) a:not(.button) {
@@ -75,5 +75,5 @@ button.warning:hover, button.warning:focus, .button.warning:hover, .button.warni
 }
 
 .promotion_title h1 {
-    color: #ffffff;
+    color: #FFFfff;
 }

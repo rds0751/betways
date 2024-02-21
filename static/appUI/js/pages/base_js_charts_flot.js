@@ -132,7 +132,7 @@ var BaseJsCharts = function() {
 				clickable: true
 			},
 			yaxis: {
-				tickColor: '#fff',
+				tickColor: '#FFF',
 				ticks: 3
 			},
 			xaxis: {
@@ -429,7 +429,7 @@ var BaseJsCharts = function() {
 						},
 						background: {
 							opacity: .75,
-							color: '#000000'
+							color: '#FFF000'
 						}
 					}
 				}

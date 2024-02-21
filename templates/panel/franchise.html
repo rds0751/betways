@@ -38,9 +38,9 @@
                                             {% if x.status == 0 %}
                                         <form action="/panel/franchise/" method="POST" target="_blank">
                                             {% csrf_token %}
-                                            <select name='status' style="width: 200px; color: white; font-weight: bolder; background-color: {% if x.status == 0 %}orange{% elif x.status == 1 %}green{% elif x.status == -1 %}red{% endif %}">
-                                                <option style="color: green; background-color: white" value="1">Activate</option>
-                                                <option style="color: red; background-color: white" value="-1">Cancel</option>
+                                            <select name='status' style="width: 200px; color: black; font-weight: bolder; background-color: {% if x.status == 0 %}orange{% elif x.status == 1 %}green{% elif x.status == -1 %}red{% endif %}">
+                                                <option style="color: green; background-color: black" value="1">Activate</option>
+                                                <option style="color: red; background-color: black" value="-1">Cancel</option>
                                             </select>
                                             <textarea name='comment' style="width: 200px;" placeholder="Comment on changing order status">{% if x.comment %}{{ x.comment }}{% endif %}</textarea>
                                             <input type="hidden" name="id" value="{{x.id}}">

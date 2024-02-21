@@ -10,9 +10,6 @@ from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.conf.urls import url
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from debug_toolbar import urls as durls
-from django.conf.urls import re_path
 from users import views
 from allauth.account.views import LoginView, SignupView
 
@@ -30,27 +27,23 @@ urlpatterns = [
     path('accounts/', include("allauth.urls")),
     url(r'^customurl/login/', views.customlogin, name="custom_login" ),
     url(r'^kyc/', include('kyc.urls')),
-    path('__debug__/', include(durls), name='debug_toolbar'),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
     path('order/', include(('orders.urls', 'orders'), namespace='orders')),
     url(r'api/', include('api.urls')),
     url(r"register=(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
-    path('contact/', TemplateView.as_view(template_name='contact.html')),
+    path('', TemplateView.as_view(template_name='apnabase.html')),
+    path('onboard/', TemplateView.as_view(template_name='onboard.html')),
+    path('started/', TemplateView.as_view(template_name='started.html')),
+    path('terms/', TemplateView.as_view(template_name='terms.html')),
+    path('profile/', TemplateView.as_view(template_name='profile.html')),
     path('plan/', RedirectView.as_view(url=staticfiles_storage.url("IPM_23July_Final_Presentation-1.pdf")),),
     path('soon/', TemplateView.as_view(template_name='users/coming_soon.html')),
-    path('', include('users.urls', namespace="users")),
+    path('users/', include('users.urls', namespace="users")),
     path('level/', include('level.urls', namespace="level")),
     path('search/', include("search.urls", namespace="searchy")),
     path("api-auth/", include("rest_framework.urls")),
-    path("api/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
     path('games/', include('games.urls', namespace="games")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += [
-        re_path(r'^rosetta/', include('rosetta.urls'))
-    ]

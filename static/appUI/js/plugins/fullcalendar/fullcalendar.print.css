@@ -19,8 +19,8 @@
 --------------------------------------------------------------------------------------------------*/
 
 .fc-event {
-	background: #fff !important;
-	color: #000 !important;
+	background: #FFF !important;
+	color: #FFF !important;
 	page-break-inside: avoid;
 }
 
@@ -39,7 +39,7 @@ thead,
 tbody,
 .fc-row {
 	border-color: #ccc !important;
-	background: #fff !important;
+	background: #FFF !important;
 }
 
 /* kill the overlaid, absolutely-positioned components */

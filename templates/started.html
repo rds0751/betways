@@ -1,0 +1,36 @@
+{% extends 'apnabase.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="body-overlay" id="body-overlay"></div>
+    
+<div class="login-page">
+    <div class="container">
+        <div class="align-items-center d-flex justify-content-center vh-100">
+            <div>
+                <div class="logo-area text-center">
+                    <img class="light-logo" style="width: 340px;" src="{% static 'static/img/logo2.svg' %}" alt="img">
+                    <img class="darkmode-logo" style="width: 340px;" src="{% static 'static/img/logo2-white.svg' %}" alt="img">
+                </div>
+                <h3>Let’s Get Started</h3>
+                <p>Login to your account below or signup
+                    for an amazing experience</p>
+                <a class="btn btn-base w-100" href="/users/">Have an Account? Login</a>
+                <a class="btn btn-border w-100 mt-4" href="/accounts/signup/">Create An Account</a>
+                <div class="or-border"><span>Or</span></div>
+                <ul class="social-area">
+                    <li><img src="{% static 'static/img/icon/facebook.svg' %}" alt="img"></li>
+                    <li><img src="{% static 'static/img/icon/apple.svg' %}" alt="img"></li>
+                    <li><img src="{% static 'static/img/icon/google.svg' %}" alt="img"></li>
+                </ul>
+            </div>
+        </div>           
+    </div>
+</div>
+
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}

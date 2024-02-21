@@ -2,7 +2,7 @@
 
 .mdc-top-app-bar {
   @include mdc-top-app-bar-fill-color-accessible($content-bg);
-  @include mdc-top-app-bar-icon-ink-color(#000);
+  @include mdc-top-app-bar-icon-ink-color(#FFF);
   padding: 7px 20px;
   z-index: 9;
   position: static;
@@ -45,7 +45,7 @@
           .mdc-notched-outline__notch,
           .mdc-notched-outline__trailing {
             border-color: transparent;
-            background: #fff;
+            background: #FFF;
           }
           .mdc-notched-outline__notch {
             .mdc-floating-label {
@@ -89,7 +89,7 @@
       button {
         width: 35px;
         min-width: 35px;
-        color: #000;
+        color: #FFF;
         .count-indicator {
           width: 13px;
           height: 13px;
@@ -103,7 +103,7 @@
           background: theme-color(danger);
           .count {
             font-size: 7px;
-            color: #fff;
+            color: #FFF;
           }
         }
       }
@@ -232,7 +232,7 @@
         }
         .user-name {
           font-size: 14px;
-          color: #000;
+          color: #FFF;
           font-weight: normal;
         }
       }

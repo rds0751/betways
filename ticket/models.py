@@ -31,7 +31,7 @@ class Priority(models.Model):
     name = models.CharField(max_length=32)
     value = models.IntegerField()
     is_default = models.BooleanField(default=False)
-    display_color = models.TextField(max_length=16, default="#000000")
+    display_color = models.TextField(max_length=16, default="#FFF000")
 
     def __unicode__(self):
         return self.name + " (" + str(self.value) + ")"

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-mt" viewBox="0 0 512 512">
   <g fill-rule="evenodd" stroke-width="1pt">
     <path fill="#ce0000" d="M256 0h256v512H256z"/>
-    <path fill="#fff" d="M0 0h256v512H0z"/>
+    <path fill="#FFF" d="M0 0h256v512H0z"/>
   </g>
   <g transform="matrix(.35005 0 0 .35003 40.7 -25.5)">
     <path fill="#f1eeee" fill-rule="evenodd" d="M183.1 381.7c0 2.3-2.6 4.2-5.8 4.2-3.3 0-5.9-2-5.9-4.2 0-2.3 2.6-4.2 5.8-4.2s6 1.9 6 4.2z"/>

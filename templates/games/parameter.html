@@ -26,12 +26,12 @@
   
   .tabs .indicator {
     height: 5px;
-    background-color: #fff;
+    background-color: #FFF;
   }
   </style>
 </head>
 <header>
-  <nav style="background-color: white;">
+  <nav style="background-color: black;">
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"><img width="180px" src="{% static 'IKTOR.png' %}"></a>
@@ -46,7 +46,7 @@
       <div class="mdc-layout-grid__inner">
         <div style="float: left; background-color: blue;" class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
           <div style="padding-left: 25%;" class="mdc-list-item mdc-drawer-item">
-            <p class="mdc-drawer-link" style='color: white;
+            <p class="mdc-drawer-link" style='color: black;
   font-size: bold;
   font-weight: bold;
   font-size: 11px;' href="/users/">
@@ -56,7 +56,7 @@
           </div>
         <div style="float: right; background-color: blue;" class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
           <div style="padding-left: 25%;" id="btn-copy" class="mdc-list-item mdc-drawer-item">
-            <p class="mdc-drawer-link" id='copy-text' style='color: white;
+            <p class="mdc-drawer-link" id='copy-text' style='color: black;
   font-size: bold;
   font-weight: bold;
   font-size: 11px;'>
@@ -73,6 +73,36 @@
       <div id="test1" class="col s12">
         <div class="card">
             <p style="text-align: center;">ID Status: {% if request.user.c > 0 %}Active{% else %}Inactive{% endif %}</p>
+          {% if not request.user.is_authenticated %}
+          
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="/games/parameters/" />
+            {% endif %}
+            <div class="mdc-layout-grid">
+              <div class="mdc-layout-grid__inner">
+                <div>
+                  <div class="mdc-text-field w-100">
+                    <input style="font-size: .9rem;" autocomplete="sedrctvghb" type="text" class="mdc-text-field__input" id="text-field-hero-input" name="login" placeholder="User ID" autofocus="autofocus" maxlength="150">
+                  </div>
+                </div>
+                <div>
+                  <div class="mdc-text-field w-100">
+                    <input style="font-size: .9rem;" autocomplete="sedrctvghb" type="password" class="mdc-text-field__input" id="text-field-hero-input" name="password" placeholder="Password" id="id_password">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button type="submit">
+                  Submit Bet365 ID
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+          {% endif %}
           <div class="card-image"> <img src="https://lh3.googleusercontent.com/HG5A_Hqdm5pjPzGNQCNepLp5AbsCLZZbWBjX0Q7psjEJRjDqEWnE7SNWlwbYYfL3uA"> <span class="card-title"></span> </div>
           <div class="card-content">
             <p>IKTOR Presents bet and win! set the parameters and start winning daily.</p>
@@ -82,7 +112,7 @@
       </div>
       <div id="test2" class="col s12">
         <div class="card blue-grey darken-1">
-          <div class="card-content white-text"> 
+          <div class="card-content black-text"> 
             <div class="table-responsive">
               <table class="table dashboard-table">
                 <thead>
@@ -180,10 +210,10 @@
 <footer style="position: fixed;top: 90%;width: -webkit-fill-available; background: #0951ad;" class="page-footer">
   <div class="row" id="frow" style="margin-bottom:0px;">
     <div class="col s12" style="padding-left:0px!important;padding-right:0px!important;">
-      <ul class="tabs tabs-fixed-width transparent white-text">
-        <li class="tab col s3 white-text"><a href="#test1" class="active white-text"><i class="material-icons">dashboard</i></a></li>
-        <li class="tab col s3"><a href="#test2" class="white-text"><i class="material-icons">list</i></a></li>
-        <li class="tab col s3"><a href="#test4" class="white-text"><i class="material-icons">account_circle</i></a></li>
+      <ul class="tabs tabs-fixed-width transparent black-text">
+        <li class="tab col s3 black-text"><a href="#test1" class="active black-text"><i class="material-icons">dashboard</i></a></li>
+        <li class="tab col s3"><a href="#test2" class="black-text"><i class="material-icons">list</i></a></li>
+        <li class="tab col s3"><a href="#test4" class="black-text"><i class="material-icons">account_circle</i></a></li>
       </ul>
     </div>
   </div>

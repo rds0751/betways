@@ -2,6 +2,6 @@
   <g fill-rule="evenodd" stroke-width="1pt">
     <path fill="#ff3319" d="M170.7 0H512v256H170.7z"/>
     <path fill="#00cc28" d="M170.7 256H512v256H170.7z"/>
-    <path fill="#fff" d="M0 0h170.7v512H0z"/>
+    <path fill="#FFF" d="M0 0h170.7v512H0z"/>
   </g>
 </svg>

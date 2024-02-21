@@ -37,7 +37,7 @@ var BasePagesDashboard = function() {
 					fillColor: 'rgba(255, 255, 255, .1)',
 					strokeColor: 'rgba(255, 255, 255, .38)',
 					pointColor: App.colors.blue,
-					pointStrokeColor: '#fff',
+					pointStrokeColor: '#FFF',
 					data: [20, 40, 24, 75, 16, 42, 20, 42, 40, 65, 48, 56, 80, 95]
 				}
 			]
@@ -51,7 +51,7 @@ var BasePagesDashboard = function() {
 					label: 'This Week',
 					fillColor: App.hexToRgba( App.colors.blue, 20 ),
 					strokeColor: App.hexToRgba( App.colors.blue, 20 ),
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointStrokeColor: App.hexToRgba( App.colors.blue, 70 ),
 					data: [20, 25, 40, 30, 55, 60, 80]
 				}
@@ -78,7 +78,7 @@ var BasePagesDashboard = function() {
 				{
 					label: 'This Week',
 					strokeColor: App.colors.blue,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointStrokeColor: App.colors.blue,
 					data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50]
 				}
@@ -93,7 +93,7 @@ var BasePagesDashboard = function() {
 					label: 'This Week',
 					fillColor: App.hexToRgba( App.colors.green, 30 ),
 					strokeColor: App.colors.green,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointStrokeColor: App.colors.green,
 					data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50]
 				}
@@ -108,7 +108,7 @@ var BasePagesDashboard = function() {
 					label: 'This Week',
 					fillColor: App.hexToRgba( App.colors.purple, 30 ),
 					strokeColor: App.colors.purple,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointStrokeColor: App.colors.purple,
 					data: [55, 40, 48, 40, 42, 50, 20, 25, 40, 30, 45, 40]
 				}
@@ -122,7 +122,7 @@ var BasePagesDashboard = function() {
 				{
 					fillColor: App.hexToRgba( App.colors.green, 30 ),
 					strokeColor: App.colors.green,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointDot: false,
 					pointStrokeColor: App.colors.green,
 					data: [50, 45, 52, 35, 45, 64, 50, 47, 45, 53]
@@ -137,7 +137,7 @@ var BasePagesDashboard = function() {
 				{
 					fillColor: App.hexToRgba( App.colors.blue, 30 ),
 					strokeColor: App.colors.blue,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointDot: false,
 					pointStrokeColor: App.colors.blue,
 					data: [30, 35, 42, 35, 60, 38, 50, 40, 48, 48]
@@ -152,7 +152,7 @@ var BasePagesDashboard = function() {
 				{
 					fillColor: App.hexToRgba( App.colors.purple, 30 ),
 					strokeColor: App.colors.purple,
-					pointColor: '#fff',
+					pointColor: '#FFF',
 					pointDot: false,
 					pointStrokeColor: App.colors.purple,
 					data: [60, 55, 52, 38, 62, 40, 50, 46, 50, 54]
@@ -280,7 +280,7 @@ var BasePagesDashboard = function() {
 						}]
 					}
 				},
-				colors: ['#fff'],
+				colors: ['#FFF'],
 				grid: {
 					borderWidth: 0,
 					color: App.colors.gray_lighter,

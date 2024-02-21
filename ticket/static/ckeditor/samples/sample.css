@@ -50,7 +50,7 @@ abbr
 {
 	background: #FF7E00;
 	border: 1px solid #DA8028;
-	color: #fff;
+	color: #FFF;
 	font-size: 10px;
 	font-weight: bold;
 	padding: 1px 4px;
@@ -90,7 +90,7 @@ h1.samples a
 
 h2.samples
 {
-	color: #000000;
+	color: #FFF000;
 	font-size: 130%;
 	margin: 15px 0 0 0;
 	padding: 0;
@@ -234,7 +234,7 @@ label
    added to it, so we can style it differently. */
 .cke_editable.cke_editable_inline.cke_focus
 {
-	box-shadow: inset 0px 0px 20px 3px #ddd, inset 0 0 1px #000;
+	box-shadow: inset 0px 0px 20px 3px #ddd, inset 0 0 1px #FFF;
 	outline: none;
 	background: #eee;
 	cursor: text;

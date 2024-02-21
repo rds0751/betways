@@ -1,91 +1,91 @@
-{% extends "users/base.html" %}
-{% load static i18n %}
-{% block title %}{% trans 'Bets' %}{% endblock %}
-
+{% extends 'apnabase.html' %}
+{% load static %}
 
 {% block content %}
-<div class="body-wrapper">
-	<div class="main-wrapper">
-		<div class="page-wrapper full-page-wrapper">
-			<main>
-				<div>
-					<div class="mdc-layout-grid__inner">
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-							<div class="mdc-card p-0">
-								<section style="padding: 30px 30px 20px 30px;" class="error-header">
-									<h1>{% trans "Bets" %}</h1>
-								</section>
-								<section>
-									<div class="mdc-layout-grid__inner mt-2">
-										<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-12-tablet">
-											<div style="padding: 32px 0px;" class="mdc-card bg-white text-white">
-												<div class="table-responsive">
-					                            {% for x in bets %}
-													<div class="px-5 py-2">
-														<p style="background: blue; color: white; font-weight: 700;" class="d-flex justify-content-between">
-															<span>&nbsp; &nbsp; Note: B7471234567654323456{{x.id}}</span>
-														</p>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;">{{ x.result.game.name }}</span>
-															<span style="color: green">
-																{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue
-															</span>
-														</p>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Betting </span>
-															<span style="color: green">
-																Champion&runner-up - equal - {{ x.ser }}
-															</span>
-														</p>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Odds </span>
-															<span style="color: green">
-																{{ x.odds }}
-															</span>
-														</p>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Time </span>
-															<span style="color: green">
-																{{ x.result.end_time }}
-															</span>
-														</p>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Bet Amount</span>
-															<span style="color: green">
-																INR {{ x.bet_amount|floatformat:2 }}
-															</span>
-														</p>
-														<hr>
-														<p class="d-flex justify-content-between">
-															<span style="color: black;"> Result </span>
-															<span style="color: green">
-																INR {{ x.rewards|floatformat:2 }}
-															</span>
-														</p>
-													</div>
-					                              {% endfor %}
-													<div style="padding-left: 10px;" class="template-demo">
-														{% for pg in page_range %}
-														{% if histories.number == pg %}
-														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
-															{{pg}}
-														</a>
-														{% else %}
-														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
-														{% endif %}
-														{% endfor %}
-													</div>
-												</div>
-											</div>
-										</div>	
-									</div>
-								</section>
-							</div>
+<div class="body-overlay" id="body-overlay"></div>
+
+<div class="single-page-area">
+	<div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">My Bets</h3>
+        <div class="balance">$ {{ request.user.wallet }}<span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
+    </div>
+	<div class="mybet-page-wrap">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">All</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Pending</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="win-tab" data-bs-toggle="tab" data-bs-target="#win" type="button" role="tab" aria-controls="win" aria-selected="false">Wins</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="lose-tab" data-bs-toggle="tab" data-bs-target="#lose" type="button" role="tab" aria-controls="lose" aria-selected="false">Loses</button>
+			</li>
+		</ul>
+		<div class="container">
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					{% for x in bets %}
+					<div class="mybet-single-card">
+						<div class="card-title">
+							<h6>{{ x.result.game.name }}</h6>
+							<span>{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue</span>
 						</div>
+						<ul class="bet-details">
+							<li><span>B54323456{{x.id}}</span><span>{{ x.result.end_time }}</span></li>
+							<li><span>Champion&runner-up - equal - {{ x.ser }}</span><span>1 x {{ x.odds }}</span></li>
+						</ul>
+						<ul class="bet-status">
+							<li class="status-title"><span>Stake</span><span>Return</span><span>Status</span></li>
+							<li class="price"><span>${{ x.bet_amount|floatformat:2 }}</span><span>${{ x.rewards|floatformat:2 }}</span><span class="status-pending">{% if x.rewards == 0 %}Pending{% elif x.rewards <= 0 %}Lose{% else %}Won{% endif %}</span></li>
+						</ul>
+					</div>
+					{% endfor %}
+					<div style="padding-left: 10px;" class="template-demo">
+						{% for pg in page_range %}
+							{% if histories.number == pg %}
+								<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
+									{{pg}}
+								</a>
+							{% else %}
+								<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
+							{% endif %}
+						{% endfor %}
 					</div>
 				</div>
-			</main>
+			</div>
 		</div>
 	</div>
+	<div class="main-footer-bottom d-block text-center">
+		<ul>
+			<li>
+				<a class="active" href="/users/">
+					<img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+					Home
+				</a>
+			</li>
+			<li>
+				<a href="/users/records/">
+					<img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+					Dashboard
+				</a>
+			</li>
+			<li>
+				<a class="menu-bar" href="/users/bets/">
+					<img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+					My Bets
+				</a>
+			</li>
+			<li>
+				<a href="/users/~update/">
+					<img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+					Edit Profile
+				</a>
+			</li>
+		</ul>
+	</div>
 </div>
-{% endblock content %}
+{% endblock %}

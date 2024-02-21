@@ -165,10 +165,10 @@
                 data: [47, 33, 33, 24, 40, 30, 26, 30, 39],
                 fill: false,
                 borderColor: [
-                  '#ffffff'
+                  '#FFFfff'
                 ],
                 borderWidth: 1,
-                pointBorderColor: "#ffffff",
+                pointBorderColor: "#FFFfff",
                 pointBorderWidth: 5,
                 pointRadius: [1, 0, 0, 0, 0, 0, 0, 0, 1],
                 label: "online"
@@ -241,10 +241,10 @@
               data: [47, 33, 33, 24, 40, 30, 26, 30, 39],
               fill: false,
               borderColor: [
-                '#ffffff'
+                '#FFFfff'
               ],
               borderWidth: 1,
-              pointBorderColor: "#ffffff",
+              pointBorderColor: "#FFFfff",
               pointBorderWidth: 5,
               pointRadius: [1, 0, 0, 0, 0, 0, 0, 0, 1],
               label: "online"

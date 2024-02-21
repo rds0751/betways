@@ -14,22 +14,22 @@ a.cke_scayt_toogle:active
 {
 	border-color: #316ac5;
 	background-color: #dff1ff;
-	color : #000;
+	color : #FFF;
 	cursor: pointer;
 	margin : 0px;
 }
 a.cke_scayt_toogle {
 	color : #316ac5;
-	border-color: #fff;
+	border-color: #FFF;
 }
 .scayt_enabled a.cke_scayt_item {
 	color : #316ac5;
-	border-color: #fff;
+	border-color: #FFF;
 	margin : 0px;
 }
 .scayt_disabled a.cke_scayt_item {
 	color : gray;
-	border-color : #fff;
+	border-color : #FFF;
 }
 .scayt_enabled a.cke_scayt_item:hover,
 .scayt_enabled a.cke_scayt_item:focus,
@@ -37,7 +37,7 @@ a.cke_scayt_toogle {
 {
 	border-color: #316ac5;
 	background-color: #dff1ff;
-	color : #000;
+	color : #FFF;
 	cursor: pointer;
 }
 .scayt_disabled a.cke_scayt_item:hover,

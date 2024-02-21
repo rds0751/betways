@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=32)),
                 ('value', models.IntegerField()),
                 ('is_default', models.BooleanField(default=False)),
-                ('display_color', models.TextField(default='#000000', max_length=16)),
+                ('display_color', models.TextField(default='#FFF000', max_length=16)),
             ],
         ),
         migrations.CreateModel(

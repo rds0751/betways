@@ -1,805 +1,137 @@
-{% load static %} 
+{% load static i18n %}
 <!DOCTYPE html>
-<html> 
-<head>
-    <meta charset="utf-8" /><!-- 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" sizes="76x76" type="image/png" href="{% static 'logo.ico' %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'logo.ico' %}">
-    <meta property="og:title" content="IPAYMATICS Inc.">
-    <meta property="og:description" content="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements">
-    <meta property="og:image" content="{% static 'download.png' %}">
-    <meta content="{% static 'logo.png' %}" itemprop="image">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,700i,800&display=swap" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>IPAYMATICS Inc.</title>
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <link href="{% static 'css/demo.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Crown Casino Inc. - Sports Betting | {% block title %}{% endblock title %}</title>
+        <!--fivicon icon-->
+        <link rel="icon" href="{% static 'static/img/fevicon.png' %}">
+
+        {% block css %}
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="{% static 'static/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/magnific.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/nice-select.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/owl.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/slick-slide.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/fontawesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/remixicon/remixicon.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'static/css/responsive.css' %}">
+        {% endblock css %}
+        {% block head %}{% endblock head %}
     
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    
+    
+    </head>
+    <body class='sc5 dark'>
+      {% block body %}
+      <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div id="wave1">
+            </div>
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+      </div>
+      
+        
+        {% block wrapper %}
+        {% if user.is_authenticated %}
+        <!-- <div align="center" style="background: black;" class="pt-4">
+          <div align="center" style="background: black;" class="pt-2">
+          <div style="background: black" class="page-wrapper mdc-toolbar-fixed-adjust ">
+            <main>
+              <div>
+                &nbsp;
+                </div>
+              </main>
+            </div>
+          </div>
+          <div style="background: rgb(237,246,8)" class="page-wrapper mdc-toolbar-fixed-adjust pt-5 pb-3">
+            <main>
+              <div>
+                <div class="mdc-layout-grid__inner">
+                  <div class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
+                    <div style="padding-left: 15%;" class="mdc-list-item mdc-drawer-item">
+                      <p class="mdc-drawer-link" style='color: black;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;' href="/users/">
+                        Balance: <span style="font-size: 26px">₹{{ request.user.wallet }}</span>
+                      </p>
+                    </div>
+                    </div>
+                  <div class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
+                    <div style="padding-left: 18%;" id="btn-copy" class="mdc-list-item mdc-drawer-item">
+                      <p class="mdc-drawer-link" id='copy-text' style='color: black;
+            font-size: bold;
+            font-weight: bold;
+            font-size: 11px;'>
+                        Today Profit: <span style="font-size: 26px">₹{{ request.user.today }}</span>
+                      </p>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+          <div align="center" style="background: black;" >
+          <div style="background: black" class="page-wrapper mdc-toolbar-fixed-adjust ">
+            <main>
+              <div>
+                &nbsp;
+                </div>
+              </main>
+            </div>
+          </div> -->
+        {% endif %}
+          {% block content %}
+          <div class="body-overlay" id="body-overlay"></div>
+        
+          <div class="main-page bg-main d-flex align-items-center justify-content-center vh-100">
+              <div class="container">
+                  <div class="d-block text-center">
+                      <img class="light-logo" style="width: 340px;" src="{% static 'static/img/main-logo.png' %}" alt="img">
+                      <img class="darkmode-logo" style="width: 340px;" src="{% static 'static/img/main-logo-dark.png' %}" alt="img">
+                      <a class="btn btn-white" href="/onboard">GET STARTED</a>
+                  </div>
+              </div>
+          </div>    
+          {% endblock content %}
+        {% endblock wrapper %}
+        <!-- all plugins here -->
+        <script src="{% static 'static/js/jquery.3.6.min.js' %}"></script>
+        <script src="{% static 'static/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'static/js/imageloded.min.js' %}"></script>
+        <script src="{% static 'static/js/counterup.js' %}"></script>
+        <script src="{% static 'static/js/waypoint.js' %}"></script>
+        <script src="{% static 'static/js/magnific.min.js' %}"></script>
+        <script src="{% static 'static/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'static/js/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'static/js/nice-select.min.js' %}"></script>
+        <script src="{% static 'static/js/fontawesome.min.js' %}"></script>
+        <script src="{% static 'static/js/owl.min.js' %}"></script>
+        <script src="{% static 'static/js/slick-slider.min.js' %}"></script>
+        <script src="{% static 'static/js/wow.min.js' %}"></script>
+        <script src="{% static 'static/js/tweenmax.min.js' %}"></script>
+        <!-- main js  -->
+        <script src="{% static 'static/js/main.js' %}"></script>
+        
 
-    <link rel="shortcut icon" href="{% static 'logo.ico' %}" />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K457S78');</script>
-<script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
-<!-- End Google Tag Manager -->
-<script>
-    $(document).ready(function(){
-        $("#myModal1").modal('show');
-    });
-    $(document).ready(function(){
-        $("#myModal").modal('show');
-    });
-</script>
-</head>
-<body style="background-color: white">
-    {% block all %}
-    <div class='maineheader'>
-        <div class='navigation-wrap bg-light start-header start-style'>
-            <div class='container'>
-                <div class='row'>
-                    <div class='col-12'>
-                        <nav class='navbar navbar-expand-md navbar-light'>
-                            <a class='navbar-brand normal-logo' href='/' target='blank' ><img style="width: 200px" src='{% static "images/white-logo.png" %}' class='normal-logo' alt='logo' /><img style="width: 200px;margin-bottom: 10px;margin-top: 10px;" src='{% static "images/logoblack.png" %}'  class='scroll-logo' alt='logo' /> </a>
-                            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-                                <span class='navbar-toggler-icon'></span>
-                            </button>
-                            <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-                                <ul class='navbar-nav py-4 py-md-0' style="justify-content: flex-end;">
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class='nav-link' href='/'>Home</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/#aboutus'>About Us</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/plan/'>Business Plan</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/contact/'>Contact Us</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4 btnheader'><a href='/accounts/logout/' class='btn login-btn ml-50'>Login!</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {% block book %}
-    {% block content %}
-
-    <!-- <div style="top: 0px;" id="myModal1" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background: #52b808; border-bottom: 0;">
-                    <h5 style="color: white" class="modal-title">Get Latest Updates on Youtube</h5>
-                    <button style="padding: 0; color: white" type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div style="margin-top: 50px;
-    margin-bottom: 50px;" class="modal-body">
-                    <p>
-                        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-                    </p>
-                    <div class="tgme_page_photo" style="box-sizing: border-box; text-align: center; margin-top: -15px; margin-bottom: 15px; color: rgb(43, 45, 46); font-family: Roboto, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><a href="#" style="box-sizing: border-box; background: transparent; color: rgb(60, 162, 217); text-decoration: none;"><img class="tgme_page_photo_image" src="https://yt3.ggpht.com/gJO5AVH1jjHVG5sX3Qi0DMml75wqKfGzzJbbjAHNikf8cvQLmKeEBWTDLzR9s6p3R6bU_walOQ=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" style="box-sizing: border-box; border: 0px; width: 300px;"></a></div>
-                    <div class="tgme_page_title" dir="auto" style="box-sizing: border-box; font-size: 26px; line-height: 32px; font-weight: bold; text-align: center; max-width: 340px; padding: 0px 10px; margin: 0px auto; color: rgb(51, 51, 51); overflow: hidden; text-overflow: ellipsis; font-family: Roboto, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><span dir="auto" style="box-sizing: border-box;">Get Latest Videos/News</span></div>
-                    <div class="tgme_page_photo" style="box-sizing: border-box; text-align: center; margin-top: -15px; margin-bottom: 15px; color: rgb(43, 45, 46); font-family: Roboto, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></div>
-                    <div class="tgme_page_description" dir="auto" style="box-sizing: border-box; font-size: 16px; line-height: 25px; text-align: center; max-width: 340px; padding: 0px 10px; margin: 0px auto; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; max-height: 125px; word-break: break-word; color: rgb(43, 45, 46); font-family: Roboto, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Get latest updates on youtube</div>
-                    <div class="tgme_page_action" style="box-sizing: border-box; text-align: center; margin-top: 32px; line-height: 0; color: rgb(43, 45, 46); font-family: Roboto, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
-                        <script src="https://apis.google.com/js/platform.js"></script>
-                        <div style="width: 100%" class="g-ytsubscribe" data-channelid="UCUC0RU2b3yjRtzWvw6MX8KQ" data-layout="full" data-count="hidden"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->    
-    <div style="top: 75px;" id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content" style="border-radius: 13px;">
-                <div class="modal-header" style="padding: 0;
-    margin: 0;
-    border: 0;
-    padding-bottom: 0px !important;
-    border-radius: 13px;
-    padding-top: 0px !important;">
-                    <button style="padding: 0; color: red" type="button" class="close" data-dismiss="modal">&times;</button>
-                    <img style="margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-    border-radius: 13px;" src="https://i.imgur.com/7bbsrqL.gif">
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class='header-banner-sec'>
-        <div class='container'>
-            <div class='row'>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='welcome-content text-left'>
-                        <div class='smalltext-section'>
-                            <h3 class='paltform'> Trusted & Complete Trading Platform</h3>
-                        </div>
-                        <div class='heading-intro'>
-                            <h1>
-                                <span class='w-text bold'>Trading platform with multiple incomes</span>
-                            </h1>
-                        </div>
-                        <div class='provide-section'><!-- 
-                            <h3>We are AI based Trading</h3> -->
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='image-right'>
-                        <div class='large-image'>
-                            <img src='https://wallstreetglitches.com/wp-content/uploads/2021/02/Easy-start-trading.png' alt='' />
-                        </div>
-                        <div class='small-image'>
-                            <img src='{% static "images/about-12.png" %}' alt='' />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <style type="text/css">
-        @media screen and (min-width: 480px) {
-            .flagw {
-                position: fixed;
-                top: 2%;
-                left: 1%;
-                width: 60px;
-                z-index: 1000;
-                display: block;
-            }
-            .flagm {
-                display:none;
-            }
-        }
-        @media screen and (max-width: 479px) {
-            .flagm {
-                position: fixed;
-                top: 2%;
-                left: 59%;
-                width: 20%;
-                z-index: 1000;
-                display:block;
-            }
-            .flagw {
-                display:none;
-            }
-        }
-    </style>
-    <img src="https://acegif.com/wp-content/uploads/british-flag.gif" class="flagw">
-    <img src="https://acegif.com/wp-content/uploads/british-flag.gif" class="flagm">
-    <section class='registelogin-sec'>
-        <div class='container'>
-            <div class='row'>
-                <div class='services-text'>
-                    <h3>For businesses who want to grow as brands</h3>
-                    <p>Our team of experts help your startups and local business to grow as BRANDS. We provide platform to sell, uniquely designed products by different startups using unique selling and marketing technologies and strategies.</p>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='welcome-content text-left'>
-                        <div class='left-image'>
-                            <img src='{% static "images/payment.png" %}' alt='' />
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='all-services'>
-                        <div class='services-block-four transparent'>
-                            <div class='inner-box'>
-                                <div class='icon-icon bg4'>
-                                    <img src='{% static "images/income-img.png" %}' alt='' />
-                                </div>
-                                <h3>Return on Investment</h3>
-                                <p class='text'>We provide return on every penny spent on our AI based Trading platform.
-                                </p>
-                            </div>
-                        </div>
-                        <div class='services-block-four transparent'>
-                            <div class='inner-box'>
-                                <div class='icon-icon bg4'>
-                                    <img src='{% static "images/team.png" %}' alt='' />
-                                </div>
-                                <h3>Dedicated Team</h3>
-                                <p class='text'>Our teams are working on the most advanced technologies such as AI in Ecommerce domain to provide maximum profitability for your brands.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-             </div>
-         </div>
-     </div>
- </section>
- <section class='aboutus-sec' id='aboutus'>
-    <div class='container'>
-        <div class='row'>
-            <div class='services-text text-global'>
-
-                <h3>About Us</h3>
-                <p>IPAYMATICS Inc. as a leading AI Based Trading company which provides services to maximize your profits, which enables you to take good incomes and We believe in our startups and local businesses for strong & positive relationships that are open and honest.</p>
-                <p>IPAYMATICS Inc. which started it's operations in the year 2019, is now becoming a leading smart Trading company leading in services and products. IPAYMATICS Inc. is constantly growing at a phenomenal rate every month. The growth rate in itself speaks volumes about the quality of products, the marketing technologies, strategies and the management that is able to deliver such a rewarding and sustainable system.</p>
-                <p class='abt'>IPAYMATICS Inc. is constantly expanding its services range to introduce innovative products. IPAYMATICS Inc. is an also MCA Certified company and believes in world class service levels to all its customers. IPAYMATICS Inc. has been building a widespread network of businesses which is constantly growing every month.</p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/vissionimg.png" %}' alt='' />
-                    </div>
-                    <h6 class='bold'>Vision</h6>
-                    <p>The vision of IPAYMATICS is to provide all types of services under one roof and create modern E-commerce business world wide through AI based Model in near future.
-                    </p>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/missionimg.png" %}' alt='' />
-                    </div>
-                    <h6 class='bold'>Mission
-                    </h6>
-                    <p>To become the benchmark in providing Trading services to local businesses and startups.
-                    </p>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/w4.png" %}' alt='' />
-                    </div>
-                    <h6 class='bold'>Why Choose us?</h6>
-                    <p>IPAYMATICS uses different types of profit making opportunities also providing high-quality services with higher cashback.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class='reliable-payment-sec'>
-    <div class='container'>
-        <div class='row main-paymentsec'>
-            <div class='col-md-6'>
-                <div class='payment-image' style="margin-bottom: 15%;">
-                    <img src='{% static "images/payment-image.png" %}' alt='' />
-                    <div class='payment-dotted'>
-                        <img src='{% static "images/dotted1.svg' alt='' />
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-6'>
-                <div class='payment-text'>
-                    <span class='gradient-text blue'>Reliable Online Payment Platform</span>
-                    <h4>Types of Income</h4>
-                    <p>IPAYMATICS Inc. provide different types of income opportunity including high-quality services with higher cashback.</p>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Trading Income</h3>
-                            <div class='text'>When you upgrade to prime, for every pair in specific ratio you get 180 from company in form of matching income.</div>
-                        </div>
-                    </div>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Referral Income</h3>
-                            <div class='text'>After upgrading succesfully you will be opened to different levels time to time where you get income share from your downlines forever</div>
-                        </div>
-                    </div>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Fixed Return</h3>
-                            <div class='text'>Company provides different rewards time to time, Just keep an eye on website and stay up to date.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-     </div>
- </div>
-</section>
-<section class='global-growth-sec'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>OUR EXPECTED GROWTH</span>
-                <h2>Our System Growth</h2>
-                <p>IPAYMATICS which started it's operations in the year 2019, is now becoming a leading Ecommerce company. <br></br>
-                    IPAYMATICS is constantly growing at a phenomenal rate every month. The growth rate in itself speaks <br></br>
-                    volumes about the quality of products, the marketing plan, technology and ML based Strategy that has able to deliver<br></br>
-                    such a rewarding and sustainable system.
-                </p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-lg-3'>
-                <div class='row'>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/encrypted.png" %}' alt='' />
-                            <h3>Fully Encrypted </h3>
-                            <p>Our system is fully encrypted and flexible in use.</p>
-                        </div>
-                    </div>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/secure.png" %}' alt='' />
-                            <h3>Safe and Secure</h3>
-                            <p>Our team of experts have great efficiency to secure our system. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-lg-6'>
-                <div class='map-image'>
-                    <img src='{% static "images/map.png" %}' alt='' />
-                </div>
-            </div>
-            <div class='col-12 col-lg-3'>
-                <div class='row'>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/services.png" %}' alt='' />
-                            <h3>24/7 Services</h3>
-                            <p>our support system is very powerful. If you mail us then we guarantee to get back to you within a working day.
-                            </p>
-                        </div>
-                    </div>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/cashout.png" %}' alt='' />
-                            <h3>Instant Payouts</h3>
-                            <p>Very next day when user orders a products, your income is transferred to your Bank Acoounts.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-     </div>
- </div>
-</section>
-<!-- <section class='our-services'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>OUR SERVICES</span>
-                <h2>Our Core Services</h2>
-                <p>We provide free high-quality services with higher cashback from all types of <br></br>transactions and also provide innovative ways of earning.
-             </p>
-         </div>
-     </div>
-     <div class='row'>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s1.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Secure Payment Service</h6>
-                <p>We provide 100% secure payment service. </p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s2.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Our Product</h6>
-                <p>We provide Reward Points as a product which is used in our services.</p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s3.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Low Transaction fees</h6>
-                <p>All transactions will be done immediately without any problems. with 0% NEFT Charges</p>
-            </div>
-        </div>
-    </div>
-    <div class='row bottom-sec'>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s4.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Recharge</h6>
-                <p>We provide multiple recharge with higher cashback and reward point 1% use in prepaid and DTH and you got 2% cashback and 1.4% distribution in up-to 10 level. </p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s5.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Bill Payments</h6>
-                <p>There is no use reward point and no cashback on bill payments.</p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s6.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Dedicated Team</h6>
-                <p> Our team of experts will help you to startups this business and experts will strongly support to expand your business to become a brand.</p>
-            </div>
-        </div>
-    </div>
-</div>
-</section> -->
-<section class='accordion-sec'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>Our Platform FAQ</span>
-                <h2>Frequently Questions</h2>
-                <p>In our system almost all startups and businesses are fully satisfied because we strongly support to enhance <br></br>
-                    our system but some new users don’t know about the system, we covered all questions with complete <br></br>
-                    answers which are given below.
-                </p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-lg-6'>
-                <div class='map-image'>
-                    <img src='{% static "images/fqa.png" %}' alt='' />
-                </div>
-            </div>
-            <div class='col-12 col-lg-6'>
-                <div class='row'>
-                    <div id='accordion' class='accordion'>
-                        <div class='card mb-0'>
-                            <div class='card-header collapsed' data-toggle='collapse' href='#collapseOne' >
-                                <a class='card-title'>
-                                    How to start this business?
-                                </a>
-                            </div>
-                            <div id='collapseOne' class='card-body collapse show' data-parent='#accordion'>
-                                <p>First understand complete outcomes and return on investments.
-                                </p>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo'>
-                                <a class='card-title'>
-                                    What are the best features and services we deiver?
-                                </a>
-                            </div>
-                            <div id='collapseTwo' class='card-body collapse' data-parent='#accordion' >
-                                <p>One of the best AI based Trading invented according to indian scenarios and we provide high-quality services with higher cashback.
-                                </p>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseThree'>
-                                <a class='card-title'>
-                                    Why this Platform important to me?
-                                </a>
-                            </div>
-                            <div id='collapseThree' class='collapse' data-parent='#accordion' >
-                                <div class='card-body'>
-                                    <p>It's completely digital platform that boosts your business.</p>
-                                </div>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseFour'>
-                                <a class='card-title'>
-                                   how may I Upgrade on this Platform?
-                               </a>
-                           </div>
-                           <div id='collapseFour' class='collapse' data-parent='#accordion' >
-                            <div class='card-body'>
-                                <p>Register with us then according to plans upgrade your account.</p>
-                            </div>
-                        </div>
-                        <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseFive'>
-                            <a class='card-title'>
-                                Can I use services for free?
-                            </a>
-                        </div>
-                        <div id='collapseFive' class='collapse' data-parent='#accordion' >
-                            <div class='card-body'><p>Yes you can use our services free, just signup and check the insider view.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-            <!-- <section class='achievers-sec'>
-                <div class='container'>
-                    <div class='row'>
-                        <div class='text-global'>
-                            <span class='gradient-text blue'>Leaders of the Month</span>
-                            <h2>Top Achievers</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Dubai</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Paris</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>New York</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Himalayas</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-            {% endblock %}
-            <section class="contact-form">
-                <div class='container'>
-                    <div class="row">
-                       <div class="text-global">
-                          <span class="gradient-text blue">Contact Us</span>
-                          <h2>We Guarantee To Get Back <br>To Within A Working Day.</h2>
-                          <p>Please write to us using the form below if you would like to know more about<br> the opportunity, share ideas, give feedback, have complaints.</p>
-                       </div>
-                    </div>
-                    <div class="col-12 col-md-10 col-lg-8 mx-auto">
-                       <form>
-                          <div class="row">
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="name" id="name" placeholder="Name" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Name:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" id="usr" name="last_name" placeholder="Last Name" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Last Name:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="email" placeholder="Email" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Email:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="phoneno" placeholder="Phone Number" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Phone Number:</label></div>
-                             </div>
-                             <div class="col-12 col-md-12">
-                                <div class="form-group"><textarea style="color: #030cc7;" type="text" class="form-control" name="comment" placeholder="Your Comments" autocomplete="off"></textarea><span class="highlight"></span><span class="bar"></span><label>Your Comments</label></div>
-                             </div>
-                             <div class="submit-btn"><button type="submit">Submit</button></div>
-                          </div>
-                       </form>
-                    </div>
-                </div>
-            </section>
-            {% endblock %}
-            <section class='partners-sec'>
-                <div class='container'>
-                    <div class='row main-log-sec'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway1.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway2.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway3.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway4.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway5.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway6.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway7.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://resize.indiatvnews.com/en/resize/newbucket/715_-/2019/08/rupay-card-1566468196.jpg' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class='footer-sec'>
-                <div class='container'>
-                    <div class='row '>
-                        <div class='col-12 col-lg-6 col-md-6'>
-                            <div class='footer-info-sec'>
-                                <div class='footer-text'>
-                                    <div class='footer-logo'>
-                                        <a href='javascript:void(0)'><img src='{% static "images/white-logo.png" %}' alt='logo' /> </a>
-                                    </div>
-                                    <p>IPAYMATICS which started it's operations in the year 2019, is now becoming a leading smart Trading company leading in services and products. IPAYMATICS Inc. is constantly growing at a phenomenal rate every month. The growth rate in itself speaks volumes about the quality of products, the marketing technologies, strategies and the management that is able to deliver such a rewarding and sustainable system.
-                                    </p>
-                                </div>
-                                <div class='footer-social-info'>
-                                    <a href='https://www.facebook.com/ipaymatics/'><i class='fa fa-facebook' aria-hidden='true'></i></a>
-                                    <a href='https://twitter.com/ipaymatics'> <i class='fa fa-twitter' aria-hidden='true'></i></a>
-                                    <a href='Live:.cid.7899b1986fe2c6'><i class='fa fa-skype' aria-hidden='true'></i></a>
-                                    <a href='https://www.instagram.com/ipaymatics/'><i class='fa fa-instagram' aria-hidden='true'></i></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-lg-2 col-md-6 '>
-                        </div>
-                        <div class='col-12 col-lg-4 col-md-6 '>
-                            <div class='contact_info_area address_sec'>
-                                <div class='contact_info '>
-                                    <h5>CONTACT US</h5>
-                                    <p>Phone No. (+44)1297 824050</p>
-                                    <p>Timings - Mon. to Fri., 11AM to 5PM PST</p>
-                                    <p><a href='mailto:support@ipaymatics.com' class='email-sec'><i class='fa fa-envelope-o' aria-hidden='true'></i> support@ipaymatics.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-            <section class='copyrightsec'>
-                <div class='container'>
-                    <div class='row '>
-                        <div class='col-12 col-lg-4 col-md-4'>
-                            <div class='conditionsec textcondition-left'>
-                              <p> <a href='/terms'>Terms & Conditions</a></p>
-                          </div>
-                      </div>
-                      <div class='col-12 col-lg-4 col-md-4'>
-                        <div class='conditionsec textcondition-center'>
-                         <p>Copyright © 2019 - 2020 | All right reserved by IPAYMATICS INC.
-                         </p>
-                     </div>
-                 </div>
-
-
-             </div>
-         </div>
-     </section>
-     <div id="gb-widget-7781" style="bottom: 21px; left: 23px; opacity: 1; transition: opacity 0.5s ease 0s; box-sizing: border-box; direction: ltr; position: fixed !important; z-index: 16000160 !important;">
-        <div>
-            <div class="q8c6tt-2 dJvETY">
-                <a href="https://wa.me/+441297824050" target="_blank" style="    width: 50px;
-    height: 50px;
-    order: 1;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    cursor: pointer;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 6px;
-    transition: all 0.5s ease 0s;
-    position: relative;
-    z-index: 200;
-    display: block;
-    border: 0px;
-    background: #4dc247 !important;">
-                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%; fill: rgb(255, 255, 255); stroke: none;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-        $(function() {
-            var header = $(".start-style");
-            $(window).scroll(function() {    
-                var scroll = $(window).scrollTop();
-
-                if (scroll >= 10) {
-                    header.removeClass('start-style').addClass('scroll-on');
-                } else {
-                    header.removeClass('scroll-on').addClass('start-style');
-                }
-            });
-        });
-    </script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f57c9b4f0e7167d000e8ad8/1eregigo5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K457S78"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <script type="text/javascript"> var infolinks_pid = 3293690; var infolinks_wsid = 0; </script> 
-        <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-        {% endblock %}
+        {% block modal %}
+        {% endblock modal %}
+      {% endblock body %}
     </body>
-    </html>
+</html>

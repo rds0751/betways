@@ -58,13 +58,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     'crispy_forms',
-    'django_countries',
     'storages',
-    "markdownx",
     "home",
-    'maintenancemode',
     'kyc',
-    'django_crontab',
     'games'
 ]
 

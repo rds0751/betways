@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'wallets',
     'users',
     'import_export',
-    'compressor',
     'ticket',
 
     'level',

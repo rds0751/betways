@@ -191,12 +191,11 @@ LANGUAGES = (
 )
 
 TIME_ZONE = 'Asia/Kolkata'
+USE_TZ = False
 
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
 
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)

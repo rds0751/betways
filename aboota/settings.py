@@ -232,8 +232,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    'compressor.finders.CompressorFinder'
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 ]
 
 MEDIA_URL = '/media/'
@@ -289,15 +288,6 @@ FILE_UPLOAD_PERMISSIONS = 0o640
 CRONJOBS = [
     ('5 * * * *', 'scan', '>> /tmp/scheduled_job.log')
 ]
-
-COMPRESS_DEBUG_TOGGLE = False
-COMPRESS_CSS_COMPRESSOR = 'compressor.css.CssCompressor'
-COMPRESS_JS_COMPRESSOR = 'compressor.js.JsCompressor'
-COMPRESS_PRECOMPILERS = ()
-COMPRESS_PARSER = 'compressor.parser.AutoSelectParser'
-COMPRESS_ENABLED = False
-COMPRESS_ROOT = '../..'
-COMPRESS_URL = '/'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_UNIQUE_EMAIL = False

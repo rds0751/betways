@@ -60,7 +60,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     "home",
     'kyc',
+    'django_crontab',
     'games'
+]
+
+CRONJOBS = [
+    ('*/5 * * * *', 'django.core.management.call_command', ['scan']),
 ]
 
 

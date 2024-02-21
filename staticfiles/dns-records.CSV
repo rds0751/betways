@@ -1,0 +1,13 @@
+"Domain verification record set:"
+"Record name","Record type","Record Value"
+"_amazonses.jrindia.co.in","TXT","B0I+lbGrEWiQJf/MwSuUYAFHaL11l3CeJtehXcBg7SA="
+
+"Alternate domain verification record:"
+"Record name","Record type","Record Value"
+"jrindia.co.in","TXT","amazonses:B0I+lbGrEWiQJf/MwSuUYAFHaL11l3CeJtehXcBg7SA="
+
+"DKIM record set:"
+"Record name","Record type","Record Value"
+"nhzqcllxfwj5ygkvhkjyfgdvoepvzffi._domainkey.jrindia.co.in","CNAME","nhzqcllxfwj5ygkvhkjyfgdvoepvzffi.dkim.amazonses.com"
+"zhi73rvgac2w2fvkeucbcbtgotal5qlb._domainkey.jrindia.co.in","CNAME","zhi73rvgac2w2fvkeucbcbtgotal5qlb.dkim.amazonses.com"
+"7ie4pyj7ctu5zk36xx7rz7hurnsd2rke._domainkey.jrindia.co.in","CNAME","7ie4pyj7ctu5zk36xx7rz7hurnsd2rke.dkim.amazonses.com"

@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
 import json
 from users.models import User
 from wallets.models import WalletHistory

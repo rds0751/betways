@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>IKTOR+</title>
+  <title>Xavier+</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
@@ -34,7 +34,7 @@
   <nav style="background-color: black;">
     <div class="container">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo"><img width="180px" src="{% static 'IKTOR.png' %}"></a>
+        <a href="#" class="brand-logo"><img width="180px" src="{% static 'Xavier.png' %}"></a>
       </div>
     </div>
   </nav>
@@ -60,7 +60,7 @@
   font-size: bold;
   font-weight: bold;
   font-size: 11px;'>
-              Today Profit: <span style="font-size: 26px">₹{{ request.user.today }}</span>
+              Today Profit: <span style="font-size: 26px">₹{{ request.user.today|floatformat:2 }}</span>
             </p>
           </div>
         </div>
@@ -105,7 +105,7 @@
           {% endif %}
           <div class="card-image"> <img src="https://lh3.googleusercontent.com/HG5A_Hqdm5pjPzGNQCNepLp5AbsCLZZbWBjX0Q7psjEJRjDqEWnE7SNWlwbYYfL3uA"> <span class="card-title"></span> </div>
           <div class="card-content">
-            <p>IKTOR Presents bet and win! set the parameters and start winning daily.</p>
+            <p>Xavier Presents bet and win! set the parameters and start winning daily.</p>
           </div>
           <div class="card-action"> <a href="#"></a> </div>
         </div>

@@ -30,11 +30,11 @@ class PlayedGame(models.Model):
 	user = models.CharField(max_length=50, null=True, blank=True)
 	result = models.ForeignKey(GameResult, on_delete=models.CASCADE)
 	bet_type = models.CharField(max_length=50, choices=(('odd-even','odd-even'), ('big-small','big-small'), ('exact-match','exact-match')))
-	bet = models.IntegerField(default=0)
-	odds = models.IntegerField(default=0, blank=True)
+	bet = models.FloatField(default=0)
+	odds = models.FloatField(default=0, blank=True)
 	bet_amount = models.FloatField(default=0, blank=True)
 	rewards = models.FloatField(default=0, blank=True)
-	ser = models.IntegerField(default=0, blank=True)
+	ser = models.FloatField(default=0, blank=True)
 
 	# big 1 small 0
 	# odd 1 even 0
@@ -61,8 +61,8 @@ class Dragon(models.Model):
 		# ('exact-match', 'exact-match'), 
 		# ('big-small', 'big-small')
 		))
-	ser = models.IntegerField(default=18)
-	counter = models.IntegerField(default=0)
-	empty_period = models.IntegerField(default=30)
+	ser = models.FloatField(default=18)
+	counter = models.FloatField(default=0)
+	empty_period = models.FloatField(default=30)
 	odds = models.FloatField(default=0, blank=True)
 	increment = models.FloatField(default=1.03)

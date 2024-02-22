@@ -10,7 +10,7 @@ from django.utils.html import mark_safe
 class User(AbstractUser, PermissionsMixin):
     username = models.CharField(max_length=25, blank=True, unique=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    mobile = models.CharField(max_length=255, blank=True)
+    mobile = models.CharField(max_length=255, blank=True, unique=True)
     address = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=255, blank=True, null=True)

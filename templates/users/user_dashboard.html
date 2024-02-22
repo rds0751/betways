@@ -17,7 +17,7 @@
                     </a>
                     <div class="media-body">
                         <span class="profile-name">Hello, {{ request.user.name }}</span>
-                        <div class="balance">₹ {{ request.user.wallet }} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div>
+                        <div class="balance">₹ {{ request.user.wallet|floatformat:2 }} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div>
                     </div>
                 </div>
                 <div class="btn-wrap">

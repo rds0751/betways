@@ -28,7 +28,6 @@ class User(AbstractUser, PermissionsMixin):
     pkey = models.CharField(max_length=1000)
     
     USERNAME_FIELD = "username"
-    # REQUIRED_FIELDS = ['name', 'referal', 'mobile']
     
     def get_full_name(self):
         return self.name

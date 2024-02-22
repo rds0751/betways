@@ -6,7 +6,7 @@
                     <div class="app-layout-drawer-scroll">
                         <!-- Drawer logo -->
                         <div id="logo" class="drawer-header">
-                            <h2 style="text-align: center">$&nbsp;{{ request.user.wallet|floatformat:2 }}</h2>
+                            <h2 style="text-align: center">₹{{ request.user.wallet|floatformat:2|floatformat:2 }}</h2>
                         </div>
                         <div style="height: auto" id="logo" class="drawer-header">
                             <h2 style="font-size: 12px; text-align: center; margin: 0;">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})</h2>

@@ -50,7 +50,7 @@
   font-size: bold;
   font-weight: bold;
   font-size: 11px;' href="/users/">
-              Balance: <span style="font-size: 26px">₹{{ request.user.wallet }}</span>
+              Balance: <span style="font-size: 26px">₹{{ request.user.wallet|floatformat:2 }}</span>
             </p>
           </div>
           </div>

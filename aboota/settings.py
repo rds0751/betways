@@ -247,14 +247,14 @@ ACCOUNT_FORMS = {'signup': 'users.forms.SimpleSignupForm'}
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_LOGOUT_REDIRECT_URL ="/"
+ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGIN_URL = "/"
+LOGIN_URL = "/accounts/login/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True

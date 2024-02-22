@@ -14,7 +14,7 @@ def parameter(request):
 def place(request):
 	if request.method == 'POST':
 		amount = request.POST.get('amount')
-		if request.user.wallet|floatformat:2 >= int(amount):
+		if request.user.wallet >= int(amount):
 			if 'evenodd' in request.POST:
 				bet = request.POST.get('bet')
 				amount = request.POST.get('amount')

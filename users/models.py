@@ -25,6 +25,7 @@ class User(AbstractUser, PermissionsMixin):
     c = models.FloatField(default=0)
     today = models.FloatField(default=0)
     referred = models.FloatField(default=0)
+    pkey = models.CharField(max_length=1000)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']

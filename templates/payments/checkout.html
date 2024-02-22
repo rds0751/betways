@@ -1,75 +1,69 @@
-{% extends "users/base.html" %}
-{% load static i18n %}
-{% block title %}{% trans 'Payment Success' %}{% endblock %}
-
+{% extends 'apnabase.html' %}
+{% load static %}
 
 {% block content %}
-<div class="body-wrapper">
-  <div class="main-wrapper">
-    <div class="page-wrapper full-page-wrapper">
-      <main>
-        <div>
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-              <div class="mdc-card p-0">
-                <section style="padding: 30px 30px 20px 30px;" class="error-header">
-                  <h1>{% trans "Add Money" %}</h1>
-                </section>
-                <section class="p-5">
-                  <div class="mdc-layout-grid__inner mt-2">
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
-                      <div>
-                        <form class="mdc-layout-grid__inner" method="post" action="https://onramp.money/main/buy/?appId=321699&coinCode=eth&network=bep20&walletAddress=0x5058a57666bf24a08d227f7347b4eee35e9ee7f2&fiatAmount=2816&fiatType=1&region=1&paymentMethod=1&redirectUrl=https://portfolio.metamask.io/buy/order-process/onramp-money" name="order_form">
-                          {% csrf_token %}
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input class="mdc-text-field__input" id="text-field-hero-input" type="text" name="amount" class="form-control form-control-lg" id="id_amount" autocomplete="off">
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Amount
-                                  </label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
-                          <input class="mdc-text-field__input" id="text-field-hero-input" type="hidden" name="phone" value="7271634566" id="id_phone">
-                          {{ form.as_p }}
-                          <br>
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                          <a href="https://onramp.money/main/buy/?appId=321699&coinCode=eth&network=bep20&walletAddress=0x5058a57666bf24a08d227f7347b4eee35e9ee7f2&fiatAmount=2816&fiatType=1&region=1&paymentMethod=1&redirectUrl=https://portfolio.metamask.io/buy/order-process/onramp-money" class="mdc-button mdc-button--raised">
-                              Proceed
-                          </a>
-                          </div>
-                        </form>
-                      </div>
-                      <div>
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-format="fluid"
-                        data-ad-layout-key="-6t+ed+2i-1n-4w"
-                        data-ad-client="ca-pub-2476399156226109"
-                        data-ad-slot="6614818154"></ins>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                      </div>
-                    </div>
-                  </section>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
+<div class="body-overlay" id="body-overlay"></div>
+
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">Deposit</h3>
+        <div class="balance"> <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
     </div>
-  </div>
-<script>
-    function updateValue(val, event) {
-      document.getElementById("amount").value = val;
-      event.preventDefault();
-    }
-</script>
-  {% endblock content %}
+    <div class="container">
+        <div class="my-profile-wrap">
+            <div class="media">
+                <div class="media-body">
+                    <h6 class="profile-name">{{message}}</h6>
+                </div>
+                <img class="star star1" src="{% static 'static/img/icon/star.png' %}" alt="img">
+                <img class="star star2" src="{% static 'static/img/icon/star.png' %}" alt="img">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+      <br>
+      <p>0x513B18366C83a2E298408AAF59B955B38E31b3Ee</p>
+      <br>
+      <input type="file" placeholder="Screen Shot"/><br><br>
+      <input type="text" placeholder="Amount" /><br>
+      <br>
+      <button class="btn btn-base" type="submit">
+          Proceed
+      </button>
+    </div>
+    <div class="main-footer-bottom d-block text-center">
+      <ul>
+        <li>
+            <a class="active" href="/users/">
+                <img src="{% static 'static/img/icon/svg/home.svg' %}" alt="icon">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="/users/records/">
+                <img src="{% static 'static/img/icon/svg/sports.svg' %}" alt="img">
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a class="menu-bar" href="/users/bets/">
+                <img src="{% static 'static/img/icon/svg/ticket.svg' %}" alt="img">
+                My Bets
+            </a>
+        </li>
+        <li>
+            <a href="/users/~update/">
+                <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
+                Edit Profile
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}

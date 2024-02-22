@@ -77,8 +77,8 @@
                   <div class="col-md-6">
                     <div class="single-input-wrap">
                       <label><img src="{% static 'static/img/icon/password.svg' %}" alt="img"></label>
-                      <input placeholder="password" name="password1" class="form-control" type="password" id="text-field-hero-input">
-                      <button class="show-pass-btn"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
+                      <input placeholder="password" name="password1" class="form-control" type="password" id="myInput">
+                      <button class="show-pass-btn" onclick="myFunction()"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
                     </div>
                   </div>
                   
@@ -86,7 +86,6 @@
                     <div class="single-input-wrap">
                       <label><img src="{% static 'static/img/icon/password.svg' %}" alt="img"></label>
                       <input placeholder="confirm password" name="password2" class="form-control" type="password" id="text-field-hero-input">
-                      <button class="show-pass-btn"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
                     </div>
                   </div>
                   
@@ -116,5 +115,15 @@
 <!-- back-to-top end -->
 <div class="back-to-top">
     <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
-</div>                
+</div>
+<script>
+  function myFunction() {
+var x = document.getElementById("myInput");
+if (x.type === "password") {
+  x.type = "text";
+} else {
+  x.type = "password";
+}
+}
+</script>  
 {% endblock %}

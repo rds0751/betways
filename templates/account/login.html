@@ -48,8 +48,8 @@
                     <div class="col-md-6">
                         <div class="single-input-wrap">
                             <label><img src="{% static 'static/img/icon/password.svg' %}" alt="img"></label>
-                            <input type="password" class="form-control" name="password" placeholder="Enter Password">
-                            <button class="show-pass-btn"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
+                            <input type="password" class="form-control" id="myInput" name="password" placeholder="Enter Password">
+                            <button class="show-pass-btn" onclick="myFunction()"><img src="{% static 'static/img/icon/eye.svg' %}" alt="img"></button>
                         </div>
                     </div>
                     <div class="text-end"><a href="#">Forgot password?</a></div>
@@ -74,4 +74,14 @@
 <div class="back-to-top">
     <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
 </div>
+<script>
+    function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 {% endblock %}

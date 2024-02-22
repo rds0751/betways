@@ -21,10 +21,10 @@ class User(AbstractUser, PermissionsMixin):
     profile_pic = models.FileField(upload_to='profile_pics/', null=True)
     otp = models.IntegerField(default='1234', null=True)
     referral = models.CharField(max_length=25, blank=True, null=True)
-    wallet = models.IntegerField(default=0)
-    c = models.IntegerField(default=0)
-    today = models.IntegerField(default=0)
-    referred = models.IntegerField(default=0)
+    wallet = models.FloatField(default=0)
+    c = models.FloatField(default=0)
+    today = models.FloatField(default=0)
+    referred = models.FloatField(default=0)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']

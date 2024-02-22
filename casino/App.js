@@ -8,7 +8,7 @@ export default function App() {
     <WebView
       style={styles.container}
       originWhitelist={['*']}
-      source={{ uri: 'https://crown.0x360.com/' }}
+      source={{ uri: 'https://crown.0x360.com/users/' }}
     />
   );
 }
@@ -16,6 +16,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
   },
 });

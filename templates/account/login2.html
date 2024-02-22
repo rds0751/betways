@@ -1,7 +1,10 @@
 {% extends "account/base.html" %}
 
 {% load i18n static %}
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
+
+{% block refresh %}
+{% endblock refresh %}
 
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
@@ -16,7 +19,7 @@
           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
             <div class="mdc-card" align="center">
               <a href="/" style="width: 60%; margin-left: 20%">
-              <img src="{% static 'IKTOR.png' %}" width="80%">
+              <img src="{% static 'Xavier.png' %}" width="80%">
               </a>
               <br>
               <hr width="70%" style="    background: #80808054;

@@ -8,7 +8,7 @@ export default function App() {
     <WebView
       style={styles.container}
       originWhitelist={['*']}
-      source={{ uri: 'http://13.127.47.185' }}
+      source={{ uri: 'https://crown.0x360.com/games/parameters/' }}
     />
   );
 }

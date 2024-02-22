@@ -44,13 +44,13 @@ class Command(BaseCommand):
 					u = 'blank'
 				print(r, bet_type, x.bet, result)
 				if r == 'win' and u != 'blank':
-					x.rewards = x.bet_amount * x.odds
-					u.wallet += x.bet_amount * x.odds
-					u.today += x.bet_amount * x.odds
+					x.rewards = x.bet_amount * (x.odds - 1)
+					u.wallet += x.bet_amount * (x.odds - 1)
+					u.today += x.bet_amount * (x.odds - 1)
 					u.save()
 					w = WalletHistory()
 					w.user_id = u
-					w.amount = x.bet_amount * x.odds
+					w.amount = x.bet_amount * (x.odds - 1)
 					w.comment = 'Won a bet'
 					w.type = 'credit'
 					w.save()

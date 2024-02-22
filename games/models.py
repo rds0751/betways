@@ -57,9 +57,9 @@ class Dragon(models.Model):
 	starting_amount = models.FloatField(default=3.3)
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 	bet_type = models.CharField(max_length=100, choices=(
-		('odd-even', 'odd-even'),
-		# ('exact-match', 'exact-match'), 
-		# ('big-small', 'big-small')
+		# ('odd-even', 'odd-even'),
+		('exact-match', 'exact-match'), 
+		('big-small', 'big-small')
 		))
 	ser = models.FloatField(default=18)
 	counter = models.FloatField(default=0)

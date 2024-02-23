@@ -95,31 +95,13 @@ select {
 </div>
 
 <div id="light" class="black_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-	<div class="mdc-tab-bar" role="tablist">
-		  <div class="mdc-tab-scroller">
-		    <div class="mdc-tab-scroller__scroll-area">
-		      <div class="mdc-tab-scroller__scroll-content">
-		        <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
-		          <span class="mdc-tab__content">
-		            <span class="mdc-tab__text-label">Bet Now</span>
-		          </span>
-		          <span class="mdc-tab-indicator mdc-tab-indicator">
-		            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-		          </span>
-		          <span class="mdc-tab__ripple"></span>
-		        </button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
 		<div class="content content--active">
 			<form class="template-demo" method="POST" action="/games/place/" enctype="multipart/form-data">
 		  	{% csrf_token %}
 	        <input type="hidden" name="exact">
 	        <input type="hidden" name="gid" value="{{game.id}}">
-	        <h5>Choose Even or Odd</h5>
-	        <input type="number" name="amount" class="form-control" placeholder="Amount">
-	        <input type="number" max="10" name="bet" class="form-control" placeholder="Number">
+	        <input type="number" name="amount" class="form-control mt-3" placeholder="Amount">
+	        <input type="number" max="10" name="bet" class="form-control mt-3" placeholder="Number">
 	          <button type="submit" class="btn btn-base w-100">
 	            Place Bet
 	          </button>

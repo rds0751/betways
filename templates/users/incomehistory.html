@@ -36,11 +36,11 @@
 						{% else %}
 						<tr>
 							<td style="padding-left: 20px;">
-								<p style="color: black; font-size: 10px;">
+								<p>
 								{{ history.comment }}</p>
-								<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
+								<p>{{ history.created_at }}</p>
 							</td>
-							<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ₹{{ history.amount|floatformat:2 }}</strong></td>
+							<td style="{% if history.type == 'credit' %}color: lightgreen;{% else %}color: orange;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ₹{{ history.amount|floatformat:2 }}</strong></td>
 						</tr>
 						{% endif %}
 						{% endfor %}

@@ -27,17 +27,7 @@
     <div class="container">
         <ul class="profile-list-inner">
             <li>
-                <a class="single-profile-wrap" href="/users/"><i class="fa fa-user"></i> My Profile <i class="ri-arrow-right-s-line"></i></a>
-            </li>
-            <li>
-                <div class="single-profile-wrap">
-                    <i class="fas fa-bell"></i>
-                    Push Notification
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+                <a class="single-profile-wrap" href="/users/~update/"><i class="fa fa-user"></i> My Profile <i class="ri-arrow-right-s-line"></i></a>
             </li>
             <li>
                 <div class="single-profile-wrap">
@@ -52,13 +42,13 @@
                 </div>
             </li>
             <li>
-                <a class="single-profile-wrap" href="#invite"><i class="fas fa-users"></i> Referrals <i class="ri-arrow-right-s-line"></i></a>
+                <a class="single-profile-wrap" href="/level/team/{{request.user.username}}/0/"><i class="fas fa-users"></i> Referrals <i class="ri-arrow-right-s-line"></i></a>
             </li>
             <li>
-                <a class="single-profile-wrap" href="#statistics"><i class="fas fa-chart-line"></i> Statistics <i class="ri-arrow-right-s-line"></i></a>
+                <a class="single-profile-wrap" href="/wallet/history/"><i class="fas fa-chart-line"></i> Wallet History <i class="ri-arrow-right-s-line"></i></a>
             </li>
             <li>
-                <a class="single-profile-wrap" href="#"><i class="fas fa-lock"></i> Change Password <i class="ri-arrow-right-s-line"></i></a>
+                <a class="single-profile-wrap" href="/accounts/password/change/"><i class="fas fa-lock"></i> Change Password <i class="ri-arrow-right-s-line"></i></a>
             </li>
             <li>
                 <a class="single-profile-wrap" href="/terms/"><i class="fas fa-exclamation-triangle"></i>Terms & Conditions <i class="ri-arrow-right-s-line"></i></a>
@@ -91,7 +81,7 @@
             <li>
                 <a href="/users/~update/">
                     <img src="{% static 'static/img/icon/svg/profile.svg' %}" alt="img">
-                    Edit Profile
+                    My Profile
                 </a>
             </li>
         </ul>

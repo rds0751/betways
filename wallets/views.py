@@ -880,7 +880,7 @@ def withdrawDreamFight(request):
         request.session['email_otp'] = otp
         message = f'your otp is {otp}'
         user_email = request.user.email
-        amount = float(request.POST.get('amount'))*0.9
+        amount = float(request.POST.get('amount'))
         if amount <= request.user.wallet and float(request.POST.get('amount')) >= 10:
             try:
                 wallet = request.user

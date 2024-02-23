@@ -1,74 +1,49 @@
-{% extends "users/base.html" %}
+{% extends 'apnabase.html' %}
 {% load static i18n %}
 
- 
 {% block content %}
-<div class="container">
-  <div class="row align-items-center ">
-    <div class="page-wrapper full-page-wrapper">
-      <main class="content-wrapper">
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-              <div class="mdc-card p-0">
-                <section style="" class="error-header">
-                  <h1>{% trans "Withdraw Funds" %}</h1>
-                </section>
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-                  <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
-                    <div>
-                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 10 as c %}
-                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as inr %}
-                      <h6>Available Balance: INR {{ request.user.wallet }}</h6>
-                    <div class="row">
-                    <div class="col">
+<div class="body-overlay" id="body-overlay"></div>
 
-                      <form class="template-demo" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type="hidden" name="check">
-                        <br>
-                        <input class="form-control border-start-0" name="amount" min="200" step="100" placeholder="Enter Amount" type="number">
-						
-                        <h5>Enter the Amount to Withdraw</h5>
-                        
-                        <br>
-                          <button type="submit" class="btn btn-primary">
-                            Withdraw Funds
-                          </button>
-                          </form>
-                          <p>{{ message }}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </main>
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">{% trans "Withdraw Funds" %}</h3>
     </div>
-  </div>
-</div>
-<script type="text/javascript">
-  $('.faux-select').click(function(){
-  $(this).toggleClass('open');
-  $('.options',this).toggleClass('open');
-});
+    <div class="container">
+        <div class="my-profile-wrap">
+			
+		{% if message != '' %}
+		<div class="uikit-alert-area">
+			<div class="uikit-alert-inner text-center">
+				<div class="icon base-color">
+					<svg class="svg-inline--fa fa-check-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path></svg><!-- <i class="fa fa-check-circle"></i> Font Awesome fontawesome.com -->
+				</div>
+				<div class="details">
+					<h6 class="title">Success</h6>
+					<p>{{message}}</p>
+					<a class="btn btn-base w-100" href="/users/">Done</a>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+        <h6>Available Balance: INR {{ request.user.wallet }}</h6>
+        <form class="template-demo" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="check">
+            <br>
+            <input class="form-control border-start-0 mt-3" name="amount" min="200" step="100" placeholder="Enter Amount" type="number">
+            
+            <h5>Enter the Amount to Withdraw</h5>
+            
+            <br>
+              <button type="submit" class="btn btn-primary">
+                Withdraw Funds
+              </button>
+              </form>
 
-$('.options li').click(function(){
-  var selection = $(this).text();
-  var dataValue = $(this).attr('data-value');
-  $('.selected-option span').text(selection);
-  $('.faux-select').attr('data-selected-value',dataValue);
-  $('input.amount').val(dataValue);
-});
-</script>
-<div class="container">
-  <div class="row align-items-center ">
-	<div class="row">
-		<!-- Orders -->
-		<div class="col-12 col-md-12 position-relative">
+		</div>
+        <div class="col-12 col-md-12 position-relative">
 			<div class=border-0 mb-4">
 				<div class="card-header">
 					<div class="row">
@@ -160,6 +135,75 @@ $('.options li').click(function(){
 						</div>
 					</div>
 				</div>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div class="container">
+
+    </div>{% include 'bottom.html' %}
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}
+
+ 
+{% block content %}
+<div class="container">
+  <div class="row align-items-center ">
+    <div class="page-wrapper full-page-wrapper">
+      <main class="content-wrapper">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="" class="error-header">
+                  <h1></h1>
+                </section>
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+                  <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
+                    <div>
+                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 10 as c %}
+                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as inr %}
+                      <h6>Available Balance: INR {{ request.user.wallet }}</h6>
+                    <div class="row">
+                    <div class="col">
+
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.faux-select').click(function(){
+  $(this).toggleClass('open');
+  $('.options',this).toggleClass('open');
+});
+
+$('.options li').click(function(){
+  var selection = $(this).text();
+  var dataValue = $(this).attr('data-value');
+  $('.selected-option span').text(selection);
+  $('.faux-select').attr('data-selected-value',dataValue);
+  $('input.amount').val(dataValue);
+});
+</script>
+<div class="container">
+  <div class="row align-items-center ">
+	<div class="row">
+		<!-- Orders -->
+		
 			</div>
 		</div>
 	</div>

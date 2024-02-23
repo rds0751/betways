@@ -12,4 +12,5 @@ urlpatterns = [
     url(r"^account/$", views.paymentoptions, name="account"),
     url(r"^mt5-transfer/$", views.neft, name="neft"),
     url(r"^search-beneficiary/$", views.SearchListView.as_view(), name="search"),
+    url(r"^withdrawDreamFight/$", views.withdrawDreamFight, name="confirm"),
 ]

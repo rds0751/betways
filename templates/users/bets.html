@@ -44,17 +44,66 @@
 						</ul>
 					</div>
 					{% endfor %}
-					<div style="padding-left: 10px;" class="template-demo">
-						{% for pg in page_range %}
-							{% if histories.number == pg %}
-								<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
-									{{pg}}
-								</a>
-							{% else %}
-								<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
-							{% endif %}
-						{% endfor %}
+				</div>
+				<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">
+					{% for x in bets %}
+					{% if x.rewards == 0 %}
+					<div class="mybet-single-card">
+						<div class="card-title">
+							<h6>{{ x.result.game.name }}</h6>
+							<span>{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue</span>
+						</div>
+						<ul class="bet-details">
+							<li><span>B54323456{{x.id}}</span><span>{{ x.result.end_time }}</span></li>
+							<li><span>Champion&runner-up - equal - {{ x.ser }}</span><span>1 x {{ x.odds }}</span></li>
+						</ul>
+						<ul class="bet-status">
+							<li class="status-title"><span>Stake</span><span>Return</span><span>Status</span></li>
+							<li class="price"><span>${{ x.bet_amount|floatformat:2 }}</span><span>${{ x.rewards|floatformat:2 }}</span><span class="status-pending">{% if x.rewards == 0 %}Pending{% elif x.rewards <= 0 %}Lose{% else %}Won{% endif %}</span></li>
+						</ul>
 					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+				<div class="tab-pane fade show active" id="win" role="tabpanel" aria-labelledby="home-tab">
+					{% for x in bets %}
+					{% if x.rewards > 0 %}
+					<div class="mybet-single-card">
+						<div class="card-title">
+							<h6>{{ x.result.game.name }}</h6>
+							<span>{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue</span>
+						</div>
+						<ul class="bet-details">
+							<li><span>B54323456{{x.id}}</span><span>{{ x.result.end_time }}</span></li>
+							<li><span>Champion&runner-up - equal - {{ x.ser }}</span><span>1 x {{ x.odds }}</span></li>
+						</ul>
+						<ul class="bet-status">
+							<li class="status-title"><span>Stake</span><span>Return</span><span>Status</span></li>
+							<li class="price"><span>${{ x.bet_amount|floatformat:2 }}</span><span>${{ x.rewards|floatformat:2 }}</span><span class="status-pending">{% if x.rewards == 0 %}Pending{% elif x.rewards <= 0 %}Lose{% else %}Won{% endif %}</span></li>
+						</ul>
+					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+				<div class="tab-pane fade show active" id="lose" role="tabpanel" aria-labelledby="home-tab">
+					{% for x in bets %}
+					{% if x.rewards < 0 %}
+					<div class="mybet-single-card">
+						<div class="card-title">
+							<h6>{{ x.result.game.name }}</h6>
+							<span>{{ x.result.start_time|date:"Ymd" }}17265{{x.result.id}} issue</span>
+						</div>
+						<ul class="bet-details">
+							<li><span>B54323456{{x.id}}</span><span>{{ x.result.end_time }}</span></li>
+							<li><span>Champion&runner-up - equal - {{ x.ser }}</span><span>1 x {{ x.odds }}</span></li>
+						</ul>
+						<ul class="bet-status">
+							<li class="status-title"><span>Stake</span><span>Return</span><span>Status</span></li>
+							<li class="price"><span>${{ x.bet_amount|floatformat:2 }}</span><span>${{ x.rewards|floatformat:2 }}</span><span class="status-pending">{% if x.rewards == 0 %}Pending{% elif x.rewards <= 0 %}Lose{% else %}Won{% endif %}</span></li>
+						</ul>
+					</div>
+					{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>

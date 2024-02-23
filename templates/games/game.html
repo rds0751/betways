@@ -99,27 +99,9 @@ select {
 		  <div class="mdc-tab-scroller">
 		    <div class="mdc-tab-scroller__scroll-area">
 		      <div class="mdc-tab-scroller__scroll-content">
-		        <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
-		          <span class="mdc-tab__content">
-		            <span class="mdc-tab__text-label">EvenOdd</span>
-		          </span>
-		          <span class="mdc-tab-indicator mdc-tab-indicator--active">
-		            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-		          </span>
-		          <span class="mdc-tab__ripple"></span>
-		        </button>
 		        <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
 		          <span class="mdc-tab__content">
-		            <span class="mdc-tab__text-label">BigSmall</span>
-		          </span>
-		          <span class="mdc-tab-indicator mdc-tab-indicator">
-		            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-		          </span>
-		          <span class="mdc-tab__ripple"></span>
-		        </button>
-		        <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
-		          <span class="mdc-tab__content">
-		            <span class="mdc-tab__text-label">Exact</span>
+		            <span class="mdc-tab__text-label">Bet Now</span>
 		          </span>
 		          <span class="mdc-tab-indicator mdc-tab-indicator">
 		            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -130,47 +112,15 @@ select {
 		    </div>
 		  </div>
 		</div>
-		<div class="content content--active">
-		  <form class="template-demo" method="POST" action="/games/place/" enctype="multipart/form-data">
-		  	{% csrf_token %}
-	        <h5>Choose Even or Odd</h5>
-	        <input type="number" name="amount" placeholder="Amount">
-	        <input type="hidden" name="evenodd">
-	        <input type="hidden" name="gid" value="{{game.id}}">
-	        <select name="bet">
-	        	<option value="0">Even</option>
-	        	<option value="1">Odd</option>
-	        </select>
-	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
-	            Place Bet
-	          </button>
-          </form>
-		</div>
-		<div class="content">
-			<form class="template-demo" method="POST" action="/games/place/" enctype="multipart/form-data">
-		  	{% csrf_token %}
-	        <input type="hidden" name="bigsmall">
-	        <input type="hidden" name="gid" value="{{game.id}}">
-	        <h5>Choose Big or Small</h5>
-	        <input type="number" name="amount" placeholder="Amount">
-	        <select name="bet">
-	        	<option value="0">Small</option>
-	        	<option value="1">Big</option>
-	        </select>
-	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
-	            Place Bet
-	          </button>
-          </form>
-		</div>
 		<div class="content">
 			<form class="template-demo" method="POST" action="/games/place/" enctype="multipart/form-data">
 		  	{% csrf_token %}
 	        <input type="hidden" name="exact">
 	        <input type="hidden" name="gid" value="{{game.id}}">
 	        <h5>Choose Even or Odd</h5>
-	        <input type="number" name="amount" placeholder="Amount">
-	        <input type="number" max="10" name="bet" placeholder="Number">
-	          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
+	        <input type="number" name="amount" class="form-control" placeholder="Amount">
+	        <input type="number" max="10" name="bet" class="form-control" placeholder="Number">
+	          <button type="submit" class="btn btn-base w-100">
 	            Place Bet
 	          </button>
           </form>

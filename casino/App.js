@@ -77,5 +77,6 @@ container: {
   backgroundColor: '#fff',
   alignItems: 'center',
   justifyContent: 'center',
+  marginTop: -40,
 },
 });

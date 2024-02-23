@@ -27,17 +27,14 @@
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                 <div class="mdc-text-field mdc-text-field--outlined">
-                  <input name="amount" placeholder="Amount in INR" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" id="text-field-hero-input">
+                  <input name="amount" placeholder="Amount in INR" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control mt-3" id="text-field-hero-input">
                 </div>
               </div>
             </div>
             <input type="hidden" name="user_id" value="{{ request.user }}">
-            <button type="submit" class="btn btn-base">
+            <button type="submit" class="btn btn-base mt-3">
               Send Money
             </button>
-            <a href="/wallet/transfer/" class="mdc-button mdc-button--secondary w-100">
-              Back
-            </a>
           </form>
         </div>
     </div>

@@ -2,7 +2,7 @@
 <div class="profile-details" style="background-image: url({% static 'static/img/other/profile-bg.png' %});">
   <ul>
       <li>
-          <h6>{{ request.user.wallet }}</h6>
+          <h6>{{ request.user.wallet|floatformat:2 }}</h6>
           <span>Wallet Balance </span>
       </li>
       <li>
@@ -10,7 +10,7 @@
           <span></span>
       </li>
       <li>
-          <h6>{{request.user.today}}</h6>
+          <h6>{{request.user.today|floatformat:2}}</h6>
           <span>Today Profit </span>
       </li>
   </ul>

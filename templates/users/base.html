@@ -35,10 +35,9 @@
     
     
     </head>
-    <body class='sc5'>
+    <body class='sc5' style="padding-top: 200px;">
       {% block body %}
       
-      <br><br><br>
         {% if request.user.is_authenticated %}
         {% endif %}
         {% block wrapper %}
@@ -93,7 +92,7 @@
           </div> -->
         {% endif %}
           {% block content %}
-          <div class="body-overlay" id="body-overlay" style="padding-top: 200px;"></div>
+          <div class="body-overlay" id="body-overlay"></div>
         
           <div class="main-page bg-main d-flex align-items-center justify-content-center vh-100">
               <div class="container">

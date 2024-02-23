@@ -9,8 +9,7 @@
     <div class="title-area justify-content-between">
         <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
         <h3 class="ps-4">Profile</h3>
-        <div class="balance">₹{{request.user.wallet|floatformat:2}} <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
-    </div>
+	</div>
     <div class="container">
         <div class="my-profile-wrap">
             <div class="media">
@@ -24,22 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="profile-details" style="background-image: url({% static 'static/img/other/profile-bg.png' %});">
-        <ul>
-            <li>
-                <h6>06</h6>
-                <span>Total Game </span>
-            </li>
-            <li>
-                <h6>20</h6>
-                <span>Total Wins  </span>
-            </li>
-            <li>
-                <h6>15</h6>
-                <span>Total Loses </span>
-            </li>
-        </ul>
-    </div>
+	{% include 'partial.html' %}
     <div class="container">
 		<h3>{{ user.name|title }}({{ user.username }})</h3>
 			<h4 class="lead">₹{{ request.user.wallet|floatformat:2 }}.00</h4>

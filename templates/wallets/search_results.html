@@ -14,41 +14,25 @@
         <div class="my-profile-wrap">
           <form class="template-demo" method="POST" action="/wallet/transfer/" enctype="multipart/form-data">{% csrf_token %}
             <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-              <select name="bene_id">
+              <select class="form-control" name="bene_id">
                 {% for user in users_list %}
                   <option class="form-control" value="{{ user.username }}">{{ user.username }} Mr/s. {{ user.name }}</option>
                   {% empty %}
                   <option class="form-control" value="">{% trans 'There are no results related to your search' %}.</option>
                   {% endfor %}
               </select>
-              <i class="mdc-select__dropdown-icon"></i>
-              <div class="mdc-select__selected-text"></div>
-              <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                <ul class="mdc-list">
-                  
-                </ul>
-              </div>
               <span class="mdc-floating-label">Confirm User</span>
               <div class="mdc-line-ripple"></div>
             </div>
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                 <div class="mdc-text-field mdc-text-field--outlined">
-                  <input name="amount" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="mdc-text-field__input" id="text-field-hero-input">
-                  <div class="mdc-notched-outline">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                      <label for="text-field-hero-input" class="mdc-floating-label">Amount
-                      </label>
-                    </div>
-                    <div class="mdc-notched-outline__trailing"></div>
-                  </div>
+                  <input name="amount" placeholder="Amount in INR" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" id="text-field-hero-input">
                 </div>
               </div>
-              
             </div>
             <input type="hidden" name="user_id" value="{{ request.user }}">
-            <button type="submit" class="mdc-button mdc-button--raised w-100">
+            <button type="submit" class="btn btn-base">
               Send Money
             </button>
             <a href="/wallet/transfer/" class="mdc-button mdc-button--secondary w-100">

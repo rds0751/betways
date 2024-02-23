@@ -1,71 +1,52 @@
-{% extends "users/base.html" %}
-{% load static i18n %}
-
+{% extends 'apnabase.html' %}
+{% load static %}
 
 {% block content %}
+<div class="body-overlay" id="body-overlay"></div>
 
-<div class="body-wrapper">
-	<div class="main-wrapper">
-		<div class="page-wrapper full-page-wrapper">
-			<main>
-				<div>
-					<div class="mdc-layout-grid__inner">
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-							<div class="mdc-card p-0">
-								<section style="padding: 30px 30px 20px 30px;" class="error-header">
-									<h1>{% trans "Transfer Funds" %}</h1>
-								</section>
-								<section>
-									<div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-desktop stretch-card">
-										<div class="mdc-card">
-											<div class="template-demo">
-												<form class="mdc-layout-grid__inner" action="/wallet/search-beneficiary/">
-													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-														<div class="mdc-text-field mdc-text-field--outlined">
-															
-															<input name="query" type="search" class="mdc-text-field__input" required id="text-field-hero-input" aria-label="Search">
+    
+<div class="single-page-area">
+    <div class="title-area justify-content-between">
+        <a class="btn back-page-btn" href="javascript:history.back()"><i class="ri-arrow-left-s-line"></i></a>
+        <h3 class="ps-4">Transfer Funds</h3>
+        <div class="balance"> <span><img src="{% static 'static/img/icon/dollar-sign.png' %}" alt="img"></span></div> 
+    </div>
+    <div class="container">
+        <div class="my-profile-wrap">
+            
+			<form class="mdc-layout-grid__inner" action="/wallet/search-beneficiary/">
+				<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+					<div class="mdc-text-field mdc-text-field--outlined">
+						
+						<input name="query" type="search" class="mdc-text-field__input" required id="text-field-hero-input" aria-label="Search">
 
 
-															<div class="mdc-notched-outline">
-																<div class="mdc-notched-outline__leading"></div>
-																<div class="mdc-notched-outline__notch">
-																	<label for="text-field-hero-input" class="mdc-floating-label">Enter User ID
-																	</label>
-																</div>
-																<div class="mdc-notched-outline__trailing"></div>
-															</div>
-														</div>
-													</div>
-													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
-														<button type="submit" class="mdc-button mdc-button--raised w-100">
-															Search
-														</button>
-													</div>
-												</form>
-											</div>
-											<p>{{ message }}</p>
-											<div class="template-demo">
-												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-												<ins class="adsbygoogle"
-												style="display:block"
-												data-ad-format="fluid"
-												data-ad-layout-key="-6t+ed+2i-1n-4w"
-												data-ad-client="ca-pub-2476399156226109"
-												data-ad-slot="6614818154"></ins>
-												<script>
-													(adsbygoogle = window.adsbygoogle || []).push({});
-												</script>
-											</div>
-										</div>
-									</div>
-								</section>
+						<div class="mdc-notched-outline">
+							<div class="mdc-notched-outline__leading"></div>
+							<div class="mdc-notched-outline__notch">
+								<label for="text-field-hero-input" class="mdc-floating-label">Enter User ID
+								</label>
 							</div>
+							<div class="mdc-notched-outline__trailing"></div>
 						</div>
 					</div>
 				</div>
-			</main>
+				<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
+					<button type="submit" class="mdc-button mdc-button--raised w-100">
+						Search
+					</button>
+				</div>
+			</form>
 		</div>
-	</div>
-</div>
-{% endblock content %}
+		<p>{{ message }}</p>
+        </div>
+    </div>
+    <div class="container">
 
+    </div>{% include 'bottom.html' %}
+</div>     
+<!-- back-to-top end -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+</div>
+{% endblock %}

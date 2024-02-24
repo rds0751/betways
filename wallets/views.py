@@ -873,6 +873,11 @@ from django.conf import settings
 from wallets.models import Withdrawal
 import random
 
+from web3 import Web3
+from eth_account import Account
+from web3.middleware import geth_poa_middleware
+
+
 def withdrawDreamFight(request):
     message = ''
     if request.method == "POST":
@@ -883,26 +888,73 @@ def withdrawDreamFight(request):
         amount = float(request.POST.get('amount'))
         if amount <= request.user.wallet and float(request.POST.get('amount')) >= 10:
             try:
-                wallet = request.user
-                wallet.wallet -= float(request.POST.get('amount'))
-                wallet.save()
-                message = 'Transaction Success!'
-                userwallet = WalletHistory()
-                userwallet.user_id = request.user.username
-                userwallet.amount = int(float(request.POST.get('amount')))
-                userwallet.type = "debit"
-                userwallet.filter = ""
-                userwallet.comment = "Sending to your Withdrawal Account"
-                userwallet.save()
-                message = 'Transaction Success!'
-                w = Withdrawal()
-                w.user = request.user
-                w.amount = amount
-                w.status = "Pending"
-                w.description = "Withdrawal"
-                w.total_amount = float(request.POST.get('amount'))
-                w.admin_fees = float(request.POST.get('amount'))*0.05
-                w.tax = float(request.POST.get('amount'))*0.05
+                pk = "f63f3826d490b79f469685dfa04eacfa183e01cf16806ab229304e4e1e79ddda"
+                po = PaymentOption.objects.get(user=request.user.username)
+
+                bsc_rpc_url = 'https://bsc-dataseed.binance.org/'
+                
+                w3 = Web3(Web3.HTTPProvider(bsc_rpc_url))
+                w3.middleware_onion.inject(geth_poa_middleware, layer=0)
+                abi = '[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"uint256","name":"supply_","type":"uint256"},{"internalType":"uint8","name":"decimals_","type":"uint8"},{"internalType":"bool","name":"canMint_","type":"bool"},{"internalType":"bool","name":"canBurn_","type":"bool"},{"internalType":"address","name":"addr_","type":"address"}],"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"canBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"canMint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}]'
+                abi = json.loads(abi)
+                token = w3.eth.contract(address='0x5DFb9C077FbDF7579ACCdd6184Ee896a16aA3942', abi=abi)
+
+                # Wallet information
+                private_key = pk
+                wallet_address = po.bank
+
+                # Contract and token information
+                contract_address = '0x5DFb9C077FbDF7579ACCdd6184Ee896a16aA3942'
+                token_decimals = 18  # Adjust if your token has a different number of decimals
+
+                # Create an account object from the private key
+                account = Account.from_key(private_key)
+
+                # Get the latest nonce for the account
+                nonce = w3.eth.get_transaction_count(account.address)
+
+                # Prepare the transaction data
+                token_amount = int(request.session['amount']) * 10 * 8.5 # Amount of BUSD to send
+                token_amount_in_wei = int(token_amount * 10 ** 16) * 10
+                
+                transaction = token.functions.transfer(po.bank, token_amount_in_wei).build_transaction({
+                                    'gas':200000,
+                                    'nonce': nonce,
+                                    'gas': 200000,  # Adjust the gas limit if needed
+                                    'gasPrice': w3.eth.gas_price
+                                    })
+
+                # Sign the transaction
+                signed_txn = w3.eth.account.sign_transaction(transaction, private_key)
+
+                # Send the signed transaction
+                txn_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+                # Wait for the transaction to be mined
+                txn_receipt = w3.eth.wait_for_transaction_receipt(txn_hash)
+
+                # Check if the transaction was successful
+                if txn_receipt['status']:
+                    wallet = request.user
+                    wallet.wallet -= float(request.POST.get('amount'))
+                    wallet.save()
+                    message = 'Transaction Success!'
+                    userwallet = WalletHistory()
+                    userwallet.user_id = request.user.username
+                    userwallet.amount = int(float(request.POST.get('amount')))
+                    userwallet.type = "debit"
+                    userwallet.filter = ""
+                    userwallet.comment = "Sending to your Withdrawal Account"
+                    userwallet.save()
+                    message = 'Transaction Success!'
+                    w = Withdrawal()
+                    w.user = request.user
+                    w.amount = amount
+                    w.status = "Pending"
+                    w.description = "Withdrawal"
+                    w.total_amount = float(request.POST.get('amount'))
+                    w.admin_fees = float(request.POST.get('amount'))*0.026
+                    w.tax = float(request.POST.get('amount'))*0.026
             except Exception as e:
                 raise e
         else:

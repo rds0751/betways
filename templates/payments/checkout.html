@@ -52,7 +52,7 @@
       <script>
         document.getElementById('my-select').addEventListener('change', function(event) {
             var select = event.target;
-            var selectedOption = select.options[select.selectedIndex];
+            var selectedOption = this.selectedOptions[select.selectedIndex];
             console.log('You selected: ', this.selectedOption.getAttribute('value'));
         });
       </script>

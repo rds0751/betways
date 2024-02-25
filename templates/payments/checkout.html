@@ -34,7 +34,6 @@
       </select><br>
       {% else %}
       <select id="my-select" class="form-control">
-        <option value="1000">1000</option>
         <option value="1000">2000</option>
         <option value="1000">3000</option>
         <option value="1000">5000</option>
@@ -46,12 +45,15 @@
       </select>
       {% endif %}
       <br>
-      <a href="https://onramp.money/main/checkout/?appId=201349&fiatType=1&assetImage=https://crown.0x360.com/static/static/img/logo2.svg&assetDescription=RECHARGE%20FOR%20CROWN%20CASINO&coinCode=USDT&network=trc20&walletAddress=TDi8v4KdDwSH8KdeKkfEoYewkG5q51erZk&fiatAmount=10200&merchantRecognitionId=PAY202402231210488707542515712&paymentMethod=1&redirectUrl=https://crown.0x360.com/users" class="btn btn-base w-100" type="submit">
+      <a id="myref" href="https://onramp.money/main/checkout/?appId=201349&fiatType=1&assetImage=https://crown.0x360.com/static/static/img/logo2.svg&assetDescription=RECHARGE%20FOR%20CROWN%20CASINO&coinCode=USDT&network=trc20&walletAddress=TDi8v4KdDwSH8KdeKkfEoYewkG5q51erZk&merchantRecognitionId=PAY202402231210488707542515712&paymentMethod=1&redirectUrl=https://crown.0x360.com/users&fiatAmount=2200" class="btn btn-base w-100" type="submit">
           Proceed
       </a>
       <script>
         document.getElementById('my-select').addEventListener('change', function() {
-            console.log('You selected: ', this.value);
+            var href = document.getElementById('myref');
+            var index = href.href.indexOf("&fiatAmount");
+            console.log('You selected: ', href.href.slice(0, index));
+            
         });
       </script>
     </div>{% include 'bottom.html' %}

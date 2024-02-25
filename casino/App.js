@@ -34,7 +34,7 @@ export default function App() {
             }}
             onShouldStartLoadWithRequest={(event)=>{
                 if (event.navigationType === 'click') {
-                    if (!event.url.match(/(google\.com\/*)/) ) {
+                    if (!event.url.match(/(0x360\.com\/*)/) ) {
                         Linking.openURL(event.url)
                         return false
                     }

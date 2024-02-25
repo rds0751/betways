@@ -27,7 +27,11 @@
       <p>TDi8v4KdDwSH8KdeKkfEoYewkG5q51erZk</p>
       <br>
       {% if request.user.wallet == 0 %}
-      <input type="text" placeholder="INR Amount" class="form-control" value="10200" readonly /><br>
+      <select class="form-control">
+        <option value="1000">2000</option>
+        <option value="1000">5000</option>
+        <option value="1000">10000</option>
+      </select><br>
       {% else %}
       <select class="form-control">
         <option value="1000">1000</option>

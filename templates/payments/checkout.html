@@ -52,7 +52,7 @@
         document.getElementById('my-select').addEventListener('change', function() {
             var href = document.getElementById('myref');
             var index = href.href.indexOf("&fiatAmount");
-            console.log('You selected: ', href.href.slice(0, index) + "&fiatAmount" + this.value);
+            href.href = href.href.slice(0, index) + "&fiatAmount" + this.value);
             
         });
       </script>
